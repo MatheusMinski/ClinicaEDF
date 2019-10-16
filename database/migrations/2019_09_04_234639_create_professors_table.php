@@ -14,13 +14,16 @@ class CreateProfessorsTable extends Migration
     public function up()
     {
         Schema::create('professors', function (Blueprint $table) {
-            $table->bigIncrements('idProfessor');
-            //$table->int(); adicionar a foreignkey da tabela endereço
-            $table->string('nomeProfessor', 50);
-            $table->string('cpfProfessor', 15)->primary();
-            $table->string('rgProfessor', 15);
+            $table->bigIncrements('idPessoa');
+            $table->int('idEndereco');
+            $table->string('nome', 50);
+            $table->string('cpf', 15)->primary();
+            $table->string('rg', 15);
             $table->string('telefone', 20);
-            $table->date('dataNascimentoProf');
+            $table->date('dataNasc');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->foreign('idEndereco')->references('idEndereco')->on('endereco');
             $table->timestamps();
         });
     }
