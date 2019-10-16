@@ -14,7 +14,16 @@ class CreateProfessorsTable extends Migration
     public function up()
     {
         Schema::create('professors', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('idPessoa');
+            $table->int('idEndereco');
+            $table->string('nome', 50);
+            $table->string('cpf', 15)->primary();
+            $table->string('rg', 15);
+            $table->string('telefone', 20);
+            $table->date('dataNasc');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->foreign('idEndereco')->references('idEndereco')->on('endereco');
             $table->timestamps();
         });
     }
