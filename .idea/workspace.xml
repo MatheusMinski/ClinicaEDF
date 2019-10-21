@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/app/Aluno.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Aluno.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/ContatosDeEmergencia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ContatosDeEmergencia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Endereco.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Endereco.php" afterDir="false" />
@@ -24,6 +25,10 @@
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_04_234957_create_quantas_consultas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_04_234957_create_quantas_consultas_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_04_235005_create_lista_de_esperas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_04_235005_create_lista_de_esperas_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_16_090248_create_equipamentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_16_090248_create_equipamentos_table.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+>>>>>>> ce9ba8c0c4f5d398cb3dec6556c6786d2e993ba7
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +38,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+<<<<<<< HEAD
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -127,10 +133,16 @@
         </entry>
       </file>
     </leaf>
+=======
+    <execution>
+      <executable />
+    </execution>
+>>>>>>> ce9ba8c0c4f5d398cb3dec6556c6786d2e993ba7
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -161,6 +173,8 @@
       </list>
     </option>
   </component>
+=======
+>>>>>>> ce9ba8c0c4f5d398cb3dec6556c6786d2e993ba7
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
@@ -246,6 +260,7 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
     </include_path>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
@@ -304,6 +319,11 @@
         </subPane>
       </pane>
     </panes>
+=======
+  <component name="ProjectId" id="1SR4uo2ns0pMZArBR9WPPQxKpt4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+>>>>>>> ce9ba8c0c4f5d398cb3dec6556c6786d2e993ba7
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -357,6 +377,7 @@
       <workItem from="1567638286946" duration="2154000" />
       <workItem from="1570025368965" duration="1017000" />
       <workItem from="1571043017016" duration="3859000" />
+<<<<<<< HEAD
       <workItem from="1571215710722" duration="3192000" />
       <workItem from="1571253464719" duration="6114000" />
     </task>
@@ -703,5 +724,30 @@
         </state>
       </provider>
     </entry>
+=======
+      <workItem from="1571215710722" duration="2543000" />
+      <workItem from="1571513318577" duration="926000" />
+      <workItem from="1571619245158" duration="200000" />
+      <workItem from="1571619459480" duration="494000" />
+      <workItem from="1571654027552" duration="16844000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+>>>>>>> ce9ba8c0c4f5d398cb3dec6556c6786d2e993ba7
   </component>
 </project>

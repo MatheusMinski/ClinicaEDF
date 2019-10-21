@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/cadastro/professor/endereço', function () {
+    return view('cadastros.professoradr');
 });
+
+Route::get('/cadastro/professor', function () {
+    return view('cadastros.professorcd');
+});
+
+Route::get('/', function () {
+    return view('login');
+});
+
+
