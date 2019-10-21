@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aluno extends Model
 {
-    //
+    protected $fillable = [
+        'idAluno', 'idEndereco', 'nome', 'dataNasc', 'idade', 'sexo','email','profissao','aposentado','estadoCivil','escolaridade','classeSocialFamilia',
+    ];
+
 }
