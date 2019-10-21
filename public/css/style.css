@@ -1,0 +1,38 @@
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+.nav-wrapper{
+    background-color: #FF8C00;
+}
+
+.logo{
+    margin-right: 25%;
+    float:left;
+    padding: 0px 20px;
+    text-decoration-style: solid;
+}
+
+div#login{
+
+}
+
+.next{
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 25%;
+    float:left
+}
+
+.submit{
+    background-color: #4CAF50;
+    margin-right:50%;
+}
+
+.floatLeft{
+    float:left
+}
+
+
