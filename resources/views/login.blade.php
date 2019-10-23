@@ -13,7 +13,6 @@
                 <h4>Login</h4>
                 <br/><br/>
 
-
                 <input id="email" height="10px" style="width:350px" type="email" class="validate" placeholder="E-mail"/>
                 <br/><br/>
 
