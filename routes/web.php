@@ -19,21 +19,23 @@ Route::get('/cadastro/professor', function () {
     return view('cadastros.professorcd');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login',['as' => 'professor.login', 'uses'=>'LoginProfessorController@index']);
+
+Route::post('/login/entrar', ['as' => 'professor.login.entrar','uses'=>'LoginProfessorController@index']);
 
 
 Route::get('/cadastro/emprestimo', function () {
     return view('emprestimos.alunoemprestimo');
 });
 
-Route::get('/index', function () {
-    return view('index');
+Route::get('/', function () {
+    return view('cadastros.professoradr');
 });
 
-Route::get('/index/emprestimo', function () {
-    return view('emprestimos.indexemprestimo');
-});
+
+Route::get('/index/emprestimo' , ['as' => 'emprestimo','uses'=>'LoginProfessorController@emprestimo']);
+
+
+
 
 
