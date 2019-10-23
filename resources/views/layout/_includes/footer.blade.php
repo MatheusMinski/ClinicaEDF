@@ -4,13 +4,23 @@
 <script type="text/javascript" src="js/jquery-1.2.6.pack.js"></script>
 <script type="text/javascript" src="js/jquery.maskedinput-1.1.4.pack.js"></script>
 
-
 <script type="text/javascript">
     $(document).ready(function () {
         Materialize.updateTextFields();
         $('.sidenav').sidenav();
-        $("#cpf").mask("999.999.999-99");
+        $('select').formSelect();
+        $('.datepicker').datepicker();
     });
+
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
+
+    $(document).ready(function(){
+        $('.datepicker').datepicker();
+    });
+
+
 </script>
 </body>
 </html>

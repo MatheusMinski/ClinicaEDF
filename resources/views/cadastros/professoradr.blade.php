@@ -14,27 +14,27 @@
                 <br/><br/>
 
                 <label >Rua</label>
-                <input class="form-control" required="required" type="text" placeholder="Ex. das Laranjeiras" />
+                <input name="rua" class="form-control" required="required" type="text" placeholder="Ex. das Laranjeiras" />
                 <br/><br/>
 
                 <label>Número</label>
-                <input class="form-control" required="required" type="text" placeholder="Ex. 605" />
+                <input name="num" class="form-control" required="required" type="text" placeholder="Ex. 605" />
                 <br/><br/>
 
                 <label>Bairro</label>
-                <input class="form-control" required="required" type="text" placeholder="Ex. Dos Estados" />
+                <input name="bairro" class="form-control" required="required" type="text" placeholder="Ex. Dos Estados" />
                 <br/><br/>
 
                 <labe>Complemento</labe>
-                <input class="form-control"  type="text" placeholder="Ex. Casa, Apartamento, Condominio" />
+                <input name="complemento" class="form-control"  type="text" placeholder="Ex. Casa, Apartamento, Condominio" />
                 <br/><br/>
 
 
             </form>
 
             <div class="row">
-                <div><a class="next">&laquo; Página Anterior</a></div>
-                <div><a class="floatLeft" type="submit">Finalizar Cadastro</a></div>
+                <div><a name="next" class="next">&laquo; Página Anterior</a></div>
+                <div><a name="finalizar" class="floatLeft" type="submit">Finalizar Cadastro</a></div>
             </div>
             <br/><br/><br/><br/>
 

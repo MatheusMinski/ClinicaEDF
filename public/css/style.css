@@ -8,6 +8,11 @@ a {
     background-color: #FF8C00;
 }
 
+.upBtn{
+    color: black;
+}
+
+
 .logo{
     margin-right: 25%;
     float:left;

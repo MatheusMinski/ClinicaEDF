@@ -10,6 +10,7 @@
     <!--Import materialize.css-->
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -25,14 +26,16 @@
 
     <nav>
         <div class="nav-wrapper">
-            <a href="#!" class="logo">eCAEEF</a>
+            <a href="#!" class="brand-logo center">eCAEEF</a>
             <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="">Empréstimos</a></li>
-                <li><a href="">Empréstimos</a></li>
-                <li><a href="">Empréstimos</a></li>
-                <li><a href="">Empréstimos</a></li>
+            <ul  class="left hide-on-med-and-down">
+                <li><a class="upBtn" name="btnAlunos" href="">Alunos</a></li>
+                <li><a class="upBtn" name="btnProf" href="">Professores</a></li>
+            </ul>
 
+            <ul class="right hide-on-med-and-down">
+                <li><a class="upBtn" name="BtnEmp" href="">Empréstimos</a></li>
+                <li><a class="upBtn" name="BtnEq" href="">Equipamentos</a></li>
             </ul>
         </div>
     </nav>
