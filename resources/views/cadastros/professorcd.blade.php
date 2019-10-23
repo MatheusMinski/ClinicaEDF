@@ -14,11 +14,11 @@
                     <br/><br/>
 
                     <label for="nome_cad">Nome Completo</label>
-                    <input class="form-control" required="required" type="text" placeholder="" />
+                    <input name="nome" class="form-control" required="required" type="text" placeholder="" />
                     <br/><br/>
 
                     <label for="email_cad">E-mail</label>
-                    <input id="email_cad" name="email_cad" required="required" type="email" placeholder="contato@gmail.com" class="validate"/>
+                    <input id="email_cad" name="email" required="required" type="email" placeholder="contato@gmail.com" class="validate"/>
                     <br/><br/>
 
                     <div class="form-inline">
@@ -27,7 +27,7 @@
                             <p class="info-label">Senha entre 8 a 14 caracteres, contendo letras e números</p>
                             <div>
                                 <div class="input-group col-md-4 f-left">
-                                    <input class="password form-control" id="user_password2" data-component="password-strength" data-monitor-id="password-strength-monitor" type="password">
+                                    <input name="passw" class="password form-control" id="user_password2" data-component="password-strength" data-monitor-id="password-strength-monitor" type="password">
                                     <a class=" input-group-addon toggle-pass ico-eye" data-classtoggle="ico-eye,ico-eye-blocked" data-target="#user_password2" href="#"></a>
                                 </div>
 
@@ -42,16 +42,16 @@
                     <br/><br/><br/>
 
                     <label for="cpf">CPF</label>
-                    <input type="text" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00">
+                    <input name="cpf"  type="text" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00">
                     <br/><br/>
 
 
                     <label for="phone">Telefone</label>
-                    <input type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 00000-0000">
+                    <input name="phone" type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 00000-0000">
                     <br/><br/>
 
                     <label for="datanasc"><h6>Data de Nascimento</h6></label>
-                    <input type="text" class="form-control date-mask" placeholder="Ex.: 00/00/0000">
+                    <input name="datanasc" type="text" class="form-control date-mask" placeholder="Ex.: 00/00/0000">
                     <br/><br/>
 
 
