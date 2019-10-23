@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/app/Aluno.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Aluno.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/ContatosDeEmergencia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ContatosDeEmergencia.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Endereco.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Endereco.php" afterDir="false" />
@@ -27,6 +28,13 @@
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_16_090248_create_equipamentos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_16_090248_create_equipamentos_table.php" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cadastros/professoradr.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cadastros/professoradr.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cadastros/professorcd.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cadastros/professorcd.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/_includes/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/_includes/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/_includes/topo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/_includes/topo.blade.php" afterDir="false" />
+>>>>>>> a0f1994b22cdd01b2ad34d2b96890a4482c05ee8
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
 >>>>>>> ce9ba8c0c4f5d398cb3dec6556c6786d2e993ba7
     </list>
@@ -729,7 +737,9 @@
       <workItem from="1571513318577" duration="926000" />
       <workItem from="1571619245158" duration="200000" />
       <workItem from="1571619459480" duration="494000" />
-      <workItem from="1571654027552" duration="16844000" />
+      <workItem from="1571654027552" duration="17450000" />
+      <workItem from="1571856542383" duration="539000" />
+      <workItem from="1571857179531" duration="7585000" />
     </task>
     <servers />
   </component>

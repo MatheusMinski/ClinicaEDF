@@ -19,8 +19,21 @@ Route::get('/cadastro/professor', function () {
     return view('cadastros.professorcd');
 });
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('login');
+});
+
+
+Route::get('/cadastro/emprestimo', function () {
+    return view('emprestimos.alunoemprestimo');
+});
+
+Route::get('/index', function () {
+    return view('index');
+});
+
+Route::get('/index/emprestimo', function () {
+    return view('emprestimos.indexemprestimo');
 });
 
 
