@@ -13,7 +13,7 @@ class CreateQuantasConsultasTable extends Migration
      */
     public function up()
     {
-        Schema::create('quantas_consultas', function (Blueprint $table) {
+        Schema::create('quantasConsultas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateQuantasConsultasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quantas_consultas');
+        Schema::dropIfExists('quantasConsultas');
     }
 }

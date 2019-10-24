@@ -15,7 +15,7 @@
             <div>
                 <label>Selecionar Itens</label><br/>
                 <input type="checkbox" />
-                <span>Pênis de borracha</span>
+                <span>Cama Elástica</span>
             </div>
             <br/>
 

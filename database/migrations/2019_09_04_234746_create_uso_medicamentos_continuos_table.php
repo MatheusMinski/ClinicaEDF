@@ -13,7 +13,7 @@ class CreateUsoMedicamentosContinuosTable extends Migration
      */
     public function up()
     {
-        Schema::create('uso_medicamentos_continuos', function (Blueprint $table) {
+        Schema::create('usoMedicamentosContinuos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateUsoMedicamentosContinuosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('uso_medicamentos_continuos');
+        Schema::dropIfExists('usoMedicamentosContinuos');
     }
 }

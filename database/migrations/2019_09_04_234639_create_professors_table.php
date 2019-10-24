@@ -13,8 +13,8 @@ class CreateProfessorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('professors', function (Blueprint $table) {
-            $table->bigIncrements('idPessoa');
+        Schema::create('Professor', function (Blueprint $table) {
+            $table->bigIncrements('idProfessor');
             $table->int('idEndereco');
             $table->string('nome', 50);
             $table->string('cpf', 15)->primary();
@@ -22,6 +22,7 @@ class CreateProfessorsTable extends Migration
             $table->string('telefone', 20);
             $table->date('dataNasc');
             $table->string('email')->unique();
+            $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->foreign('idEndereco')->references('idEndereco')->on('endereco');
             $table->timestamps();
@@ -35,6 +36,6 @@ class CreateProfessorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professors');
+        Schema::dropIfExists('Professor');
     }
 }

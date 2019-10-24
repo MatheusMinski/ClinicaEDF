@@ -14,10 +14,14 @@ class CreateContatosDeEmergenciasTable extends Migration
     public function up()
     {
         Schema::create('contatosDeEmergencias', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integer('idAluno');
+            $table->string('nome', 50);
+            $table->string('parentesco', 20);
+            $table->string('telefone', 20);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -26,6 +30,6 @@ class CreateContatosDeEmergenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contatos_de_emergencias');
+        Schema::dropIfExists('contatosDeEmergencias');
     }
 }

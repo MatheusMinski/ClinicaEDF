@@ -13,7 +13,7 @@ class CreateAvaliacaoFuncionalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('avaliacao_funcionals', function (Blueprint $table) {
+        Schema::create('avaliacaoFuncional', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateAvaliacaoFuncionalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avaliacao_funcionals');
+        Schema::dropIfExists('avaliacaoFuncional');
     }
 }
