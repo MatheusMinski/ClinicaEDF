@@ -19,18 +19,19 @@ Route::get('/cadastro/professor', function () {
     return view('cadastros.professorcd');
 });
 
-Route::get('/login',['as' => 'professor.login', 'uses'=>'LoginProfessorController@index']);
+Route::get('/entrar',['as' => 'entrar', 'uses'=>'LoginProfessorController@entrar']);
 
 Route::post('/login/entrar', ['as' => 'professor.login.entrar','uses'=>'LoginProfessorController@index']);
 
+Route::get('/emprestimo', ['as' => 'emprestimos','uses'=>'CadastroPessoaEmprestimoController@index']);
 
-Route::get('/cadastro/emprestimo', function () {
-    return view('emprestimos.alunoemprestimo');
-});
+Route::get('/cadastro/emprestimo', ['as' => 'cadastro.emprestimo','uses'=>'CadastroPessoaEmprestimoController@cadastro']);
 
-Route::get('/', function () {
-    return view('cadastros.professoradr');
-});
+
+
+
+Route::get('/', ['as' => 'login','uses'=>'LoginProfessorController@login']);
+
 
 
 Route::get('/index/emprestimo' , ['as' => 'emprestimo','uses'=>'LoginProfessorController@emprestimo']);

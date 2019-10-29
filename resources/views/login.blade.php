@@ -7,7 +7,7 @@
     <div class="container" >
         <!--FORMULÁRIO DE LOGIN-->
         <div id="login" align="center">
-            <form action="{{route('emprestimo')}}" method="post" >
+            <form action="{{route('entrar')}}" method="post" >
 
                 <br/><br/>
                 <h4>Login</h4>

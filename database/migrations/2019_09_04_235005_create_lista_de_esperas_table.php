@@ -15,7 +15,7 @@ class CreateListaDeEsperasTable extends Migration
     {
         Schema::create('listaDeEspera', function (Blueprint $table) {
             $table->string('nomeAlunoEspera');
-            $table->int('prioridade');
+            $table->integer('prioridade');
             $table->string('telefone', 20);
             $table->string('outroContato', 50);
             $table->timestamps();

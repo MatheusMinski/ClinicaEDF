@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePessoaEmprestimosTable extends Migration
+class CreatePessoaEmprestimoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class CreatePessoaEmprestimosTable extends Migration
             $table->integer('idProfessor');
             $table->string('nomePessoaEmprestimo', 50);
             $table->string('cpfPessoaEmprestimo', 15);
-            $table->foreign('idProfessor')->references('idPessoa')->on('professors');
+            $table->foreign('idProfessor')->references('idProfessor')->on('users');
             $table->timestamps();
         });
     }
