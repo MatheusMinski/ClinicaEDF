@@ -18,9 +18,9 @@ class CreateAlunosTable extends Migration
             $table->integer('idEndereco');
             $table->string('nome', 50);
             $table->date('dataNasc');
-            $table->int('idade');
+            $table->integer('idade');
             $table->char('sexo');
-            $table->email('email',30);
+            $table->string('email',30);
             $table->string('profissao',20);
             $table->boolean('aposentado');
             $table->string('estadoCivil',15);

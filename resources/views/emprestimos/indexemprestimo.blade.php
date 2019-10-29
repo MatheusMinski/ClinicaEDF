@@ -25,7 +25,7 @@
             </div>
 
             <div >
-                <button name="EmpCad" type="submit" class="btn btn-default">Não possui cadastro?</button>
+                <a name="EmpCad" class="btn btn-default"  href="{{route('cadastro.emprestimo')}}">Não possui cadastro?</a>
             </div>
             <br/>
             <div >
