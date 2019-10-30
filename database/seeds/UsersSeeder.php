@@ -14,10 +14,17 @@ class UsersSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'email' => 'admin@gmail.com',
+            'idProfessor'=> 1,
+            'idEndereco' => 1,
+            'nome' => 'Claudiney',
+            'rg' => '130110894',
+            'telefone' =>'33265986',
+            'dataNasc' =>'18/07/2000',
+            'email'=> 'admin@admin.com',
             'password' => bcrypt('lucasflamenguista'),
-            'cpf' => '106.593.469-66'
+            'cpf' => '123.456.789-19',
         ]);
+
     }
 
 
