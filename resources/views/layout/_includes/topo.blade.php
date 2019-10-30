@@ -30,12 +30,13 @@
             <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul  class="left hide-on-med-and-down">
                 <li><a class="upBtn" name="btnAlunos" href="">Alunos</a></li>
-                <li><a class="upBtn" name="btnProf" href="{{route('login')}}" >Professores</a></li>
+                <li><a class="upBtn" name="btnProf" href="{{route('cadastro.professor')}}" >Professores</a></li>
             </ul>
 
             <ul class="right hide-on-med-and-down">
                 <li><a class="upBtn" name="BtnEmp" href="{{route('emprestimos')}}">Empréstimos</a></li>
                 <li><a class="upBtn" name="BtnEq" href="">Equipamentos</a></li>
+                <li><a class="upBtn" name="btnProf" href="{{route('sair')}}" >Sair</a></li>
             </ul>
         </div>
     </nav>

@@ -11,17 +11,16 @@
 |
 */
 
-Route::get('/cadastro/professor/endereço', function () {
-    return view('cadastros.professoradr');
-});
 
-Route::get('/cadastro/professor', function () {
-    return view('cadastros.professorcd');
-});
 
-Route::get('/entrar',['as' => 'entrar', 'uses'=>'LoginProfessorController@entrar']);
+Route::get('/cadastro/professor',['as' => 'cadastro.professor', 'uses'=>'CadastroProfessorController@index']);
 
-Route::post('/login/entrar', ['as' => 'professor.login.entrar','uses'=>'LoginProfessorController@index']);
+Route::post('/cadastro/teste',['as' => 'salvar.professor', 'uses'=>'CadastroProfessorController@salvar']);
+
+Route::post('/entrar',['as' => 'entrar', 'uses'=>'LoginProfessorController@entrar']);
+Route::get('/sair',['as' => 'sair', 'uses'=>'LoginProfessorController@sair']);
+
+//Route::post('/login/entrar', ['as' => 'professor.login.entrar','uses'=>'LoginProfessorController@index']);
 
 Route::get('/emprestimo', ['as' => 'emprestimos','uses'=>'CadastroPessoaEmprestimoController@index']);
 

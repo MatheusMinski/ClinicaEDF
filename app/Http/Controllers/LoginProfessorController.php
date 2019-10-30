@@ -15,15 +15,15 @@ class LoginProfessorController extends Controller
 
         $dados = $req-> all();
         if(Auth::attempt(['email'=>$dados['email'],'password'=>$dados['password']])){
-            return redirect()->route('/login/entrar');
+            return redirect()->route('emprestimos');
         }
 
-        return redirect()->route('index');
+        return redirect()->route('login');
     }
 
     public function sair(){
         Auth::logout();
-        return redirect()->route('index');
+        return redirect()->route('login');
     }
 
     public function emprestimo(){
