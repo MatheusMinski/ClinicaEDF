@@ -34,7 +34,7 @@
             </ul>
 
             <ul class="right hide-on-med-and-down">
-                <li><a class="upBtn" name="BtnEmp" href="">Empréstimos</a></li>
+                <li><a class="upBtn" name="BtnEmp" href="cadastro/emprestimo">Empréstimos</a></li>
                 <li><a class="upBtn" name="BtnEq" href="">Equipamentos</a></li>
             </ul>
         </div>
