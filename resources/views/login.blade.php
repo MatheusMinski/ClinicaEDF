@@ -7,7 +7,7 @@
     <div class="container" >
         <!--FORMULÁRIO DE LOGIN-->
         <div id="login" align="center">
-            <form action="{{route('entrar')}}" method="post" >
+            <form  method="post" action="{{route('entrar')}}">
                 {{csrf_field()}}
 
                 <br/><br/>

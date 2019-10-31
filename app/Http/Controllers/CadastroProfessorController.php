@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Endereco;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class CadastroProfessorController extends Controller
 
         User::create($dados);
 
-        return redirect()->routes('');
+        return redirect()->routes('login');
 
     }
 }
