@@ -13,11 +13,15 @@ class CreateListaDeEsperasTable extends Migration
      */
     public function up()
     {
-        Schema::create('lista_de_esperas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('listaDeEspera', function (Blueprint $table) {
+            $table->string('nomeAlunoEspera');
+            $table->int('prioridade');
+            $table->string('telefone', 20);
+            $table->string('outroContato', 50);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -26,6 +30,6 @@ class CreateListaDeEsperasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lista_de_esperas');
+        Schema::dropIfExists('listaDeEspera');
     }
 }

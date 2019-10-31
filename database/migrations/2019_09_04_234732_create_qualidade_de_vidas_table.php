@@ -13,7 +13,7 @@ class CreateQualidadeDeVidasTable extends Migration
      */
     public function up()
     {
-        Schema::create('qualidade_de_vidas', function (Blueprint $table) {
+        Schema::create('qualidadeDeVidas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateQualidadeDeVidasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qualidade_de_vidas');
+        Schema::dropIfExists('qualidadeDeVidas');
     }
 }

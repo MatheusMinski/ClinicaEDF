@@ -16,7 +16,7 @@
                 <input name="epname" id="epname" height="10px" style="width:350px" type="text" class="validate" placeholder="Nome Completo"/>
                 <br/><br/>
 
-                <input name="epcpf" id="epcpf" type="text" height="10px" style="width:350px"class="validate" placeholder="CPF">
+                <input name="cpfPessoaEmprestimo" style="width: 350px" type="text" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00">
                 <br/><br/>
 
 
