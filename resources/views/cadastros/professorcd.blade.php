@@ -28,7 +28,7 @@
                             <p class="info-label">Senha entre 8 a 14 caracteres, contendo letras e números</p>
                             <div>
                                 <div class="input-group col-md-4 f-left">
-                                    <input name="passw" class="password form-control" id="user_password2" data-component="password-strength" data-monitor-id="password-strength-monitor" type="password">
+                                    <input name="password" class="password form-control" id="user_password2" data-component="password-strength" data-monitor-id="password-strength-monitor" type="password">
                                     <a class=" input-group-addon toggle-pass ico-eye" data-classtoggle="ico-eye,ico-eye-blocked" data-target="#user_password2" href="#"></a>
                                 </div>
 
@@ -53,30 +53,6 @@
 
                     <label for="datanasc"><h6>Data de Nascimento</h6></label>
                     <input name="dataNasc" type="text" class="form-control date-mask" placeholder="Ex.: 00/00/0000">
-                    <br/><br/>
-
-                    <br/><br/>
-                    <h4>Endereço</h4>
-                    <br/><br/>
-
-                    <label >Rua</label>
-                    <input name="rua" class="form-control" required="required" type="text" placeholder="Ex. das Laranjeiras" />
-                    <br/><br/>
-
-                    <label>Número</label>
-                    <input name="numero" class="form-control" required="required" type="text" placeholder="Ex. 605" />
-                    <br/><br/>
-
-                    <label>Bairro</label>
-                    <input name="bairro" class="form-control" required="required" type="text" placeholder="Ex. Dos Estados" />
-                    <br/><br/>
-
-                    <labe>Cidade</labe>
-                    <input name="cidade" class="form-control"  type="text" placeholder="Ex. Guarapuava" />
-                    <br/><br/>
-
-                    <labe>CEP</labe>
-                    <input name="cep" class="form-control cep-mask"  type="text" placeholder="Ex. 00000-000" />
                     <br/><br/>
 
                     <button class="next"> Finalizar Cadastro &raquo</button>

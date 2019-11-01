@@ -25,7 +25,7 @@
             </div>
 
             <div >
-                <a name="EmpCad" class="btn btn-default"  href="{{route('cadastro.emprestimo')}}">Não possui cadastro?</a>
+                <a name="EmpCad" class="btn btn-default"  href="{{route('cadastro.pessoa')}}">Não possui cadastro?</a>
             </div>
             <br/>
             <div >

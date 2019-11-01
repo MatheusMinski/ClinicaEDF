@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -28,15 +27,20 @@
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo center">eCAEEF</a>
             <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul  class="left hide-on-med-and-down">
-                <li><a class="upBtn" name="btnAlunos" href="">Alunos</a></li>
-                <li><a class="upBtn" name="btnProf" href="{{route('cadastro.professor')}}" >Professores</a></li>
+            <ul class="left hide-on-med-and-down">
+                @if(!Auth::guest())
+                    <li><a class = "upBtn">{{Auth::user()->nome}}</a></li>
+                    <li><a class="upBtn" name="btnAlunos" href="">Alunos</a></li>
+                    <li><a class="upBtn" name="btnProf" href="{{route('lista.professor')}}">Professores</a></li>
+                @endif
             </ul>
 
             <ul class="right hide-on-med-and-down">
-                <li><a class="upBtn" name="BtnEmp" href="{{route('emprestimos')}}">Empréstimos</a></li>
-                <li><a class="upBtn" name="BtnEq" href="">Equipamentos</a></li>
-                <li><a class="upBtn" name="btnSair" href="{{route('sair')}}" >Sair</a></li>
+                @if(!Auth::guest())
+                    <li><a class="upBtn" name="BtnEmp" href="{{route('emprestimos')}}">Empréstimos</a></li>
+                    <li><a class="upBtn" name="BtnEq" href="{{route('lista.equipamentos')}}">Equipamentos</a></li>
+                    <li><a class="upBtn" name="btnSair" href="{{route('sair')}}">Sair</a></li>
+                @endif
             </ul>
         </div>
     </nav>
@@ -48,7 +52,8 @@
         <li><a href="mobile.html">Mobile</a></li>
     </ul>
 
-    <script async="" src="//www.google-analytics.com/analytics.js" style="display: none !important;"></script><script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script async="" src="//www.google-analytics.com/analytics.js" style="display: none !important;"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/2.0.6/javascripts/locastyle.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </header>
