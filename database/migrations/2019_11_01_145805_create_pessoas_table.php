@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEquipamentosTable extends Migration
+class CreatePessoasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateEquipamentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipamentos', function (Blueprint $table) {
+        Schema::create('pessoas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nomeEquipamento', 50);
-            $table->integer('QuantidadeTotal');
-            $table->integer('QuantidadeDisponivel');
+            $table->string('nomePessoa', 50);
+            $table->string('cpfPessoa', 15)->unique();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateEquipamentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipamentos');
+        Schema::dropIfExists('pessoas');
     }
 }

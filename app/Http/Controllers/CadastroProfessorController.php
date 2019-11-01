@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class CadastroProfessorController extends Controller
 {
     public function index(){
+
         return view('cadastros.professorcd');
     }
 
@@ -16,9 +17,23 @@ class CadastroProfessorController extends Controller
 
         $dados = $req->all();
 
-        User::create($dados);
 
-        return redirect()->routes('login');
+        User::create([
+            'nome' => $dados['nome'],
+            'email' => $dados['email'],
+            'password' => bcrypt($dados['password']),
+            'cpf' => $dados['cpf'],
+            'telefone' => $dados['telefone'],
+            'dataNasc' => $dados['dataNasc'],
+        ]);
 
+
+        return redirect()->route('lista.professor');
+
+    }
+
+    public function listagem(){
+        $registros = User::all();
+        return view('listaprofessores', compact('registros'));
     }
 }
