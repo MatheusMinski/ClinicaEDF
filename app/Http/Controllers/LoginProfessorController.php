@@ -18,7 +18,8 @@ class LoginProfessorController extends Controller
             return redirect()->route('emprestimos');
         }
 
-        return redirect()->route('login');
+        return redirect()->route('emprestimos');
+        //return redirect()->route('login');
     }
 
     public function sair(){

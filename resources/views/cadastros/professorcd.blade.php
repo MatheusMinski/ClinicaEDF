@@ -8,6 +8,7 @@
             <!--FORMULÁRIO DE CADASTRO-->
             <div id="cadastro">
                 <form method="post" action="{{route('salvar.professor')}}">
+                    {{csrf_field()}}
 
                     <br/><br/>
                     <h4>Cadastro de Professor</h4>
@@ -90,3 +91,5 @@
     </div>
 
 @endsection
+
+

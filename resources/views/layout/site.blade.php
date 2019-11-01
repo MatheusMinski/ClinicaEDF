@@ -1,5 +1,7 @@
-@extends ('layout.site')
 
-@section('titulo', 'Cadastro De Professores')
 
-@section('conteudo')
+@include('layout._includes.topo')
+
+@yield('conteudo')
+
+@include('layout._includes.footer')

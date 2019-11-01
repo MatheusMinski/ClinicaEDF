@@ -15,12 +15,12 @@
 
 Route::get('/cadastro/professor',['as' => 'cadastro.professor', 'uses'=>'CadastroProfessorController@index']);
 
-Route::post('/cadastro/teste',['as' => 'salvar.professor', 'uses'=>'CadastroProfessorController@salvar']);
+Route::get('/cadastro/professor/salvar',['as' => 'salvar.professor', 'uses'=>'CadastroProfessorController@salvar']);
 
 Route::post('/entrar',['as' => 'entrar', 'uses'=>'LoginProfessorController@entrar']);
+
 Route::get('/sair',['as' => 'sair', 'uses'=>'LoginProfessorController@sair']);
 
-//Route::post('/login/entrar', ['as' => 'professor.login.entrar','uses'=>'LoginProfessorController@index']);
 
 Route::get('/emprestimo', ['as' => 'emprestimos','uses'=>'CadastroPessoaEmprestimoController@index']);
 
@@ -30,7 +30,6 @@ Route::get('/cadastro/emprestimo', ['as' => 'cadastro.emprestimo','uses'=>'Cadas
 
 
 Route::get('/', ['as' => 'login','uses'=>'LoginProfessorController@login']);
-
 
 
 Route::get('/index/emprestimo' , ['as' => 'emprestimo','uses'=>'LoginProfessorController@emprestimo']);

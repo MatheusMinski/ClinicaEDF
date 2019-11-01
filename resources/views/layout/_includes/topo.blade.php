@@ -36,7 +36,7 @@
             <ul class="right hide-on-med-and-down">
                 <li><a class="upBtn" name="BtnEmp" href="{{route('emprestimos')}}">Empréstimos</a></li>
                 <li><a class="upBtn" name="BtnEq" href="">Equipamentos</a></li>
-                <li><a class="upBtn" name="btnProf" href="{{route('sair')}}" >Sair</a></li>
+                <li><a class="upBtn" name="btnSair" href="{{route('sair')}}" >Sair</a></li>
             </ul>
         </div>
     </nav>
