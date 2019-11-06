@@ -24,6 +24,13 @@ class EquipamentosController extends Controller
 
     }
 
+    public function deletar($id){
+
+        Equipamento::find($id)->delete();
+
+        return redirect()->route('lista.equipamentos');
+    }
+
     public function cadastro(){
         return view('cadastroequipamento');
     }

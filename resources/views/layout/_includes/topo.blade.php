@@ -25,7 +25,7 @@
 
     <nav>
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo center">eCAEEF</a>
+            <a href="{{route('home')}}" class="brand-logo center">Home</a>
             <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="left hide-on-med-and-down">
                 @if(!Auth::guest())

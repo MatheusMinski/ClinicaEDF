@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::get('/', ['as' => 'home','uses'=>'Index@home']);
 
 Route::get('/cadastro/professor',['as' => 'cadastro.professor', 'uses'=>'CadastroProfessorController@index']);
 
@@ -38,10 +38,12 @@ Route::get('/lista/equipamento', ['as' => 'lista.equipamentos','uses'=>'Equipame
 
 Route::post('/cadastro/equipamento/salvar', ['as' => 'salvar.equipamento','uses'=>'EquipamentosController@salvar']);
 
+Route::get('/cadastro/equipamento/deletar/{id}', ['as' => 'equipamentos.deletar','uses'=>'EquipamentosController@deletar']);
 
 
 
-Route::get('/', ['as' => 'login','uses'=>'LoginProfessorController@login']);
+
+Route::get('/login', ['as' => 'login','uses'=>'LoginProfessorController@login']);
 
 
 Route::get('/index/emprestimo' , ['as' => 'emprestimo','uses'=>'LoginProfessorController@emprestimo']);

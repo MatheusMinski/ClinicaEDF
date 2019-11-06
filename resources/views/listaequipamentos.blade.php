@@ -24,7 +24,7 @@
                         <td>{{ $equipamento->QuantidadeTotal }}</td>
                         <td>{{ $equipamento->QuantidadeDisponivel }}</td>
                         <td>
-                            <a class="btn deep-orange" href="">Deletar</a>
+                            <a class="btn deep-orange" href="{{route('equipamentos.deletar',$equipamento->id)}}">Deletar</a>
                         </td>
                     </tr>
 
