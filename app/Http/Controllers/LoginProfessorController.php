@@ -15,7 +15,7 @@ class LoginProfessorController extends Controller
 
         $dados = $req-> all();
         if(Auth::attempt(['email'=>$dados['email'],'password'=>$dados['password']])){
-            return redirect()->route('emprestimos');
+            return redirect()->route('emprestimo');
         }
 
         return redirect()->route('login');
@@ -26,9 +26,5 @@ class LoginProfessorController extends Controller
         return redirect()->route('login');
     }
 
-    public function emprestimo(){
 
-        return view('emprestimos.indexemprestimo');
-
-    }
 }

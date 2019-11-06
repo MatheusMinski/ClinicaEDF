@@ -24,6 +24,39 @@ class EquipamentosController extends Controller
 
     }
 
+    public function editar($id){
+
+        $registro = Equipamento::find($id);
+
+        return view('editarequipamento', compact('registro'));
+    }
+
+    public function update(Request $req, $id){
+
+        $dados = $req->all();
+
+        $teste=Equipamento::find($id);
+
+        $quantidadeT = $teste -> QuantidadeTotal;
+
+        $quantidadeD = $teste -> QuantidadeDisponivel;
+
+        Equipamento::find($id)->update([
+            'nomeEquipamento' => $dados['nomeEquipamento'],
+            'QuantidadeDisponivel' => $quantidadeD - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
+            'QuantidadeTotal' => $quantidadeT - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
+        ]);
+
+        return redirect()->route('lista.equipamentos');
+    }
+
+    public function deletar($id){
+
+        Equipamento::find($id)->delete();
+
+        return redirect()->route('lista.equipamentos');
+    }
+
     public function cadastro(){
         return view('cadastroequipamento');
     }
@@ -31,5 +64,11 @@ class EquipamentosController extends Controller
     public function index(){
         $equipamentos = Equipamento::all();
         return view('listaequipamentos', compact('equipamentos'));
+    }
+
+    public function emprestimo($id){
+        $registro = Equipamento::find($id);
+
+        return view('emprestimos.indexemprestimo', compact('registro'));
     }
 }
