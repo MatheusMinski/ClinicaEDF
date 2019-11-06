@@ -7,9 +7,6 @@ use App\Pessoa;
 
 class CadastroPessoaEmprestimoController extends Controller
 {
-    public function index(){
-        return view('emprestimos/indexemprestimo');
-    }
 
     public function cadastro(){
         return view('emprestimos/alunoemprestimo');
@@ -23,7 +20,7 @@ class CadastroPessoaEmprestimoController extends Controller
         Pessoa::create($dados);
 
 
-        return redirect()->route('emprestimos');
+        return redirect()->route('emprestimo');
 
     }
 }

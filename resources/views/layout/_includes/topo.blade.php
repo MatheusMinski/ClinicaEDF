@@ -37,9 +37,12 @@
 
             <ul class="right hide-on-med-and-down">
                 @if(!Auth::guest())
-                    <li><a class="upBtn" name="BtnEmp" href="{{route('emprestimos')}}">Empréstimos</a></li>
+                    <!-- <li><a class="upBtn" name="BtnEmp" href="">Empréstimos</a></li> -->
                     <li><a class="upBtn" name="BtnEq" href="{{route('lista.equipamentos')}}">Equipamentos</a></li>
                     <li><a class="upBtn" name="btnSair" href="{{route('sair')}}">Sair</a></li>
+
+                @else
+                    <li><a class="upBtn" name="Btnlog" href="{{route('login')}}">Login</a></li>
                 @endif
             </ul>
         </div>

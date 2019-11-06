@@ -72,10 +72,6 @@
     <div class="title m-b-md">
         eCAEEF
     </div>
-
-    <div class="links">
-        <a href="{{route('login')}}">Login</a>
-    </div>
 </div>
 </div>
 </body>
