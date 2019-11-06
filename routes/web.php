@@ -11,29 +11,46 @@
 |
 */
 
-Route::get('/cadastro/professor/endereço', function () {
-    return view('cadastros.professoradr');
-});
-
-Route::get('/cadastro/professor', function () {
-    return view('cadastros.professorcd');
-});
-
-Route::get('/login',['as' => 'professor.login', 'uses'=>'LoginProfessorController@index']);
-
-Route::post('/login/entrar', ['as' => 'professor.login.entrar','uses'=>'LoginProfessorController@index']);
 
 
-Route::get('/cadastro/emprestimo', function () {
-    return view('emprestimos.alunoemprestimo');
-});
+Route::get('/', ['as' => 'home','uses'=>'Index@home']);
 
-Route::get('/', function () {
-    return view('cadastros.professoradr');
-});
+Route::get('/login', ['as' => 'login','uses'=>'LoginProfessorController@login']);
+
+Route::post('/entrar',['as' => 'entrar', 'uses'=>'LoginProfessorController@entrar']);
+
+Route::get('/sair',['as' => 'sair', 'uses'=>'LoginProfessorController@sair']);
+
+Route::get('/cadastro/professor',['as' => 'cadastro.professor', 'uses'=>'CadastroProfessorController@index']);
+
+Route::get('/lista/professor',['as' => 'lista.professor', 'uses'=>'CadastroProfessorController@listagem']);
+
+Route::post('/cadastro/professor/salvar',['as' => 'salvar.professor', 'uses'=>'CadastroProfessorController@salvar']);
+
+Route::post('/cadastro/pessoa',['as' => 'salvar.pessoa', 'uses'=>'CadastroPessoaEmprestimoController@salvar']);
+
+Route::get('/index/emprestimo/{id}' , ['as' => 'emprestimo','uses'=>'EquipamentosController@emprestimo']);
+
+Route::get('/cadastro/emprestimo', ['as' => 'cadastro.pessoa','uses'=>'CadastroPessoaEmprestimoController@cadastro']);
+
+Route::get('/cadastro/equipamento', ['as' => 'cadastro.equipamento','uses'=>'EquipamentosController@cadastro']);
+
+Route::get('/lista/equipamento', ['as' => 'lista.equipamentos','uses'=>'EquipamentosController@index']);
+
+Route::get('/lista/equipamento/editar/{id}', ['as' => 'equipamentos.editar','uses'=>'EquipamentosController@editar']);
+
+Route::post('/cadastro/equipamento/salvar', ['as' => 'salvar.equipamento','uses'=>'EquipamentosController@salvar']);
+
+Route::get('/cadastro/equipamento/deletar/{id}', ['as' => 'equipamentos.deletar','uses'=>'EquipamentosController@deletar']);
+
+Route::put('/equipamento/editar/update/{id}', ['as' => 'equipamentos.editar.salvar','uses'=>'EquipamentosController@update']);
 
 
-Route::get('/index/emprestimo' , ['as' => 'emprestimo','uses'=>'LoginProfessorController@emprestimo']);
+
+
+
+
+
 
 
 

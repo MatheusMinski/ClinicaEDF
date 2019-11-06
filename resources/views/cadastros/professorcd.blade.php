@@ -7,7 +7,8 @@
     <div class="container" >
             <!--FORMULÁRIO DE CADASTRO-->
             <div id="cadastro">
-                <form method="post" action="">
+                <form method="post" action="{{route('salvar.professor')}}">
+                    {{csrf_field()}}
 
                     <br/><br/>
                     <h4>Cadastro de Professor</h4>
@@ -27,7 +28,7 @@
                             <p class="info-label">Senha entre 8 a 14 caracteres, contendo letras e números</p>
                             <div>
                                 <div class="input-group col-md-4 f-left">
-                                    <input name="passw" class="password form-control" id="user_password2" data-component="password-strength" data-monitor-id="password-strength-monitor" type="password">
+                                    <input name="password" class="password form-control" id="user_password2" data-component="password-strength" data-monitor-id="password-strength-monitor" type="password">
                                     <a class=" input-group-addon toggle-pass ico-eye" data-classtoggle="ico-eye,ico-eye-blocked" data-target="#user_password2" href="#"></a>
                                 </div>
 
@@ -47,21 +48,24 @@
 
 
                     <label for="phone">Telefone</label>
-                    <input name="phone" type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 00000-0000">
+                    <input name="telefone" type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 00000-0000">
                     <br/><br/>
 
                     <label for="datanasc"><h6>Data de Nascimento</h6></label>
-                    <input name="datanasc" type="text" class="form-control date-mask" placeholder="Ex.: 00/00/0000">
+                    <input name="dataNasc" type="text" class="form-control date-mask" placeholder="Ex.: 00/00/0000">
                     <br/><br/>
 
+                    <button class="next"> Finalizar Cadastro &raquo</button>
+                    <br/><br/><br/><br/>
 
                 </form>
 
-                <a class="next"> Próxima página &raquo</a>
-                <br/><br/><br/><br/>
+
 
             </div>
         </div>
     </div>
 
 @endsection
+
+

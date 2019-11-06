@@ -7,7 +7,7 @@ use Auth;
 
 class LoginProfessorController extends Controller
 {
-    public function index(){
+    public function login(){
         return view('login');
     }
 
@@ -15,20 +15,16 @@ class LoginProfessorController extends Controller
 
         $dados = $req-> all();
         if(Auth::attempt(['email'=>$dados['email'],'password'=>$dados['password']])){
-            return redirect()->route('/login/entrar');
+            return redirect()->route('emprestimo');
         }
 
-        return redirect()->route('index');
+        return redirect()->route('login');
     }
 
     public function sair(){
         Auth::logout();
-        return redirect()->route('index');
+        return redirect()->route('login');
     }
 
-    public function emprestimo(){
 
-        return view('emprestimos.indexemprestimo');
-
-    }
 }

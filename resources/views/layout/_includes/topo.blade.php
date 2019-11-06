@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -26,16 +25,30 @@
 
     <nav>
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo center">eCAEEF</a>
+            <a href="{{route('home')}}" class="brand-logo center">Home</a>
             <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul  class="left hide-on-med-and-down">
-                <li><a class="upBtn" name="btnAlunos" href="">Alunos</a></li>
-                <li><a class="upBtn" name="btnProf" href="{{route('professor.login')}}" >Professores</a></li>
+            <ul class="left hide-on-med-and-down">
+                @if(!Auth::guest())
+                    <li><a class = "upBtn">{{Auth::user()->nome}}</a></li>
+                    <li><a class="upBtn" name="btnAlunos" href="">Alunos</a></li>
+                    <li><a class="upBtn" name="btnProf" href="{{route('lista.professor')}}">Professores</a></li>
+                @endif
             </ul>
 
             <ul class="right hide-on-med-and-down">
+<<<<<<< HEAD
                 <li><a class="upBtn" name="BtnEmp" href="cadastro/emprestimo">Empréstimos</a></li>
                 <li><a class="upBtn" name="BtnEq" href="">Equipamentos</a></li>
+=======
+                @if(!Auth::guest())
+                    <!-- <li><a class="upBtn" name="BtnEmp" href="">Empréstimos</a></li> -->
+                    <li><a class="upBtn" name="BtnEq" href="{{route('lista.equipamentos')}}">Equipamentos</a></li>
+                    <li><a class="upBtn" name="btnSair" href="{{route('sair')}}">Sair</a></li>
+
+                @else
+                    <li><a class="upBtn" name="Btnlog" href="{{route('login')}}">Login</a></li>
+                @endif
+>>>>>>> df4a137213b995be3709181983ecc149aa3c53c0
             </ul>
         </div>
     </nav>
@@ -47,7 +60,8 @@
         <li><a href="mobile.html">Mobile</a></li>
     </ul>
 
-    <script async="" src="//www.google-analytics.com/analytics.js" style="display: none !important;"></script><script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script async="" src="//www.google-analytics.com/analytics.js" style="display: none !important;"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/2.0.6/javascripts/locastyle.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </header>
