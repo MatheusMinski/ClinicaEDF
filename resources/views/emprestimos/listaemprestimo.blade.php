@@ -25,10 +25,13 @@
                         <td>{{ $emprestimo->nomePessoaEmprestimo }}</td>
                         <td>{{ $emprestimo->nomeEquipamentoEmprestimo }}</td>
                         <td>{{ $emprestimo->dataDevolucao }}</td>
-{{--                        <td>{{ $emprestimo->quantidade }}</td>--}}
+                        <td>{{ $emprestimo->quantidade }}</td>
+
+                        @if(!$emprestimo->devolvido)
                         <td>
-                            <a class="btn deep-orange" href="{{route('equipamentos.deletar',$emprestimo->id)}}">Marcar Devolução</a>
+                            <a class="btn deep-orange" href="{{route('emprestimos.devolver', ['idEquipamento' => $emprestimo->idEquipamento, 'quantidade' => $emprestimo->quantidade, 'idEmprestimo' => $emprestimo->id] )}}">Marcar Devolução</a>
                         </td>
+                        @endif
 
                     </tr>
 

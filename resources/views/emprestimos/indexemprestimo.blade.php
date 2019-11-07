@@ -4,7 +4,7 @@
 
 @section('conteudo')
 
-    <form align="center" action="{{route('emprestimo.finalizar', $registro->nomeEquipamento)}}">
+    <form align="center" action="{{route('emprestimo.finalizar', $registro)}}">
 
         <br/><br/><br/><br/>
 
@@ -34,7 +34,10 @@
         <div>
             <label style="width: 200px" name="nomeEquipamento">Item selecionado: {{$registro->nomeEquipamento}}</label><br/>
 
+            <input  style="width: 120px" name="quantidade" type="number" placeholder="Ex.: 3"></input><br/>
+
             <input type="hidden" style="width: 200px" name="nomeEquipamento" required value ="{{$registro->nomeEquipamento}}"></input><br/>
+            <input type="hidden" style="width: 200px" name="idEquipamento" required value ="{{$registro->id}}"></input><br/>
 
         </div>
 

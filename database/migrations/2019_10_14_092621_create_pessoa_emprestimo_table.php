@@ -16,11 +16,14 @@ class CreatePessoaEmprestimoTable extends Migration
         Schema::create('pessoaEmprestimo', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('idProfessor');
+            $table->integer('idEquipamento');
             $table->string('nomeProfessorEmprestimo', 50);
             $table->string('nomePessoaEmprestimo', 50);
             $table->string('cpfPessoaEmprestimo', 15);
             $table->string('nomeEquipamentoEmprestimo', 30);
             $table->date('dataDevolucao');
+            $table->integer('quantidade');
+            $table->boolean('devolvido')->default(false);
             $table->foreign('idProfessor')->references('idProfessor')->on('users');
             $table->timestamps();
         });
