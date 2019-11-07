@@ -37,6 +37,8 @@ Route::get('/emprestimo/finalizar', ['as' => 'emprestimo.finalizar','uses'=>'Emp
 
 Route::get('/lista/emprestimo', ['as' => 'lista.emprestimos','uses'=>'EmprestimosController@listagem']);
 
+Route::get('/esprestimo/devolver/{idEquipamento}/{quantidade}/{idEmprestimo}', ['as' => 'emprestimos.devolver','uses'=>'EmprestimosController@devolver']);
+
 
 //Equipamento
 Route::get('/cadastro/equipamento', ['as' => 'cadastro.equipamento','uses'=>'EquipamentosController@cadastro']);

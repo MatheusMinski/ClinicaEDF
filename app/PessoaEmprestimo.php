@@ -9,6 +9,7 @@ class PessoaEmprestimo extends Model
 {
     protected $table = 'pessoaEmprestimo';
     protected $fillable = [
-        'idProfessor', 'nomeProfessorEmprestimo', 'nomePessoaEmprestimo', 'nomeEquipamentoEmprestimo', 'cpfPessoaEmprestimo', 'dataDevolucao',
+        'idProfessor', 'idEquipamento', 'nomeProfessorEmprestimo', 'nomePessoaEmprestimo',
+        'nomeEquipamentoEmprestimo', 'cpfPessoaEmprestimo', 'dataDevolucao', 'quantidade',
     ];
 }
