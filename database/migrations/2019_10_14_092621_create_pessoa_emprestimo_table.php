@@ -14,10 +14,13 @@ class CreatePessoaEmprestimoTable extends Migration
     public function up()
     {
         Schema::create('pessoaEmprestimo', function (Blueprint $table) {
-            $table->bigIncrements('idEmprestimo');
+            $table->bigIncrements('id');
             $table->integer('idProfessor');
+            $table->string('nomeProfessorEmprestimo', 50);
             $table->string('nomePessoaEmprestimo', 50);
             $table->string('cpfPessoaEmprestimo', 15);
+            $table->string('nomeEquipamentoEmprestimo', 30);
+            $table->date('dataDevolucao');
             $table->foreign('idProfessor')->references('idProfessor')->on('users');
             $table->timestamps();
         });

@@ -21,8 +21,8 @@
                 @foreach($equipamentos as $equipamento)
                     <tr>
                         <td>{{ $equipamento->nomeEquipamento }}</td>
-                        <td>{{ $equipamento->QuantidadeTotal }}</td>
-                        <td>{{ $equipamento->QuantidadeDisponivel }}</td>
+                        <td>{{ $equipamento->quantidadeTotal }}</td>
+                        <td>{{ $equipamento->quantidadeDisponivel }}</td>
                         <td>
                             <a class="btn deep-orange" href="{{route('equipamentos.deletar',$equipamento->id)}}">Deletar</a>
                         </td>
