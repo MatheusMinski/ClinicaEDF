@@ -11,6 +11,14 @@ use App\Equipamento;
 class EmprestimosController extends Controller
 {
 
+    private $emprestimo;
+
+    public function __construct(PessoaEmprestimo $emprestimo)
+    {
+        $this->emprestimo = $emprestimo;
+    }
+
+
     public function finalizar(Request $req){
 
         $user = Auth::user();
@@ -19,22 +27,38 @@ class EmprestimosController extends Controller
 
         $quantidadeAnterior = Equipamento::find($dados['idEquipamento'])->quantidadeDisponivel;
 
-        Equipamento::find($dados['idEquipamento'])->update([
-            'quantidadeDisponivel' => $quantidadeAnterior - $dados['quantidade'],
-        ]);
 
 
-        PessoaEmprestimo::create([
-            'idProfessor' => $user['idProfessor'],
-            'idEquipamento' => $dados['idEquipamento'],
-            'nomeProfessorEmprestimo'=> $user['nome'],
-            'nomePessoaEmprestimo'=> $dados['nomePessoaEmprestimo'],
-            'nomeEquipamentoEmprestimo'=> $dados['nomeEquipamento'],
-            'cpfPessoaEmprestimo'=> $dados['cpfPessoaEmprestimo'],
-            'quantidade'=> $dados['quantidade'],
-            'dataDevolucao'=> $dados['dataDevolucao'],
+        //verificação de cpf tem que ser em outro try catch
 
-        ]);
+        $messages = [
+            'nomePessoaEmprestimo.required' => 'Campo nome é obrigatório!',
+            'cpfPessoaEmprestimo.min' => 'CPF inválido'
+        ];
+
+
+        $this->validate($req, $this->emprestimo->rules, $messages);
+
+        try {
+
+            PessoaEmprestimo::create([
+                'idProfessor' => $user['idProfessor'],
+                'idEquipamento' => $dados['idEquipamento'],
+                'nomeProfessorEmprestimo' => $user['nome'],
+                'nomePessoaEmprestimo' => $dados['nomePessoaEmprestimo'],
+                'nomeEquipamentoEmprestimo' => $dados['nomeEquipamento'],
+                'cpfPessoaEmprestimo' => $dados['cpfPessoaEmprestimo'],
+                'quantidade' => $dados['quantidade'],
+                'dataDevolucao' => $dados['dataDevolucao'],
+
+            ]);
+
+            Equipamento::find($dados['idEquipamento'])->update([
+                'quantidadeDisponivel' => $quantidadeAnterior - $dados['quantidade'],
+            ]);
+        }catch(\Exception $ex){
+            return redirect()->back()->withErrors(['Aqui que altera a msg', 'The Message']);
+        }
 
 
         return redirect()->route('lista.emprestimos');

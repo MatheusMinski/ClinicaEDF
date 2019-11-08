@@ -13,6 +13,14 @@
                     <br/><br/>
                     <h4>Cadastro de Professor</h4>
                     <br/><br/>
+                    @if(isset($errors) && count ($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                            @endforeach
+                        </div>
+                    @endif
+                    <br/><br/>
 
                     <label for="nome_cad">Nome Completo</label>
                     <input name="nome" class="form-control" required="required" type="text" placeholder="" />
@@ -25,10 +33,10 @@
                     <div class="form-inline">
                         <div class="form-group">
                             <label class="control-label" for="user_password2">Senha</label>
-                            <p class="info-label">Senha entre 8 a 14 caracteres, contendo letras e números</p>
+                            <p class="info-label">Senha entre 6 a 21 caracteres, contendo letras e números</p>
                             <div>
                                 <div class="input-group col-md-4 f-left">
-                                    <input name="password" class="password form-control" id="user_password2" data-component="password-strength" data-monitor-id="password-strength-monitor" type="password">
+                                    <input required minlength="6" maxlength="21" name="password" class="password form-control" id="user_password2" data-component="password-strength" data-monitor-id="password-strength-monitor" type="password">
                                     <a class=" input-group-addon toggle-pass ico-eye" data-classtoggle="ico-eye,ico-eye-blocked" data-target="#user_password2" href="#"></a>
                                 </div>
 
@@ -48,11 +56,11 @@
 
 
                     <label for="phone">Telefone</label>
-                    <input name="telefone" type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 00000-0000">
+                    <input  name="telefone" type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 00000-0000">
                     <br/><br/>
 
                     <label for="datanasc"><h6>Data de Nascimento</h6></label>
-                    <input name="dataNasc" type="text" class="form-control date-mask" placeholder="Ex.: 00/00/0000">
+                    <input  name="dataNasc" type="text" class="form-control date-mask" placeholder="Ex.: 00/00/0000">
                     <br/><br/>
 
                     <button class="next"> Finalizar Cadastro &raquo</button>

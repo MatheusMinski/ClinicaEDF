@@ -12,6 +12,7 @@ a {
     color: black;
 }
 
+.alert-danger{color:#FF0000;border-color:#f7c6c5}
 
 .logo{
     margin-right: 25%;

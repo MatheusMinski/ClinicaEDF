@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class CadastroProfessorController extends Controller
 {
+
+
+    private $professor;
+
+    public function __construct(User $professor)
+    {
+        $this->professor = $professor;
+    }
+
+
     public function index(){
 
         return view('cadastros.professorcd');
@@ -16,6 +26,8 @@ class CadastroProfessorController extends Controller
     public function salvar(Request $req){
 
         $dados = $req->all();
+
+        $this->validate($req, $this->professor->rules);
 
 
         User::create([
