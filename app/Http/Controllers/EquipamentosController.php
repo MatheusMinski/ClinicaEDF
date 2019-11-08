@@ -15,8 +15,8 @@ class EquipamentosController extends Controller
 
         Equipamento::create([
             'nomeEquipamento' => $dados['nomeEquipamento'],
-            'QuantidadeDisponivel' => $dados['QuantidadeDisponivel'],
-            'QuantidadeTotal' => $dados['QuantidadeDisponivel'],
+            'quantidadeDisponivel' => $dados['quantidadeDisponivel'],
+            'quantidadeTotal' => $dados['quantidadeDisponivel'],
         ]);
 
 
@@ -37,14 +37,14 @@ class EquipamentosController extends Controller
 
         $teste=Equipamento::find($id);
 
-        $quantidadeT = $teste -> QuantidadeTotal;
+        $quantidadeT = $teste -> quantidadeTotal;
 
-        $quantidadeD = $teste -> QuantidadeDisponivel;
+        $quantidadeD = $teste -> quantidadeDisponivel;
 
         Equipamento::find($id)->update([
             'nomeEquipamento' => $dados['nomeEquipamento'],
-            'QuantidadeDisponivel' => $quantidadeD - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
-            'QuantidadeTotal' => $quantidadeT - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
+            'quantidadeDisponivel' => $quantidadeD - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
+            'quantidadeTotal' => $quantidadeT - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
         ]);
 
         return redirect()->route('lista.equipamentos');

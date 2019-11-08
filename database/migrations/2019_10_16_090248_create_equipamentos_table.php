@@ -16,8 +16,8 @@ class CreateEquipamentosTable extends Migration
         Schema::create('equipamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nomeEquipamento', 50);
-            $table->integer('QuantidadeTotal');
-            $table->integer('QuantidadeDisponivel');
+            $table->integer('quantidadeTotal');
+            $table->integer('quantidadeDisponivel');
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@
 
 
                 <label>Unidades Disponíveis</label>
-                <input name="QuantidadeDisponivel" type="number" placeholder="Ex.: 3">
+                <input name="quantidadeDisponivel" type="number" placeholder="Ex.: 3">
                 <br/><br/>
 
 
