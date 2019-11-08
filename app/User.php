@@ -26,6 +26,15 @@ class User extends Authenticatable
         'nome','cpf','telefone','dataNasc','email','password',
     ];
 
+
+    public $rules = [
+
+        'cpf' => 'required|min:14',
+        'telefone' => 'required|min:15',
+        'dataNasc' => 'required|min:10',
+
+    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *
