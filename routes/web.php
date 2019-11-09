@@ -12,46 +12,56 @@
 */
 
 
-//Login, Logout
-Route::get('/', ['as' => 'home','uses'=>'Index@home']);
+Route::group(['middleware' => 'auth'], function () {
+    //Login, Logout
 
-Route::get('/login', ['as' => 'login','uses'=>'LoginProfessorController@login']);
-
-Route::post('/entrar',['as' => 'entrar', 'uses'=>'LoginProfessorController@entrar']);
-
-Route::get('/sair',['as' => 'sair', 'uses'=>'LoginProfessorController@sair']);
+    Route::get('/sair', ['as' => 'sair', 'uses' => 'LoginProfessorController@sair']);
 
 
 //Professor
-Route::get('/cadastro/professor',['as' => 'cadastro.professor', 'uses'=>'CadastroProfessorController@index']);
+    Route::get('/cadastro/professor', ['as' => 'cadastro.professor', 'uses' => 'CadastroProfessorController@index']);
 
-Route::get('/lista/professor',['as' => 'lista.professor', 'uses'=>'CadastroProfessorController@listagem']);
+    Route::get('/lista/professor', ['as' => 'lista.professor', 'uses' => 'CadastroProfessorController@listagem']);
 
-Route::post('/cadastro/professor/salvar',['as' => 'salvar.professor', 'uses'=>'CadastroProfessorController@salvar']);
+    Route::post('/cadastro/professor/salvar', ['as' => 'salvar.professor', 'uses' => 'CadastroProfessorController@salvar']);
+
+    Route::get('/professor/inativar/{id}', ['as' => 'inativar.professor', 'uses' => 'LoginProfessorController@inativar']);
+
+    Route::get('/professor/reativar/{id}', ['as' => 'reativar.professor', 'uses' => 'LoginProfessorController@reativar']);
 
 
 //Emprestimo
-Route::get('/index/emprestimo/{id}' , ['as' => 'emprestimo','uses'=>'EquipamentosController@emprestimo']);
+    Route::get('/index/emprestimo/{id}', ['as' => 'emprestimo', 'uses' => 'EquipamentosController@emprestimo']);
 
-Route::get('/emprestimo/finalizar', ['as' => 'emprestimo.finalizar','uses'=>'EmprestimosController@finalizar']);
+    Route::get('/emprestimo/finalizar', ['as' => 'emprestimo.finalizar', 'uses' => 'EmprestimosController@finalizar']);
 
-Route::get('/lista/emprestimo', ['as' => 'lista.emprestimos','uses'=>'EmprestimosController@listagem']);
+    Route::get('/lista/emprestimo', ['as' => 'lista.emprestimos', 'uses' => 'EmprestimosController@listagem']);
 
-Route::get('/esprestimo/devolver/{idEquipamento}/{quantidade}/{idEmprestimo}', ['as' => 'emprestimos.devolver','uses'=>'EmprestimosController@devolver']);
+    Route::get('/esprestimo/devolver/{idEquipamento}/{quantidade}/{idEmprestimo}', ['as' => 'emprestimos.devolver', 'uses' => 'EmprestimosController@devolver']);
 
 
 //Equipamento
-Route::get('/cadastro/equipamento', ['as' => 'cadastro.equipamento','uses'=>'EquipamentosController@cadastro']);
+    Route::get('/cadastro/equipamento', ['as' => 'cadastro.equipamento', 'uses' => 'EquipamentosController@cadastro']);
 
-Route::get('/lista/equipamento', ['as' => 'lista.equipamentos','uses'=>'EquipamentosController@index']);
+    Route::get('/lista/equipamento', ['as' => 'lista.equipamentos', 'uses' => 'EquipamentosController@index']);
 
-Route::get('/lista/equipamento/editar/{id}', ['as' => 'equipamentos.editar','uses'=>'EquipamentosController@editar']);
+    Route::get('/lista/equipamento/editar/{id}', ['as' => 'equipamentos.editar', 'uses' => 'EquipamentosController@editar']);
 
-Route::post('/cadastro/equipamento/salvar', ['as' => 'salvar.equipamento','uses'=>'EquipamentosController@salvar']);
+    Route::post('/cadastro/equipamento/salvar', ['as' => 'salvar.equipamento', 'uses' => 'EquipamentosController@salvar']);
 
-Route::get('/cadastro/equipamento/deletar/{id}', ['as' => 'equipamentos.deletar','uses'=>'EquipamentosController@deletar']);
+    Route::get('/cadastro/equipamento/deletar/{id}', ['as' => 'equipamentos.deletar', 'uses' => 'EquipamentosController@deletar']);
 
-Route::put('/equipamento/editar/update/{id}', ['as' => 'equipamentos.editar.salvar','uses'=>'EquipamentosController@update']);
+    Route::put('/equipamento/editar/update/{id}', ['as' => 'equipamentos.editar.salvar', 'uses' => 'EquipamentosController@update']);
+
+});
+
+Route::get('/', ['as' => 'home','uses'=>'Index@home']);
+
+Route::get('/login', ['as' => 'login', 'uses' => 'LoginProfessorController@login']);
+
+Route::post('/entrar', ['as' => 'entrar', 'uses' => 'LoginProfessorController@entrar']);
+
+
 
 
 

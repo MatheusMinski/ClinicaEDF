@@ -27,7 +27,26 @@ class CadastroProfessorController extends Controller
 
         $dados = $req->all();
 
-        $this->validate($req, $this->professor->rules);
+        //$this->validate($req, $this->professor->rules);
+
+        $messages = [
+            'cpf.required' => 'O campo de CPF é de preenchimento obrigatório.',
+            'cpf.min' => 'O campo de CPF deve conter no mínimo 11 caracteres.',
+            'telefone.required' => 'O campo de telefone é de preenchimento obrigatório',
+            'telefone.min' => 'O campo de Telefone deve conter no mínimo 10 caracteres.',
+            'dataNasc.required' => 'O campo de Data de Nascimento é de preenchimento obrigatório.',
+            'dataNasc.min' => 'O campo de Data de Nascimento deve conter no mínimo 8 caracteres.',
+            'nome.alpha' => 'O campo de Nome deve conter apenas letras.'
+
+        ];
+
+        $validate = validator($dados, $this->professor->rules, $messages);
+        if ($validate->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validate)
+                ->withInput();
+        }
 
 
         User::create([
@@ -45,7 +64,7 @@ class CadastroProfessorController extends Controller
     }
 
     public function listagem(){
-        $registros = User::all();
+        $registros = User::paginate(4);
         return view('listaprofessores', compact('registros'));
     }
 }

@@ -32,8 +32,14 @@ class EmprestimosController extends Controller
         //verificação de cpf tem que ser em outro try catch
 
         $messages = [
-            'nomePessoaEmprestimo.required' => 'Campo nome é obrigatório!',
-            'cpfPessoaEmprestimo.min' => 'CPF inválido'
+            'nomePessoaEmprestimo.required' => 'O campo de Nome é de preenchimento obrigatório.',
+            'nomePessoaEmprestimo.min' => 'O campo de Nome deve conter no mínimo 3 caracteres.',
+            'cpfPessoaEmprestimo.min' => 'O campo de CPF deve conter no mínimo 11 caracteres.',
+            'cpfPessoaEmprestimo.required' => 'O campo de CPF é de preenchimento obrigatório.',
+            'dataDevolucao.required' => 'O campo de Data de Devolução é de preenchimento obrigatório.',
+            'dataDevolucao.min' => 'O campo de Data de Devolução deve conter no mínimo 8 caracteres.',
+            'quantidade' => 'O campo de Quantidade é de preenchimento obrigatório.',
+            'nomePessoaEmprestimo.alpha' => 'O campo de Nome deve conter apenas letras.'
         ];
 
 
@@ -88,7 +94,7 @@ class EmprestimosController extends Controller
     }
 
     public function listagem(){
-        $emprestimos = PessoaEmprestimo::all();
+        $emprestimos = PessoaEmprestimo::paginate(4);
         return view('emprestimos.listaemprestimo', compact('emprestimos'));
     }
 }
