@@ -30,7 +30,7 @@ class User extends Authenticatable
     public $rules = [
 
         'cpf' => 'required|min:14',
-        'telefone' => 'required|min:15',
+        'telefone' => 'required|min:14',
         'dataNasc' => 'required|min:10',
 
     ];

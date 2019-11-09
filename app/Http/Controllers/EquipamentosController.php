@@ -62,7 +62,7 @@ class EquipamentosController extends Controller
     }
 
     public function index(){
-        $equipamentos = Equipamento::all();
+        $equipamentos = Equipamento::paginate(4);
         return view('listaequipamentos', compact('equipamentos'));
     }
 

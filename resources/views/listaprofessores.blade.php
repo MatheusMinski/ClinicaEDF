@@ -24,9 +24,16 @@
                         <td>{{ $registro->telefone }}</td>
                         <td>{{ $registro->email }}</td>
                         <td>{{ $registro->created_at }}</td>
-                        <td>
-                            <a class="btn deep-orange" href="">Inativar</a>
-                        </td>
+                        @if($registro->ativo)
+                            <td>
+                                <a class="btn red"
+                                   href="{{route('inativar.professor',$registro->idProfessor)}}">Inativar</a>
+                            </td>
+                        @else
+                            <td>
+                                <a class="btn green" href="{{route('reativar.professor',$registro->idProfessor)}}">Reativar</a>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>
@@ -34,7 +41,10 @@
         </div>
         <div class="row">
             <a class="btn blue" href="{{route('cadastro.professor')}}">Cadastrar novo professor</a>
+        </div>
 
+        <div class="row" align="center">
+            {{$registros->links()}}
         </div>
 
     </div>

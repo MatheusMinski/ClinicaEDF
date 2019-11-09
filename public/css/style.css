@@ -12,6 +12,12 @@ a {
     color: black;
 }
 
+#logo{
+    position: absolute;
+    left: 35%;
+    top: 30%;
+}
+
 .alert-danger{color:#FF0000;border-color:#f7c6c5}
 
 .logo{
