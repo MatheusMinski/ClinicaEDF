@@ -13,7 +13,7 @@ class CreateAlunosTable extends Migration
      */
     public function up()
     {
-        Schema::create('alunos', function (Blueprint $table) {
+        Schema::create('Alunos', function (Blueprint $table) {
             $table->bigIncrements('idAluno');
             $table->integer('idEndereco');
             $table->string('nome', 50);
@@ -26,7 +26,7 @@ class CreateAlunosTable extends Migration
             $table->string('estadoCivil',15);
             $table->string('escolaridade',20);
             $table->string('classeSocialFamilia',30);
-            $table->foreign('idEndereco')->references('idEndereco')->on('enderecos');
+            $table->foreign('idEndereco')->references('idEndereco')->on('Enderecos');
             $table->timestamps();
         });
     }
@@ -40,6 +40,6 @@ class CreateAlunosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alunos');
+        Schema::dropIfExists('Alunos');
     }
 }

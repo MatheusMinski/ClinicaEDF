@@ -13,7 +13,7 @@ class CreateAnamneseTable extends Migration
      */
     public function up()
     {
-        Schema::create('anamnese', function (Blueprint $table) {
+        Schema::create('Anamnese', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateAnamneseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anamnese');
+        Schema::dropIfExists('Anamnese');
     }
 }

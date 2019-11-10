@@ -13,7 +13,7 @@ class CreatePessoasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pessoas', function (Blueprint $table) {
+        Schema::create('Pessoas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nomePessoa', 50);
             $table->string('cpfPessoa', 15)->unique();
@@ -29,6 +29,6 @@ class CreatePessoasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoas');
+        Schema::dropIfExists('Pessoas');
     }
 }

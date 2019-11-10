@@ -11,7 +11,7 @@ class EnderecosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('enderecos')->insert([
+        DB::table('Enderecos')->insert([
             'idEndereco' => 1,
             'rua'=> 'asdsad',
             'numero'=> '12',

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Endereco;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class CadastroProfessorController extends Controller
 {
@@ -31,7 +33,7 @@ class CadastroProfessorController extends Controller
 
         $messages = [
             'cpf.required' => 'O campo de CPF é de preenchimento obrigatório.',
-            'cpf.min' => 'O campo de CPF deve conter no mínimo 11 caracteres.',
+            'cpf.cpf' => 'O CPF não é válido',
             'telefone.required' => 'O campo de telefone é de preenchimento obrigatório',
             'telefone.min' => 'O campo de Telefone deve conter no mínimo 10 caracteres.',
             'dataNasc.required' => 'O campo de Data de Nascimento é de preenchimento obrigatório.',
@@ -49,14 +51,21 @@ class CadastroProfessorController extends Controller
         }
 
 
-        User::create([
-            'nome' => $dados['nome'],
-            'email' => $dados['email'],
-            'password' => bcrypt($dados['password']),
-            'cpf' => $dados['cpf'],
-            'telefone' => $dados['telefone'],
-            'dataNasc' => $dados['dataNasc'],
-        ]);
+        try{
+            User::create([
+                'nome' => $dados['nome'],
+                'email' => $dados['email'],
+                'password' => bcrypt($dados['password']),
+                'cpf' => $dados['cpf'],
+                'telefone' => $dados['telefone'],
+                'dataNasc' => $dados['dataNasc'],
+            ]);
+
+        }catch(\Exception $e){
+            return redirect()->back()->withErrors(['CPF ou e-mail já cadastrado']);
+        }
+
+
 
 
         return redirect()->route('lista.professor');
@@ -64,7 +73,12 @@ class CadastroProfessorController extends Controller
     }
 
     public function listagem(){
-        $registros = User::paginate(4);
+
+        $id = Auth::user()->idProfessor;
+
+        $registros =  User::where('idProfessor', '!=', $id)->paginate(4);
+
+        //$registros = User::paginate(4);
         return view('listaprofessores', compact('registros'));
     }
 }

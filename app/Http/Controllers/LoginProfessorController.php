@@ -69,5 +69,10 @@ class LoginProfessorController extends Controller
 
     }
 
+    public function permissaoNegada(){
+
+        return view('permissaonegada');
+    }
+
 
 }
