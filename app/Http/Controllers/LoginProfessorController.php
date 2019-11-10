@@ -38,6 +38,8 @@ class LoginProfessorController extends Controller
 
     }
 
+    //modificação teste
+
     public function sair(){
         Auth::logout();
         return redirect()->route('login');
