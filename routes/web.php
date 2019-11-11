@@ -19,15 +19,17 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 //Professor
-    Route::get('/cadastro/professor', ['as' => 'cadastro.professor', 'uses' => 'CadastroProfessorController@index']);
+    Route::get('/cadastro/professor', ['as' => 'cadastro.professor', 'uses' => 'CadastroProfessorController@index'])->middleware('is_admin');
 
     Route::get('/lista/professor', ['as' => 'lista.professor', 'uses' => 'CadastroProfessorController@listagem']);
 
-    Route::post('/cadastro/professor/salvar', ['as' => 'salvar.professor', 'uses' => 'CadastroProfessorController@salvar']);
+    Route::post('/cadastro/professor/salvar', ['as' => 'salvar.professor', 'uses' => 'CadastroProfessorController@salvar'])->middleware('is_admin');
 
-    Route::get('/professor/inativar/{id}', ['as' => 'inativar.professor', 'uses' => 'LoginProfessorController@inativar']);
+    Route::get('/professor/inativar/{id}', ['as' => 'inativar.professor', 'uses' => 'LoginProfessorController@inativar'])->middleware('is_admin');
 
-    Route::get('/professor/reativar/{id}', ['as' => 'reativar.professor', 'uses' => 'LoginProfessorController@reativar']);
+    Route::get('/professor/reativar/{id}', ['as' => 'reativar.professor', 'uses' => 'LoginProfessorController@reativar'])->middleware('is_admin');
+
+    Route::get('/permissaonegada', ['as' => 'permissao.negada', 'uses' => 'LoginProfessorController@permissaoNegada']);
 
 
 //Emprestimo

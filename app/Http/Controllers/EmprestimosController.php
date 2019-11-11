@@ -6,6 +6,7 @@ use \Illuminate\Support\Facades\Auth;
 use App\PessoaEmprestimo;
 use Illuminate\Http\Request;
 use App\Equipamento;
+use DateTime;
 
 
 class EmprestimosController extends Controller
@@ -34,7 +35,7 @@ class EmprestimosController extends Controller
         $messages = [
             'nomePessoaEmprestimo.required' => 'O campo de Nome é de preenchimento obrigatório.',
             'nomePessoaEmprestimo.min' => 'O campo de Nome deve conter no mínimo 3 caracteres.',
-            'cpfPessoaEmprestimo.min' => 'O campo de CPF deve conter no mínimo 11 caracteres.',
+            'cpfPessoaEmprestimo.cpf' => 'CPF inválido',
             'cpfPessoaEmprestimo.required' => 'O campo de CPF é de preenchimento obrigatório.',
             'dataDevolucao.required' => 'O campo de Data de Devolução é de preenchimento obrigatório.',
             'dataDevolucao.min' => 'O campo de Data de Devolução deve conter no mínimo 8 caracteres.',
@@ -45,25 +46,46 @@ class EmprestimosController extends Controller
 
         $this->validate($req, $this->emprestimo->rules, $messages);
 
+
+        //Controle da data
+
+        $data_agora = new DateTime();
+        $dataDigitada = DateTime::createFromFormat('d/m/Y', $dados['dataDevolucao']);
+
+
+        if ($dataDigitada < $data_agora) {
+            return redirect()->back()->withErrors(['Por favor, insira uma data válida']);
+        }
+
+
+
         try {
 
-            PessoaEmprestimo::create([
-                'idProfessor' => $user['idProfessor'],
-                'idEquipamento' => $dados['idEquipamento'],
-                'nomeProfessorEmprestimo' => $user['nome'],
-                'nomePessoaEmprestimo' => $dados['nomePessoaEmprestimo'],
-                'nomeEquipamentoEmprestimo' => $dados['nomeEquipamento'],
-                'cpfPessoaEmprestimo' => $dados['cpfPessoaEmprestimo'],
-                'quantidade' => $dados['quantidade'],
-                'dataDevolucao' => $dados['dataDevolucao'],
+            if(($quantidadeAnterior - $dados['quantidade'])<0){
 
-            ]);
+                return redirect()->back()->withErrors(['Quantidade de Estoque insuficiente']);
 
-            Equipamento::find($dados['idEquipamento'])->update([
-                'quantidadeDisponivel' => $quantidadeAnterior - $dados['quantidade'],
-            ]);
+            }else{
+
+                PessoaEmprestimo::create([
+                    'idProfessor' => $user['idProfessor'],
+                    'idEquipamento' => $dados['idEquipamento'],
+                    'nomeProfessorEmprestimo' => $user['nome'],
+                    'nomePessoaEmprestimo' => $dados['nomePessoaEmprestimo'],
+                    'nomeEquipamentoEmprestimo' => $dados['nomeEquipamento'],
+                    'cpfPessoaEmprestimo' => $dados['cpfPessoaEmprestimo'],
+                    'quantidade' => $dados['quantidade'],
+                    'dataDevolucao' => $dados['dataDevolucao'],
+
+                ]);
+
+                Equipamento::find($dados['idEquipamento'])->update([
+                    'quantidadeDisponivel' => $quantidadeAnterior - $dados['quantidade'],
+                ]);
+            }
+
         }catch(\Exception $ex){
-            return redirect()->back()->withErrors(['Aqui que altera a msg', 'The Message']);
+            return redirect()->back()->withErrors(['Verifique se os dados foram inseridos corretamente']);
         }
 
 

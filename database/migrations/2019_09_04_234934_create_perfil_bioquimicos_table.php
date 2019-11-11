@@ -13,7 +13,7 @@ class CreatePerfilBioquimicosTable extends Migration
      */
     public function up()
     {
-        Schema::create('perfilBioquimico', function (Blueprint $table) {
+        Schema::create('PerfilBioquimico', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreatePerfilBioquimicosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('perfilBioquimico');
+        Schema::dropIfExists('PerfilBioquimico');
     }
 }
