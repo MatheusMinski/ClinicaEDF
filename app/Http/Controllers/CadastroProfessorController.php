@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Endereco;
 use App\User;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,6 +51,15 @@ class CadastroProfessorController extends Controller
                 ->withInput();
         }
 
+
+        //Controle da data
+        $data_agora = new DateTime();
+        $dataDigitada = DateTime::createFromFormat('d/m/Y', $dados['dataNasc']);
+
+
+        if ($dataDigitada > $data_agora) {
+            return redirect()->back()->withErrors(['Por favor, insira uma data válida']);
+        }
 
         try{
             User::create([
