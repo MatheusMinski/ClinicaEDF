@@ -54,7 +54,7 @@ class EmprestimosController extends Controller
 
 
         if ($dataDigitada < $data_agora) {
-            return redirect()->back()->withErrors(['Por favor, insira uma data válida']);
+            return redirect()->back()->withInput()->withErrors(['Por favor, insira uma data válida']);
         }
 
 
@@ -63,7 +63,7 @@ class EmprestimosController extends Controller
 
             if(($quantidadeAnterior - $dados['quantidade'])<0){
 
-                return redirect()->back()->withErrors(['Quantidade de Estoque insuficiente']);
+                return redirect()->back()->withInput()->withErrors(['Quantidade de Estoque insuficiente']);
 
             }else{
 
@@ -85,7 +85,7 @@ class EmprestimosController extends Controller
             }
 
         }catch(\Exception $ex){
-            return redirect()->back()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
         }
 
 

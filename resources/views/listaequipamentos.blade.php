@@ -43,8 +43,9 @@
             <a class="btn blue" href="{{route('cadastro.equipamento')}}">Cadastrar novo Equipamento</a>
         </div>
         <div class="row" align="center">
-            {{$equipamentos->links()}}
+            {{$equipamentos->links('vendor.pagination.materializecss')}}
         </div>
+
 
     </div>
 

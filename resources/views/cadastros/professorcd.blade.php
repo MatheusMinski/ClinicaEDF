@@ -23,7 +23,7 @@
                     <br/><br/>
 
                     <label for="nome_cad">Nome Completo</label>
-                    <input value="{!! old('nome') !!}" name="nome" class="form-control"  required="required" type="text" placeholder="" />
+                    <input value="{!! old('nome') !!}" name="nome" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
                     <br/><br/>
 
                     <label for="email_cad">E-mail</label>

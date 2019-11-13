@@ -18,7 +18,7 @@ class IsAdmin
         if(auth()->user()->isAdmin()) {
             return $next($request);
         }
-        return redirect('/permissaonegada');
+        return redirect()->back()->withErrors(['Ação não permitida, contatar o supervisor!']);
     }
 }
 

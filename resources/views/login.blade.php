@@ -38,8 +38,9 @@
 
                 <br/><br/>
 
-                <div align="center">
+                <div align="center" class="row">
                     <div><button type="submit">Entrar</button></div>
+                    <div><a href="{{route('password.request')}}">Esqueci minha senha</a></div>
                 </div>
 
             </form>
