@@ -31,6 +31,10 @@
                         <td>
                             <a class="btn deep-orange" href="{{route('emprestimos.devolver', ['idEquipamento' => $emprestimo->idEquipamento, 'quantidade' => $emprestimo->quantidade, 'idEmprestimo' => $emprestimo->id] )}}">Marcar Devolução</a>
                         </td>
+                            @else
+                            <td>
+                                <a class="btn green">Devolvido</a>
+                            </td>
                         @endif
 
                     </tr>
@@ -38,6 +42,9 @@
                 @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="row" align="center">
+            {{$emprestimos->links('vendor.pagination.materializecss')}}
         </div>
 
     </div>

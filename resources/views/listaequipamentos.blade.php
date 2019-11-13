@@ -24,13 +24,14 @@
                         <td>{{ $equipamento->quantidadeTotal }}</td>
                         <td>{{ $equipamento->quantidadeDisponivel }}</td>
                         <td>
-                            <a class="btn deep-orange" href="{{route('equipamentos.deletar',$equipamento->id)}}">Deletar</a>
+                            <a class="btn deep orange" href="{{route('emprestimo',$equipamento->id)}}">Emprestar</a>
                         </td>
                         <td>
-                            <a class="btn deep-orange" href="{{route('equipamentos.editar',$equipamento->id)}}">Editar</a>
+                            <a class="btn deep green" href="{{route('equipamentos.editar',$equipamento->id)}}">Editar</a>
                         </td>
+
                         <td>
-                            <a class="btn deep-orange" href="{{route('emprestimo',$equipamento->id)}}">Emprestar</a>
+                            <a class="btn red" href="{{route('equipamentos.deletar',$equipamento->id)}}">Deletar</a>
                         </td>
                     </tr>
 
@@ -40,8 +41,11 @@
         </div>
         <div class="row">
             <a class="btn blue" href="{{route('cadastro.equipamento')}}">Cadastrar novo Equipamento</a>
-
         </div>
+        <div class="row" align="center">
+            {{$equipamentos->links('vendor.pagination.materializecss')}}
+        </div>
+
 
     </div>
 

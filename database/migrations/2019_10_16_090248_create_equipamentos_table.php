@@ -13,7 +13,7 @@ class CreateEquipamentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipamentos', function (Blueprint $table) {
+        Schema::create('Equipamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nomeEquipamento', 50);
             $table->integer('quantidadeTotal');
@@ -29,6 +29,6 @@ class CreateEquipamentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipamentos');
+        Schema::dropIfExists('Equipamentos');
     }
 }

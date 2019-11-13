@@ -9,7 +9,7 @@ class PessoaEmprestimo extends Model
 {
 
 
-    protected $table = 'pessoaEmprestimo';
+    protected $table = 'PessoaEmprestimo';
     protected $fillable = [
         'idProfessor', 'idEquipamento', 'nomeProfessorEmprestimo', 'nomePessoaEmprestimo',
         'nomeEquipamentoEmprestimo', 'cpfPessoaEmprestimo', 'dataDevolucao', 'quantidade',
@@ -18,7 +18,7 @@ class PessoaEmprestimo extends Model
 
     public $rules = [
         'nomePessoaEmprestimo' => 'required|min:3|max:50',
-        'cpfPessoaEmprestimo' => 'required|min:14',
+        'cpfPessoaEmprestimo' => 'required|cpf',
         'dataDevolucao' => 'required|min:10',
         'quantidade' => 'required',
     ];

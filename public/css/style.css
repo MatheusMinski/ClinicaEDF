@@ -12,6 +12,12 @@ a {
     color: black;
 }
 
+#logo{
+    position: absolute;
+    left: 35%;
+    top: 30%;
+}
+
 .alert-danger{color:#FF0000;border-color:#f7c6c5}
 
 .logo{
@@ -21,9 +27,12 @@ a {
     text-decoration-style: solid;
 }
 
-div#login{
-
+.negada{
+    position: absolute;
+    left: 35%;
+    top: 30%;
 }
+
 
 .next{
     background-color: #4CAF50;
@@ -40,5 +49,8 @@ div#login{
 .floatLeft{
     float:left
 }
+
+
+
 
 

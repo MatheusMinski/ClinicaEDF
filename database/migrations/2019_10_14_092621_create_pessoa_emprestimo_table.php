@@ -13,7 +13,7 @@ class CreatePessoaEmprestimoTable extends Migration
      */
     public function up()
     {
-        Schema::create('pessoaEmprestimo', function (Blueprint $table) {
+        Schema::create('PessoaEmprestimo', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('idProfessor');
             $table->integer('idEquipamento');
@@ -24,7 +24,7 @@ class CreatePessoaEmprestimoTable extends Migration
             $table->date('dataDevolucao');
             $table->integer('quantidade');
             $table->boolean('devolvido')->default(false);
-            $table->foreign('idProfessor')->references('idProfessor')->on('users');
+            $table->foreign('idProfessor')->references('idProfessor')->on('Users');
             $table->timestamps();
         });
     }
@@ -36,6 +36,6 @@ class CreatePessoaEmprestimoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoaEmprestimo');
+        Schema::dropIfExists('PessoaEmprestimo');
     }
 }

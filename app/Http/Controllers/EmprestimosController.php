@@ -6,6 +6,7 @@ use \Illuminate\Support\Facades\Auth;
 use App\PessoaEmprestimo;
 use Illuminate\Http\Request;
 use App\Equipamento;
+use DateTime;
 
 
 class EmprestimosController extends Controller
@@ -32,32 +33,59 @@ class EmprestimosController extends Controller
         //verificação de cpf tem que ser em outro try catch
 
         $messages = [
-            'nomePessoaEmprestimo.required' => 'Campo nome é obrigatório!',
-            'cpfPessoaEmprestimo.min' => 'CPF inválido'
+            'nomePessoaEmprestimo.required' => 'O campo de Nome é de preenchimento obrigatório.',
+            'nomePessoaEmprestimo.min' => 'O campo de Nome deve conter no mínimo 3 caracteres.',
+            'cpfPessoaEmprestimo.cpf' => 'CPF inválido',
+            'cpfPessoaEmprestimo.required' => 'O campo de CPF é de preenchimento obrigatório.',
+            'dataDevolucao.required' => 'O campo de Data de Devolução é de preenchimento obrigatório.',
+            'dataDevolucao.min' => 'O campo de Data de Devolução deve conter no mínimo 8 caracteres.',
+            'quantidade' => 'O campo de Quantidade é de preenchimento obrigatório.',
+            'nomePessoaEmprestimo.alpha' => 'O campo de Nome deve conter apenas letras.'
         ];
 
 
         $this->validate($req, $this->emprestimo->rules, $messages);
 
+
+        //Controle da data
+
+        $data_agora = new DateTime();
+        $dataDigitada = DateTime::createFromFormat('d/m/Y', $dados['dataDevolucao']);
+
+
+        if ($dataDigitada < $data_agora) {
+            return redirect()->back()->withInput()->withErrors(['Por favor, insira uma data válida']);
+        }
+
+
+
         try {
 
-            PessoaEmprestimo::create([
-                'idProfessor' => $user['idProfessor'],
-                'idEquipamento' => $dados['idEquipamento'],
-                'nomeProfessorEmprestimo' => $user['nome'],
-                'nomePessoaEmprestimo' => $dados['nomePessoaEmprestimo'],
-                'nomeEquipamentoEmprestimo' => $dados['nomeEquipamento'],
-                'cpfPessoaEmprestimo' => $dados['cpfPessoaEmprestimo'],
-                'quantidade' => $dados['quantidade'],
-                'dataDevolucao' => $dados['dataDevolucao'],
+            if(($quantidadeAnterior - $dados['quantidade'])<0){
 
-            ]);
+                return redirect()->back()->withInput()->withErrors(['Quantidade de Estoque insuficiente']);
 
-            Equipamento::find($dados['idEquipamento'])->update([
-                'quantidadeDisponivel' => $quantidadeAnterior - $dados['quantidade'],
-            ]);
+            }else{
+
+                PessoaEmprestimo::create([
+                    'idProfessor' => $user['idProfessor'],
+                    'idEquipamento' => $dados['idEquipamento'],
+                    'nomeProfessorEmprestimo' => $user['nome'],
+                    'nomePessoaEmprestimo' => $dados['nomePessoaEmprestimo'],
+                    'nomeEquipamentoEmprestimo' => $dados['nomeEquipamento'],
+                    'cpfPessoaEmprestimo' => $dados['cpfPessoaEmprestimo'],
+                    'quantidade' => $dados['quantidade'],
+                    'dataDevolucao' => $dados['dataDevolucao'],
+
+                ]);
+
+                Equipamento::find($dados['idEquipamento'])->update([
+                    'quantidadeDisponivel' => $quantidadeAnterior - $dados['quantidade'],
+                ]);
+            }
+
         }catch(\Exception $ex){
-            return redirect()->back()->withErrors(['Aqui que altera a msg', 'The Message']);
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
         }
 
 
@@ -88,7 +116,7 @@ class EmprestimosController extends Controller
     }
 
     public function listagem(){
-        $emprestimos = PessoaEmprestimo::all();
+        $emprestimos = PessoaEmprestimo::paginate(4);
         return view('emprestimos.listaemprestimo', compact('emprestimos'));
     }
 }

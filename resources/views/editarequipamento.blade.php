@@ -13,20 +13,20 @@
                 <input type="hidden" name="_method" value="put">
 
                 <br/><br/>
-                <h4>Cadastro de Novo Equipamento</h4>
+                <h4>Edição de Equipamento</h4>
                 <br/><br/>
 
-                <label >Nome ou Descrição</label>
-                <input name="nomeEquipamento" class="form-control" required value ="{{$registro->nomeEquipamento}}" type="text" placeholder=""  />
+                <label >Nome ou Descrição</label><br/>
+                <input style="width: 430px" name="nomeEquipamento" class="form-control" required value ="{{$registro->nomeEquipamento}}" type="text" placeholder=""  />
                 <br/><br/>
 
 
-                <label>Adicionar Quantidade</label>
-                <input name="quantidadeAdicionar"  type="number" placeholder="Ex.: 3">
+                <label>Adicionar Quantidade</label><br/>
+                <input style="width: 60px" name="quantidadeAdicionar" min="1" type="number" placeholder="Ex.: 3">
                 <br/><br/>
 
-                <label>Remover Quantidade</label>
-                <input name="quantidadeRemover"  type="number" placeholder="Ex.: 3">
+                <label>Remover Quantidade</label><br/>
+                <input style="width: 60px" name="quantidadeRemover" min="1" type="number" placeholder="Ex.: 3">
                 <br/><br/>
 
 
