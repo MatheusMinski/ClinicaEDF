@@ -6,7 +6,15 @@
     <div class="container">
         <br/>
         <h3 class="center">Profesores Cadastrados</h3>
-        <br/><br/><br/>
+        <br/><br/>
+        @if(isset($errors) && count ($errors) > 0)
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <p align="center">{{$error}}</p>
+                @endforeach
+            </div>
+        @endif
+        <br/><br/>
         <div class="row">
             <table>
                 <thead>
@@ -44,7 +52,7 @@
         </div>
 
         <div class="row" align="center">
-            {{$registros->links()}}
+            {{$registros->links('vendor.pagination.materializecss')}}
         </div>
 
     </div>

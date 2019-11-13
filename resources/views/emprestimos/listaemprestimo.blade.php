@@ -44,7 +44,7 @@
             </table>
         </div>
         <div class="row" align="center">
-            {{$emprestimos->links()}}
+            {{$emprestimos->links('vendor.pagination.materializecss')}}
         </div>
 
     </div>

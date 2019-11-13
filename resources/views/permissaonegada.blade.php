@@ -19,7 +19,8 @@
 <body>
 <div class="content">
     <div class="center">
-        <h1>Permissão Negada!</h1>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <h1 id="negada">Permissão Negada!</h1>
     </div>
 </div>
 </div>
