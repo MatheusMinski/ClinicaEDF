@@ -29,8 +29,10 @@
 
                         @if(!$emprestimo->devolvido)
                         <td>
-                            <a class="btn deep-orange" href="{{route('emprestimos.devolver', ['idEquipamento' => $emprestimo->idEquipamento, 'quantidade' => $emprestimo->quantidade, 'idEmprestimo' => $emprestimo->id] )}}">Marcar Devolução</a>
+                            <a class="btn deep-orange" style="height: 70px;" href="{{route('emprestimos.devolver', ['idEquipamento' => $emprestimo->idEquipamento, 'quantidade' => $emprestimo->quantidade, 'idEmprestimo' => $emprestimo->id] )}}">Marcar Devolução</a>
+                        
                         </td>
+                
                             @else
                             <td>
                                 <a class="btn green">Devolvido</a>
