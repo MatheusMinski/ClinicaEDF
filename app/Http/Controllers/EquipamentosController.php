@@ -51,8 +51,14 @@ class EquipamentosController extends Controller
     }
 
     public function deletar($id){
+        $equip = Equipamento::find($id);
 
-        Equipamento::find($id)->delete();
+        if ($equip['quantidadeDisponivel'] == $equip['quantidadeTotal']){
+            Equipamento::find($id)->delete();
+        }else{
+            return redirect()->back()->withErrors(['Por favor, devolva todos os equipamentos antes de excluir']);
+        }
+
 
         return redirect()->route('lista.equipamentos');
     }
