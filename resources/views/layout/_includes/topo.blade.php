@@ -30,7 +30,11 @@
             <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="left hide-on-med-and-down">
                 @if(!Auth::guest())
-                    <li><a class = "upBtn">{{Auth::user()->nome}}</a></li>
+                    @php
+                        $fullName = Auth::user()->nome;
+                        $firstName = explode(" ", $fullName);
+                    @endphp
+                    <li><a class = "upBtn">{{$firstName[0]}}</a></li>
                     <li><a class="upBtn" name="btnAlunos" href="">Alunos</a></li>
                     <li><a class="upBtn" name="btnProf" href="{{route('lista.professor')}}">Professores</a></li>
                 @endif
