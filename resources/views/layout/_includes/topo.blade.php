@@ -26,7 +26,7 @@
 
     <nav>
         <div class="nav-wrapper">
-            <a href="{{route('home')}}" class="brand-logo center">Home</a>
+            <a href="{{route('home')}}"  style="color: #1d2124" class="brand-logo center">Home</a>
             <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="left hide-on-med-and-down">
                 @if(!Auth::guest())
@@ -47,7 +47,7 @@
                     <li><a class="upBtn" name="btnSair" href="{{route('sair')}}">Sair</a></li>
 
                 @else
-                    <li><a class="upBtn" name="Btnlog" href="{{route('login')}}">Login</a></li>
+                    <li><a class="upBtn" name="Btnlog" style="color: #1d2124" href="{{route('login')}}">Login</a></li>
                 @endif
             </ul>
         </div>
