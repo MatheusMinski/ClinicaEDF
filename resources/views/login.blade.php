@@ -26,21 +26,18 @@
                 @endif
 
                 <div class="input-field" >
-                <input id="email" required name="email" height="10px" style="width:350px" type="text" class="validate" placeholder="E-mail"/>
+                <input id="email" required name="email" height="10px" style="width:350px; border-radius: 20px" type="text" class="validate" placeholder="E-mail"/>
                 </div>
-
-                <br/><br/>
 
 
                 <div class="input-field">
-                <input id="password" required type="password" name="password" height="10px" style="width:350px"class="validate" placeholder="Senha">
+                <input id="password" required type="password" name="password" height="10px" style="width:350px; border-radius: 20px "class="validate" placeholder="Senha">
                 </div>
 
-                <br/><br/>
 
                 <div align="center" class="row">
-                    <div><button type="submit">Entrar</button></div>
-                    <div><a href="{{route('password.request')}}">Esqueci minha senha</a></div>
+                    <div><button type="submit" class="btn blue">Entrar</button>
+                    <button class="btn green" href="{{route('password.request')}}">Esqueci minha senha</button></div>
                 </div>
 
             </form>

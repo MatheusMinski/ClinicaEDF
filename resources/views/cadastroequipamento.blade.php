@@ -24,7 +24,7 @@
                 <br/><br/>
 
 
-                <button class="next"> Finalizar Cadastro &raquo</button>
+                <button class="btn blue"> Finalizar Cadastro &raquo</button>
                 <br/><br/><br/><br/>
 
             </form>
