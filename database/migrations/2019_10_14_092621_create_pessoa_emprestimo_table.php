@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePessoaEmprestimosTable extends Migration
+class CreatePessoaEmprestimoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,18 @@ class CreatePessoaEmprestimosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pessoaEmprestimo', function (Blueprint $table) {
-            $table->bigIncrements('idEmprestimo');
+        Schema::create('PessoaEmprestimo', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->integer('idProfessor');
+            $table->integer('idEquipamento');
+            $table->string('nomeProfessorEmprestimo', 50);
             $table->string('nomePessoaEmprestimo', 50);
             $table->string('cpfPessoaEmprestimo', 15);
-            $table->foreign('idProfessor')->references('idPessoa')->on('professors');
+            $table->string('nomeEquipamentoEmprestimo', 30);
+            $table->date('dataDevolucao');
+            $table->integer('quantidade');
+            $table->boolean('devolvido')->default(false);
+            $table->foreign('idProfessor')->references('idProfessor')->on('Users');
             $table->timestamps();
         });
     }
@@ -30,6 +36,6 @@ class CreatePessoaEmprestimosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoaEmprestimo');
+        Schema::dropIfExists('PessoaEmprestimo');
     }
 }

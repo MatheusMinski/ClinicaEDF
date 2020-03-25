@@ -10,20 +10,29 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = 'Professor';
+    const ADMIN_TYPE = 'admin';
+    const DEFAULT_TYPE = 'default';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     *
-     *
-     */
+    public function isAdmin()    {
+        return $this->type === self::ADMIN_TYPE;
+    }
+
+    protected $table = 'Users';
+
 
     protected $primaryKey = 'idProfessor';
 
     protected $fillable = [
-        'idProfessor', 'idEndereco', 'nome','cpf','rg','telefone','dataNasc','email','password',
+        'nome','cpf','telefone','dataNasc','email','password',
+    ];
+
+
+    public $rules = [
+
+        'cpf' => 'required|cpf',
+        'telefone' => 'required|min:14',
+        'dataNasc' => 'required|min:10',
+
     ];
 
     /**

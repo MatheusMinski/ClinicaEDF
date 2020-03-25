@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Equipamento extends Model
 {
+    protected $table = 'Equipamentos';
+
     protected $fillable = [
-        'id', 'QuantidadeTotal', 'QuantidadeDisponivel', 'nome',
+        'id', 'nomeEquipamento', 'quantidadeTotal', 'quantidadeDisponivel',
     ];
 
 }

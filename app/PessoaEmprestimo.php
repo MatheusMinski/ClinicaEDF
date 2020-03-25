@@ -5,8 +5,21 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class PessoaEmprestimo extends Model
+
 {
+
+
+    protected $table = 'PessoaEmprestimo';
     protected $fillable = [
-        'nomePessoaEmprestimo', 'cpfPessoaEmprestimo', 'DataRetirada', 'DataDevolucao',
+        'idProfessor', 'idEquipamento', 'nomeProfessorEmprestimo', 'nomePessoaEmprestimo',
+        'nomeEquipamentoEmprestimo', 'cpfPessoaEmprestimo', 'dataDevolucao', 'quantidade',
+    ];
+
+
+    public $rules = [
+        'nomePessoaEmprestimo' => 'required|min:3|max:50',
+        'cpfPessoaEmprestimo' => 'required|cpf',
+        'dataDevolucao' => 'required|min:10',
+        'quantidade' => 'required',
     ];
 }

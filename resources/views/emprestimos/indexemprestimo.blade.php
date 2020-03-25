@@ -4,35 +4,59 @@
 
 @section('conteudo')
 
-    <form>
-        <fieldset>
-            <div class="form-group">
-                <label>CPF</label>
-                <br/>
-                <input  name="cpfEmp" style="width:150px" id="cpfEmp" type="text" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00">
-            </div>
-            <br/>
-            <div>
-                <label>Selecionar Itens</label><br/>
-                <input type="checkbox" />
-                <span>Cama Elástica</span>
-            </div>
-            <br/>
+    <form align="center" action="{{route('emprestimo.finalizar', $registro)}}">
 
-            <div class="input-group datepicker" >
-                <label for="example1" class="sr-only">Data de Devolução</label><br/>
-                <input type="text" style="width:150px" class="form-control date-mask" id="example1" placeholder="dd/mm/aaaa">
-            </div>
+        <br/>
 
-            <div >
-                <button name="EmpCad" type="submit" class="btn btn-default">Não possui cadastro?</button>
+        @if(isset($errors) && count ($errors) > 0)
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <p>{{$error}}</p>
+                @endforeach
             </div>
+        @endif
+        <br/><br/>
+
+        <div class="form-group">
+            <label>Nome Completo</label>
             <br/>
-            <div >
-                <button name="finalEmp" type="submit" class="btn btn-default">Finalizar Empréstimo</button>
-            </div>
+            <input value="{!! old('nomePessoaEmprestimo') !!}" name="nomePessoaEmprestimo" id="epname" style="width:250px" height="10px" style="width:350px"
+                   type="text" class="validate"
+                   placeholder="Nome Completo"/>
+        </div>
 
-        </fieldset>
+        <div class="form-group">
+            <label>CPF</label>
+            <br/>
+            <input value="{!! old('cpfPessoaEmprestimo') !!}" name="cpfPessoaEmprestimo" style="width:250px" id="cpfEmp" type="text" class="form-control cpf-mask"
+                   placeholder="Ex.: 000.000.000-00">
+        </div>
+
+        <div style="padding-bottom: 20px; padding-top: 20px">
+            <label  for="example1" class="sr-only">Data de Devolução</label><br/>
+            <input value="{!! old('dataDevolucao') !!}" type="text" name="dataDevolucao" style="width:250px" class="form-control date-mask" id="example1"
+                   placeholder="dd/mm/aaaa">
+        </div>
+        <div>
+            <label>Quantidade</label><br/>
+            <input value="{!! old('quantidade') !!}" style="width: 250px" name="quantidade" type="number" min="1" placeholder="Ex.: 3"></input><br/>
+
+            <label  style="height: 10px; display: block;  padding-top: 25px; font-size: large; font-weight: bold"  name="nomeEquipamento">Item
+                selecionado: {{$registro->nomeEquipamento}} </label><br/><br/>
+
+            <input type="hidden" style="width: 200px" name="nomeEquipamento" required
+                   value="{{$registro->nomeEquipamento}}"></input><br/>
+            <input type="hidden" style="width: 200px" name="idEquipamento" required
+                   value="{{$registro->id}}"></input>
+
+        </div>
+
+
+        <br/>
+        <div>
+            <button type="submit" class="btn blue">Finalizar Empréstimo</button>
+        </div><br/>
+
     </form>
 
 

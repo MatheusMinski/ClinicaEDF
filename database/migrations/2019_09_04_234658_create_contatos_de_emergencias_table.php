@@ -13,7 +13,7 @@ class CreateContatosDeEmergenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('contatosDeEmergencias', function (Blueprint $table) {
+        Schema::create('ContatosDeEmergencias', function (Blueprint $table) {
             $table->integer('idAluno');
             $table->string('nome', 50);
             $table->string('parentesco', 20);
@@ -30,6 +30,6 @@ class CreateContatosDeEmergenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contatosDeEmergencias');
+        Schema::dropIfExists('ContatosDeEmergencias');
     }
 }
