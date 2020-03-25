@@ -3,7 +3,7 @@
 @section('titulo','Cursos')
 
 @section('conteudo')
-    <div class="container">
+    <div class="container" style="width: 100%">
         <br/>
         <h3 class="center">Empréstimos Realizados</h3>
         <br/><br/><br/>
@@ -29,7 +29,9 @@
 
                         @if(!$emprestimo->devolvido)
                         <td>
+
                             <a class="btn deep-orange" style="height: 40px;" href="{{route('emprestimos.devolver', ['idEquipamento' => $emprestimo->idEquipamento, 'quantidade' => $emprestimo->quantidade, 'idEmprestimo' => $emprestimo->id] )}}">Marcar Devolução</a>
+
 
                         </td>
 
