@@ -4,19 +4,19 @@
 
 @section('conteudo')
 
-    <div class="container" >
+    <div class="container" style="margin: auto" >
         <!--FORMULÁRIO DE CADASTRO-->
-        <div id="cadastro">
+        <div id="cadastro" style="margin: auto; text-align: center">
             <form method="post" action="{{route('equipamentos.editar.salvar', $registro->id)}}">
                 {{csrf_field()}}
 
                 <input type="hidden" name="_method" value="put">
 
                 <br/><br/>
-                <h4>Edição de Equipamento</h4>
+                <h4 style="">Edição de Equipamento</h4>
                 <br/><br/>
 
-                <label >Nome ou Descrição</label><br/>
+                <label style="">Nome ou Descrição</label><br/>
                 <input style="width: 430px" name="nomeEquipamento" class="form-control" required value ="{{$registro->nomeEquipamento}}" type="text" placeholder=""  />
                 <br/><br/>
 
@@ -30,7 +30,7 @@
                 <br/><br/>
 
 
-                <button class="next"> Salvar &raquo</button>
+                <button class="btn blue"> Salvar</button>
                 <br/><br/><br/><br/>
 
             </form>

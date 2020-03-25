@@ -14,7 +14,12 @@ class CreateUsoMedicamentosContinuosTable extends Migration
     public function up()
     {
         Schema::create('UsoMedicamentosContinuos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integer('idAluno');
+            $table->string('nomeComercial', 20);
+            $table->string('nomeCientifico', 20);
+            $table->string('dosagem', 20);
+            $table->string('posologia', 20);
+            $table->date('inicio');
             $table->timestamps();
         });
     }
