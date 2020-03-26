@@ -67,9 +67,10 @@ class EquipamentosController extends Controller
         return view('cadastroequipamento');
     }
 
+
     public function index(){
-        $equipamentos = Equipamento::paginate(4);
-        return view('listaequipamentos', compact('equipamentos'));
+     $equipamentos = Equipamento::paginate(4);
+     return view('listaequipamentos', compact('equipamentos'));
     }
 
     public function emprestimo($id){

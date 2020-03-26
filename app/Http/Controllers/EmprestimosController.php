@@ -115,8 +115,12 @@ class EmprestimosController extends Controller
 
     }
 
-    public function listagem(){
-        $emprestimos = PessoaEmprestimo::paginate(4);
-        return view('emprestimos.listaemprestimo', compact('emprestimos'));
-    }
+
+    
+          public function listagem(){
+           $emprestimos = PessoaEmprestimo::paginate(4);
+            return view('emprestimos.listaemprestimo', compact('emprestimos'));
+         }
+
+
 }
