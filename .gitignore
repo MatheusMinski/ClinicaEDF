@@ -13,9 +13,12 @@ yarn-error.log
 .idea/workspace.xml
 /idea
 
+<<<<<<< HEAD
+=======
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+>>>>>>> 91e44a4027958cf5fa06033d816b3cb93031dea8
 

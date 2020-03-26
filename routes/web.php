@@ -55,7 +55,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::put('/equipamento/editar/update/{id}', ['as' => 'equipamentos.editar.salvar', 'uses' => 'EquipamentosController@update']);
 
+
+    // lista de presença
+
+    // TODO : Adicionar aqui a rota para a lista de presença assim que existir seu model e seu controller.
+
 });
+
+
 
 Route::get('/', ['as' => 'home','uses'=>'Index@home']);
 
@@ -72,6 +79,7 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
 
 
 
