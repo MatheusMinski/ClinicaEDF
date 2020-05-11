@@ -24,45 +24,50 @@
     <link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css">
     <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/2.0.6/stylesheets/locastyle.css">
 
-    <nav>
-        <div class="nav-wrapper">
-            <a href="{{route('home')}}"  style="color: #1d2124" class="brand-logo center">Home</a>
-            <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="left hide-on-med-and-down">
-                @if(!Auth::guest())
-                    @php
-                        $fullName = Auth::user()->nome;
-                        $firstName = explode(" ", $fullName);
-                    @endphp
-                    <li><a class = "upBtn">{{$firstName[0]}}</a></li>
-                    <li><a class="upBtn" name="btnAlunos" href="">Alunos</a></li>
-                    <li><a class="upBtn" name="btnProf" href="{{route('lista.professor')}}">Professores</a></li>
-                @endif
-            </ul>
 
-            <ul class="right hide-on-med-and-down">
-                @if(!Auth::guest())
-                    <li><a class="upBtn" name="BtnEmp" href="{{route('lista.emprestimos')}}">Empréstimos</a></li>
-                    <li><a class="upBtn" name="BtnEq" href="{{route('lista.equipamentos')}}">Equipamentos</a></li>
-                    <li><a class="upBtn" name="btnSair" href="{{route('sair')}}">Sair</a></li>
-
-                @else
-                    <li><a class="upBtn" name="Btnlog" style="color: #1d2124" href="{{route('login')}}">Login</a></li>
-                @endif
-            </ul>
-        </div>
+    <nav class="yellow">
+        <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+        <a href="{{route('home')}}"  style="color: #1d2124" class="brand-logo center">Home</a>
+        <ul class="right hide-on-med-and-down">
+            @if(!Auth::guest())
+                <li><a class="upBtn" name="btnSair" href="{{route('sair')}}" style="color: #1d2124">Sair</a></li>
+            @else
+                <li><a class="upBtn" name="Btnlog" style="color: #1d2124" href="{{route('login')}}">Login</a></li>
+            @endif
+        </ul>
     </nav>
 
-    <ul class="sidenav" id="mobile">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+    <ul id="slide-out" class="sidenav">
+        @if(!Auth::guest())
+            @php
+                $fullName = Auth::user()->nome;
+                $firstName = explode(" ", $fullName);
+            @endphp
+            <li><a class = "upBtn"style=" color: #1d2124">{{$firstName[0]}}</a></li>
+            <li><a class="upBtn" name="btnAlunos" href=""style=" color: #1d2124">Alunos</a></li>
+            <li><a class="upBtn" name="btnListaEspera" href="{{route('lista.espera')}}" style="color: #1d2124">Lista de Espera</a></li>
+            <li><a class="upBtn" name="btnCalendario" href="" style="color: #1d2124">Calendario</a></li>
+            <li><a class="upBtn" name="btnProf" href="{{route('lista.professor')}}" style="color: #1d2124">Professores</a></li>
+            <li><a class="upBtn" name="BtnEmp" href="{{route('lista.emprestimos')}}" style="color: #1d2124">Empréstimos</a></li>
+            <li><a class="upBtn" name="BtnEq" href="{{route('lista.equipamentos')}}" style="color: #1d2124">Equipamentos</a></li>
+        @endif
+        @if(!Auth::guest())
+            <li><a class="upBtn" name="btnSair" href="{{route('sair')}}" style="color: #1d2124">Sair</a></li>
+        @else
+            <li><a class="upBtn" name="Btnlog" style="color: #1d2124" href="{{route('login')}}">Login</a></li>
+        @endif
+
     </ul>
+
 
     <script async="" src="//www.google-analytics.com/analytics.js" style="display: none !important;"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="//assets.locaweb.com.br/locastyle/2.0.6/javascripts/locastyle.js"></script>
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        });
+    </script>
+
 </header>
 

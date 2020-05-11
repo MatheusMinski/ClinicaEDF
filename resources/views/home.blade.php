@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="content">
-    <div class="center">
+    <div class="center" style="padding-top: 50px">
         <img id="logo" src="https://i.ibb.co/Z2kjgcb/as.jpg" alt="as" border="0">
     </div>
 </div>
