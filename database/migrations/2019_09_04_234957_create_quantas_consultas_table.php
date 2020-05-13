@@ -14,7 +14,7 @@ class CreateQuantasConsultasTable extends Migration
     public function up()
     {
         Schema::create('QuantasConsultas', function (Blueprint $table) {
-            $table->integer('idAluno');
+            $table->integer('id');
             $table->date('dataAproximada');
             $table->string('especialidade', 25);
             $table->string('motivo', 200);

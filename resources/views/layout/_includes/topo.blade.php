@@ -44,7 +44,7 @@
                 $firstName = explode(" ", $fullName);
             @endphp
             <li><a class = "upBtn"style=" color: #1d2124">{{$firstName[0]}}</a></li>
-            <li><a class="upBtn" name="btnAlunos" href=""style=" color: #1d2124">Alunos</a></li>
+            <li><a class="upBtn" name="btnAlunos" href="{{route('aluno.lista')}}"style=" color: #1d2124">Alunos</a></li>
             <li><a class="upBtn" name="btnListaEspera" href="{{route('lista.espera')}}" style="color: #1d2124">Lista de Espera</a></li>
             <li><a class="upBtn" name="btnCalendario" href="" style="color: #1d2124">Calendario</a></li>
             <li><a class="upBtn" name="btnProf" href="{{route('lista.professor')}}" style="color: #1d2124">Professores</a></li>

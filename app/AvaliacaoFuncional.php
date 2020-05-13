@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AvaliacaoFuncional extends Model
 {
+    protected $table = 'AvaliacaoFuncional';
 
     protected $fillable = [
         'idAluno','pressaoArterialPAS','tepressaoArterialPADlefone','freqCardiacaMedia','saturacaoO2','capacidadeVital1',

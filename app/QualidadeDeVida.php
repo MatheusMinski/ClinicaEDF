@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class QualidadeDeVida extends Model
 {
-
+    protected $table = 'QualidadeDeVidas';
     protected $fillable = [
         'idPessoa', 'suaSaudeEmGeral', 'saudeComparadaUmAnoAtras', 'atividadesRigorosas', 'atividadesModeradas',
         'levantarOuCarregarMantimentos','subirVariosLancesDeEscada', 'subirUmLanceDeEscada','curvarAjoelharDobrar',

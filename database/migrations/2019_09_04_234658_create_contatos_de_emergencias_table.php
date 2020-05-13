@@ -14,7 +14,7 @@ class CreateContatosDeEmergenciasTable extends Migration
     public function up()
     {
         Schema::create('ContatosDeEmergencias', function (Blueprint $table) {
-            $table->integer('idAluno');
+            $table->integer('id');
             $table->string('nome', 50);
             $table->string('parentesco', 20);
             $table->string('telefone', 20);
