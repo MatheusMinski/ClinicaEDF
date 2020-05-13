@@ -14,7 +14,7 @@ class CreateQualidadeDeVidasTable extends Migration
     public function up()
     {
         Schema::create('QualidadeDeVidas', function (Blueprint $table) {
-            $table->integer('idPessoa');
+            $table->integer('id');
             $table->integer('suaSaudeEmGeral');
             $table->integer('saudeComparadaUmAnoAtras');
             $table->integer('atividadesRigorosas');

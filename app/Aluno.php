@@ -11,7 +11,7 @@ class Aluno extends Model
 
 
     protected $fillable = [
-        'idEndereco', 'nome', 'dataNasc', 'idade', 'sexo','email','profissao','aposentado','estadoCivil','escolaridade','classeSocialFamilia',
+        'nome', 'dataNasc', 'idade', 'sexo','email','profissao','aposentado','estadoCivil','escolaridade','classeSocialFamilia',
     ];
 
 }

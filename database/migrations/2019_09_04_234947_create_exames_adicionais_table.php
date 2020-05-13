@@ -14,7 +14,7 @@ class CreateExamesAdicionaisTable extends Migration
     public function up()
     {
         Schema::create('ExamesAdicionais', function (Blueprint $table) {
-            $table->integer('idAluno');
+            $table->integer('id');
             $table->string('tipoDoExame', 30);
             $table->date('dataExame');
             $table->string('resultadosPrincipais', 50);

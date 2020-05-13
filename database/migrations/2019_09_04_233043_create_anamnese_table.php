@@ -14,7 +14,7 @@ class CreateAnamneseTable extends Migration
     public function up()
     {
         Schema::create('Anamnese', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integer('id');
             $table->string('nomeDoProfissional',30);
             $table->string('especialidadeDoProfissional',25);
             $table->string('encaminhamento',15);

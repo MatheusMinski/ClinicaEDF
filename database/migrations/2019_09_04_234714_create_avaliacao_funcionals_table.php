@@ -14,7 +14,7 @@ class CreateAvaliacaoFuncionalsTable extends Migration
     public function up()
     {
         Schema::create('AvaliacaoFuncional', function (Blueprint $table) {
-            $table->integer('idAluno');
+            $table->integer('id');
             $table->integer('pressaoArterialPAS');
             $table->integer('pressaoArterialPAD');
             $table->decimal('freqCardiacaMedia',3,1);

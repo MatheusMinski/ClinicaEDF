@@ -12,6 +12,7 @@ class EnderecosSeeder extends Seeder
     public function run()
     {
         DB::table('Enderecos')->insert([
+            'idALuno' => 1,
             'idEndereco' => 1,
             'rua'=> 'asdsad',
             'numero'=> '12',

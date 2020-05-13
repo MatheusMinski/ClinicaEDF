@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PerfilBioquimico extends Model
 {
+    protected $table = 'PerfilBioquimico';
     protected $fillable = [
         'idAluno', 'glicemiaDataUm', 'glicemiaValorUm', 'glicemiaDataDois', 'glicemiaValorDois', 'insulinaDataUm', 'insulinaValorUm',
         'insulinaDataDois', 'insulinaValorDois', 'creatinaDataUm', 'creatinaValorUm', 'creatinaDataDois', 'creatinaValorDois', 'ctDataUm',

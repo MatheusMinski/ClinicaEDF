@@ -14,8 +14,7 @@ class CreateAlunosTable extends Migration
     public function up()
     {
         Schema::create('Alunos', function (Blueprint $table) {
-            $table->bigIncrements('idAluno');
-            $table->integer('idEndereco');
+            $table->bigIncrements('id');
             $table->string('nome', 50);
             $table->date('dataNasc');
             $table->integer('idade');
@@ -26,7 +25,6 @@ class CreateAlunosTable extends Migration
             $table->string('estadoCivil',15);
             $table->string('escolaridade',20);
             $table->string('classeSocialFamilia',30);
-            $table->foreign('idEndereco')->references('idEndereco')->on('Enderecos');
             $table->timestamps();
         });
     }
