@@ -41,13 +41,22 @@ class EquipamentosController extends Controller
 
         $quantidadeD = $teste -> quantidadeDisponivel;
 
-        Equipamento::find($id)->update([
-            'nomeEquipamento' => $dados['nomeEquipamento'],
-            'quantidadeDisponivel' => $quantidadeD - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
-            'quantidadeTotal' => $quantidadeT - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
-        ]);
+        $quantidadeDisponivelUpdate = $quantidadeD - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'];
+        $quantidadeTotalUpdate = $quantidadeT - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'];
 
-        return redirect()->route('lista.equipamentos');
+        if($quantidadeDisponivelUpdate < 0 or $quantidadeTotalUpdate < 0){
+            return redirect()->back()->withInput()->withErrors(['Quantidade retirada é menor que a disponível']);
+        }else{
+            Equipamento::find($id)->update([
+                'nomeEquipamento' => $dados['nomeEquipamento'],
+                'quantidadeDisponivel' => $quantidadeD - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
+                'quantidadeTotal' => $quantidadeT - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
+            ]);
+
+            return redirect()->route('lista.equipamentos');
+        }
+
+
     }
 
     public function deletar($id){
