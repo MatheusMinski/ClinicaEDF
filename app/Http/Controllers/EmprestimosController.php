@@ -57,7 +57,8 @@ class EmprestimosController extends Controller
             return redirect()->back()->withInput()->withErrors(['Por favor, insira uma data válida']);
         }
 
-
+        $dataConvertida = DateTime::createFromFormat('m/d/Y', $dados['dataDevolucao']);
+        $dados['dataDevolucao'] = $dataConvertida;
 
         try {
 
@@ -116,7 +117,7 @@ class EmprestimosController extends Controller
     }
 
 
-    
+
           public function listagem(){
            $emprestimos = PessoaEmprestimo::paginate(4);
             return view('emprestimos.listaemprestimo', compact('emprestimos'));

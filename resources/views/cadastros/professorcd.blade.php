@@ -51,28 +51,38 @@
                     <br/><br/><br/>
 
                     <label for="cpf">CPF</label>
-                    <input name="cpf" value="{!! old('cpf') !!}" type="text" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00">
+                    <input name="cpf" id="cpf" value="{!! old('cpf') !!}" type="text" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00">
                     <br/><br/>
 
 
                     <label for="phone">Telefone</label>
-                    <input  name="telefone" value="{!! old('telefone') !!}" type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 00000-0000">
+                    <input  name="telefone" id="telefone" value="{!! old('telefone') !!}" type="text" class="form-control cel-sp-mask" placeholder="Ex.: (00) 00000-0000">
                     <br/><br/>
 
                     <label for="datanasc"><h6>Data de Nascimento</h6></label>
-                    <input  name="dataNasc" value="{!! old('dataNasc') !!}" type="text" class="form-control date-mask" placeholder="Ex.: 00/00/0000">
+                    <input  name="dataNasc" id="datanasc" value="{!! old('dataNasc') !!}" type="text" class="form-control date-mask" placeholder="Ex.: MM/DD/YYYY">
                     <br/><br/>
 
-                    <button class="next"> Finalizar Cadastro &raquo</button>
+                    <button class="btn blue"> Finalizar Cadastro &raquo</button>
                     <br/><br/><br/><br/>
 
                 </form>
 
 
-
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+            $('#telefone').mask('(99) 9 9999-9999');
+        });
+        $(document).ready(function(){
+            $('#cpf').mask('999.999.999-99');
+        });
+        $(document).ready(function(){
+            $('#datanasc').mask('99/99/9999');
+        });
+    </script>
 
 @endsection
 

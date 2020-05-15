@@ -28,13 +28,13 @@
         <div class="form-group">
             <label>CPF</label>
             <br/>
-            <input value="{!! old('cpfPessoaEmprestimo') !!}" name="cpfPessoaEmprestimo" style="width:250px" id="cpfEmp" type="text" class="form-control cpf-mask"
+            <input value="{!! old('cpfPessoaEmprestimo') !!}" name="cpfPessoaEmprestimo" id="cpfPessoaEmprestimo" style="width:250px" id="cpfEmp" type="text" class="form-control cpf-mask"
                    placeholder="Ex.: 000.000.000-00">
         </div>
 
         <div style="padding-bottom: 20px; padding-top: 20px">
             <label  for="example1" class="sr-only">Data de Devolução</label><br/>
-            <input value="{!! old('dataDevolucao') !!}" type="text" name="dataDevolucao" style="width:250px" class="form-control date-mask" id="example1"
+            <input value="{!! old('dataDevolucao') !!}" type="text" name="dataDevolucao" id="dataDevolucao" style="width:250px" class="form-control date-mask" id="example1"
                    placeholder="dd/mm/aaaa">
         </div>
         <div>
@@ -58,6 +58,13 @@
         </div><br/>
 
     </form>
-
+    <script>
+        $(document).ready(function(){
+            $('#dataDevolucao').mask('99/99/9999');
+        });
+        $(document).ready(function(){
+            $('#cpfPessoaEmprestimo').mask('999.999.999-99');
+        });
+    </script>
 
 @endsection
