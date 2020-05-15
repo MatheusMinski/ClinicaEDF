@@ -66,9 +66,9 @@ return [
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'postgres'),
+            'database' => env('DB_DATABASE', 'integra'),
             'username' => env('DB_USERNAME', 'postgres'),
-            'password' => env('DB_PASSWORD', ''),
+            'password' => env('DB_PASSWORD', 'banco123456'),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
