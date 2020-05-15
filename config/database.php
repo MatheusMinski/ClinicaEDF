@@ -68,7 +68,7 @@ return [
             'host'     => env('DB_HOST', 'localhost'),
             'database' => env('DB_DATABASE', 'postgres'),
             'username' => env('DB_USERNAME', 'postgres'),
-            'password' => env('DB_PASSWORD', 'ACBDt@8462'),
+            'password' => env('DB_PASSWORD', ''),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
