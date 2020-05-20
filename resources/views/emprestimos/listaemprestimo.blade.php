@@ -24,8 +24,11 @@
                         <td>{{ $emprestimo->nomeProfessorEmprestimo }}</td>
                         <td>{{ $emprestimo->nomePessoaEmprestimo }}</td>
                         <td>{{ $emprestimo->nomeEquipamentoEmprestimo }}</td>
-                        <td>{{ $emprestimo->dataDevolucao }}</td>
+                        <td>{{ date('d/m/Y', strtotime($emprestimo->dataDevolucao)) }}</td>
                         <td>{{ $emprestimo->quantidade }}</td>
+                        <td>
+                            <a class="btn blue" style="height: 40px;" href="{{route('emprestimos.dados',['idEquipamento' => $emprestimo->id])}}">Dados</a>
+                        </td>
 
                         @if(!$emprestimo->devolvido)
                         <td>
