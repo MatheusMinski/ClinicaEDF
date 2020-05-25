@@ -15,6 +15,7 @@ class CreateAlunosTable extends Migration
     {
         Schema::create('Alunos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('idProfessor');
             $table->string('nome', 50);
             $table->date('dataNasc');
             $table->integer('idade');
@@ -25,6 +26,7 @@ class CreateAlunosTable extends Migration
             $table->string('estadoCivil',15);
             $table->string('escolaridade',20);
             $table->string('classeSocialFamilia',30);
+            $table->foreign('idProfessor')->references('idProfessor')->on('Users');
             $table->timestamps();
         });
     }

@@ -75,6 +75,8 @@ class CreateAvaliacaoFuncionalsTable extends Migration
             $table->string('testeExtra4', 30);
             $table->string('respostaTesteExtraQuatro', 10);
             $table->boolean('preOuPos');
+            $table->integer('idTreinamento');
+            $table->foreign('idTreinamento')->references('id')->on('AlunoTreinamentos');
             $table->timestamps();
         });
     }

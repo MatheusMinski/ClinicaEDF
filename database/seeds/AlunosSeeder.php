@@ -13,6 +13,7 @@ class AlunosSeeder extends Seeder
     {
         DB::table('Alunos')->insert([
             'nome' => 'Matheus Minski',
+            'idProfessor' => 0,
             'dataNasc' =>'10/10/1997',
             'idade' =>'22',
             'sexo' =>'Masculino',

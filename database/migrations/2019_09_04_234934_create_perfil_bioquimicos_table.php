@@ -43,6 +43,8 @@ class CreatePerfilBioquimicosTable extends Migration
             $table->string('tgValorUm', 10);
             $table->date('tgDataDois');
             $table->string('tgValorDois', 10);
+            $table->integer('idTreinamento');
+            $table->foreign('idTreinamento')->references('id')->on('AlunoTreinamentos');
             $table->timestamps();
         });
     }
