@@ -1,6 +1,6 @@
 @extends('layout.site')
 
-@section('titulo','Cursos')
+@section('titulo','Treinamentos')
 
 @section('conteudo')
     <div class="container">
@@ -18,14 +18,14 @@
             <table>
                 <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Dados</th>
+                    <th>Data</th>
+                    <th>Editar</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($alunos as $aluno)
+                @foreach($treinamentos as $treinamento)
                     <tr>
-                        <td>{{ $aluno->nome }}</td>
+                        <td>{{ $treinamento->created_at }}</td>
                         <td>
                             <a class="btn deep orange" href="{{route('aluno.treinamentos',$aluno->id)}}">Treinamentos</a>
                         </td>

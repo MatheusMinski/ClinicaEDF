@@ -20,6 +20,10 @@
                         <td><a class="btn blue">Endereço</a></td>
                         <td>{{ $enderecos }}</td>
                     </tr>
+                    <tr>
+                        <td><a class="btn blue">Ficha de Treino</a></td>
+                        <td>Sem estatus</td>
+                    </tr>
                    <tr>
                         <td><a class="btn blue">Anamnese</a></td>
                         <td>{{ $anamnese }}</td>

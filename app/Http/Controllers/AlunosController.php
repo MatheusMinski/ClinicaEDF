@@ -95,10 +95,16 @@ class AlunosController extends Controller
             $enderecos = "Completo";
         }
 
-
-
         $aluno = Aluno::find($id);
+
         return view('aluno.aluno_status', compact('aluno', 'anamnese','contatosDeEmergencias','avaliacaoFuncional',
         'qualidadeDeVidas', 'usoMedicamentosContinuos', 'perfilBioquimico', 'examesAdicionais', 'quantasConsultas', 'enderecos'));
     }
+
+    public function treinamentos($id){
+        $treinamentos = AlunosTreinamento::find($id);
+
+        return view('aluno.aluno_treinamentos', compact('treinamentos'));
+    }
+
 }

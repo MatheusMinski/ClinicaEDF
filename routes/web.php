@@ -57,9 +57,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Aluno
     Route::get('/lista/espera', ['as' => 'lista.espera', 'uses' => 'AlunosController@listaEspera']);
+
     Route::get('/lista/alunos', ['as' => 'aluno.lista', 'uses' => 'AlunosController@index']);
+
     Route::get('/lista/alunos/cadastro', ['as' => 'aluno.cadastro', 'uses' => 'AlunosController@cadastro']);
+
     Route::get('/lista/alunos/status/{id}', ['as' => 'aluno.status', 'uses' => 'AlunosController@status']);
+
+    Route::get('/lista/alunos/treinamentos/{id}', ['as' => 'aluno.treinamentos', 'uses' => 'AlunosController@treinamentos']);
 
     // lista de presença
 
