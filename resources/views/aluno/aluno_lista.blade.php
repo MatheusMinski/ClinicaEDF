@@ -29,9 +29,6 @@
                         <td>
                             <a class="btn deep orange" href="{{route('aluno.treinamentos',$aluno->id)}}">Treinamentos</a>
                         </td>
-                        <td>
-                            <a class="btn deep orange" href="{{route('aluno.status',$aluno->id)}}">Status</a>
-                        </td>
                     </tr>
                 @endforeach
                 </tbody>

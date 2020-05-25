@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Aluno;
+use App\AlunoTreinamento;
 use App\Anamnese;
 use App\AvaliacaoFuncional;
 use App\ContatosDeEmergencia;
@@ -12,6 +13,8 @@ use App\PerfilBioquimico;
 use App\QualidadeDeVida;
 use App\UsoMedicamentosContinuos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use mysql_xdevapi\Exception;
 
 class AlunosController extends Controller
 {
@@ -29,70 +32,57 @@ class AlunosController extends Controller
         return view('aluno.aluno_cadastro');
     }
 
-    public function status($id){
+    public function treinamentoStatus($id){
 
-        $anamneseTeste = Anamnese::find($id);
-        $contatosDeEmergenciasTeste = ContatosDeEmergencia::find($id);
-        $avaliacaoFuncionalTeste = AvaliacaoFuncional::find($id);
-        $qualidadeDeVidasTeste = QualidadeDeVida::find($id);
-        $usoMedicamentosContinuosTeste = UsoMedicamentosContinuos::find($id);
-        $perfilBioquimicoTeste = PerfilBioquimico::find($id);
-        $examesAdicionaisTeste = ExamesAdicionais::find($id);
-        $quantasConsultasTeste = QualidadeDeVida::find($id);
-        $enderecosTeste = Endereco::find($id);
+        $anamneseTeste = Anamnese::where('idTreinamento', '=', $id)->paginate(4);
+        $avaliacaoFuncionalTeste = AvaliacaoFuncional::where('idTreinamento', '=', $id)->paginate(4);
+        $qualidadeDeVidasTeste = QualidadeDeVida::where('idTreinamento', '=', $id)->paginate(4);
+        $usoMedicamentosContinuosTeste = UsoMedicamentosContinuos::where('idTreinamento', '=', $id)->paginate(4);
+        $perfilBioquimicoTeste = PerfilBioquimico::where('idTreinamento', '=', $id)->paginate(4);
+        $examesAdicionaisTeste = ExamesAdicionais::where('idTreinamento', '=', $id)->paginate(4);
+        $quantasConsultasTeste = QualidadeDeVida::where('idTreinamento', '=', $id)->paginate(4);
 
-        if($anamneseTeste == null){
+        if(count($anamneseTeste) == 0){
             $anamnese = "Incompleto";
         }else{
             $anamnese = "Completo";
         }
 
-        if($contatosDeEmergenciasTeste == null){
-            $contatosDeEmergencias = "Incompleto";
-        }else{
-            $contatosDeEmergencias = "Completo";
-        }
 
-        if($avaliacaoFuncionalTeste == null){
+        if(count($avaliacaoFuncionalTeste) == 0){
             $avaliacaoFuncional = "Incompleto";
         }else{
             $avaliacaoFuncional = "Completo";
         }
 
-        if($qualidadeDeVidasTeste == null){
+        if(count($qualidadeDeVidasTeste) == 0){
             $qualidadeDeVidas = "Incompleto";
         }else{
             $qualidadeDeVidas = "Completo";
         }
 
-        if($usoMedicamentosContinuosTeste == null){
+        if(count($usoMedicamentosContinuosTeste) == 0){
             $usoMedicamentosContinuos = "Incompleto";
         }else{
             $usoMedicamentosContinuos = "Completo";
         }
 
-        if($perfilBioquimicoTeste == null){
+        if(count($perfilBioquimicoTeste) == 0){
             $perfilBioquimico = "Incompleto";
         }else{
             $perfilBioquimico = "Completo";
         }
 
-        if($examesAdicionaisTeste == null){
+        if(count($examesAdicionaisTeste) == 0){
             $examesAdicionais = "Incompleto";
         }else{
             $examesAdicionais = "Completo";
         }
 
-        if($quantasConsultasTeste == null){
+        if(count($quantasConsultasTeste) == 0){
             $quantasConsultas = "Incompleto";
         }else{
             $quantasConsultas = "Completo";
-        }
-
-        if($enderecosTeste == null){
-            $enderecos = "Incompleto";
-        }else{
-            $enderecos = "Completo";
         }
 
         $aluno = Aluno::find($id);
@@ -102,7 +92,31 @@ class AlunosController extends Controller
     }
 
     public function treinamentos($id){
-        $treinamentos = AlunosTreinamento::find($id);
+        $treinamentos = AlunoTreinamento::where('idAluno', '=', $id)->paginate(4);
+        $idAluno = $id;
+
+
+        return view('aluno.aluno_treinamentos', compact('treinamentos','idAluno'));
+    }
+
+    public function treinamentoAdicionar($idAluno){
+        $idProfessor = Auth::user()->idProfessor;
+        $idProfessorAluno = Aluno::find($idAluno)->idProfessor;
+
+        if($idProfessor == $idProfessorAluno){
+            try {
+                AlunoTreinamento::create([
+                    'idAluno' => $idAluno,
+                ]);
+                return redirect()->back();
+            }catch (Exception $e){
+                return redirect()->back()->withErrors(['Ocorreu um erro ao adicionar treinamento']);
+            }
+        }else{
+            return redirect()->back()->withErrors(['Permissão negada']);
+        }
+
+
 
         return view('aluno.aluno_treinamentos', compact('treinamentos'));
     }

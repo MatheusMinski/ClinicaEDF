@@ -42,6 +42,8 @@ class CreateAnamneseTable extends Migration
             $table->boolean('problemaOsseoOuArticular');
             $table->boolean('remedioPressaoOuCoracao');
             $table->boolean('problemaEmAtividadesFisicas');
+            $table->integer('idTreinamento');
+            $table->foreign('idTreinamento')->references('id')->on('AlunoTreinamentos');
             $table->timestamps();
         });
     }

@@ -74,7 +74,6 @@ class CadastroProfessorController extends Controller
             ]);
 
         }catch(\Exception $e){
-            dd($e);
             return redirect()->back()->withErrors(['CPF ou e-mail já cadastrado']);
         }
 

@@ -18,6 +18,8 @@ class CreateQuantasConsultasTable extends Migration
             $table->date('dataAproximada');
             $table->string('especialidade', 25);
             $table->string('motivo', 200);
+            $table->integer('idTreinamento');
+            $table->foreign('idTreinamento')->references('id')->on('AlunoTreinamentos');
             $table->timestamps();
         });
     }

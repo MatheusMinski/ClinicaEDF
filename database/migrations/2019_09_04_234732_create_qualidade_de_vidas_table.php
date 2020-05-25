@@ -51,7 +51,8 @@ class CreateQualidadeDeVidasTable extends Migration
             $table->integer('taoSaudavelQuantoOutrasPessoas');
             $table->integer('minhaSaudeVaiPiorar');
             $table->integer('minhaSaudeEExcelente');
-
+            $table->integer('idTreinamento');
+            $table->foreign('idTreinamento')->references('id')->on('AlunoTreinamentos');
             $table->timestamps();
         });
     }

@@ -15,6 +15,7 @@ class CreateAlunoTreinamentosTable extends Migration
     {
         Schema::create('AlunoTreinamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('idAluno');
             $table->foreign('idAluno')->references('id')->on('Alunos');
             $table->timestamps();
         });
