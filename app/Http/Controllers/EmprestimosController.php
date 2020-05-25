@@ -7,6 +7,7 @@ use App\PessoaEmprestimo;
 use Illuminate\Http\Request;
 use App\Equipamento;
 use DateTime;
+use Carbon\Carbon;
 
 
 class EmprestimosController extends Controller
@@ -50,12 +51,14 @@ class EmprestimosController extends Controller
         //Controle da data
 
         $data_agora = new DateTime();
-        $dataDigitada = DateTime::createFromFormat('d/m/Y', $dados['dataDevolucao']);
+        $dataDigitadaParaComparar = DateTime::createFromFormat('d/m/Y', $dados['dataDevolucao']);
 
-
-        if ($dataDigitada < $data_agora) {
+        if ($dataDigitadaParaComparar < $data_agora) {
             return redirect()->back()->withInput()->withErrors(['Por favor, insira uma data válida']);
         }
+
+
+        $dados['dataDevolucao'] = $dataDigitadaParaComparar;
 
 
 
@@ -116,11 +119,18 @@ class EmprestimosController extends Controller
     }
 
 
-    
+
           public function listagem(){
            $emprestimos = PessoaEmprestimo::paginate(4);
             return view('emprestimos.listaemprestimo', compact('emprestimos'));
          }
+
+        public function dados($id){
+            $dados = PessoaEmprestimo::find($id);
+            //$dataDigitada = DateTime::createFromFormat('d/m/Y', $dados['dataDevolucao']);
+            //dd($dados['dataDevolucao']);
+            return view('emprestimos.dados_emprestimo', compact('dados'));
+        }
 
 
 }

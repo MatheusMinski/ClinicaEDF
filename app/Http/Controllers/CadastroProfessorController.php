@@ -61,6 +61,8 @@ class CadastroProfessorController extends Controller
             return redirect()->back()->withErrors(['Por favor, insira uma data válida']);
         }
 
+        $dataConvertida = DateTime::createFromFormat('m/d/Y', $dados['dataNasc']);
+        $dados['dataNasc'] = $dataConvertida;
         try{
             User::create([
                 'nome' => $dados['nome'],
@@ -72,6 +74,7 @@ class CadastroProfessorController extends Controller
             ]);
 
         }catch(\Exception $e){
+            dd($e);
             return redirect()->back()->withErrors(['CPF ou e-mail já cadastrado']);
         }
 

@@ -6,6 +6,7 @@
 
     <div class="container" style="margin: auto" >
         <!--FORMULÁRIO DE CADASTRO-->
+
         <div id="cadastro" style="margin: auto; text-align: center">
             <form method="post" action="{{route('equipamentos.editar.salvar', $registro->id)}}">
                 {{csrf_field()}}
@@ -14,6 +15,17 @@
 
                 <br/><br/>
                 <h4 style="">Edição de Equipamento</h4>
+                <br/><br/>
+
+                <br/>
+
+                @if(isset($errors) && count ($errors) > 0)
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <p>{{$error}}</p>
+                        @endforeach
+                    </div>
+                @endif
                 <br/><br/>
 
                 <label style="">Nome ou Descrição</label><br/>
