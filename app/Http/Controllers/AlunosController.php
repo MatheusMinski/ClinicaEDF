@@ -28,9 +28,51 @@ class AlunosController extends Controller
         return view('aluno.aluno_lista', compact('alunos'));
     }
 
-    public function cadastro(){
-        return view('aluno.aluno_cadastro');
+
+
+    public function cadastroDados(){
+        return view('aluno.aluno_cadastro_dados');
     }
+
+    public function cadastroEndereco(){
+        return view('aluno.aluno_cadastro_endereco');
+    }
+
+    public function avaliacaoFuncional(){
+        return view('aluno.aluno_cadastro_avaliacaoFuncional');
+    }
+
+
+
+    public function cadastroAnamnese(){
+        return view('aluno.aluno_cadastro_anamnese');
+    }
+
+    public function cadastroEmergencia(){
+        return view('aluno.aluno_cadastro_emergencia');
+    }
+
+    public function cadastroQualidadeVida(){
+        return view('aluno.aluno_cadastro_qualidadeVida');
+    }
+
+    public function cadastroMedicamentos(){
+        return view('aluno.aluno_cadastro_medicamentos');
+    }
+
+    public function cadastroPerfilBioquimico(){
+        return view('aluno.aluno_cadastro_perfilBioquimico');
+    }
+
+    public function cadastroexamesAdicionais(){
+        return view('aluno.aluno_cadastro_exames');
+    }
+
+    public function cadastroConsultas(){
+        return view('aluno.aluno_cadastro_consultas');
+    }
+
+
 
     public function treinamentoStatus($id){
 

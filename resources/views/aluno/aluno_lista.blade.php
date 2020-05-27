@@ -35,7 +35,7 @@
             </table>
         </div>
         <div class="row">
-            <a class="btn blue" href="{{route('aluno.cadastro')}}">Cadastrar novo aluno</a>
+            <a class="btn blue" href="{{route('aluno.cadastro.dados')}}">Cadastrar novo aluno</a>
         </div>
         <div class="row" align="center">
             {{$alunos->links('vendor.pagination.materializecss')}}
