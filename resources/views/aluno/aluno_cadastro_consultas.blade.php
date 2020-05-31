@@ -6,7 +6,7 @@
 <div class="container">
     <!--FORMULÁRIO DE CADASTRO-->
     <div id="cadastro">
-        <form method="post" action="{{route('salvar.professor')}}">
+        <form method="post" action="{{route('')}}">
             {{csrf_field()}}
 
             <br /><br />
@@ -23,16 +23,16 @@
             <br /><br />
 
             <label for="">Data Aproximada</label>
-            <input value="" name="" class="form-control" required="required" maxlength="50" type="date" placeholder="" />
+            <input value="" name="dataAproximada" class="form-control" required="required" maxlength="50" type="date" placeholder="" />
             <br /><br />
 
             <label for="">Especialidade</label>
-            <input value="" name="" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+            <input value="" name="especialidade" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
             <br /><br />
 
 
             <label for="">Motivo</label>
-            <textarea value="" name="" class="form-control" required="required" maxlength="50" type="text" placeholder=""></textarea>
+            <textarea value="" name="motivo" class="form-control" required="required" maxlength="50" type="text" placeholder=""></textarea>
             <br /><br />
 
 

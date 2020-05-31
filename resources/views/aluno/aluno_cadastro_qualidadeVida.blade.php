@@ -6,7 +6,7 @@
 <div class="container">
     <!--FORMULÁRIO DE CADASTRO-->
     <div id="cadastro">
-        <form method="post" action="{{route('salvar.professor')}}">
+        <form method="post" action="{{route('')}}">
             {{csrf_field()}}
 
             <br /><br />
@@ -25,7 +25,7 @@
             <h4>Sáude geral</h4>
             <br /><br />
             <label for="">Em geral como voce diria que sua saúde é?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="suaSaudeEmGeral" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Excelente</option>
                 <option value="2">Muito boa</option>
@@ -36,7 +36,7 @@
             <br /><br />
 
             <label for="">Saúde comparada a um ano atrás?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="saudeComparadaUmAnoAtras" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Melhor agora</option>
                 <option value="2">Um pouco melhor agora</option>
@@ -49,7 +49,7 @@
             <h4>Dificuldades:</h4>
             <br /><br />
             <label for="">Possui dificuldade para realizar atividades rigorosas?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="atividadesRigorosas" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Sim, dificulta muito</option>
                 <option value="2">Sim, dificulta pouco</option>
@@ -59,7 +59,7 @@
             <br /><br />
 
             <label for="">Possui dificuldade para realizar atividades moderadas?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="atividadesModeradas" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Sim, dificulta muito</option>
                 <option value="2">Sim, dificulta pouco</option>
@@ -69,7 +69,7 @@
             <br /><br />
 
             <label for="">Possui dificuldade para levantar ou carregar Mantimentos?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="levantarOuCarregarMantimentos" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Sim, dificulta muito</option>
                 <option value="2">Sim, dificulta pouco</option>
@@ -79,7 +79,7 @@
             <br /><br />
 
             <label for="">Possui dificuldade para subir vários lances de escada?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="subirVariosLancesDeEscada" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Sim, dificulta muito</option>
                 <option value="2">Sim, dificulta pouco</option>
@@ -89,7 +89,7 @@
             <br /><br />
 
             <label for="">Possui dificuldade para subir um lance de escada?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="subirUmLanceDeEscada" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Sim, dificulta muito</option>
                 <option value="2">Sim, dificulta pouco</option>
@@ -99,7 +99,7 @@
             <br /><br />
 
             <label for="">Possui dificuldade ao se curvar/ajoelhar?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="curvarAjoelharDobrar" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Sim, dificulta muito</option>
                 <option value="2">Sim, dificulta pouco</option>
@@ -109,7 +109,7 @@
             <br /><br />
 
             <label for="">Possui dificuldade para andar mais de 1 km</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="andarMaisDeUmKm" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Sim, dificulta muito</option>
                 <option value="2">Sim, dificulta pouco</option>
@@ -119,7 +119,7 @@
             <br /><br />
 
             <label for="">Possui dificuldade para andar 1 quarteirão?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="andarUmQuarteirao" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Sim, dificulta muito</option>
                 <option value="2">Sim, dificulta pouco</option>
@@ -129,7 +129,7 @@
             <br /><br />
 
             <label for="">Possui dificuldade para andar vários quarteirões?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="andarVariosQuarteiroes" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Sim, dificulta muito</option>
                 <option value="2">Sim, dificulta pouco</option>
@@ -139,7 +139,7 @@
             <br /><br />
 
             <label for="">Possui dificuldade ao tomar banho ou ao vestir-se?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="tomarBanhoOuVestirse" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Sim, dificulta muito</option>
                 <option value="2">Sim, dificulta pouco</option>
@@ -151,7 +151,7 @@
             <br /><br />
 
             <label for="">Diminuiu o tempo que se dedicava ao trabalho ou outras ativadades?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="diminuiuTempoTrabalhoAtividadesFisica" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="true">Sim</option>
                 <option value="false">Não</option>
@@ -159,7 +159,7 @@
             <br /><br />
 
             <label for="">Realizou menos tarefas do que gostaria?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="menosTarefasGostariaFisica" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="true">Sim</option>
                 <option value="false">Não</option>
@@ -167,7 +167,7 @@
             <br /><br />
 
             <label for="">Não trabalhou ou não fez qualquer atividade como tanto cuidado como geralmente faz?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="limitadoTempoTrabalhoOutrosFisica" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="true">Sim</option>
                 <option value="false">Não</option>
@@ -176,7 +176,7 @@
 
             <label for="">Durante as ultimas 4 semanas,de que maneira sua saúde física ou problemas emocionais interferiam nas atividades sociais normais, em relação à família,
                 vizinhos, amigos ou em grupo??</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="diminuiuTempoTrabalhoAtividadesEmocional" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">De forma nenhuma</option>
                 <option value="2">Ligeiramente</option>
@@ -190,7 +190,7 @@
             <br /><br />
 
             <label for="">Quanta dor no corpo teve durante as últimas 4 semanas?</label>
-            <select id='isAposentado' name="select-aposentado" class="browser-default">
+            <select id='' name="dorNoCorpoQuatroSemanas" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">Nenhuma</option>
                 <option value="2">Muito leve</option>
@@ -203,7 +203,7 @@
 
             <label for="">Durante as ultimas 4 semanas,quanto a dor interferiu com o seu
                 trabalho normal (incluindo tanto o trabalho, fora de casa e dentro de casa)?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="quantoADorInterferiuTrabalho" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">De forma nenhuma</option>
                 <option value="2">Ligeiramente</option>
@@ -217,7 +217,7 @@
             <br /><br />
 
             <label for="">Quanto tempo você tem se sentido cheio de vigor, cheio de vontade, cheio de força?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="quantoTempoVigor" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -228,7 +228,7 @@
             <br /><br />
 
             <label for="">Quanto tempo você tem se sentido uma pessoa muito nervosa?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="quantoTempoMuitoNervosa" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -239,7 +239,7 @@
             <br /><br />
 
             <label for="">Quanto tempo você tem se sentido tão deprimido que nada pode animá-lo?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="quantoTempoDeprimido" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -250,7 +250,7 @@
             <br /><br />
 
             <label for="">Quanto tempo você tem se sentido calmo ou tranquilo?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="quantoTempoCalmo" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -261,7 +261,7 @@
             <br /><br />
 
             <label for="">Quanto tempo você tem se sentido com muita energia?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="quantoTempoMuitaEnergia" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -272,7 +272,7 @@
             <br /><br />
 
             <label for="">Quanto tempo você tem se sentido desanimado e abatido?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="quantoTempoDesanimadoAbatido" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -283,7 +283,7 @@
             <br /><br />
 
             <label for="">Quanto tempo você tem se sentido esgotado?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="quantoTempoEsgotado" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -294,7 +294,7 @@
             <br /><br />
 
             <label for="">Quanto tempo você tem se sentido uma pessoa feliz?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="quantoTempoFeliz" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -305,7 +305,7 @@
             <br /><br />
 
             <label for="">Quanto tempo você tem se sentido cansado?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="quantoTempoCansado" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -317,7 +317,7 @@
 
             <label for="">Durante as últimas 4 semanas, quanto do seu tempo a sua saúde física ou problemas emocionais interferiram com as suas atividades sociais (como visitar
                 amigos, parentes, etc)?</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="tempoSaudeAfetouSocial" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -331,7 +331,7 @@
             <br /><br />
 
             <label for="">Eu costumo adoecer um pouco mais facilmente que as outras pessoas</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="costumaAdoecerFacil" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -342,7 +342,7 @@
             <br /><br />
 
             <label for="">Eu sou tão saudável quanto qualquer pessoa que eu conheço</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="taoSaudavelQuantoOutrasPessoas" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -353,7 +353,7 @@
             <br /><br />
 
             <label for="">Eu acho que a minha saúde vai piorar</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="minhaSaudeVaiPiorar" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>
@@ -364,7 +364,7 @@
             <br /><br />
 
             <label for="">Minha saúde é excelente</label>
-            <select id='' name="select-" class="browser-default">
+            <select id='' name="minhaSaudeEExcelente" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="1">O tempo todo</option>
                 <option value="2">Maior parte do tempo</option>

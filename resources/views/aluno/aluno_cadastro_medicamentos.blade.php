@@ -6,7 +6,7 @@
 <div class="container">
     <!--FORMULÁRIO DE CADASTRO-->
     <div id="cadastro">
-        <form method="post" action="{{route('salvar.professor')}}">
+        <form method="post" action="{{route('')}}">
             {{csrf_field()}}
 
             <br /><br />
@@ -22,23 +22,23 @@
             <br /><br />
 
             <label for="">Nome Comercial do Medicamento</label>
-            <input value="" name="" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+            <input value="" name="nomeComercial" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
             <br /><br />
 
             <label for="">Nome Cientifico do Medicamento</label>
-            <input value="" name="" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+            <input value="" name="nomeCientifico" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
             <br /><br />
 
             <label for="">Dosagem</label>
-            <input value="" name="" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+            <input value="" name="dosagem" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
             <br /><br />
 
             <label for="">Posologia</label>
-            <input value="" name="" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+            <input value="" name="posologia" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
             <br /><br />
 
             <label for="">Data que iniciou o uso do medicamento</label>
-            <input value="" name="" class="form-control" required="required" maxlength="50" type="date" placeholder="" />
+            <input value="" name="inicio" class="form-control" required="required" maxlength="50" type="date" placeholder="" />
             <br /><br />
 
 
