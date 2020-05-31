@@ -1,6 +1,6 @@
 @extends('layout.site')
 
-@section('titulo','Cursos')
+@section('titulo','Endereço')
 
 @section('conteudo')
     <div class="container" >
@@ -43,8 +43,8 @@
 
 
 
-
-                <button class="btn blue"> CONTINUAR &raquo</button>
+                // TODO: Após finalizar esse form, redirecionar para a página de status do aluno cadastrado.
+                <a class="btn blue" href="{{route('home')}}">Finalizar &raquo</a>
                 <br/><br/><br/><br/>
 
             </form>
