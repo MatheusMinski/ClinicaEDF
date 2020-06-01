@@ -6,7 +6,7 @@
     <div class="container" >
         <!--FORMULÁRIO DE CADASTRO-->
         <div id="cadastro">
-            <form method="post" action="{{route('salvar.professor')}}">
+            <form method="post" action="{{route('aluno.cadastro.endereco')}}">
                 {{csrf_field()}}
 
                 <br/><br/>
@@ -58,14 +58,22 @@
                 <input name="" id="" value="" type="text" class="form-control" placeholder="">
                 <br/><br/>
 
-                // TODO: Switch options<br/>
+                // TODO: Switch options<br/><br/>
+
+                <select name="select" class="browser-default">
+                    <option value="valor1">Valor 1</option>
+                    <option value="valor2" selected>Valor 2</option>
+                    <option value="valor3">Valor 3</option>
+                </select>
+                <br/><br/>
+
                 <label for="">Classe Social Familia</label>
                 <input name="" id="" value="" type="text" class="form-control" placeholder="">
                 <br/><br/>
 
 
                 <div class="row">
-                    <a class="btn blue" href="{{route('aluno.cadastro.anamnese')}}">CONTINUAR &raquo</a>
+                    <button class="btn blue">CONTINUAR &raquo</button>
                 </div>
                 <br/><br/><br/><br/>
 
@@ -79,3 +87,5 @@
 
 
 @endsection
+
+

@@ -6,7 +6,7 @@
     <div class="container" >
         <!--FORMULÁRIO DE CADASTRO-->
         <div id="cadastro">
-            <form method="post" action="{{route('salvar.professor')}}">
+            <form method="post" action="{{route('aluno.cadastro.salvar')}}">
                 {{csrf_field()}}
 
                 <br/><br/>
@@ -42,9 +42,7 @@
                 <br/><br/>
 
 
-
-
-                <button class="btn blue"> CONTINUAR &raquo</button>
+                <button class="btn blue">Finalizar</button>
                 <br/><br/><br/><br/>
 
             </form>
