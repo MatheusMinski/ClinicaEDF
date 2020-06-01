@@ -6,7 +6,7 @@
 <div class="container">
     <!--FORMULÁRIO DE CADASTRO-->
     <div id="cadastro">
-        <form method="post" action="{{route('')}}">
+        <form method="post" action="{{route('salvar.professor')}}">
             {{csrf_field()}}
 
             <br /><br />
@@ -109,7 +109,7 @@
             <label for="">Deslizamento da pele (cm)</label>
             <input type='number' id='' name='deslizamentoDaPele' class="form-control">
             <br/>
-            
+
 
             <h4>Equilíbrio</h4>
             <br/>
@@ -233,7 +233,7 @@
             <label for="">Minuto 10</label>
             <input type='number' id='' name='padTesteDezMin' class="form-control">
             <br/><br/>
-            
+
 
             <button class="btn blue"> FINALIZAR &raquo</button>
             <br /><br /><br /><br />

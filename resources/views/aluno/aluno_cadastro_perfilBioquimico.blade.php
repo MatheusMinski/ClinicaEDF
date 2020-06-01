@@ -6,7 +6,7 @@
     <div class="container" >
         <!--FORMULÁRIO DE CADASTRO-->
         <div id="cadastro">
-            <form method="post" action="{{route('')}}">
+            <form method="post" action="{{route('salvar.professor')}}">
                 {{csrf_field()}}
 
                 <br/><br/>
@@ -23,14 +23,14 @@
 
                 <h4>Glicemia</h4>
                 <br/><br/>
-                <label for="">Data 1</label>
+                <label for="" >Data 1</label>
                 <input value="" name="glicemiaDataUm" class="form-control"  required="required" maxlength="50" type="date" placeholder="" />
                 <br/><br/>
                 <label for="">Valor 1</label>
                 <input value="" name="glicemiaValorUm" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
                 <br/><br/>
                 <label for="">Data 2</label>
-                <input value="" name="glicemiaDataDois" class="form-control"  required="required" maxlength="50" type="date" placeholder="" />
+                <input value=""  id = "Data" name="glicemiaDataDois" class="form-control"  required="required" maxlength="50" placeholder="dd/mm/yyyy" />
                 <br/><br/>
                 <label for="">Valor 2</label>
                 <input value="" name="glicemiaValorDois" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
@@ -129,7 +129,7 @@
                 <button class="btn blue"> Finalizar &raquo</button>
                 <br /><br /><br /><br />
 
-                
+
 
             </form>
 
@@ -138,6 +138,11 @@
     </div>
     </div>
 
+    <script>
+        $(document).ready(function(){
+            $('#Data').mask('99/99/9999');
+        });
+    </script>
 
 
 @endsection
