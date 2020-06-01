@@ -6,11 +6,10 @@
     <div class="container" >
         <!--FORMULÁRIO DE CADASTRO-->
         <div id="cadastro">
-<<<<<<< HEAD
-            <form method="post" action="{{route('aluno.cadastro.salvar')}}">
-=======
+
+
             <form method="post" action="{{route('')}}">
->>>>>>> 921f55f139fdcb02c4281b08eb1eb8d96a5768bf
+
                 {{csrf_field()}}
 
                 <br/><br/>
@@ -46,13 +45,11 @@
                 <br/><br/>
 
 
-<<<<<<< HEAD
-                <button class="btn blue">Finalizar</button>
-=======
+
+
 
                 // TODO: Após finalizar esse form, redirecionar para a página de status do aluno cadastrado.
                 <a class="btn blue" href="{{route('home')}}">Finalizar &raquo</a>
->>>>>>> 921f55f139fdcb02c4281b08eb1eb8d96a5768bf
                 <br/><br/><br/><br/>
 
             </form>
