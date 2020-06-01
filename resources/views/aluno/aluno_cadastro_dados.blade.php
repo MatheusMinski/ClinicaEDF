@@ -8,7 +8,7 @@
     <div class="container">
         <!--FORMULÁRIO DE CADASTRO-->
         <div id="cadastro">
-            <form method="post" action="{{route('')}}">
+            <form method="post" action="{{route('aluno.cadastro.dados.salvar')}}">
                 {{csrf_field()}}
 
                 <br /><br />
@@ -97,9 +97,8 @@
                 <br /><br />
 
 
-                <div class="row">
-                    <a class="btn blue" href="{{route('aluno.cadastro.endereco')}}">CONTINUAR &raquo</a>
-                </div>
+                <button class="btn blue" type="submit">CONTINUAR &raquo</button>
+
                 <br /><br /><br /><br />
 
             </form>

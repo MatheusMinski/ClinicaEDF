@@ -33,6 +33,10 @@ class AlunosController extends Controller
     public function cadastroDados(){
         return view('aluno.aluno_cadastro_dados');
     }
+    public function cadastroSalvarDados(Request $req){
+        $dados = $req->all();
+        dd($dados);
+    }
 
     public function cadastroEndereco(){
         return view('aluno.aluno_cadastro_endereco');

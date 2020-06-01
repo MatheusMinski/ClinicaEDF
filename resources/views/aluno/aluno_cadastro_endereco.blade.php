@@ -8,7 +8,7 @@
         <div id="cadastro">
 
 
-            <form method="post" action="{{route('')}}">
+            <form method="post" action="{{route('aluno.cadastro.endereco')}}">
 
                 {{csrf_field()}}
 
@@ -49,7 +49,7 @@
 
 
                 // TODO: Após finalizar esse form, redirecionar para a página de status do aluno cadastrado.
-                <a class="btn blue" href="{{route('home')}}">Finalizar &raquo</a>
+                <a class="btn blue" href="{{route('aluno.lista')}}">Finalizar &raquo</a>
                 <br/><br/><br/><br/>
 
             </form>
