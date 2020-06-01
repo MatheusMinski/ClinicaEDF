@@ -79,7 +79,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-
     Route::get('/lista/alunos/treinamento/status/{id}', ['as' => 'treinamento.status', 'uses' => 'AlunosController@treinamentoStatus']);
 
     Route::get('/lista/alunos/treinamentos/{id}', ['as' => 'aluno.treinamentos', 'uses' => 'AlunosController@treinamentos']);
