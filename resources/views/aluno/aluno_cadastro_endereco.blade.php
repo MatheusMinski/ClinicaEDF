@@ -6,7 +6,10 @@
     <div class="container" >
         <!--FORMULÁRIO DE CADASTRO-->
         <div id="cadastro">
+
+         
             <form method="post" action="{{route('')}}">
+
                 {{csrf_field()}}
 
                 <br/><br/>
@@ -40,6 +43,8 @@
                 <label for="">CEP</label>
                 <input name="cep" id="" value="" type="text" class="form-control" placeholder="">
                 <br/><br/>
+
+
 
 
 

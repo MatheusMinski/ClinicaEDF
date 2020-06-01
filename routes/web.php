@@ -64,7 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/lista/alunos/cadastro/dados', ['as' => 'aluno.cadastro.dados', 'uses' => 'AlunosController@cadastroDados']);
-    Route::get('/lista/alunos/cadastro/endereco', ['as' => 'aluno.cadastro.endereco', 'uses' => 'AlunosController@cadastroEndereco']);
+    Route::post('/lista/alunos/cadastro/endereco', ['as' => 'aluno.cadastro.endereco', 'uses' => 'AlunosController@cadastroEndereco']);
     Route::get('/lista/alunos/cadastro/anamnese', ['as' => 'aluno.cadastro.anamnese', 'uses' => 'AlunosController@cadastroAnamnese']);
     Route::get('/lista/alunos/cadastro/avaliacaoFuncional', ['as' => 'aluno.cadastro.avaliacao', 'uses' => 'AlunosController@avaliacaoFuncional']);
     Route::get('/lista/alunos/cadastro/emergencia', ['as' => 'aluno.cadastro.emergencia', 'uses' => 'AlunosController@cadastroEmergencia']);
@@ -73,6 +73,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/lista/alunos/cadastro/perfilBioquimico', ['as' => 'aluno.cadastro.perfilBioquimico', 'uses' => 'AlunosController@cadastroPerfilBioquimico']);
     Route::get('/lista/alunos/cadastro/examesAdicionais', ['as' => 'aluno.cadastro.exames', 'uses' => 'AlunosController@cadastroexamesAdicionais']);
     Route::get('/lista/alunos/cadastro/consultas', ['as' => 'aluno.cadastro.consultas', 'uses' => 'AlunosController@cadastroConsultas']);
+
+    Route::post('/lista/alunos/cadastro/salvar', ['as' => 'aluno.cadastro.salvar', 'uses' => 'AlunosController@cadastroSalvar']);
+
 
 
 

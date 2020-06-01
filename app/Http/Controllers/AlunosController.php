@@ -158,9 +158,11 @@ class AlunosController extends Controller
             return redirect()->back()->withErrors(['Permissão negada']);
         }
 
-
-
         return view('aluno.aluno_treinamentos', compact('treinamentos'));
+    }
+
+    public function cadastroSalvar(){
+        return $this->index();
     }
 
 }

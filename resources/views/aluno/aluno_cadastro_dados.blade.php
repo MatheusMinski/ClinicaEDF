@@ -3,6 +3,7 @@
 @section('titulo','Dados Principais')
 
 @section('conteudo')
+
 <div class="container">
     <!--FORMULÁRIO DE CADASTRO-->
     <div id="cadastro">
@@ -106,6 +107,10 @@
     </div>
 </div>
 </div>
+
+
+
+
 
 
 
