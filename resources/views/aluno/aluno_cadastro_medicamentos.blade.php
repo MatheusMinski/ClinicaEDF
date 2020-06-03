@@ -38,7 +38,7 @@
             <br /><br />
 
             <label for="">Data que iniciou o uso do medicamento</label>
-            <input value="" name="inicio" class="form-control" required="required" maxlength="50" type="date" placeholder="" />
+            <input value="" name="inicio" class="form-control" required="required" maxlength="50" id="Data" placeholder="00/00/0000" />
             <br /><br />
 
 
@@ -52,6 +52,12 @@
     </div>
 </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('#Data').mask('99/99/9999');
+    });
+</script>
 
 
 

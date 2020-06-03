@@ -84,6 +84,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/lista/alunos/treinamentos/{id}', ['as' => 'aluno.treinamentos', 'uses' => 'AlunosController@treinamentos']);
 
+
     Route::get('/lista/alunos/treinamentos/adicionar/{idAluno}', ['as' => 'aluno.treinamento.adicionar', 'uses' => 'AlunosController@treinamentoAdicionar']);
 
     // lista de presença
