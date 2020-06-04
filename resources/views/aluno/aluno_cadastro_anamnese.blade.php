@@ -93,7 +93,7 @@
             <br /><br />
 
             <label for="">Se sim, em que data:</label>
-            <input name="" id="" value="" type="date" class="form-control" placeholder="">
+            <input name=""  value="" class="form-control" id = "Data" placeholder="00/00/0000">
             <br /><br />
 
             <label for="">Se sim, foi hospitalizado?</label>
@@ -219,5 +219,10 @@
 </div>
 
 
+<script>
+    $(document).ready(function(){
+        $('#Data').mask('99/99/9999');
+    });
+</script>
 
 @endsection

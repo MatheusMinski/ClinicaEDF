@@ -23,7 +23,7 @@
             <br /><br />
 
             <label for="">Data Aproximada</label>
-            <input value="" name="dataAproximada" class="form-control" required="required" maxlength="50" type="date" placeholder="" />
+            <input value="" name="dataAproximada" class="form-control" required="required" maxlength="50" id="Data" placeholder="00/00/0000" />
             <br /><br />
 
             <label for="">Especialidade</label>
@@ -47,6 +47,11 @@
 </div>
 </div>
 
+<script>
+    $(document).ready(function(){
+        $('#Data').mask('99/99/9999');
+    });
+</script>
 
 
 @endsection

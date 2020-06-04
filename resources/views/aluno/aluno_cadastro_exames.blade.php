@@ -29,7 +29,7 @@
             <br /><br />
 
             <label for="">Data que foi realizado</label>
-            <input value="" name="dataExame" class="form-control" required="required" maxlength="50" type="date" placeholder="" />
+            <input value="" name="dataExame" class="form-control" required="required" maxlength="50" id="Data" placeholder="00/00/0000" />
             <br /><br />
 
 
@@ -49,6 +49,11 @@
 </div>
 </div>
 
+<script>
+    $(document).ready(function(){
+        $('#Data').mask('99/99/9999');
+    });
+</script>
 
 
 @endsection

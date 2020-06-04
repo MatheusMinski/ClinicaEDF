@@ -32,7 +32,7 @@
                 <br /><br />
 
                 <label for="">Data de Nascimento</label>
-                <input id="" name="dataNasc" required="required" type="date" placeholder="" class="validate" />
+                <input id="Data" name="dataNasc" required="required" type="date" placeholder="00/00/0000" class="validate" />
                 <br /><br />
 
 
@@ -110,6 +110,11 @@
 
 
 
+    <script>
+        $(document).ready(function(){
+            $('#Data').mask('99/99/9999');
+        });
+    </script>
 
 
 
