@@ -48,6 +48,8 @@
                    value="{{$registro->nomeEquipamento}}"></input><br/>
             <input type="hidden" style="width: 200px" name="idEquipamento" required
                    value="{{$registro->id}}"></input>
+            <input type="hidden" style="width: 200px" name="numeroPatrimonio" required
+                   value="{{$registro->numeroPatrimonio}}"></input>
 
         </div>
 

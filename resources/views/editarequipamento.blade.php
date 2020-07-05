@@ -32,6 +32,10 @@
                 <input style="width: 430px" name="nomeEquipamento" class="form-control" required value ="{{$registro->nomeEquipamento}}" type="text" placeholder=""  />
                 <br/><br/>
 
+                <label style="">Numero do patrimônio</label><br/>
+                <input style="width: 430px" name="numeroPatrimonio" class="form-control" required value ="{{$registro->numeroPatrimonio}}" type="text" placeholder=""  />
+                <br/><br/>
+
 
                 <label>Adicionar Quantidade</label><br/>
                 <input style="width: 60px" name="quantidadeAdicionar" min="1" type="number" placeholder="Ex.: 3">

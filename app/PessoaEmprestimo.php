@@ -12,7 +12,7 @@ class PessoaEmprestimo extends Model
     protected $table = 'PessoaEmprestimo';
     protected $fillable = [
         'idProfessor', 'idEquipamento', 'nomeProfessorEmprestimo', 'nomePessoaEmprestimo',
-        'nomeEquipamentoEmprestimo', 'cpfPessoaEmprestimo', 'dataDevolucao', 'quantidade',
+        'nomeEquipamentoEmprestimo', 'numeroPatrimonio', 'cpfPessoaEmprestimo', 'dataDevolucao', 'quantidade',
     ];
 
 

@@ -74,7 +74,7 @@
             <input type='number' id='' name='circunferenciaPescoco' class="form-control">
             <br/><br/>
 
-            <h4>Bioimpedência</h4>
+            <h4>Bioimpedância</h4>
             <br/>
             <label for="">Massa magra (%)</label>
             <input type='number' id='' name='massaMagra' class="form-control">
@@ -137,7 +137,7 @@
             <input type='number' id='' name='pressaoManualEsquerda' class="form-control">
             <br/><br/>
 
-            <h6>Sentar-levantar cadeira</h6>
+            <h4>Sentar-levantar cadeira</h4>
             <br/>
             <label for="">Rep</label>
             <input type='number' id='' name='sentarLevantarCadeiraRep' class="form-control">
@@ -156,7 +156,7 @@
             <input type='number' id='' name='pedometroTeste6Min' class="form-control">
             <br/>
 
-            <h6>FC teste de 6 minutos</h6>
+            <h4>FC teste de 6 minutos</h4>
             <br/>
             <label for="">Minuto 1</label>
             <input type='number' id='' name='fcTeste6Min1' class="form-control">
@@ -177,7 +177,7 @@
             <input type='number' id='' name='fcTeste6Min6' class="form-control">
             <br/><br/>
 
-            <h6>BORG CR-10 Teste de 6 minutos</h6>
+            <h4>BORG CR-10 Teste de 6 minutos</h4>
             <br/>
             <label for="">Minuto 1</label>
             <input type='number' id='' name='borgCR101' class="form-control">
@@ -198,7 +198,7 @@
             <input type='number' id='' name='borgCR106' class="form-control">
             <br/><br/>
 
-            <h6>FC Recuperação</h6>
+            <h4>FC Recuperação</h4>
             <br/>
             <label for="">Minuto 1</label>
             <input type='number' id='' name='fcRecuperacaoUmMin' class="form-control">
@@ -210,7 +210,7 @@
             <input type='number' id='' name='fcRecuperacaoDezMin' class="form-control">
             <br/><br/>
 
-            <h6>PAS Teste 6 minutos (mmHg)</h6>
+            <h4>PAS Teste 6 minutos (mmHg)</h4>
             <br/>
             <label for="">Minuto 1</label>
             <input type='number' id='' name='pasTesteUmMin' class="form-control">
@@ -222,7 +222,7 @@
             <input type='number' id='' name='pasTesteDezMin' class="form-control">
             <br/><br/>
 
-            <h6>PAD Teste 6 minutos (mmHg)</h6>
+            <h4>PAD Teste 6 minutos (mmHg)</h4>
             <br/>
             <label for="">Minuto 1</label>
             <input type='number' id='' name='padTesteUmMin' class="form-control">

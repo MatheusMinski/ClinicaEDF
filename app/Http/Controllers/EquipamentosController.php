@@ -17,6 +17,7 @@ class EquipamentosController extends Controller
             'nomeEquipamento' => $dados['nomeEquipamento'],
             'quantidadeDisponivel' => $dados['quantidadeDisponivel'],
             'quantidadeTotal' => $dados['quantidadeDisponivel'],
+            'numeroPatrimonio' => $dados['numeroPatrimonio'],
         ]);
 
 
@@ -49,6 +50,7 @@ class EquipamentosController extends Controller
         }else{
             Equipamento::find($id)->update([
                 'nomeEquipamento' => $dados['nomeEquipamento'],
+                'numeroPatrimonio' => $dados['numeroPatrimonio'],
                 'quantidadeDisponivel' => $quantidadeD - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
                 'quantidadeTotal' => $quantidadeT - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
             ]);
@@ -86,5 +88,17 @@ class EquipamentosController extends Controller
         $registro = Equipamento::find($id);
 
         return view('emprestimos.indexemprestimo', compact('registro'));
+    }
+
+    public function procurar(Request $req){
+        $nome = $req->all();
+        $nome = $nome['nomeEquipamento'];
+
+        $equipamentos = Equipamento::where('nomeEquipamento','ILIKE','%'.$nome.'%')->orWhere('numeroPatrimonio','ILIKE','%'.$nome.'%')->paginate(4);
+
+        if(count($equipamentos) > 0)
+            return view('listaequipamentos', compact('equipamentos'));
+        else
+            return view ('listaequipamentos', compact('equipamentos'))->withErrors(['Equipamento não encontrado']);
     }
 }

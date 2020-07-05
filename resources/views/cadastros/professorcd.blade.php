@@ -37,12 +37,6 @@
                             <div>
                                 <div class="input-group col-md-4 f-left">
                                     <input required minlength="6" maxlength="21" name="password" class="password form-control" id="user_password2" data-component="password-strength" data-monitor-id="password-strength-monitor" type="password">
-                                    <a class=" input-group-addon toggle-pass ico-eye" data-classtoggle="ico-eye,ico-eye-blocked" data-target="#user_password2" href="#"></a>
-                                </div>
-
-                                <div class="password-strength">
-                                    <p>Força da senha</p>
-                                    <div id="password-strength-monitor" class="monitor"></div>
                                 </div>
                             </div>
 

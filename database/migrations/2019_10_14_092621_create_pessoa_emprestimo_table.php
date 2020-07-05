@@ -21,6 +21,7 @@ class CreatePessoaEmprestimoTable extends Migration
             $table->string('nomePessoaEmprestimo', 50);
             $table->string('cpfPessoaEmprestimo', 15);
             $table->string('nomeEquipamentoEmprestimo', 50);
+            $table->string('numeroPatrimonio', 20);
             $table->date('dataDevolucao');
             $table->integer('quantidade');
             $table->boolean('devolvido')->default(false);

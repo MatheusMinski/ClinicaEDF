@@ -14,6 +14,7 @@
                     <th>Professor</th>
                     <th>Aluno</th>
                     <th>Equipamento</th>
+                    <th>Nº Patrimônio</th>
                     <th>Data Devolução</th>
                     <th>Quantidade</th>
                 </tr>
@@ -24,6 +25,7 @@
                         <td>{{ $emprestimo->nomeProfessorEmprestimo }}</td>
                         <td>{{ $emprestimo->nomePessoaEmprestimo }}</td>
                         <td>{{ $emprestimo->nomeEquipamentoEmprestimo }}</td>
+                        <td>{{ $emprestimo->numeroPatrimonio }}</td>
                         <td>{{ date('d/m/Y', strtotime($emprestimo->dataDevolucao)) }}</td>
                         <td>{{ $emprestimo->quantidade }}</td>
                         <td>
