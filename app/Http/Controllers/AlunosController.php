@@ -145,7 +145,6 @@ class AlunosController extends Controller
         return view('aluno.aluno_treinamentos', compact('treinamentos','idAluno'));
     }
 
-
     public function treinamentoAdicionar($idAluno){
         $idProfessor = Auth::user()->idProfessor;
         $idProfessorAluno = Aluno::find($idAluno)->idProfessor;

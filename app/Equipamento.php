@@ -9,7 +9,7 @@ class Equipamento extends Model
     protected $table = 'Equipamentos';
 
     protected $fillable = [
-        'id', 'nomeEquipamento', 'quantidadeTotal', 'quantidadeDisponivel',
+        'id', 'nomeEquipamento', 'numeroPatrimonio', 'quantidadeTotal', 'quantidadeDisponivel',
     ];
 
 }

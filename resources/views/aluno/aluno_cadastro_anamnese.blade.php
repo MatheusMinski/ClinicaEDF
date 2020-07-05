@@ -156,7 +156,7 @@
             </select>
             <br /><br />
 
-            <label for="">Possui problem cárdiaco supervisionado?</label>
+            <label for="">Possui problema cárdiaco supervisionado?</label>
             <select id='' name="problemaCardiacoSupervisionado" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="true">Sim</option>
@@ -180,7 +180,7 @@
             </select>
             <br /><br />
 
-            <label for="">Teve perde de consciência ou tontura ?</label>
+            <label for="">Teve perda de consciência ou tontura ?</label>
             <select id='' name="perderConscienciaTontura" class="browser-default">
                 <option disabled selected value>Selecione Uma Opção</option>
                 <option value="true">Sim</option>

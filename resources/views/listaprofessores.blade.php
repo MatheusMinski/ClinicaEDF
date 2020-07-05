@@ -5,7 +5,7 @@
 @section('conteudo')
     <div class="container">
         <br/>
-        <h3 class="center">Profesores Cadastrados</h3>
+        <h3 class="center">Professores Cadastrados</h3>
         <br/><br/>
         @if(isset($errors) && count ($errors) > 0)
             <div class="alert alert-danger">

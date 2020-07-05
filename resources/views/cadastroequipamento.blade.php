@@ -18,6 +18,11 @@
                 <input name="nomeEquipamento" class="form-control" required="required" type="text" placeholder="" />
                 <br/><br/>
 
+                <label >Número do patrimônio</label>
+                <input name="numeroPatrimonio" class="form-control" required="required" type="text" placeholder="" />
+                <br/><br/>
+
+
 
                 <label>Unidades Disponíveis</label>
                 <input name="quantidadeDisponivel" type="number" min="1" placeholder="Ex.: 3">

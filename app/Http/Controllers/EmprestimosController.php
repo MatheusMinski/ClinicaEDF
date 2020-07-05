@@ -29,6 +29,8 @@ class EmprestimosController extends Controller
 
         $quantidadeAnterior = Equipamento::find($dados['idEquipamento'])->quantidadeDisponivel;
 
+        $numeroPat = Equipamento::find($dados['idEquipamento'])->numeroPatrimonio;
+
 
 
         //verificação de cpf tem que ser em outro try catch
@@ -76,6 +78,7 @@ class EmprestimosController extends Controller
                     'nomeProfessorEmprestimo' => $user['nome'],
                     'nomePessoaEmprestimo' => $dados['nomePessoaEmprestimo'],
                     'nomeEquipamentoEmprestimo' => $dados['nomeEquipamento'],
+                    'numeroPatrimonio' => $numeroPat,
                     'cpfPessoaEmprestimo' => $dados['cpfPessoaEmprestimo'],
                     'quantidade' => $dados['quantidade'],
                     'dataDevolucao' => $dados['dataDevolucao'],
