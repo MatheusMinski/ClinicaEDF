@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Request as Request2;
 use Illuminate\Http\Request;
 use App\Equipamento;
+
+
 
 class EquipamentosController extends Controller
 {
@@ -91,11 +93,12 @@ class EquipamentosController extends Controller
     }
 
     public function procurar(Request $req){
-        $nome = $req->all();
-        $nome = $nome['nomeEquipamento'];
+        $pesquisa = $req->get('pesquisa');
+
+        $nome = $pesquisa;
 
         $equipamentos = Equipamento::where('nomeEquipamento','ILIKE','%'.$nome.'%')->orWhere('numeroPatrimonio','ILIKE','%'.$nome.'%')->paginate(4);
-
+        $equipamentos->appends(Request2::all())->links();
         if(count($equipamentos) > 0)
             return view('listaequipamentos', compact('equipamentos'));
         else
