@@ -23,6 +23,15 @@
                     <th>Telefone</th>
                     <th>Email</th>
                     <th>Data de registro</th>
+                    <form action={{route('professores.procurar')}} method="POST" role="search">
+                        {{ csrf_field() }}
+                        <th>
+                            <input type="text" class="form-control" name="nomeProfessor"
+                                   placeholder="Procurar Professores">
+                        <th>
+                            <button type="submit" class="btn btn-default">Procurar</button>
+                        </th>
+                    </form>
                 </tr>
                 </thead>
                 <tbody>

@@ -6,6 +6,13 @@
     <div class="container" style="width: 100%">
         <br/>
         <h3 class="center">Empréstimos Realizados</h3>
+        @if(isset($errors) && count ($errors) > 0)
+            <div class="alert alert-danger" >
+                @foreach($errors->all() as $error)
+                    <p align="center">{{$error}}</p>
+                @endforeach
+            </div>
+        @endif
         <br/><br/><br/>
         <div class="row">
             <table>
@@ -17,6 +24,21 @@
                     <th>Nº Patrimônio</th>
                     <th>Data Devolução</th>
                     <th>Quantidade</th>
+                    <form action={{route('emprestimos.procurar')}} method="GET" role="search">
+                        <th>
+                            <input type="text" class="form-control" name="nomeEmprestimo"
+                                   placeholder="Procurar Emprestimos">
+                        </th>
+                        <th>
+                            <label>
+                                <input type="checkbox" checked="checked" name="checkbox" />
+                                <span>Devolvido</span>
+                            </label>
+                        </th>
+                        <th>
+                            <button type="submit" class="btn btn-default">Procurar</button>
+                        </th>
+                    </form>
                 </tr>
                 </thead>
                 <tbody>

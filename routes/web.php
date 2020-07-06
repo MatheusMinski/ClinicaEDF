@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/permissaonegada', ['as' => 'permissao.negada', 'uses' => 'LoginProfessorController@permissaoNegada']);
 
+    Route::post('/lista/professor/procurar', ['as' => 'professores.procurar', 'uses' => 'CadastroProfessorController@procurar']);
+
 
 //Emprestimo
     Route::get('/index/emprestimo/{id}', ['as' => 'emprestimo', 'uses' => 'EquipamentosController@emprestimo']);
@@ -42,6 +44,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/lista/emprestimo/dados/{idEquipamento}', ['as' => 'emprestimos.dados', 'uses' => 'EmprestimosController@dados']);
 
     Route::get('/esprestimo/devolver/{idEquipamento}/{quantidade}/{idEmprestimo}', ['as' => 'emprestimos.devolver', 'uses' => 'EmprestimosController@devolver']);
+
+    Route::get('/esprestimo/procurar', ['as' => 'emprestimos.procurar', 'uses' => 'EmprestimosController@procurar']);
 
 
 //Equipamento
@@ -57,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::put('/equipamento/editar/update/{id}', ['as' => 'equipamentos.editar.salvar', 'uses' => 'EquipamentosController@update']);
 
-    Route::post('/equipamento/procurar', ['as' => 'equipamentos.procurar', 'uses' => 'EquipamentosController@procurar']);
+    Route::get('/equipamento/procurar', ['as' => 'equipamentos.procurar', 'uses' => 'EquipamentosController@procurar']);
 
     //Aluno
     Route::get('/lista/espera', ['as' => 'lista.espera', 'uses' => 'AlunosController@listaEspera']);

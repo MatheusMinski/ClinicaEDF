@@ -21,12 +21,10 @@
                     <th class="center">Nº do Patrimônio</th>
                     <th class="center">Quantidade Total</th>
                     <th class="center">Quantidade Disponível</th>
-                    <form action={{route('equipamentos.procurar')}} method="POST" role="search">
-                        {{ csrf_field() }}
+                    <form action={{route('equipamentos.procurar')}} method="GET">
                         <th>
-                        <th>
-                            <input type="text" class="form-control" name="nomeEquipamento"
-                                   placeholder="Procurar Equipamentos">
+                            <input type="search" class="form-control" name="pesquisa"
+                                   placeholder="Procurar Emprestimos">
                         </th>
                         <th>
                             <button type="submit" class="btn btn-default">Procurar</button>

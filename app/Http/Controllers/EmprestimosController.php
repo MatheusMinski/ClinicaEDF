@@ -7,6 +7,7 @@ use App\PessoaEmprestimo;
 use Illuminate\Http\Request;
 use App\Equipamento;
 use DateTime;
+use Illuminate\Support\Facades\Request as Request2;
 use Carbon\Carbon;
 
 
@@ -123,17 +124,45 @@ class EmprestimosController extends Controller
 
 
 
-          public function listagem(){
-           $emprestimos = PessoaEmprestimo::paginate(4);
-            return view('emprestimos.listaemprestimo', compact('emprestimos'));
-         }
+    public function listagem(){
+        $emprestimos = PessoaEmprestimo::paginate(4);
+        return view('emprestimos.listaemprestimo', compact('emprestimos'));
+    }
 
-        public function dados($id){
-            $dados = PessoaEmprestimo::find($id);
-            //$dataDigitada = DateTime::createFromFormat('d/m/Y', $dados['dataDevolucao']);
-            //dd($dados['dataDevolucao']);
-            return view('emprestimos.dados_emprestimo', compact('dados'));
+    public function dados($id){
+        $dados = PessoaEmprestimo::find($id);
+        //$dataDigitada = DateTime::createFromFormat('d/m/Y', $dados['dataDevolucao']);
+        //dd($dados['dataDevolucao']);
+        return view('emprestimos.dados_emprestimo', compact('dados'));
+    }
+
+    public function procurar(Request $req){
+        $pesquisa = $req->get('nomeEmprestimo');
+
+        $status = $req->get('checkbox');
+
+        $nome = $pesquisa;
+
+
+
+
+        if(isset($status)){
+            $status = 'True';
+        }else{
+            $status = 'False';
         }
 
+        if($nome == null){
+            $emprestimos = PessoaEmprestimo::where('nomeEquipamentoEmprestimo','ILIKE','%'.$nome.'%')->paginate(4);
+            return view('emprestimos.listaemprestimo', compact('emprestimos'));
+        }
 
+        $emprestimos = PessoaEmprestimo::where('nomeEquipamentoEmprestimo','ILIKE','%'.$nome.'%')->where('devolvido','ILIKE','%'.$status.'%')->paginate(4);
+
+        $emprestimos->appends(Request2::all())->links();
+        if(count($emprestimos) > 0)
+            return view('emprestimos.listaemprestimo', compact('emprestimos'));
+        else
+            return view ('emprestimos.listaemprestimo', compact('emprestimos'))->withErrors(['Empréstimo não encontrado']);
+    }
 }
