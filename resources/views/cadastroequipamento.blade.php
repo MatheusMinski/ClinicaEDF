@@ -12,8 +12,15 @@
 
                 <br/><br/>
                 <h4>Cadastro de Novo Equipamento</h4>
-                <br/><br/>
-
+                <div style="padding: 30px; color: red" class="center">
+                    @if(isset($errors) && count ($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
                 <label >Nome ou Descrição</label>
                 <input name="nomeEquipamento" class="form-control" required="required" type="text" placeholder="" />
                 <br/><br/>

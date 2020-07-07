@@ -12,15 +12,16 @@
 
                     <br/><br/>
                     <h4>Cadastro de Professor</h4>
-                    <br/><br/>
-                    @if(isset($errors) && count ($errors) > 0)
-                        <div class="alert alert-danger">
-                            @foreach($errors->all() as $error)
-                                <p>{{$error}}</p>
-                            @endforeach
-                        </div>
-                    @endif
-                    <br/><br/>
+
+                    <div style="padding: 30px; color: red" class="center">
+                        @if(isset($errors) && count ($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <p>{{$error}}</p>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
 
                     <label for="nome_cad">Nome Completo</label>
                     <input value="{!! old('nome') !!}" name="nome" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />

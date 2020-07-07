@@ -15,18 +15,16 @@
 
                 <br/><br/>
                 <h4 style="">Edição de Equipamento</h4>
-                <br/><br/>
 
-                <br/>
-
-                @if(isset($errors) && count ($errors) > 0)
-                    <div class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                            <p>{{$error}}</p>
-                        @endforeach
-                    </div>
-                @endif
-                <br/><br/>
+                <div style="padding: 30px; color: red" class="center">
+                    @if(isset($errors) && count ($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
 
                 <label style="">Nome ou Descrição</label><br/>
                 <input style="width: 430px" name="nomeEquipamento" class="form-control" required value ="{{$registro->nomeEquipamento}}" type="text" placeholder=""  />

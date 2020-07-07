@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\PessoaEmprestimo;
 use Illuminate\Support\Facades\Request as Request2;
 use Illuminate\Http\Request;
 use App\Equipamento;
@@ -15,12 +16,19 @@ class EquipamentosController extends Controller
         $dados = $req->all();
 
 
-        Equipamento::create([
-            'nomeEquipamento' => $dados['nomeEquipamento'],
-            'quantidadeDisponivel' => $dados['quantidadeDisponivel'],
-            'quantidadeTotal' => $dados['quantidadeDisponivel'],
-            'numeroPatrimonio' => $dados['numeroPatrimonio'],
-        ]);
+        try{
+            Equipamento::create([
+                'nomeEquipamento' => $dados['nomeEquipamento'],
+                'quantidadeDisponivel' => $dados['quantidadeDisponivel'],
+                'quantidadeTotal' => $dados['quantidadeDisponivel'],
+                'numeroPatrimonio' => $dados['numeroPatrimonio'],
+            ]);
+
+        }catch(\Exception $e){
+            return redirect()->back()->withErrors(['Número do patrimônio já cadastrado']);
+        }
+
+
 
 
         return redirect()->route('lista.equipamentos');
@@ -39,6 +47,14 @@ class EquipamentosController extends Controller
         $dados = $req->all();
 
         $teste=Equipamento::find($id);
+
+        $emprestimos = PessoaEmprestimo::where('idEquipamento', '=', $id)->get();
+
+        foreach($emprestimos as $emprestimo){
+            $emprestimo['nomeEquipamentoEmprestimo'] = $dados['nomeEquipamento'];
+            $emprestimo['numeroPatrimonio'] = $dados['numeroPatrimonio'];
+            $emprestimo->update();
+        }
 
         $quantidadeT = $teste -> quantidadeTotal;
 
@@ -82,7 +98,7 @@ class EquipamentosController extends Controller
 
 
     public function index(){
-     $equipamentos = Equipamento::paginate(4);
+     $equipamentos = Equipamento::orderBy('nomeEquipamento')->paginate(4);
      return view('listaequipamentos', compact('equipamentos'));
     }
 
