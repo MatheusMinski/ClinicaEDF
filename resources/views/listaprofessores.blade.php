@@ -7,13 +7,15 @@
         <br/>
         <h3 class="center">Professores Cadastrados</h3>
         <br/><br/>
-        @if(isset($errors) && count ($errors) > 0)
-            <div class="alert alert-danger">
-                @foreach($errors->all() as $error)
-                    <p align="center">{{$error}}</p>
-                @endforeach
-            </div>
-        @endif
+        <div style="padding: 30px; color: red" class="center">
+            @if(isset($errors) && count ($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                </div>
+            @endif
+        </div>
         <br/><br/>
         <div class="row">
             <table>

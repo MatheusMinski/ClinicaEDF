@@ -15,15 +15,15 @@
 
 
                 <h4>Login</h4>
-                <br/><br/>
-
-                @if(isset($errors) && count ($errors) > 0)
-                    <div class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                            <p>{{$error}}</p>
-                        @endforeach
-                    </div>
-                @endif
+                <div style="padding: 30px; color: red" class="center">
+                    @if(isset($errors) && count ($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
 
                 <div class="input-field" >
                 <input id="email" required name="email" height="10px" style="width:350px; border-radius: 20px" type="text" class="validate" placeholder="E-mail"/>

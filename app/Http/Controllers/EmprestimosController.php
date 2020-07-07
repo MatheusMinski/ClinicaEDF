@@ -125,7 +125,7 @@ class EmprestimosController extends Controller
 
 
     public function listagem(){
-        $emprestimos = PessoaEmprestimo::paginate(4);
+        $emprestimos = PessoaEmprestimo::orderBy('devolvido')->paginate(4);
         return view('emprestimos.listaemprestimo', compact('emprestimos'));
     }
 

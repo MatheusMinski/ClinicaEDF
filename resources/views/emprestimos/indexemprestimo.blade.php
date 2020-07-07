@@ -6,16 +6,15 @@
 
     <form align="center" action="{{route('emprestimo.finalizar', $registro)}}">
 
-        <br/>
-
-        @if(isset($errors) && count ($errors) > 0)
-            <div class="alert alert-danger">
-                @foreach($errors->all() as $error)
-                    <p>{{$error}}</p>
-                @endforeach
-            </div>
-        @endif
-        <br/><br/>
+        <div style="padding: 30px; color: red" class="center">
+            @if(isset($errors) && count ($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                </div>
+            @endif
+        </div>
 
         <div class="form-group">
             <label>Nome Completo</label>
