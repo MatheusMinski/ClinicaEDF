@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\StatusProfessor;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
+use DateTime;
 
 class LoginProfessorController extends Controller
 {
@@ -53,6 +55,15 @@ class LoginProfessorController extends Controller
 
         $prof->update();
 
+        $data_agora = new DateTime();
+
+        StatusProfessor::create([
+            'id_professor' => $id,
+            'is_active' => "Inativado",
+            'date' => $data_agora,
+        ]);
+
+
         return redirect()->route('lista.professor');
 
     }
@@ -65,7 +76,23 @@ class LoginProfessorController extends Controller
 
         $prof->update();
 
+        $data_agora = new DateTime();
+
+        StatusProfessor::create([
+            'id_professor' => $id,
+            'is_active' => "Reativado",
+            'date' => $data_agora,
+        ]);
+
         return redirect()->route('lista.professor');
+
+    }
+
+    public function status($id){
+
+        $datas = StatusProfessor::where('id_professor', '=', $id)->paginate(10);
+
+        return view('status_professor', compact('datas'));
 
     }
 

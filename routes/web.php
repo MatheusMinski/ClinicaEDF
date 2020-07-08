@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/lista/professor/procurar', ['as' => 'professores.procurar', 'uses' => 'CadastroProfessorController@procurar']);
 
+    Route::get('/professor/status/{id}', ['as' => 'professor.status', 'uses' => 'LoginProfessorController@status']);
+
 
 //Emprestimo
     Route::get('/index/emprestimo/{id}', ['as' => 'emprestimo', 'uses' => 'EquipamentosController@emprestimo']);
