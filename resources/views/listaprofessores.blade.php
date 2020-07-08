@@ -24,7 +24,7 @@
                     <th>Nome</th>
                     <th>Telefone</th>
                     <th>Email</th>
-                    <th>Data de registro</th>
+                    <th>Histórico</th>
                     <form action={{route('professores.procurar')}} method="POST" role="search">
                         {{ csrf_field() }}
                         <th>
@@ -42,7 +42,7 @@
                         <td>{{ $registro->nome }}</td>
                         <td>{{ $registro->telefone }}</td>
                         <td>{{ $registro->email }}</td>
-                        <td>{{ $registro->created_at }}</td>
+                        <td><a class="btn yellow" href="{{route('professor.status',$registro->idProfessor)}}">Histórico</a></td>
                         @if($registro->ativo)
                             <td>
                                 <a class="btn red"
