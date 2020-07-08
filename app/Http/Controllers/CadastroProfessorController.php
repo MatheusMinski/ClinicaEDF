@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Endereco;
+use App\StatusProfessor;
 use App\User;
 use DateTime;
 use Illuminate\Http\Request;
@@ -65,7 +66,7 @@ class CadastroProfessorController extends Controller
         $dataConvertida = DateTime::createFromFormat('m/d/Y', $dados['dataNasc']);
         $dados['dataNasc'] = $dataConvertida;
         try{
-            User::create([
+            $novoProf = User::create([
                 'nome' => $dados['nome'],
                 'email' => $dados['email'],
                 'password' => bcrypt($dados['password']),
@@ -73,6 +74,15 @@ class CadastroProfessorController extends Controller
                 'telefone' => $dados['telefone'],
                 'dataNasc' => $dados['dataNasc'],
             ]);
+
+            $data_agora2 = new DateTime();
+
+            StatusProfessor::create([
+                'id_professor' => $novoProf->idProfessor,
+                'is_active' => "Cadastrado",
+                'date' => $data_agora2,
+            ]);
+
 
         }catch(\Exception $e){
             return redirect()->back()->withErrors(['CPF ou e-mail já cadastrado']);

@@ -16,7 +16,7 @@ class CreateStatusProfessorsTable extends Migration
         Schema::create('status_professors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_professor');
-            $table->boolean('is_active');
+            $table->string('is_active',10);
             $table->date('date');
 
             $table->foreign('id_professor')->references('idProfessor')->on('Users');
