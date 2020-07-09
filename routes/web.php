@@ -65,6 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/equipamento/procurar', ['as' => 'equipamentos.procurar', 'uses' => 'EquipamentosController@procurar']);
 
+    Route::get('/equipamento/classificacao', ['as' => 'equipamentos.classificacao', 'uses' => 'EquipamentosController@classificacao']);
+
     //Aluno
     Route::get('/lista/espera', ['as' => 'lista.espera', 'uses' => 'AlunosController@listaEspera']);
 

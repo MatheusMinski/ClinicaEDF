@@ -1,8 +1,8 @@
 @extends('layout.site')
 
-@section('titulo','Cursos')
+@section('titulo','Lista de Equipamentos')
 @section('conteudo')
-    <div class="container">
+    <div class="container" style="width: 100%">
         <br/>
         <h3 class="center">Equipamentos</h3>
         <div style="padding: 30px; color: red" class="center">
@@ -14,11 +14,13 @@
                 </div>
             @endif
         </div>
+
         <div class="row">
             <table>
                 <thead>
                 <tr>
                     <th class="center" >Nome</th>
+                    <th class="center" >Classificação</th>
                     <th class="center">Nº do Patrimônio</th>
                     <th class="center">Quantidade Total</th>
                     <th class="center">Quantidade Disponível</th>
@@ -31,6 +33,9 @@
                             <button type="submit" class="btn btn-default">Procurar</button>
                         </th>
                     </form>
+                    <th>
+                        <a class="btn blue-grey" href="javascript:newPopup()">Classificações</a>
+                    </th>
 
                 </tr>
                 </thead>
@@ -38,6 +43,7 @@
                 @foreach($equipamentos as $equipamento)
                     <tr >
                         <td class="center">{{ $equipamento->nomeEquipamento }}</td>
+                        <td class="center">{{ $equipamento->classificacao }}</td>
                         <td class="center">{{ $equipamento->numeroPatrimonio }}</td>
                         <td class="center">{{ $equipamento->quantidadeTotal }}</td>
                         <td class="center">{{ $equipamento->quantidadeDisponivel }}</td>
@@ -67,6 +73,11 @@
 
     </div>
 
+    <script>
+        function newPopup(){
+            varWindow = window.open ('{{route('equipamentos.classificacao')}}', 'popup', "width=350, height=255, top=100, left=110, scrollbars=no " )
+        }
+    </script>
 
 
 @endsection

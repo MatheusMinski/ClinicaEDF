@@ -25,6 +25,11 @@
                 <input name="nomeEquipamento" class="form-control" required="required" type="text" placeholder="" />
                 <br/><br/>
 
+                <label >Classificação</label>
+                <input name="classificacao" class="form-control" required="required" type="text" placeholder="" />
+                <a class="btn blue-grey" href="javascript:newPopup()">Classificações</a>
+                <br/><br/>
+
                 <label >Número do patrimônio</label>
                 <input name="numeroPatrimonio" class="form-control" required="required" type="text" placeholder="" />
                 <br/><br/>
@@ -46,6 +51,12 @@
         </div>
     </div>
     </div>
+
+    <script>
+        function newPopup(){
+            varWindow = window.open ('{{route('equipamentos.classificacao')}}', 'popup', "width=350, height=255, top=100, left=110, scrollbars=no " )
+        }
+    </script>
 
 @endsection
 

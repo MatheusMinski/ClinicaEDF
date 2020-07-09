@@ -19,6 +19,7 @@ class EquipamentosController extends Controller
         try{
             Equipamento::create([
                 'nomeEquipamento' => $dados['nomeEquipamento'],
+                'classificacao' => $dados['classificacao'],
                 'quantidadeDisponivel' => $dados['quantidadeDisponivel'],
                 'quantidadeTotal' => $dados['quantidadeDisponivel'],
                 'numeroPatrimonio' => $dados['numeroPatrimonio'],
@@ -52,6 +53,7 @@ class EquipamentosController extends Controller
 
         foreach($emprestimos as $emprestimo){
             $emprestimo['nomeEquipamentoEmprestimo'] = $dados['nomeEquipamento'];
+            $emprestimo['classificacao'] = $dados['classificacao'];
             $emprestimo['numeroPatrimonio'] = $dados['numeroPatrimonio'];
             $emprestimo->update();
         }
@@ -68,6 +70,7 @@ class EquipamentosController extends Controller
         }else{
             Equipamento::find($id)->update([
                 'nomeEquipamento' => $dados['nomeEquipamento'],
+                'classificacao' => $dados['classificacao'],
                 'numeroPatrimonio' => $dados['numeroPatrimonio'],
                 'quantidadeDisponivel' => $quantidadeD - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
                 'quantidadeTotal' => $quantidadeT - $dados['quantidadeRemover'] + $dados['quantidadeAdicionar'],
@@ -113,11 +116,16 @@ class EquipamentosController extends Controller
 
         $nome = $pesquisa;
 
-        $equipamentos = Equipamento::where('nomeEquipamento','ILIKE','%'.$nome.'%')->orWhere('numeroPatrimonio','ILIKE','%'.$nome.'%')->paginate(4);
+        $equipamentos = Equipamento::where('nomeEquipamento','ILIKE','%'.$nome.'%')->orWhere('numeroPatrimonio','ILIKE','%'.$nome.'%')->orWhere('classificacao','ILIKE','%'.$nome.'%')->paginate(4);
         $equipamentos->appends(Request2::all())->links();
         if(count($equipamentos) > 0)
             return view('listaequipamentos', compact('equipamentos'));
         else
             return view ('listaequipamentos', compact('equipamentos'))->withErrors(['Equipamento não encontrado']);
+    }
+
+    public function classificacao(){
+        $equipamentos = Equipamento::distinct('classificacao')->orderBy('classificacao')->paginate(4);
+        return view('equipamentos_classificacao', compact('equipamentos'));
     }
 }
