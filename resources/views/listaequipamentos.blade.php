@@ -25,12 +25,29 @@
                     <form action={{route('equipamentos.procurar')}} method="GET">
                         <th>
                             <input type="search" class="form-control" name="pesquisa"
-                                   placeholder="Procurar Emprestimos">
+                                   placeholder="Procurar Equipamentos">
                         </th>
                         <th>
                             <button type="submit" class="btn btn-default">Procurar</button>
                         </th>
                     </form>
+<<<<<<< Updated upstream
+=======
+                    <th>
+                        <button data-target="modal1" class="btn modal-trigger">Classes</button>
+                    </th>
+                    <div id="modal1" class="modal">
+                        <div class="modal-content center">
+                            <h4>Classificações usadas:</h4>
+                            @foreach($classes as $classe)
+                                <h5 style="padding-top: 3vh">{{$classe -> classificacao}}</h5>
+                            @endforeach
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+                        </div>
+                    </div>
+>>>>>>> Stashed changes
 
                 </tr>
                 </thead>
@@ -63,10 +80,16 @@
         <div class="row" align="center">
             {{$equipamentos->links('vendor.pagination.materializecss')}}
         </div>
-
-
     </div>
 
+<<<<<<< Updated upstream
+=======
+    <script>
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+    </script>
+>>>>>>> Stashed changes
 
 
 @endsection
