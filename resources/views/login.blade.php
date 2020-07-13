@@ -37,7 +37,7 @@
 
                 <div align="center" class="row">
                     <div><button type="submit" class="btn blue">Entrar</button>
-                    <button class="btn green" href="{{route('password.request')}}">Esqueci minha senha</button></div>
+                    <a class="btn green" href="{{route('password.request')}}">Esqueci minha senha</a></div>
                 </div>
 
             </form>

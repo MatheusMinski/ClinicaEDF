@@ -25,11 +25,6 @@
                 <input name="nomeEquipamento" class="form-control" required="required" type="text" placeholder="" />
                 <br/><br/>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
                 <div class="row">
                     <div class="col s12">
                         <div class="row">
@@ -58,7 +53,7 @@
 
                 <br/><br/>
 
->>>>>>> Stashed changes
+
                 <label >Número do patrimônio</label>
                 <input name="numeroPatrimonio" class="form-control" required="required" type="text" placeholder="" />
                 <br/><br/>
@@ -81,8 +76,6 @@
     </div>
     </div>
 
-<<<<<<< Updated upstream
-=======
     <script>
         $(document).ready(function(){
             $('input.autocomplete').autocomplete({
@@ -98,7 +91,7 @@
         });
     </script>
 
->>>>>>> Stashed changes
+
 @endsection
 
 

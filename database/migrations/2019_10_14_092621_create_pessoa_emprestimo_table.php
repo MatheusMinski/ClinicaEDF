@@ -19,6 +19,7 @@ class CreatePessoaEmprestimoTable extends Migration
             $table->integer('idEquipamento');
             $table->string('nomeProfessorEmprestimo', 50);
             $table->string('nomePessoaEmprestimo', 50);
+            $table->string('contato', 50);
             $table->string('cpfPessoaEmprestimo', 15);
             $table->string('nomeEquipamentoEmprestimo', 50);
             $table->string('numeroPatrimonio', 20);

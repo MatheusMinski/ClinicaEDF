@@ -1,6 +1,6 @@
 @extends ('layout.site')
 
-@section('titulo', 'Cadastro De Professores')
+@section('titulo', 'Emprestar')
 
 @section('conteudo')
 
@@ -30,7 +30,11 @@
             <input value="{!! old('cpfPessoaEmprestimo') !!}" name="cpfPessoaEmprestimo" id="cpfPessoaEmprestimo" style="width:250px" id="cpfEmp" type="text" class="form-control cpf-mask"
                    placeholder="Ex.: 000.000.000-00">
         </div>
-
+        <div style="padding-bottom: 20px; padding-top: 20px">
+            <label  for="example1" class="sr-only">Contato</label><br/>
+            <input value="{!! old('contato') !!}" type="text" name="contato" id="contato" style="width:250px" id="contato"
+                   placeholder="Telefone ou e-mail">
+        </div>
         <div style="padding-bottom: 20px; padding-top: 20px">
             <label  for="example1" class="sr-only">Data de Devolução</label><br/>
             <input value="{!! old('dataDevolucao') !!}" type="text" name="dataDevolucao" id="dataDevolucao" style="width:250px" class="form-control date-mask" id="example1"

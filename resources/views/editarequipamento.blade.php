@@ -30,6 +30,10 @@
                 <input style="width: 430px" name="nomeEquipamento" class="form-control" required value ="{{$registro->nomeEquipamento}}" type="text" placeholder=""  />
                 <br/><br/>
 
+                <label style="">Classificação</label><br/>
+                <input style="width: 430px" name="classificacao" class="form-control" required value ="{{$registro->classificacao}}" type="text" placeholder=""  />
+                <br/><br/>
+
                 <label style="">Numero do patrimônio</label><br/>
                 <input style="width: 430px" name="numeroPatrimonio" class="form-control" required value ="{{$registro->numeroPatrimonio}}" type="text" placeholder=""  />
                 <br/><br/>

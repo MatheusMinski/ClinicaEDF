@@ -1,6 +1,6 @@
 @extends ('layout.site')
 
-@section('titulo', 'Cadastro De Professores')
+@section('titulo', 'Home')
 
 @section('conteudo')
     <!doctype html>
