@@ -120,6 +120,9 @@ class EquipamentosController extends Controller
 =======
         $equipamentos = Equipamento::where('nomeEquipamento','ILIKE','%'.$nome.'%')->orWhere('numeroPatrimonio','ILIKE','%'.$nome.'%')->orWhere('classificacao','ILIKE','%'.$nome.'%')->paginate(4);
         $classes = Equipamento::distinct('classificacao')->orderBy('classificacao')->paginate(4);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         $equipamentos->appends(Request2::all())->links();
         if(count($equipamentos) > 0)
@@ -130,5 +133,8 @@ class EquipamentosController extends Controller
 <<<<<<< Updated upstream
 =======
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

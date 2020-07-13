@@ -66,7 +66,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/equipamento/procurar', ['as' => 'equipamentos.procurar', 'uses' => 'EquipamentosController@procurar']);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 
 >>>>>>> Stashed changes
     //Aluno

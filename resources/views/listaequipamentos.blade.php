@@ -47,6 +47,9 @@
                             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
                         </div>
                     </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
                 </tr>

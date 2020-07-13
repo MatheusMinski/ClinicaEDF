@@ -26,7 +26,10 @@
                 <br/><br/>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
                 <div class="row">
                     <div class="col s12">
                         <div class="row">
