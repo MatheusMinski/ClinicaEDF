@@ -7,7 +7,7 @@
     <div class="container" >
         <!--FORMULÁRIO DE CADASTRO-->
         <div id="cadastro">
-            <form method="post" action="{{route('salvar.equipamento')}}">
+            <form method="post" action="{{route('salvar.equipamento')}}" autocomplete="off">
                 {{csrf_field()}}
 
                 <br/><br/>
@@ -25,10 +25,35 @@
                 <input name="nomeEquipamento" class="form-control" required="required" type="text" placeholder="" />
                 <br/><br/>
 
-                <label >Classificação</label>
-                <input name="classificacao" class="form-control" required="required" type="text" placeholder="" />
-                <a class="btn blue-grey" href="javascript:newPopup()">Classificações</a>
+
+                <div class="row">
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+
+                                <input style="width: 50%" type="text" id="autocomplete-input" class="autocomplete" name="classificacao">
+                                <button data-target="modal1" class="btn modal-trigger">Classes</button>
+                                <label for="autocomplete-input">Classificação</label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal1" class="modal">
+                    <div class="modal-content center">
+                        <h4>Classificações usadas:</h4>
+                        @foreach($classes as $classe)
+                            <h5 style="padding-top: 3vh">{{$classe -> classificacao}}</h5>
+                        @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+                    </div>
+                </div>
+
                 <br/><br/>
+
 
                 <label >Número do patrimônio</label>
                 <input name="numeroPatrimonio" class="form-control" required="required" type="text" placeholder="" />
@@ -53,10 +78,20 @@
     </div>
 
     <script>
-        function newPopup(){
-            varWindow = window.open ('{{route('equipamentos.classificacao')}}', 'popup', "width=350, height=255, top=100, left=110, scrollbars=no " )
-        }
+        $(document).ready(function(){
+            $('input.autocomplete').autocomplete({
+                data: {
+                    @foreach($classes as $classe)
+                    "{{$classe -> classificacao}}": null,
+                    @endforeach
+                },
+            });
+        });
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
     </script>
+
 
 @endsection
 

@@ -96,13 +96,15 @@ class EquipamentosController extends Controller
     }
 
     public function cadastro(){
-        return view('cadastroequipamento');
+        $classes = Equipamento::distinct('classificacao')->orderBy('classificacao')->paginate(4);
+        return view('cadastroequipamento',compact('classes'));
     }
 
 
     public function index(){
      $equipamentos = Equipamento::orderBy('nomeEquipamento')->paginate(4);
-     return view('listaequipamentos', compact('equipamentos'));
+     $classes = Equipamento::distinct('classificacao')->orderBy('classificacao')->paginate(4);
+     return view('listaequipamentos', compact('equipamentos', 'classes'));
     }
 
     public function emprestimo($id){
@@ -116,16 +118,17 @@ class EquipamentosController extends Controller
 
         $nome = $pesquisa;
 
+
         $equipamentos = Equipamento::where('nomeEquipamento','ILIKE','%'.$nome.'%')->orWhere('numeroPatrimonio','ILIKE','%'.$nome.'%')->orWhere('classificacao','ILIKE','%'.$nome.'%')->paginate(4);
+        $classes = Equipamento::distinct('classificacao')->orderBy('classificacao')->paginate(4);
+
         $equipamentos->appends(Request2::all())->links();
+      
         if(count($equipamentos) > 0)
-            return view('listaequipamentos', compact('equipamentos'));
+            return view('listaequipamentos', compact('equipamentos', 'classes'));
         else
-            return view ('listaequipamentos', compact('equipamentos'))->withErrors(['Equipamento não encontrado']);
+            return view ('listaequipamentos', compact('equipamentos', 'classes'))->withErrors(['Equipamento não encontrado']);
     }
 
-    public function classificacao(){
-        $equipamentos = Equipamento::distinct('classificacao')->orderBy('classificacao')->paginate(4);
-        return view('equipamentos_classificacao', compact('equipamentos'));
-    }
+
 }
