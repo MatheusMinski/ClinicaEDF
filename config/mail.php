@@ -29,7 +29,11 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp-mail.outlook.com'),
+    'from' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'ecaeef@ogmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Fábrica de Software'),
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +46,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,11 +58,6 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
     */
-
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
 
     /*
     |--------------------------------------------------------------------------

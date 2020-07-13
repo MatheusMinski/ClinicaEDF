@@ -44,7 +44,8 @@ class EmprestimosController extends Controller
             'dataDevolucao.required' => 'O campo de Data de Devolução é de preenchimento obrigatório.',
             'dataDevolucao.min' => 'O campo de Data de Devolução deve conter no mínimo 8 caracteres.',
             'quantidade' => 'O campo de Quantidade é de preenchimento obrigatório.',
-            'nomePessoaEmprestimo.alpha' => 'O campo de Nome deve conter apenas letras.'
+            'nomePessoaEmprestimo.alpha' => 'O campo de Nome deve conter apenas letras.',
+            'contato.required' => 'Contato obrigatório'
         ];
 
 
@@ -78,6 +79,7 @@ class EmprestimosController extends Controller
                     'idEquipamento' => $dados['idEquipamento'],
                     'nomeProfessorEmprestimo' => $user['nome'],
                     'nomePessoaEmprestimo' => $dados['nomePessoaEmprestimo'],
+                    'contato' => $dados['contato'],
                     'nomeEquipamentoEmprestimo' => $dados['nomeEquipamento'],
                     'numeroPatrimonio' => $numeroPat,
                     'cpfPessoaEmprestimo' => $dados['cpfPessoaEmprestimo'],
@@ -153,11 +155,11 @@ class EmprestimosController extends Controller
         }
 
         if($nome == null){
-            $emprestimos = PessoaEmprestimo::where('nomeEquipamentoEmprestimo','ILIKE','%'.$nome.'%')->paginate(4);
+            $emprestimos = PessoaEmprestimo::where('nomeEquipamentoEmprestimo','ILIKE','%'.$nome.'%')->where('devolvido','ILIKE','%'.$status.'%')->orWhere('numeroPatrimonio','ILIKE','%'.$nome.'%')->where('devolvido','ILIKE','%'.$status.'%')->paginate(4);
             return view('emprestimos.listaemprestimo', compact('emprestimos'));
         }
 
-        $emprestimos = PessoaEmprestimo::where('nomeEquipamentoEmprestimo','ILIKE','%'.$nome.'%')->where('devolvido','ILIKE','%'.$status.'%')->paginate(4);
+        $emprestimos = PessoaEmprestimo::where('nomeEquipamentoEmprestimo','ILIKE','%'.$nome.'%')->where('devolvido','ILIKE','%'.$status.'%')->orWhere('numeroPatrimonio','ILIKE','%'.$nome.'%')->where('devolvido','ILIKE','%'.$status.'%')->paginate(4);
 
         $emprestimos->appends(Request2::all())->links();
         if(count($emprestimos) > 0)

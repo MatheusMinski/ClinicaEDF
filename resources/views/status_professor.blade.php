@@ -1,6 +1,6 @@
 @extends('layout.site')
 
-@section('titulo','Cursos')
+@section('titulo','Status Professor')
 @section('conteudo')
     <div class="container">
         <br/>
@@ -27,7 +27,7 @@
                 @foreach($datas as $data)
                     <tr >
                         <td class="center">{{ $data->is_active }}</td>
-                        <td class="center">{{ $data->date }}</td>
+                        <td class="center">{{date('d/m/Y', strtotime($data->date)) }}</td>
                     </tr>
                 @endforeach
                 </tbody>

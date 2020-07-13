@@ -15,11 +15,11 @@ class UsersSeeder extends Seeder
     {
         DB::table('Users')->insert([
             'idProfessor'=> 0,
-            'nome' => 'Marcos',
-            'telefone' =>'33265986',
-            'dataNasc' =>'07/07/2000',
-            'email'=> 'admin@admin.com',
-            'password' => bcrypt('lucasflamenguista'),
+            'nome' => 'Marcos Roberto Queiroga',
+            'telefone' =>'999999999',
+            'dataNasc' =>'07/07/1990',
+            'email'=> 'queiroga@unicentro.br',
+            'password' => bcrypt('novaSenha'),
             'cpf' => '123.456.789-19',
             'type' => 'admin',
         ]);

@@ -11,7 +11,7 @@ class PessoaEmprestimo extends Model
 
     protected $table = 'PessoaEmprestimo';
     protected $fillable = [
-        'idProfessor', 'idEquipamento', 'nomeProfessorEmprestimo', 'nomePessoaEmprestimo',
+        'idProfessor', 'idEquipamento', 'nomeProfessorEmprestimo', 'nomePessoaEmprestimo', 'contato',
         'nomeEquipamentoEmprestimo', 'numeroPatrimonio', 'cpfPessoaEmprestimo', 'dataDevolucao', 'quantidade',
     ];
 
@@ -21,5 +21,6 @@ class PessoaEmprestimo extends Model
         'cpfPessoaEmprestimo' => 'required|cpf',
         'dataDevolucao' => 'required|min:10',
         'quantidade' => 'required',
+        'contato' => 'required',
     ];
 }

@@ -1,6 +1,6 @@
 @extends('layout.site')
 
-@section('titulo','Cursos')
+@section('titulo','Status')
 
 @section('conteudo')
     <div class="container center" style="width: 100%">
