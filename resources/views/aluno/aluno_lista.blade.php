@@ -19,13 +19,17 @@
                 <thead>
                 <tr>
                     <th>Nome</th>
-                    <th>Dados</th>
+                    <th>Dados Pessoais</th>
+                    <th>Treinamentos</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($alunos as $aluno)
                     <tr>
                         <td>{{ $aluno->nome }}</td>
+                        <td>
+                            <a class="btn deep green" href="{{route('aluno.dados.pessoais', $aluno->id)}}">Dados Pessoais</a>
+                        </td>
                         <td>
                             <a class="btn deep orange" href="{{route('aluno.treinamentos',$aluno->id)}}">Treinamentos</a>
                         </td>

@@ -28,7 +28,10 @@ class AlunosController extends Controller
         return view('aluno.aluno_lista', compact('alunos'));
     }
 
-
+    public function dadosPessoais($id){
+        $dados = Aluno::where('id', '=', $id)->get()->first();
+        return view('aluno.aluno_dados_pessoais', compact('dados'));
+    }
 
     public function cadastroDados(){
         return view('aluno.aluno_cadastro_dados');
@@ -45,8 +48,6 @@ class AlunosController extends Controller
     public function avaliacaoFuncional(){
         return view('aluno.aluno_cadastro_avaliacaoFuncional');
     }
-
-
 
     public function cadastroAnamnese(){
         return view('aluno.aluno_cadastro_anamnese');
@@ -133,8 +134,8 @@ class AlunosController extends Controller
 
         $aluno = Aluno::find($id);
 
-        return view('aluno.aluno_status', compact('aluno', 'anamnese','contatosDeEmergencias','avaliacaoFuncional',
-        'qualidadeDeVidas', 'usoMedicamentosContinuos', 'perfilBioquimico', 'examesAdicionais', 'quantasConsultas', 'enderecos'));
+        return view('aluno.aluno_status', compact('aluno', 'anamnese','avaliacaoFuncional',
+        'qualidadeDeVidas', 'usoMedicamentosContinuos', 'perfilBioquimico', 'examesAdicionais', 'quantasConsultas'));
     }
 
     public function treinamentos($id){
