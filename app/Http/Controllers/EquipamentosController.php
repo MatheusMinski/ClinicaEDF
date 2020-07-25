@@ -123,7 +123,7 @@ class EquipamentosController extends Controller
         $classes = Equipamento::distinct('classificacao')->orderBy('classificacao')->paginate(4);
 
         $equipamentos->appends(Request2::all())->links();
-      
+
         if(count($equipamentos) > 0)
             return view('listaequipamentos', compact('equipamentos', 'classes'));
         else

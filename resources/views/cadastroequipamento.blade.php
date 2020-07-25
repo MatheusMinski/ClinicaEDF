@@ -25,7 +25,6 @@
                 <input name="nomeEquipamento" class="form-control" required="required" type="text" placeholder="" />
                 <br/><br/>
 
-
                 <div class="row">
                     <div class="col s12">
                         <div class="row">
