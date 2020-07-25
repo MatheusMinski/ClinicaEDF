@@ -8,7 +8,7 @@
     <div class="container">
         <!--FORMULÁRIO DE CADASTRO-->
         <div id="cadastro">
-            <form method="post" action="{{route('aluno.cadastro.dados.salvar')}}">
+            <form method="post" action="{{route('aluno.cadastro.dados.salvar')}}" autocomplete="off">
                 {{csrf_field()}}
 
                 <br /><br />
@@ -24,7 +24,7 @@
                 <br /><br />
 
                 <label for="">Nome</label>
-                <input name="nome" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                <input name="nome"  class="form-control" required="required" maxlength="50" type="text" placeholder="" />
                 <br /><br />
 
                 <label for="">Email</label>
@@ -52,7 +52,7 @@
                 <br /><br />
 
                 <label for="isAposentado">É aposentado?</label>
-                <select id='isAposentado' name="aposentado" class="browser-default">
+                <select  id='isAposentado' name="aposentado" class="browser-default" required>
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="true">Sim</option>
                     <option value="false">Não</option>
@@ -61,7 +61,7 @@
 
 
                 <label for="">Estado Civil</label>
-                <select id="" name="estadoCivil" class="browser-default">
+                <select id="" name="estadoCivil" class="browser-default" required>
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="Casado">Casado</option>
                     <option value="Divorciado">Divorciado</option>
@@ -73,7 +73,7 @@
 
 
                 <label for="">Escolaridade</label>
-                <select id="" name="escolaridade" class="browser-default">
+                <select id="" name="escolaridade" class="browser-default" required>
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="Nenhuma">Nenhuma</option>
                     <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
@@ -87,7 +87,7 @@
 
 
                 <label for="">Classe Social Familia</label>
-                <select id="" name="classeSocialFamilia" class="browser-default">
+                <select id="" name="classeSocialFamilia" class="browser-default" required>
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="Menos de um salário mínimo">Menos de um salário mínimo</option>
                     <option value="3-5 salários mínimos">Entre 3 e 5 salários mínimos</option>

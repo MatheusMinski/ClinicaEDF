@@ -66,7 +66,7 @@ return [
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'integra'),
+            'database' => env('DB_DATABASE', 'ecaeef'),
             'username' => env('DB_USERNAME', 'postgres'),
             'password' => env('DB_PASSWORD', 'banco123456'),
             'charset'  => 'utf8',

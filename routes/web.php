@@ -65,12 +65,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/equipamento/procurar', ['as' => 'equipamentos.procurar', 'uses' => 'EquipamentosController@procurar']);
 
-  
+
     //Aluno
     Route::get('/lista/espera', ['as' => 'lista.espera', 'uses' => 'AlunosController@listaEspera']);
 
     Route::get('/lista/alunos', ['as' => 'aluno.lista', 'uses' => 'AlunosController@index']);
 
+    Route::get('/lista/aluno/dadospessoais/{id}', ['as' => 'aluno.dados.pessoais', 'uses' => 'AlunosController@dadosPessoais']);
 
     Route::get('/lista/alunos/cadastro/dados', ['as' => 'aluno.cadastro.dados', 'uses' => 'AlunosController@cadastroDados']);
     Route::post('/lista/alunos/cadastro/dados/salvar', ['as' => 'aluno.cadastro.dados.salvar', 'uses' => 'AlunosController@cadastroSalvarDados']);
