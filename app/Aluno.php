@@ -11,7 +11,7 @@ class Aluno extends Model
 
 
     protected $fillable = [
-        'nome', 'dataNasc', 'idade', 'sexo','email','profissao','aposentado','estadoCivil','escolaridade','classeSocialFamilia',
+        'idProfessor','nome', 'dataNasc', 'idade', 'sexo', 'telefone','email','profissao','aposentado','estadoCivil','escolaridade','classeSocialFamilia',
     ];
 
 }

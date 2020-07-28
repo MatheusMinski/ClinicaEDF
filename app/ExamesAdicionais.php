@@ -8,7 +8,7 @@ class ExamesAdicionais extends Model
 {
     protected $table = 'ExamesAdicionais';
     protected $fillable = [
-        'integer', 'tipoDoExame','dataExame','resultadosPrincipais'
+        'idTreinamento', 'tipoDoExame','dataExame','resultadosPrincipais'
 
     ];
 }

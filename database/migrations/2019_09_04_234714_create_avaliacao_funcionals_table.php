@@ -14,7 +14,8 @@ class CreateAvaliacaoFuncionalsTable extends Migration
     public function up()
     {
         Schema::create('AvaliacaoFuncional', function (Blueprint $table) {
-            $table->integer('id');
+            $table->bigIncrements('id');
+            $table->integer('idTreinamento');
             $table->integer('pressaoArterialPAS');
             $table->integer('pressaoArterialPAD');
             $table->decimal('freqCardiacaMedia',3,1);
@@ -33,7 +34,6 @@ class CreateAvaliacaoFuncionalsTable extends Migration
             $table->integer('sentarEAlcancarMaior');
             $table->integer('ombroDireito');
             $table->integer('ombroEsquerdo');
-            $table->integer('deslizamentoDaPele');
             $table->integer('apoioUnipodalDireita');
             $table->integer('apoioUnipodalEsquerda');
             $table->decimal('alcanceFuncional',3,1);
@@ -41,8 +41,6 @@ class CreateAvaliacaoFuncionalsTable extends Migration
             $table->decimal('pressaoManualEsquerda',3,1);
             $table->integer('sentarLevantarCadeiraRep');
             $table->integer('sentarLevantarCadeiraFCMax');
-            $table->decimal('distanciaTeste6Min',5,1);
-            $table->decimal('distanciaTesteVoltas',5,1);
             $table->integer('pedometroTeste6Min');
             $table->decimal('fcTeste6Min1',4,2);
             $table->decimal('fcTeste6Min2',4,2);
@@ -50,19 +48,12 @@ class CreateAvaliacaoFuncionalsTable extends Migration
             $table->decimal('fcTeste6Min4',4,2);
             $table->decimal('fcTeste6Min5',4,2);
             $table->decimal('fcTeste6Min6',4,2);
-            $table->decimal('borgCR101',4,2);
-            $table->decimal('borgCR102',4,2);
-            $table->decimal('borgCR103',4,2);
-            $table->decimal('borgCR104',4,2);
-            $table->decimal('borgCR105',4,2);
-            $table->decimal('borgCR106',4,2);
             $table->integer('fcRecuperacaoUmMin');
+            $table->integer('fcRecuperacaoTresMin');
             $table->integer('fcRecuperacaoCincoMin');
-            $table->integer('fcRecuperacaoDezMin');
             $table->integer('pasTesteUmMin');
             $table->integer('pasTesteCincoMin');
             $table->integer('pasTesteDezMin');
-            $table->integer('v85FC');
             $table->integer('padTesteUmMin');
             $table->integer('padTesteCincoMin');
             $table->integer('padTesteDezMin');
@@ -74,8 +65,6 @@ class CreateAvaliacaoFuncionalsTable extends Migration
             $table->string('respostaTesteExtraTres', 10);
             $table->string('testeExtra4', 30);
             $table->string('respostaTesteExtraQuatro', 10);
-            $table->boolean('preOuPos');
-            $table->integer('idTreinamento');
             $table->foreign('idTreinamento')->references('id')->on('AlunoTreinamentos');
             $table->timestamps();
         });
