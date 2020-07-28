@@ -15,10 +15,10 @@ class CreateExamesAdicionaisTable extends Migration
     {
         Schema::create('ExamesAdicionais', function (Blueprint $table) {
             $table->integer('id');
+            $table->integer('idTreinamento');
             $table->string('tipoDoExame', 30);
             $table->date('dataExame');
             $table->string('resultadosPrincipais', 50);
-            $table->integer('idTreinamento');
             $table->foreign('idTreinamento')->references('id')->on('AlunoTreinamentos');
             $table->timestamps();
         });

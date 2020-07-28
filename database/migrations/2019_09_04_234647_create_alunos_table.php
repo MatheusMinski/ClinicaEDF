@@ -20,6 +20,7 @@ class CreateAlunosTable extends Migration
             $table->date('dataNasc');
             $table->integer('idade');
             $table->char('sexo');
+            $table->string('telefone',30);
             $table->string('email',30);
             $table->string('profissao',20);
             $table->boolean('aposentado');
