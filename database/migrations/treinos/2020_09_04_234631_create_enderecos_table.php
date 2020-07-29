@@ -22,7 +22,6 @@ class CreateEnderecosTable extends Migration
             $table->string('cidade', 30);
             $table->string('cep', 15);
             $table->foreign('idAluno')->references('id')->on('Alunos');
-
             $table->timestamps();
         });
     }

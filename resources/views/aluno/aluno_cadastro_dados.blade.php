@@ -23,8 +23,15 @@
                 @endif
                 <br /><br />
 
+                <input type="hidden" style="width: 200px" name="idProfessor" required
+                       value="{{Auth::id()}}">
+
                 <label for="">Nome</label>
                 <input name="nome"  class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                <br /><br />
+
+                <label for="">Telefone</label>
+                <input name="telefone" id="telefone" required="required" type="text" class="form-control" placeholder="">
                 <br /><br />
 
                 <label for="">Email</label>
@@ -32,7 +39,11 @@
                 <br /><br />
 
                 <label for="">Data de Nascimento</label>
-                <input id="Data" name="dataNasc" required="required" type="date" placeholder="00/00/0000" class="validate" />
+                <input id="Data" name="dataNasc" required="required" type="text" placeholder="dd/mm/aaaa" class="validate" />
+                <br /><br />
+
+                <label for="">Idade</label>
+                <input id="Idade" name="idade" required="required" type="text" class="validate" />
                 <br /><br />
 
 
@@ -54,8 +65,8 @@
                 <label for="isAposentado">É aposentado?</label>
                 <select  id='isAposentado' name="aposentado" class="browser-default" required>
                     <option disabled selected value>Selecione Uma Opção</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Não</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
                 </select>
                 <br /><br />
 
@@ -113,6 +124,9 @@
     <script>
         $(document).ready(function(){
             $('#Data').mask('99/99/9999');
+        });
+        $(document).ready(function(){
+            $('#telefone').mask('(99) 9 9999-9999');
         });
     </script>
 

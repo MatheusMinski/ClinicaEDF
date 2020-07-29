@@ -8,7 +8,7 @@
         <div id="cadastro">
 
 
-            <form method="post" action="{{route('aluno.cadastro.endereco')}}">
+            <form method="post" action="{{route('aluno.cadastro.endereco.salvar')}}">
 
                 {{csrf_field()}}
 
@@ -23,6 +23,9 @@
                     </div>
                 @endif
                 <br/><br/>
+
+                <input name="idAluno" value="{{$idAluno}}" type="hidden"/>
+
 
                 <label for="">Rua</label>
                 <input value="" name="rua" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
@@ -41,15 +44,11 @@
                 <br/><br/>
 
                 <label for="">CEP</label>
-                <input name="cep" id="" value="" type="text" class="form-control" placeholder="">
+                <input name="cep" id="cep" value="" type="text" class="form-control" placeholder="">
                 <br/><br/>
 
 
-
-
-
-                // TODO: Após finalizar esse form, redirecionar para a página de status do aluno cadastrado.
-                <a class="btn blue" href="{{route('aluno.lista')}}">Finalizar &raquo</a>
+                <button type="submit" class="btn blue" >Finalizar &raquo</button>
                 <br/><br/><br/><br/>
 
             </form>
@@ -59,6 +58,11 @@
     </div>
     </div>
 
+    <script>
+        $(document).ready(function(){
+            $('#cep').mask('00.000-000');
+        });
+    </script>
 
 
 @endsection

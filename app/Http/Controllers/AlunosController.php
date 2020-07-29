@@ -11,6 +11,7 @@ use App\Endereco;
 use App\ExamesAdicionais;
 use App\PerfilBioquimico;
 use App\QualidadeDeVida;
+use App\User;
 use App\UsoMedicamentosContinuos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,67 +19,42 @@ use mysql_xdevapi\Exception;
 
 class AlunosController extends Controller
 {
+
+    //Exibir Dados Pessoais
     public function listaEspera ()
     {
         return view('listaespera');
     }
 
     public function index(){
-        $alunos = Aluno::paginate(4);
+        $id = Auth::user()->idProfessor;
+        $alunos =  Aluno::where('idProfessor', '=', $id)->paginate(4);
         return view('aluno.aluno_lista', compact('alunos'));
     }
 
     public function dadosPessoais($id){
-        $dados = Aluno::where('id', '=', $id)->get()->first();
-        return view('aluno.aluno_dados_pessoais', compact('dados'));
+        $dadosAluno = Aluno::where('id', '=', $id)->get()->first();
+        $dadosEnderecoBanco = Endereco::where('id', '=', $id)->get()->first();
+
+        if($dadosEnderecoBanco == null){
+            $dadosEndereco = ["rua"=>"Não cadastrado",
+                "bairro"=>"Não cadastrado",
+                "cidade"=>"Não cadastrado",
+                "cep"=>"Não cadastrado",
+                "numero"=>"Não cadastrado"];
+        }else{
+            $dadosEndereco = ["rua"=>$dadosEnderecoBanco['rua'],
+                "bairro"=>$dadosEnderecoBanco['bairro'],
+                "cidade"=>$dadosEnderecoBanco['cidade'],
+                "cep"=>$dadosEnderecoBanco['cep'],
+                "numero"=>$dadosEnderecoBanco['numero']
+            ];
+        }
+        return view('aluno.aluno_dados_pessoais', compact('dadosAluno','dadosEndereco'));
     }
+    //-----------------------------
 
-    public function cadastroDados(){
-        return view('aluno.aluno_cadastro_dados');
-    }
-    public function cadastroSalvarDados(Request $req){
-        $dados = $req->all();
-        dd($dados);
-    }
-
-    public function cadastroEndereco(){
-        return view('aluno.aluno_cadastro_endereco');
-    }
-
-    public function avaliacaoFuncional(){
-        return view('aluno.aluno_cadastro_avaliacaoFuncional');
-    }
-
-    public function cadastroAnamnese(){
-        return view('aluno.aluno_cadastro_anamnese');
-    }
-
-    public function cadastroEmergencia(){
-        return view('aluno.aluno_cadastro_emergencia');
-    }
-
-    public function cadastroQualidadeVida(){
-        return view('aluno.aluno_cadastro_qualidadeVida');
-    }
-
-    public function cadastroMedicamentos(){
-        return view('aluno.aluno_cadastro_medicamentos');
-    }
-
-    public function cadastroPerfilBioquimico(){
-        return view('aluno.aluno_cadastro_perfilBioquimico');
-    }
-
-    public function cadastroexamesAdicionais(){
-        return view('aluno.aluno_cadastro_exames');
-    }
-
-    public function cadastroConsultas(){
-        return view('aluno.aluno_cadastro_consultas');
-    }
-
-
-
+    //Exibir Dados Treinamentos
     public function treinamentoStatus($id){
 
         $anamneseTeste = Anamnese::where('idTreinamento', '=', $id)->paginate(4);
@@ -135,7 +111,7 @@ class AlunosController extends Controller
         $aluno = Aluno::find($id);
 
         return view('aluno.aluno_status', compact('aluno', 'anamnese','avaliacaoFuncional',
-        'qualidadeDeVidas', 'usoMedicamentosContinuos', 'perfilBioquimico', 'examesAdicionais', 'quantasConsultas'));
+            'qualidadeDeVidas', 'usoMedicamentosContinuos', 'perfilBioquimico', 'examesAdicionais', 'quantasConsultas'));
     }
 
     public function treinamentos($id){
@@ -145,6 +121,9 @@ class AlunosController extends Controller
 
         return view('aluno.aluno_treinamentos', compact('treinamentos','idAluno'));
     }
+//-----------------------------
+
+//Criar Novos Treinamentos
 
     public function treinamentoAdicionar($idAluno){
         $idProfessor = Auth::user()->idProfessor;
@@ -165,9 +144,121 @@ class AlunosController extends Controller
 
         return view('aluno.aluno_treinamentos', compact('treinamentos'));
     }
+    //-----------------------------
 
-    public function cadastroSalvar(){
-        return $this->index();
+    //CRUD Dados Pessoais
+
+    public function cadastroDados(){
+        return view('aluno.aluno_cadastro_dados');
     }
+    public function cadastroDadosSalvar(Request $req){
+        $dados = $req->all();
+
+        try{
+            $alunoNovo = Aluno::create($dados);
+            $idAluno = $alunoNovo['id'];
+            return $this->cadastroEndereco($idAluno);
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+
+    }
+
+    public function dadosEditar(){
+
+    }
+//-----------------------------
+
+    //CRUD Enderecos
+
+    public function cadastroEndereco($idAluno){
+        return view('aluno.aluno_cadastro_endereco', compact('idAluno'));
+    }
+
+    public function cadastroEnderecoSalvar(Request $req){
+        $dados = $req->all();
+
+        try{
+            Endereco::create($dados);
+            return route('aluno.lista');
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+    }
+
+    public function enderecosEditar(){
+
+    }
+//-----------------------------
+
+    //CRUD Avaliacao Funcional
+
+    public function avaliacaoFuncional(){
+        return view('aluno.aluno_cadastro_avaliacaoFuncional');
+    }
+
+    public function avaliacaoFuncionalSalvar(){
+
+    }
+
+    public function avaliacaoFuncionalEditar(){
+
+    }
+//-----------------------------
+
+    //CRUD Anamnese
+
+    public function cadastroAnamnese(){
+        return view('aluno.aluno_cadastro_anamnese');
+    }
+//-----------------------------
+
+    //CRUD Emergencia
+
+    public function cadastroEmergencia(){
+        return view('aluno.aluno_cadastro_emergencia');
+    }
+//-----------------------------
+
+    //CRUD Qualidade de Vida
+
+    public function cadastroQualidadeVida(){
+        return view('aluno.aluno_cadastro_qualidadeVida');
+    }
+//-----------------------------
+
+    //CRUD Medicamentos
+
+    public function cadastroMedicamentos(){
+        return view('aluno.aluno_cadastro_medicamentos');
+    }
+//-----------------------------
+
+    //CRUD Perfil Bioquimico
+
+    public function cadastroPerfilBioquimico(){
+        return view('aluno.aluno_cadastro_perfilBioquimico');
+    }
+//-----------------------------
+
+    //CRUD Exames Adicionais
+
+    public function cadastroexamesAdicionais(){
+        return view('aluno.aluno_cadastro_exames');
+    }
+//-----------------------------
+
+    //CRUD Consultas
+
+    public function cadastroConsultas(){
+        return view('aluno.aluno_cadastro_consultas');
+    }
+//-----------------------------
+
+
 
 }
