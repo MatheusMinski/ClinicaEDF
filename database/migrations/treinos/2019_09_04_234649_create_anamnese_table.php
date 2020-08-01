@@ -62,7 +62,6 @@ class CreateAnamneseTable extends Migration
             $table->string('exercicioFisicoRegular', 10);
             $table->string('quantasVezesSemana', 10);
             $table->integer('esforcoParaEsseExercicio');
-            $table->integer('idTreinamento');
             $table->foreign('idTreinamento')->references('id')->on('AlunoTreinamentos');
             $table->timestamps();
         });

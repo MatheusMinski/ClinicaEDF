@@ -11,6 +11,7 @@ use App\Endereco;
 use App\ExamesAdicionais;
 use App\PerfilBioquimico;
 use App\QualidadeDeVida;
+use App\User;
 use App\UsoMedicamentosContinuos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,67 +19,28 @@ use mysql_xdevapi\Exception;
 
 class AlunosController extends Controller
 {
+
+    //Sucesso no cadastro PRG
+
+    public function sucessoCadastro($idAluno){
+        return view('aluno.cadastro_sucesso', compact('idAluno'));
+    }
+
+
     public function listaEspera ()
     {
         return view('listaespera');
     }
 
     public function index(){
-        $alunos = Aluno::paginate(4);
+        $id = Auth::user()->idProfessor;
+        $alunos =  Aluno::where('idProfessor', '=', $id)->paginate(4);
         return view('aluno.aluno_lista', compact('alunos'));
     }
 
-    public function dadosPessoais($id){
-        $dados = Aluno::where('id', '=', $id)->get()->first();
-        return view('aluno.aluno_dados_pessoais', compact('dados'));
-    }
+    //-----------------------------
 
-    public function cadastroDados(){
-        return view('aluno.aluno_cadastro_dados');
-    }
-    public function cadastroSalvarDados(Request $req){
-        $dados = $req->all();
-        dd($dados);
-    }
-
-    public function cadastroEndereco(){
-        return view('aluno.aluno_cadastro_endereco');
-    }
-
-    public function avaliacaoFuncional(){
-        return view('aluno.aluno_cadastro_avaliacaoFuncional');
-    }
-
-    public function cadastroAnamnese(){
-        return view('aluno.aluno_cadastro_anamnese');
-    }
-
-    public function cadastroEmergencia(){
-        return view('aluno.aluno_cadastro_emergencia');
-    }
-
-    public function cadastroQualidadeVida(){
-        return view('aluno.aluno_cadastro_qualidadeVida');
-    }
-
-    public function cadastroMedicamentos(){
-        return view('aluno.aluno_cadastro_medicamentos');
-    }
-
-    public function cadastroPerfilBioquimico(){
-        return view('aluno.aluno_cadastro_perfilBioquimico');
-    }
-
-    public function cadastroexamesAdicionais(){
-        return view('aluno.aluno_cadastro_exames');
-    }
-
-    public function cadastroConsultas(){
-        return view('aluno.aluno_cadastro_consultas');
-    }
-
-
-
+    //Exibir Dados Treinamentos
     public function treinamentoStatus($id){
 
         $anamneseTeste = Anamnese::where('idTreinamento', '=', $id)->paginate(4);
@@ -135,7 +97,7 @@ class AlunosController extends Controller
         $aluno = Aluno::find($id);
 
         return view('aluno.aluno_status', compact('aluno', 'anamnese','avaliacaoFuncional',
-        'qualidadeDeVidas', 'usoMedicamentosContinuos', 'perfilBioquimico', 'examesAdicionais', 'quantasConsultas'));
+            'qualidadeDeVidas', 'usoMedicamentosContinuos', 'perfilBioquimico', 'examesAdicionais', 'quantasConsultas'));
     }
 
     public function treinamentos($id){
@@ -145,6 +107,9 @@ class AlunosController extends Controller
 
         return view('aluno.aluno_treinamentos', compact('treinamentos','idAluno'));
     }
+//-----------------------------
+
+//Criar Novos Treinamentos
 
     public function treinamentoAdicionar($idAluno){
         $idProfessor = Auth::user()->idProfessor;
@@ -165,9 +130,203 @@ class AlunosController extends Controller
 
         return view('aluno.aluno_treinamentos', compact('treinamentos'));
     }
+    //-----------------------------
 
-    public function cadastroSalvar(){
-        return $this->index();
+    //CRUD Dados Pessoais
+
+    public function dadosPessoais($id){
+        $dadosAluno = Aluno::where('id', '=', $id)->get()->first();
+        $dadosEnderecoBanco = Endereco::where('id', '=', $id)->get()->first();
+
+        if($dadosEnderecoBanco == null){
+            $dadosEndereco = [
+                "id" => 'Não cadastrado',
+                "idAluno" => 'Não cadastrado',
+                "rua"=>"Não cadastrado",
+                "bairro"=>"Não cadastrado",
+                "cidade"=>"Não cadastrado",
+                "cep"=>"Não cadastrado",
+                "numero"=>"Não cadastrado"];
+        }else{
+            $dadosEndereco = [
+                "id" => $dadosEnderecoBanco['id'],
+                "idAluno" => $dadosEnderecoBanco['idAluno'],
+                "rua"=>$dadosEnderecoBanco['rua'],
+                "bairro"=>$dadosEnderecoBanco['bairro'],
+                "cidade"=>$dadosEnderecoBanco['cidade'],
+                "cep"=>$dadosEnderecoBanco['cep'],
+                "numero"=>$dadosEnderecoBanco['numero']
+            ];
+        }
+        return view('aluno.aluno_dados_pessoais', compact('dadosAluno','dadosEndereco'));
     }
+
+    public function cadastroDados(){
+        return view('aluno.aluno_cadastro_dados');
+    }
+
+    public function cadastroDadosSalvar(Request $req){
+        $dados = $req->all();
+
+        try{
+            $alunoNovo = Aluno::create($dados);
+            $id = $alunoNovo['id'];
+            return redirect()->route('cadastro.sucesso',['id' => $id]);
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+
+    }
+
+    public function cadastroDadosEditar($id){
+        $dadosAluno = Aluno::find($id);
+
+        return view('aluno.aluno_editar_dados_pessoais', compact('dadosAluno'));
+    }
+
+    public function cadastroDadosUpdate(Request $req){
+        $dados = $req->all();
+        $antigo = Aluno::find($dados['id']);
+
+        try{
+
+            $antigo->nome = $dados['nome'];
+            $antigo->dataNasc = $dados['dataNasc'];
+            $antigo->idade = $dados['idade'];
+            $antigo->sexo = $dados['sexo'];
+            $antigo->telefone = $dados['telefone'];
+            $antigo->email = $dados['email'];
+            $antigo->profissao = $dados['profissao'];
+            $antigo->aposentado = $dados['aposentado'];
+            $antigo->estadoCivil = $dados['estadoCivil'];
+            $antigo->escolaridade = $dados['escolaridade'];
+            $antigo->classeSocialFamilia = $dados['classeSocialFamilia'];
+            $antigo->save();
+
+            return $this->dadosPessoais($dados['id']);
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+    }
+//-----------------------------
+
+    //CRUD Enderecos
+
+    public function cadastroEndereco($idAluno){
+        return view('aluno.aluno_cadastro_endereco', compact('idAluno'));
+    }
+
+    public function cadastroEnderecoSalvar(Request $req){
+        $dados = $req->all();
+        try{
+            Endereco::create($dados);
+            $id = "Lista de Alunos"; //indicador pro js redirecionar para a lista de alunos
+            return redirect()->route('cadastro.sucesso',['id' => $id]);
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+    }
+
+    public function cadastroEnderecoEditar($id){
+        $dadosEndereco = Endereco::find($id);
+
+        return view('aluno.aluno_editar_endereco', compact('dadosEndereco'));
+    }
+
+    public function cadastroEnderecoUpdate(Request $req){
+        $dados = $req->all();
+        $antigo = Endereco::find($dados['id']);
+
+        try{
+
+            $antigo->rua = $dados['rua'];
+            $antigo->numero = $dados['numero'];
+            $antigo->bairro = $dados['bairro'];
+            $antigo->cidade = $dados['cidade'];
+            $antigo->cep = $dados['cep'];
+            $antigo->save();
+
+            return $this->dadosPessoais($dados['idAluno']);
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+    }
+
+
+//-----------------------------
+
+    //CRUD Avaliacao Funcional
+
+    public function avaliacaoFuncional(){
+        return view('aluno.aluno_cadastro_avaliacaoFuncional');
+    }
+
+    public function avaliacaoFuncionalSalvar(){
+
+    }
+
+    public function avaliacaoFuncionalEditar(){
+
+    }
+//-----------------------------
+
+    //CRUD Anamnese
+
+    public function cadastroAnamnese(){
+        return view('aluno.aluno_cadastro_anamnese');
+    }
+//-----------------------------
+
+    //CRUD Emergencia
+
+    public function cadastroEmergencia(){
+        return view('aluno.aluno_cadastro_emergencia');
+    }
+//-----------------------------
+
+    //CRUD Qualidade de Vida
+
+    public function cadastroQualidadeVida(){
+        return view('aluno.aluno_cadastro_qualidadeVida');
+    }
+//-----------------------------
+
+    //CRUD Medicamentos
+
+    public function cadastroMedicamentos(){
+        return view('aluno.aluno_cadastro_medicamentos');
+    }
+//-----------------------------
+
+    //CRUD Perfil Bioquimico
+
+    public function cadastroPerfilBioquimico(){
+        return view('aluno.aluno_cadastro_perfilBioquimico');
+    }
+//-----------------------------
+
+    //CRUD Exames Adicionais
+
+    public function cadastroexamesAdicionais(){
+        return view('aluno.aluno_cadastro_exames');
+    }
+//-----------------------------
+
+    //CRUD Consultas
+
+    public function cadastroConsultas(){
+        return view('aluno.aluno_cadastro_consultas');
+    }
+//-----------------------------
+
+
 
 }

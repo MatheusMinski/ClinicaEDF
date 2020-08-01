@@ -11,6 +11,9 @@ class CreateAlunosTable extends Migration
      *
      * @return void
      */
+
+    //comando para rodar só ela na migrate:
+    //php artisan migrate:refresh --path=/database/migrations/2019_09_04_234647_create_alunos_table.php
     public function up()
     {
         Schema::create('Alunos', function (Blueprint $table) {
@@ -21,11 +24,11 @@ class CreateAlunosTable extends Migration
             $table->integer('idade');
             $table->char('sexo');
             $table->string('telefone',30);
-            $table->string('email',30);
+            $table->string('email',30)->nullable();
             $table->string('profissao',20);
-            $table->boolean('aposentado');
+            $table->string('aposentado', 10);
             $table->string('estadoCivil',15);
-            $table->string('escolaridade',20);
+            $table->string('escolaridade',30);
             $table->string('classeSocialFamilia',30);
             $table->foreign('idProfessor')->references('idProfessor')->on('Users');
             $table->timestamps();

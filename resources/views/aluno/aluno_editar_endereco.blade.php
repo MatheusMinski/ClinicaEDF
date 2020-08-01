@@ -8,7 +8,7 @@
         <div id="cadastro">
 
 
-            <form method="post" action="{{route('aluno.cadastro.endereco.salvar')}}">
+            <form method="post" action="{{route('aluno.cadastro.endereco.update')}}">
 
                 {{csrf_field()}}
 
@@ -24,27 +24,32 @@
                 @endif
                 <br/><br/>
 
-                <input name="idAluno" value="{{$idAluno}}" type="hidden"/>
+
+                <input type="hidden" style="width: 200px" name="id" required
+                       value="{{$dadosEndereco->id}}">
+
+                <input type="hidden" style="width: 200px" name="idAluno" required
+                       value="{{$dadosEndereco->idAluno}}">
 
 
                 <label for="">Rua</label>
-                <input value="" name="rua" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosEndereco->rua}}" name="rua" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
                 <br/><br/>
 
                 <label for="">Número</label>
-                <input id="" value="" name="numero" required="required" type="number" placeholder="" class="validate"/>
+                <input id="" value="{{$dadosEndereco->numero}}" name="numero" required="required" type="number" placeholder="" class="validate"/>
                 <br/><br/>
 
                 <label for="">Bairro</label>
-                <input name="bairro" id="" value="" type="text" class="form-control" placeholder="">
+                <input name="bairro" id="" value="{{$dadosEndereco->bairro}}" type="text" class="form-control" placeholder="">
                 <br/><br/>
 
                 <label for="">Cidade</label>
-                <input name="cidade" id="" value="" type="text" class="form-control" placeholder="">
+                <input name="cidade" id="" value="{{$dadosEndereco->cidade}}" type="text" class="form-control" placeholder="">
                 <br/><br/>
 
                 <label for="">CEP</label>
-                <input name="cep" id="cep" value="" type="text" class="form-control" placeholder="">
+                <input name="cep" id="cep" value="{{$dadosEndereco->cep}}" type="text" class="form-control" placeholder="">
                 <br/><br/>
 
 

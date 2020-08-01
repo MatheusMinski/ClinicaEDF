@@ -8,7 +8,7 @@
     <div class="container">
         <!--FORMULÁRIO DE CADASTRO-->
         <div id="cadastro">
-            <form method="post" action="{{route('aluno.cadastro.dados.salvar')}}" autocomplete="off">
+            <form method="post" action="{{route('aluno.cadastro.dados.update')}}" autocomplete="off">
                 {{csrf_field()}}
 
                 <br /><br />
@@ -26,31 +26,34 @@
                 <input type="hidden" style="width: 200px" name="idProfessor" required
                        value="{{Auth::id()}}">
 
+                <input type="hidden" style="width: 200px" name="id" required
+                       value="{{$dadosAluno->id}}">
+
                 <label for="">Nome</label>
-                <input name="nome"  class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                <input name="nome" value="{{$dadosAluno->nome}}"  class="form-control" required="required" maxlength="50" type="text" placeholder="" />
                 <br /><br />
 
                 <label for="">Telefone</label>
-                <input name="telefone" id="telefone" required="required" type="text" class="form-control" placeholder="">
+                <input name="telefone" id="telefone" value="{{$dadosAluno->telefone}}" required="required"  type="text" class="form-control" placeholder="">
                 <br /><br />
 
                 <label for="">Email</label>
-                <input name="email" id="" type="text" class="form-control" placeholder="">
+                <input name="email" id="" value="{{$dadosAluno->email}}" type="text" class="form-control" placeholder="">
                 <br /><br />
 
                 <label for="">Data de Nascimento</label>
-                <input id="Data" name="dataNasc" required="required" type="text" placeholder="dd/mm/aaaa" class="validate" />
+                <input id="Data" name="dataNasc" value="{{date('d/m/Y', strtotime($dadosAluno->dataNasc))}}" required="required" type="text" placeholder="dd/mm/aaaa" class="validate" />
                 <br /><br />
 
                 <label for="">Idade</label>
-                <input id="Idade" name="idade" required="required" type="text" class="validate" />
+                <input id="Idade" name="idade" value="{{$dadosAluno->idade}}" required="required" type="text" class="validate" />
                 <br /><br />
 
 
                 <label for="">Sexo</label>
 
-                <select id="" name="sexo" class="browser-default">
-                    <option disabled selected value>Selecione Uma Opção</option>
+                <select id="" name="sexo"   class="browser-default">
+                    <option enabled selected value="{{$dadosAluno->sexo}}">{{$dadosAluno->sexo}}</option>
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
                     <option value="Prefiro não dizer">Prefiro não dizer</option>
@@ -59,12 +62,12 @@
 
 
                 <label for="">Profissão</label>
-                <input name="profissao" id="" value="" type="text" class="form-control" placeholder="">
+                <input name="profissao" value="{{$dadosAluno->profissao}}" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
                 <label for="isAposentado">É aposentado?</label>
-                <select  id='isAposentado' name="aposentado" class="browser-default" required>
-                    <option disabled selected value>Selecione Uma Opção</option>
+                <select  id='isAposentado' name="aposentado" class="browser-default" >
+                    <option enabled selected value="{{$dadosAluno->aposentado}}"> {{$dadosAluno->aposentado}}</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
@@ -73,7 +76,7 @@
 
                 <label for="">Estado Civil</label>
                 <select id="" name="estadoCivil" class="browser-default" required>
-                    <option disabled selected value>Selecione Uma Opção</option>
+                    <option enabled selected value="{{$dadosAluno->estadoCivil}}"> {{$dadosAluno->estadoCivil}}</option>
                     <option value="Casado">Casado</option>
                     <option value="Divorciado">Divorciado</option>
                     <option value="Amasiado">Amasiado</option>
@@ -85,7 +88,7 @@
 
                 <label for="">Escolaridade</label>
                 <select id="" name="escolaridade" class="browser-default" required>
-                    <option disabled selected value>Selecione Uma Opção</option>
+                    <option enabled selected value="{{$dadosAluno->escolaridade}}"> {{$dadosAluno->escolaridade}}</option>
                     <option value="Nenhuma">Nenhuma</option>
                     <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
                     <option value="Ensino Fundamental completo">Ensino Fundamental completo</option>
@@ -99,7 +102,7 @@
 
                 <label for="">Classe Social Familia</label>
                 <select id="" name="classeSocialFamilia" class="browser-default" required>
-                    <option disabled selected value>Selecione Uma Opção</option>
+                    <option enabled selected value="{{$dadosAluno->classeSocialFamilia}}"> {{$dadosAluno->classeSocialFamilia}}</option>
                     <option value="Menos de um salário mínimo">Menos de um salário mínimo</option>
                     <option value="3-5 salários mínimos">Entre 3 e 5 salários mínimos</option>
                     <option value="5-15 salários mínimos">Entre 5 e 15 salários mínimos</option>
