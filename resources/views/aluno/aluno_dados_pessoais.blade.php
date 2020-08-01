@@ -22,8 +22,18 @@
                         <h6 style="padding-bottom: 10px">Estado Civil: {{$dadosAluno->estadoCivil}}</h6>
                         <h6 style="padding-bottom: 10px">Escolaridade: {{$dadosAluno->escolaridade}}</h6>
                         <h6 style="padding-bottom: 10px">Classe Social: {{$dadosAluno->classeSocialFamilia}}</h6>
-                        <a class="btn blue">Editar</a>
+                        <a class="btn blue"  href="{{route('aluno.cadastro.dados.editar', $dadosAluno->id)}}">Editar</a>
                     </div>
+                </div>
+            </div>
+
+
+            <div id="modal1" class="modal">
+                <div class="modal-content center">
+                    <h4>Classificações usadas:</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
                 </div>
             </div>
 
@@ -37,14 +47,16 @@
                         <h6 style="padding-bottom: 10px">Numero: {{ $dadosEndereco['numero'] }}</h6>
                         <h6 style="padding-bottom: 10px">Cidade: {{ $dadosEndereco['cidade'] }}</h6>
                         <h6 style="padding-bottom: 10px">CEP: {{$dadosEndereco['cep']}}</h6>
+                        @if($dadosEndereco['id'] == "Não cadastrado")
+                            <a class="btn blue" href="{{route('aluno.cadastro.endereco', ['idAluno' => $dadosAluno->id])}}">Cadastrar</a>
+                        @else
+                            <a class="btn blue"href="{{route('aluno.cadastro.endereco.editar', $dadosEndereco['id'])}}">Editar</a>
+                        @endif
                     </div>
                 </div>
             </div>
 
         </div>
-
-
-
 
 
 

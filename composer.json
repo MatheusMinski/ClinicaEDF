@@ -15,7 +15,8 @@
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "laravellegends/pt-br-validator": "6.*",
-        "spatie/laravel-searchable": "^1.6"
+        "spatie/laravel-searchable": "^1.6",
+      "ext-json": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
