@@ -86,10 +86,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/lista/alunos/cadastro/endereco/update', ['as' => 'aluno.cadastro.endereco.update', 'uses' => 'AlunosController@cadastroEnderecoUpdate']);
 
     //Anamnese
-    Route::get('/lista/alunos/cadastro/anamnese', ['as' => 'aluno.cadastro.anamnese', 'uses' => 'AlunosController@cadastroAnamnese']);
+    Route::get('/lista/alunos/cadastro/anamnese/{idTreinamento}', ['as' => 'aluno.cadastro.anamnese', 'uses' => 'AlunosController@cadastroAnamnese']);
     Route::post('/lista/alunos/cadastro/anamnese/salvar', ['as' => 'aluno.cadastro.anamnese.salvar', 'uses' => 'AlunosController@cadastroAnamneseSalvar']);
-    Route::get('/lista/alunos/cadastro/anamnese/editar', ['as' => 'aluno.cadastro.anamnese.editar', 'uses' => 'AlunosController@cadastroAnamneseEditar']);
-    Route::put('/lista/alunos/cadastro/anamnese/update', ['as' => 'aluno.cadastro.anamnese.update', 'uses' => 'AlunosController@cadastroAnamneseUpdate']);
+    Route::get('/lista/alunos/cadastro/anamnese/editar/{idTreinamento}', ['as' => 'aluno.cadastro.anamnese.editar', 'uses' => 'AlunosController@cadastroAnamneseEditar']);
+    Route::post('/lista/alunos/cadastro/anamnese/update', ['as' => 'aluno.cadastro.anamnese.update', 'uses' => 'AlunosController@cadastroAnamneseUpdate']);
 
     //Avaliacao Funcional
     Route::get('/lista/alunos/cadastro/avaliacaoFuncional', ['as' => 'aluno.cadastro.avaliacao', 'uses' => 'AlunosController@avaliacaoFuncional']);
@@ -131,7 +131,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/lista/alunos/cadastro/consultas/update', ['as' => 'aluno.cadastro.consultas.update', 'uses' => 'AlunosController@cadastroConsultasUpdate']);
 
     //Treinamentos
-    Route::get('/lista/alunos/treinamento/status/{id}', ['as' => 'treinamento.status', 'uses' => 'AlunosController@treinamentoStatus']);
+    Route::get('/lista/alunos/treinamento/status/{idTreinamento}', ['as' => 'treinamento.status', 'uses' => 'AlunosController@treinamentoStatus']);
     Route::get('/lista/alunos/treinamentos/{id}', ['as' => 'aluno.treinamentos', 'uses' => 'AlunosController@treinamentos']);
     Route::get('/lista/alunos/treinamentos/adicionar/{idAluno}', ['as' => 'aluno.treinamento.adicionar', 'uses' => 'AlunosController@treinamentoAdicionar']);
 

@@ -41,63 +41,12 @@ class AlunosController extends Controller
     //-----------------------------
 
     //Exibir Dados Treinamentos
-    public function treinamentoStatus($id){
+    public function treinamentoStatus($idTreinamento){
 
-        $anamneseTeste = Anamnese::where('idTreinamento', '=', $id)->paginate(4);
-        $avaliacaoFuncionalTeste = AvaliacaoFuncional::where('idTreinamento', '=', $id)->paginate(4);
-        $qualidadeDeVidasTeste = QualidadeDeVida::where('idTreinamento', '=', $id)->paginate(4);
-        $usoMedicamentosContinuosTeste = UsoMedicamentosContinuos::where('idTreinamento', '=', $id)->paginate(4);
-        $perfilBioquimicoTeste = PerfilBioquimico::where('idTreinamento', '=', $id)->paginate(4);
-        $examesAdicionaisTeste = ExamesAdicionais::where('idTreinamento', '=', $id)->paginate(4);
-        $quantasConsultasTeste = QualidadeDeVida::where('idTreinamento', '=', $id)->paginate(4);
-
-        if(count($anamneseTeste) == 0){
-            $anamnese = "Incompleto";
-        }else{
-            $anamnese = "Completo";
-        }
+        $aluno = AlunoTreinamento::find($idTreinamento)->idAluno;
 
 
-        if(count($avaliacaoFuncionalTeste) == 0){
-            $avaliacaoFuncional = "Incompleto";
-        }else{
-            $avaliacaoFuncional = "Completo";
-        }
-
-        if(count($qualidadeDeVidasTeste) == 0){
-            $qualidadeDeVidas = "Incompleto";
-        }else{
-            $qualidadeDeVidas = "Completo";
-        }
-
-        if(count($usoMedicamentosContinuosTeste) == 0){
-            $usoMedicamentosContinuos = "Incompleto";
-        }else{
-            $usoMedicamentosContinuos = "Completo";
-        }
-
-        if(count($perfilBioquimicoTeste) == 0){
-            $perfilBioquimico = "Incompleto";
-        }else{
-            $perfilBioquimico = "Completo";
-        }
-
-        if(count($examesAdicionaisTeste) == 0){
-            $examesAdicionais = "Incompleto";
-        }else{
-            $examesAdicionais = "Completo";
-        }
-
-        if(count($quantasConsultasTeste) == 0){
-            $quantasConsultas = "Incompleto";
-        }else{
-            $quantasConsultas = "Completo";
-        }
-
-        $aluno = Aluno::find($id);
-
-        return view('aluno.aluno_status', compact('aluno', 'anamnese','avaliacaoFuncional',
-            'qualidadeDeVidas', 'usoMedicamentosContinuos', 'perfilBioquimico', 'examesAdicionais', 'quantasConsultas'));
+        return view('aluno.aluno_status', compact('aluno', 'idTreinamento'));
     }
 
     public function treinamentos($id){
@@ -280,9 +229,103 @@ class AlunosController extends Controller
 
     //CRUD Anamnese
 
-    public function cadastroAnamnese(){
-        return view('aluno.aluno_cadastro_anamnese');
+    public function cadastroAnamnese($idTreinamento){
+        $dadosAnamnese = Anamnese::where("idTreinamento", "=", $idTreinamento)->get()->first();
+
+
+        if($dadosAnamnese == null){
+            return view('aluno.aluno_cadastro_anamnese', compact('idTreinamento'));
+        } else{
+            return view('aluno.aluno_anamnese', compact('dadosAnamnese'));
+        }
+
     }
+
+    public function cadastroAnamneseSalvar(Request $req){
+        $dados = $req->all();
+
+        try{
+
+            Anamnese::create($dados);
+
+            return $this->treinamentoStatus($dados['idTreinamento']);
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+    }
+
+
+    public function cadastroAnamneseEditar($idTreinamento){
+
+        $dadosAnamnese = Anamnese::where("idTreinamento", "=", $idTreinamento)->get()->first();
+
+        return view('aluno.aluno_editar_anamnese', compact('dadosAnamnese'));
+
+    }
+
+    public function cadastroAnamneseUpdate(Request $req){
+        $dados = $req->all();
+
+
+        $dadosAntigos = Anamnese::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
+
+        $dadosAntigos->encaminhamento = $dados['encaminhamento'];
+        $dadosAntigos->nomeDoProfissional = $dados['nomeDoProfissional'];
+        $dadosAntigos->especialidadeDoProfissional = $dados['especialidadeDoProfissional'];
+        $dadosAntigos->motivoEncaminhamento = $dados['motivoEncaminhamento'];
+        $dadosAntigos->saudeGeral = $dados['saudeGeral'];
+        $dadosAntigos->fumaCigarro = $dados['fumaCigarro'];
+        $dadosAntigos->fumaCigarroQuantidadeDia = $dados['fumaCigarroQuantidadeDia'];
+        $dadosAntigos->jaFumou = $dados['jaFumou'];
+        $dadosAntigos->jaFumouQuantidadeAnos = $dados['jaFumouQuantidadeAnos'];
+        $dadosAntigos->jaFumouParouAQuantoTempoAnos = $dados['jaFumouParouAQuantoTempoAnos'];
+        $dadosAntigos->descricaoProblemaSaude = $dados['descricaoProblemaSaude'];
+        $dadosAntigos->caiu12Meses = $dados['caiu12Meses'];
+        $dadosAntigos->quantasQuedas = $dados['quantasQuedas'];
+        $dadosAntigos->data = $dados['data'];
+        $dadosAntigos->razaoQueda = $dados['razaoQueda'];
+        $dadosAntigos->localQueda = $dados['localQueda'];
+        $dadosAntigos->hospitalizacao = $dados['hospitalizacao'];
+        $dadosAntigos->objetivosAoProcurarAClinica = $dados['objetivosAoProcurarAClinica'];
+        $dadosAntigos->jaTentouResolverAntes = $dados['jaTentouResolverAntes'];
+        $dadosAntigos->quantasVezes = $dados['quantasVezes'];
+        $dadosAntigos->jaDesistiu = $dados['jaDesistiu'];
+        $dadosAntigos->motivoDesistencia = $dados['motivoDesistencia'];
+        $dadosAntigos->dorRegiaoDoCorpo = $dados['dorRegiaoDoCorpo'];
+        $dadosAntigos->descricaoSintomaDor1 = $dados['descricaoSintomaDor1'];
+        $dadosAntigos->ProfissionalQueTratou1 = $dados['ProfissionalQueTratou1'];
+        $dadosAntigos->inicioFim1 = $dados['inicioFim1'];
+        $dadosAntigos->EVA1 = $dados['EVA1'];
+        $dadosAntigos->descricaoSintomaDor2 = $dados['descricaoSintomaDor2'];
+        $dadosAntigos->ProfissionalQueTratou2 = $dados['ProfissionalQueTratou2'];
+        $dadosAntigos->inicioFim2 = $dados['inicioFim2'];
+        $dadosAntigos->EVA2 = $dados['EVA2'];
+        $dadosAntigos->descricaoSintomaDor3 = $dados['descricaoSintomaDor3'];
+        $dadosAntigos->ProfissionalQueTratou3 = $dados['ProfissionalQueTratou3'];
+        $dadosAntigos->inicioFim3 = $dados['inicioFim3'];
+        $dadosAntigos->EVA3 = $dados['EVA3'];
+        $dadosAntigos->descricaoSintomaDor4 = $dados['descricaoSintomaDor4'];
+        $dadosAntigos->ProfissionalQueTratou4 = $dados['ProfissionalQueTratou4'];
+        $dadosAntigos->inicioFim4 = $dados['inicioFim4'];
+        $dadosAntigos->EVA4 = $dados['EVA4'];
+        $dadosAntigos->esforcosTarefaCasa = $dados['esforcosTarefaCasa'];
+        $dadosAntigos->esforcoAndarForaDeCasa = $dados['esforcoAndarForaDeCasa'];
+        $dadosAntigos->esforcoLazer = $dados['esforcoLazer'];
+        $dadosAntigos->esforcoTrabalho = $dados['esforcoTrabalho'];
+        $dadosAntigos->exercicioFisicoRegular = $dados['exercicioFisicoRegular'];
+        $dadosAntigos->quantasVezesSemana = $dados['quantasVezesSemana'];
+        $dadosAntigos->esforcoParaEsseExercicio = $dados['esforcoParaEsseExercicio'];
+
+
+        $dadosAntigos->save();
+        $dadosAnamnese = Anamnese::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
+
+        return view('aluno.aluno_anamnese', compact('dadosAnamnese'));
+
+    }
+
+
 //-----------------------------
 
     //CRUD Emergencia
