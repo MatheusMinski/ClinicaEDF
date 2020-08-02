@@ -28,15 +28,6 @@
             </div>
 
 
-            <div id="modal1" class="modal">
-                <div class="modal-content center">
-                    <h4>Classificações usadas:</h4>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
-                </div>
-            </div>
-
             <div class="card horizontal" style="width: 45%; float: left; margin: 2%">
 
                 <div class="card-stacked">
