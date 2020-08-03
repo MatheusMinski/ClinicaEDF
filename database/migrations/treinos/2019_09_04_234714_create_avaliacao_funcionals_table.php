@@ -41,6 +41,7 @@ class CreateAvaliacaoFuncionalsTable extends Migration
             $table->decimal('pressaoManualEsquerda',3,1);
             $table->integer('sentarLevantarCadeiraRep');
             $table->integer('sentarLevantarCadeiraFCMax');
+            $table->integer('distanciaTeste6Min');
             $table->integer('pedometroTeste6Min');
             $table->decimal('fcTeste6Min1',4,2);
             $table->decimal('fcTeste6Min2',4,2);

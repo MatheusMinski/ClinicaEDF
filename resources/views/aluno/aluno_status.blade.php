@@ -20,19 +20,19 @@
                         <td><a href="{{route('aluno.cadastro.anamnese', $idTreinamento)}}" class="btn blue">Anamnese</a></td>
                     </tr>
                     <tr>
-                        <td><a href="{{route('aluno.cadastro.avaliacao')}}" class="btn blue">Avaliação Funcional</a></td>
+                        <td><a href="{{route('aluno.cadastro.avaliacao', $idTreinamento)}}" class="btn blue">Avaliação Funcional</a></td>
                     </tr>
                     <tr>
-                        <td><a href="{{route('aluno.cadastro.medicamentos')}}" class="btn blue">Uso de Medicamentos Contínuos</a></td>
+                        <td><a href="{{route('aluno.cadastro.medicamentos', $idTreinamento)}}" class="btn blue">Uso de Medicamentos Contínuos</a></td>
                     </tr>
                     <tr>
-                        <td><a href="{{route('aluno.cadastro.perfilBioquimico')}}" class="btn blue">Perfil Bioquímico</a></td>
+                        <td><a href="{{route('aluno.cadastro.perfilBioquimico', $idTreinamento)}}" class="btn blue">Perfil Bioquímico</a></td>
                     </tr>
                     <tr>
-                        <td><a href="{{route('aluno.cadastro.exames')}}" class="btn blue">Exames Adicionais (Se houver)</a></td>
+                        <td><a href="{{route('aluno.cadastro.exames', $idTreinamento)}}" class="btn blue">Exames Adicionais (Se houver)</a></td>
                     </tr>
                     <tr>
-                        <td><a href="{{route('aluno.cadastro.consultas')}}" class="btn blue">Quantas Consultas (Se houver)</a></td>
+                        <td><a href="{{route('aluno.cadastro.consultas', $idTreinamento)}}" class="btn blue">Quantas Consultas (Se houver)</a></td>
                     </tr>
 
 

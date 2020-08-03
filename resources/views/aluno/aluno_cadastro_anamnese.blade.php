@@ -168,19 +168,19 @@
                 <input name="dorRegiaoDoCorpo" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Descreva o Sintoma ou dor</label>
+                <label for="">Descreva o Sintoma ou dor (1)</label>
                 <input name="descricaoSintomaDor1" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Profissional que tratou essa dor</label>
+                <label for="">Profissional que tratou essa dor (1)</label>
                 <input name="ProfissionalQueTratou1" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Quando foi o início e fim desse tratamento?</label>
+                <label for="">Quando foi o início e fim desse tratamento? (1)</label>
                 <input name="inicioFim1" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Selecione 1 para pouca dor e 10 para muita dor</label>
+                <label for="">Selecione 1 para pouca dor e 10 para muita dor (1)</label>
                 <select id='' name="EVA1" class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
@@ -197,19 +197,19 @@
 
                 <br /><br />
 
-                <label for="">Descreva o Sintoma ou dor</label>
+                <label for="">Descreva o Sintoma ou dor (2)</label>
                 <input name="descricaoSintomaDor2" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Profissional que tratou essa dor</label>
+                <label for="">Profissional que tratou essa dor (2)</label>
                 <input name="ProfissionalQueTratou2" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Quando foi o início e fim desse tratamento?</label>
+                <label for="">Quando foi o início e fim desse tratamento? (2)</label>
                 <input name="inicioFim2" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Selecione 1 para pouca dor e 10 para muita dor</label>
+                <label for="">Selecione 1 para pouca dor e 10 para muita dor (2)</label>
                 <select id='' name="EVA2" class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
@@ -226,19 +226,19 @@
 
                 <br /><br />
 
-                <label for="">Descreva o Sintoma ou dor</label>
+                <label for="">Descreva o Sintoma ou dor (3)</label>
                 <input name="descricaoSintomaDor3" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Profissional que tratou essa dor</label>
+                <label for="">Profissional que tratou essa dor (3)</label>
                 <input name="ProfissionalQueTratou3" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Quando foi o início e fim desse tratamento?</label>
+                <label for="">Quando foi o início e fim desse tratamento? (3)</label>
                 <input name="inicioFim3" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Selecione 1 para pouca dor e 10 para muita dor</label>
+                <label for="">Selecione 1 para pouca dor e 10 para muita dor (3)</label>
                 <select id='' name="EVA3" class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
@@ -255,19 +255,19 @@
 
                 <br /><br />
 
-                <label for="">Descreva o Sintoma ou dor</label>
+                <label for="">Descreva o Sintoma ou dor (4)</label>
                 <input name="descricaoSintomaDor4" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Profissional que tratou essa dor</label>
+                <label for="">Profissional que tratou essa dor (4)</label>
                 <input name="ProfissionalQueTratou4" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Quando foi o início e fim desse tratamento?</label>
+                <label for="">Quando foi o início e fim desse tratamento? (4)</label>
                 <input name="inicioFim4" id="" value="" type="text" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Selecione 1 para pouca dor e 10 para muita dor</label>
+                <label for="">Selecione 1 para pouca dor e 10 para muita dor (4)</label>
                 <select id='' name="EVA4" class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>

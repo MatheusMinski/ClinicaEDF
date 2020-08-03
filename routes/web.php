@@ -92,10 +92,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/lista/alunos/cadastro/anamnese/update', ['as' => 'aluno.cadastro.anamnese.update', 'uses' => 'AlunosController@cadastroAnamneseUpdate']);
 
     //Avaliacao Funcional
-    Route::get('/lista/alunos/cadastro/avaliacaoFuncional', ['as' => 'aluno.cadastro.avaliacao', 'uses' => 'AlunosController@avaliacaoFuncional']);
+    Route::get('/lista/alunos/cadastro/avaliacaoFuncional/{idTreinamento}', ['as' => 'aluno.cadastro.avaliacao', 'uses' => 'AlunosController@avaliacaoFuncional']);
     Route::post('/lista/alunos/cadastro/avaliacaoFuncional/salvar', ['as' => 'aluno.cadastro.avaliacao.salvar', 'uses' => 'AlunosController@avaliacaoFuncionalSalvar']);
-    Route::get('/lista/alunos/cadastro/avaliacaoFuncional/editar', ['as' => 'aluno.cadastro.avaliacao.editar', 'uses' => 'AlunosController@avaliacaoFuncionalEditar']);
-    Route::put('/lista/alunos/cadastro/avaliacaoFuncional/update', ['as' => 'aluno.cadastro.avaliacao.update', 'uses' => 'AlunosController@avaliacaoFuncionalUpdate']);
+    Route::get('/lista/alunos/cadastro/avaliacaoFuncional/editar/{idTreinamento}', ['as' => 'aluno.cadastro.avaliacao.editar', 'uses' => 'AlunosController@avaliacaoFuncionalEditar']);
+    Route::post('/lista/alunos/cadastro/avaliacaoFuncional/update', ['as' => 'aluno.cadastro.avaliacao.update', 'uses' => 'AlunosController@avaliacaoFuncionalUpdate']);
 
     //Emergencia
     Route::get('/lista/alunos/cadastro/emergencia', ['as' => 'aluno.cadastro.emergencia', 'uses' => 'AlunosController@cadastroEmergencia']);
