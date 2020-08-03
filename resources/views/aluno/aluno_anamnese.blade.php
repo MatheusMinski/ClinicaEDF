@@ -26,7 +26,7 @@
                         <h6 style="padding-bottom: 10px">Quantas vezes: {{$dadosAnamnese->quantasQuedas}}</h6>
                         <h6 style="padding-bottom: 10px">Qual a data: {{date('d/m/Y', strtotime($dadosAnamnese->data))}}</h6>
                         <h6 style="padding-bottom: 10px">Qual a razão da queda: {{$dadosAnamnese->razaoQueda}}</h6>
-                        <h6 style="padding-bottom: 10px">Local da quedra: {{$dadosAnamnese->localQueda}}</h6>
+                        <h6 style="padding-bottom: 10px">Local da queda: {{$dadosAnamnese->localQueda}}</h6>
                         <h6 style="padding-bottom: 10px">Foi hospitalizado: {{$dadosAnamnese->hospitalizacao}}</h6>
                         <h6 style="padding-bottom: 10px">Objetivos ao procurar a clínica: {{$dadosAnamnese->objetivosAoProcurarAClinica}}</h6>
                         <h6 style="padding-bottom: 10px">Já tentou resolver antes: {{$dadosAnamnese->jaTentouResolverAntes}}</h6>

@@ -6,7 +6,7 @@
 <div class="container">
     <!--FORMULÁRIO DE CADASTRO-->
     <div id="cadastro">
-        <form method="post" action="{{route('salvar.professor')}}">
+        <form method="post" action="{{route('aluno.cadastro.avaliacao.salvar')}}">
             {{csrf_field()}}
 
             <br /><br />
@@ -22,17 +22,19 @@
             <br /><br />
 
 
+            <input type="hidden" name="idTreinamento" value="{{$idTreinamento}}">
+
             <h4>Hemodinâmica</h4>
             <br/>
             <h6>Pressão Arterial</h6>
             <br />
 
             <label for="">PAS</label>
-            <input type='number' id='' name='pressaoArterialPAS' class="form-control">
+            <input type='number' id='' name='pressaoArterialPAS' value="" class="form-control">
             <br/>
 
             <label for="">PAD</label>
-            <input name="tepressaoArterialPADlefone" id="" value="" type="number" class="form-control">
+            <input name="pressaoArterialPAD" id="" value="" type="number" class="form-control">
             <br /><br />
 
             <label for="">Frequência Cardíaca Média</label>
@@ -49,7 +51,7 @@
             <input type='number' id='' name='capacidadeVital1' class="form-control">
             <br/>
             <label for="">Valor 2</label>
-            <input type='number' id='' name='idAlcapacidadeVital2uno' class="form-control">
+            <input type='number' id='' name='capacidadeVital2' class="form-control">
             <br/>
             <label for="">Valor 3</label>
             <input type='number' id='' name='capacidadeVital3' class="form-control">
@@ -104,10 +106,6 @@
 
             <label for="">Ombro esquerdo (cm)</label>
             <input type='number' id='' name='ombroEsquerdo' class="form-control">
-            <br/>
-
-            <label for="">Deslizamento da pele (cm)</label>
-            <input type='number' id='' name='deslizamentoDaPele' class="form-control">
             <br/>
 
 
@@ -177,37 +175,16 @@
             <input type='number' id='' name='fcTeste6Min6' class="form-control">
             <br/><br/>
 
-            <h4>BORG CR-10 Teste de 6 minutos</h4>
-            <br/>
-            <label for="">Minuto 1</label>
-            <input type='number' id='' name='borgCR101' class="form-control">
-            <br/>
-            <label for="">Minuto 2</label>
-            <input type='number' id='' name='borgCR102' class="form-control">
-            <br/>
-            <label for="">Minuto 3</label>
-            <input type='number' id='' name='borgCR103' class="form-control">
-            <br/>
-            <label for="">Minuto 4</label>
-            <input type='number' id='' name='borgCR104' class="form-control">
-            <br/>
-            <label for="">Minuto 5</label>
-            <input type='number' id='' name='borgCR105' class="form-control">
-            <br/>
-            <label for="">Minuto 6</label>
-            <input type='number' id='' name='borgCR106' class="form-control">
-            <br/><br/>
-
             <h4>FC Recuperação</h4>
             <br/>
             <label for="">Minuto 1</label>
             <input type='number' id='' name='fcRecuperacaoUmMin' class="form-control">
             <br/>
             <label for="">Minuto 5</label>
-            <input type='number' id='' name='fcRecuperacaoCincoMin' class="form-control">
+            <input type='number' id='' name='fcRecuperacaoTresMin' class="form-control">
             <br/>
             <label for="">Minuto 10</label>
-            <input type='number' id='' name='fcRecuperacaoDezMin' class="form-control">
+            <input type='number' id='' name='fcRecuperacaoCincoMin' class="form-control">
             <br/><br/>
 
             <h4>PAS Teste 6 minutos (mmHg)</h4>
@@ -233,6 +210,31 @@
             <label for="">Minuto 10</label>
             <input type='number' id='' name='padTesteDezMin' class="form-control">
             <br/><br/>
+
+            <label for="">Teste extra 1/label>
+            <input type='text' id='' name='testeExtra1' class="form-control">
+
+            <label for="">Resposta teste extra 1</label>
+            <input type='text' id='' name='respostaTesteExtraUm' class="form-control">
+
+            <label for="">Teste extra 2</label>
+            <input type='text' id='' name='testeExtra2' class="form-control">
+
+            <label for="">Resposta teste extra 2</label>
+            <input type='text' id='' name='respostaTesteExtraDois' class="form-control">
+
+            <label for="">Teste extra 3</label>
+            <input type='text' id='' name='testeExtra3' class="form-control">
+
+            <label for="">Resposta teste extra 3</label>
+            <input type='text' id='' name='respostaTesteExtraTres' class="form-control">
+
+            <label for="">Teste extra 4</label>
+            <input type='text' id='' name='testeExtra4' class="form-control">
+
+            <label for="">Resposta teste extra 4</label>
+            <input type='text' id='' name='respostaTesteExtraQuatro' class="form-control">
+
 
 
             <button class="btn blue"> FINALIZAR &raquo</button>

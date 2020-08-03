@@ -11,7 +11,7 @@ class AvaliacaoFuncional extends Model
     protected $fillable = [
         'idTreinamento','pressaoArterialPAS','pressaoArterialPAD','freqCardiacaMedia',
         'saturacaoO2','capacidadeVital1',
-        'CapacidadeVital2','capacidadeVital3','massaCorporal','estaturaCm',
+        'capacidadeVital2','capacidadeVital3','massaCorporal','estaturaCm',
         'circunferenciaCintura','circunferenciaPescoco',
         'massaMagra','gordura','h2o','tmb','sentarEAlcancarMaior',
         'ombroDireito',
