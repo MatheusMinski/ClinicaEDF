@@ -230,9 +230,17 @@ class AlunosController extends Controller
     public function avaliacaoFuncionalSalvar(Request $req){
         $dados = $req->all();
 
-        AvaliacaoFuncional::create($dados);
 
-        return $this->treinamentoStatus($dados['idTreinamento']);
+        try{
+            AvaliacaoFuncional::create($dados);
+            return $this->treinamentoStatus($dados['idTreinamento']);
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+
+
 
     }
 
@@ -249,62 +257,72 @@ class AlunosController extends Controller
 
         $dadosAntigos = AvaliacaoFuncional::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
 
-        $dadosAntigos->pressaoArterialPAS = $dados['pressaoArterialPAS'];
-        $dadosAntigos->pressaoArterialPAD = $dados['pressaoArterialPAD'];
-        $dadosAntigos->freqCardiacaMedia = $dados['freqCardiacaMedia'];
-        $dadosAntigos->saturacaoO2 = $dados['saturacaoO2'];
-        $dadosAntigos->capacidadeVital1 = $dados['capacidadeVital1'];
-        $dadosAntigos->capacidadeVital2 = $dados['capacidadeVital2'];
-        $dadosAntigos->capacidadeVital3 = $dados['capacidadeVital3'];
-        $dadosAntigos->massaCorporal = $dados['massaCorporal'];
-        $dadosAntigos->estaturaCm = $dados['estaturaCm'];
-        $dadosAntigos->circunferenciaCintura = $dados['circunferenciaCintura'];
-        $dadosAntigos->circunferenciaPescoco = $dados['circunferenciaPescoco'];
-        $dadosAntigos->massaMagra = $dados['massaMagra'];
-        $dadosAntigos->gordura = $dados['gordura'];
-        $dadosAntigos->h2o = $dados['h2o'];
-        $dadosAntigos->tmb = $dados['tmb'];
-        $dadosAntigos->sentarEAlcancarMaior = $dados['sentarEAlcancarMaior'];
-        $dadosAntigos->ombroDireito = $dados['ombroDireito'];
-        $dadosAntigos->ombroEsquerdo = $dados['ombroEsquerdo'];
-        $dadosAntigos->apoioUnipodalDireita = $dados['apoioUnipodalDireita'];
-        $dadosAntigos->apoioUnipodalEsquerda = $dados['apoioUnipodalEsquerda'];
-        $dadosAntigos->alcanceFuncional = $dados['alcanceFuncional'];
-        $dadosAntigos->pressaoManualDireita = $dados['pressaoManualDireita'];
-        $dadosAntigos->pressaoManualEsquerda = $dados['pressaoManualEsquerda'];
-        $dadosAntigos->sentarLevantarCadeiraRep = $dados['sentarLevantarCadeiraRep'];
-        $dadosAntigos->sentarLevantarCadeiraFCMax = $dados['sentarLevantarCadeiraFCMax'];
-        $dadosAntigos->distanciaTeste6Min = $dados['distanciaTeste6Min'];
-        $dadosAntigos->pedometroTeste6Min = $dados['pedometroTeste6Min'];
-        $dadosAntigos->fcTeste6Min1 = $dados['fcTeste6Min1'];
-        $dadosAntigos->fcTeste6Min2 = $dados['fcTeste6Min2'];
-        $dadosAntigos->fcTeste6Min3 = $dados['fcTeste6Min3'];
-        $dadosAntigos->fcTeste6Min4 = $dados['fcTeste6Min4'];
-        $dadosAntigos->fcTeste6Min5 = $dados['fcTeste6Min5'];
-        $dadosAntigos->fcTeste6Min6 = $dados['fcTeste6Min6'];
-        $dadosAntigos->fcRecuperacaoUmMin = $dados['fcRecuperacaoUmMin'];
-        $dadosAntigos->fcRecuperacaoTresMin = $dados['fcRecuperacaoTresMin'];
-        $dadosAntigos->fcRecuperacaoCincoMin = $dados['fcRecuperacaoCincoMin'];
-        $dadosAntigos->pasTesteUmMin = $dados['pasTesteUmMin'];
-        $dadosAntigos->pasTesteCincoMin = $dados['pasTesteCincoMin'];
-        $dadosAntigos->pasTesteDezMin = $dados['pasTesteDezMin'];
-        $dadosAntigos->padTesteUmMin = $dados['padTesteUmMin'];
-        $dadosAntigos->padTesteCincoMin = $dados['padTesteCincoMin'];
-        $dadosAntigos->padTesteDezMin = $dados['padTesteDezMin'];
-        $dadosAntigos->testeExtra1 = $dados['testeExtra1'];
-        $dadosAntigos->respostaTesteExtraUm = $dados['respostaTesteExtraUm'];
-        $dadosAntigos->testeExtra2 = $dados['testeExtra2'];
-        $dadosAntigos->respostaTesteExtraDois = $dados['respostaTesteExtraDois'];
-        $dadosAntigos->testeExtra3 = $dados['testeExtra3'];
-        $dadosAntigos->respostaTesteExtraTres = $dados['respostaTesteExtraTres'];
-        $dadosAntigos->testeExtra4 = $dados['testeExtra4'];
-        $dadosAntigos->respostaTesteExtraQuatro = $dados['respostaTesteExtraQuatro'];
+
+        try{
+            $dadosAntigos->pressaoArterialPAS = $dados['pressaoArterialPAS'];
+            $dadosAntigos->pressaoArterialPAD = $dados['pressaoArterialPAD'];
+            $dadosAntigos->freqCardiacaMedia = $dados['freqCardiacaMedia'];
+            $dadosAntigos->saturacaoO2 = $dados['saturacaoO2'];
+            $dadosAntigos->capacidadeVital1 = $dados['capacidadeVital1'];
+            $dadosAntigos->capacidadeVital2 = $dados['capacidadeVital2'];
+            $dadosAntigos->capacidadeVital3 = $dados['capacidadeVital3'];
+            $dadosAntigos->massaCorporal = $dados['massaCorporal'];
+            $dadosAntigos->estaturaCm = $dados['estaturaCm'];
+            $dadosAntigos->circunferenciaCintura = $dados['circunferenciaCintura'];
+            $dadosAntigos->circunferenciaPescoco = $dados['circunferenciaPescoco'];
+            $dadosAntigos->massaMagra = $dados['massaMagra'];
+            $dadosAntigos->gordura = $dados['gordura'];
+            $dadosAntigos->h2o = $dados['h2o'];
+            $dadosAntigos->tmb = $dados['tmb'];
+            $dadosAntigos->sentarEAlcancarMaior = $dados['sentarEAlcancarMaior'];
+            $dadosAntigos->ombroDireito = $dados['ombroDireito'];
+            $dadosAntigos->ombroEsquerdo = $dados['ombroEsquerdo'];
+            $dadosAntigos->apoioUnipodalDireita = $dados['apoioUnipodalDireita'];
+            $dadosAntigos->apoioUnipodalEsquerda = $dados['apoioUnipodalEsquerda'];
+            $dadosAntigos->alcanceFuncional = $dados['alcanceFuncional'];
+            $dadosAntigos->pressaoManualDireita = $dados['pressaoManualDireita'];
+            $dadosAntigos->pressaoManualEsquerda = $dados['pressaoManualEsquerda'];
+            $dadosAntigos->sentarLevantarCadeiraRep = $dados['sentarLevantarCadeiraRep'];
+            $dadosAntigos->sentarLevantarCadeiraFCMax = $dados['sentarLevantarCadeiraFCMax'];
+            $dadosAntigos->distanciaTeste6Min = $dados['distanciaTeste6Min'];
+            $dadosAntigos->pedometroTeste6Min = $dados['pedometroTeste6Min'];
+            $dadosAntigos->fcTeste6Min1 = $dados['fcTeste6Min1'];
+            $dadosAntigos->fcTeste6Min2 = $dados['fcTeste6Min2'];
+            $dadosAntigos->fcTeste6Min3 = $dados['fcTeste6Min3'];
+            $dadosAntigos->fcTeste6Min4 = $dados['fcTeste6Min4'];
+            $dadosAntigos->fcTeste6Min5 = $dados['fcTeste6Min5'];
+            $dadosAntigos->fcTeste6Min6 = $dados['fcTeste6Min6'];
+            $dadosAntigos->fcRecuperacaoUmMin = $dados['fcRecuperacaoUmMin'];
+            $dadosAntigos->fcRecuperacaoTresMin = $dados['fcRecuperacaoTresMin'];
+            $dadosAntigos->fcRecuperacaoCincoMin = $dados['fcRecuperacaoCincoMin'];
+            $dadosAntigos->pasTesteUmMin = $dados['pasTesteUmMin'];
+            $dadosAntigos->pasTesteCincoMin = $dados['pasTesteCincoMin'];
+            $dadosAntigos->pasTesteDezMin = $dados['pasTesteDezMin'];
+            $dadosAntigos->padTesteUmMin = $dados['padTesteUmMin'];
+            $dadosAntigos->padTesteCincoMin = $dados['padTesteCincoMin'];
+            $dadosAntigos->padTesteDezMin = $dados['padTesteDezMin'];
+            $dadosAntigos->testeExtra1 = $dados['testeExtra1'];
+            $dadosAntigos->respostaTesteExtraUm = $dados['respostaTesteExtraUm'];
+            $dadosAntigos->testeExtra2 = $dados['testeExtra2'];
+            $dadosAntigos->respostaTesteExtraDois = $dados['respostaTesteExtraDois'];
+            $dadosAntigos->testeExtra3 = $dados['testeExtra3'];
+            $dadosAntigos->respostaTesteExtraTres = $dados['respostaTesteExtraTres'];
+            $dadosAntigos->testeExtra4 = $dados['testeExtra4'];
+            $dadosAntigos->respostaTesteExtraQuatro = $dados['respostaTesteExtraQuatro'];
 
 
-        $dadosAntigos->save();
-        $dadosAvaliacaoFuncional = AvaliacaoFuncional::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
+            $dadosAntigos->save();
 
-        return view('aluno.aluno_avaliacao_funcional', compact('dadosAvaliacaoFuncional'));
+            $dadosAvaliacaoFuncional = AvaliacaoFuncional::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
+
+            return view('aluno.aluno_avaliacao_funcional', compact('dadosAvaliacaoFuncional'));
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+
+
 
     }
 
@@ -435,9 +453,87 @@ class AlunosController extends Controller
 
     //CRUD Perfil Bioquimico
 
-    public function cadastroPerfilBioquimico(){
-        return view('aluno.aluno_cadastro_perfilBioquimico');
+    public function cadastroPerfilBioquimico($idTreinamento){
+
+        $dadosPerfilBioquimico = PerfilBioquimico::where("idTreinamento", "=", $idTreinamento)->get()->first();
+
+
+        if($dadosPerfilBioquimico == null){
+            return view('aluno.aluno_cadastro_perfilBioquimico', compact('idTreinamento'));
+        } else{
+            return view('aluno.aluno_perfil_bioquimico', compact('dadosPerfilBioquimico'));
+        }
+
     }
+
+    public function cadastroPerfilBioquimicoSalvar(Request $req){
+        $dados = $req->all();
+
+        try{
+            PerfilBioquimico::create($dados);
+            return $this->treinamentoStatus($dados['idTreinamento']);
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+    }
+
+    public function cadastroPerfilBioquimicoEditar($idTreinamento){
+
+        $dadosPerfilBioquimico = PerfilBioquimico::where("idTreinamento", "=", $idTreinamento)->get()->first();
+
+        return view('aluno.aluno_editar_perfil_bioquimico', compact('dadosPerfilBioquimico'));
+
+    }
+
+    public function cadastroPerfilBioquimicoUpdate(Request $req){
+        $dados = $req->all();
+
+        try{
+
+            $dadosAntigos = PerfilBioquimico::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
+
+            $dadosAntigos->glicemiaDataUm = $dados['glicemiaDataUm'];
+            $dadosAntigos->glicemiaValorUm = $dados['glicemiaValorUm'];
+            $dadosAntigos->glicemiaDataDois = $dados['glicemiaDataDois'];
+            $dadosAntigos->glicemiaValorDois = $dados['glicemiaValorDois'];
+            $dadosAntigos->insulinaDataUm = $dados['insulinaDataUm'];
+            $dadosAntigos->insulinaValorUm = $dados['insulinaValorUm'];
+            $dadosAntigos->insulinaDataDois = $dados['insulinaDataDois'];
+            $dadosAntigos->insulinaValorDois = $dados['insulinaValorDois'];
+            $dadosAntigos->creatinaDataUm = $dados['creatinaDataUm'];
+            $dadosAntigos->creatinaValorUm = $dados['creatinaValorUm'];
+            $dadosAntigos->creatinaDataDois = $dados['creatinaDataDois'];
+            $dadosAntigos->creatinaValorDois = $dados['creatinaValorDois'];
+            $dadosAntigos->ctDataUm = $dados['ctDataUm'];
+            $dadosAntigos->ctValorUm = $dados['ctValorUm'];
+            $dadosAntigos->ctDataDois = $dados['ctDataDois'];
+            $dadosAntigos->ctValorDois = $dados['ctValorDois'];
+            $dadosAntigos->hdlDataUm = $dados['hdlDataUm'];
+            $dadosAntigos->hdlValorUm = $dados['hdlValorUm'];
+            $dadosAntigos->hdlDataDois = $dados['hdlDataDois'];
+            $dadosAntigos->hdlValorDois = $dados['hdlValorDois'];
+            $dadosAntigos->ldlDataUm = $dados['ldlDataUm'];
+            $dadosAntigos->ldlValorUm = $dados['ldlValorUm'];
+            $dadosAntigos->ldlDataDois = $dados['ldlDataDois'];
+            $dadosAntigos->ldlValorDois = $dados['ldlValorDois'];
+            $dadosAntigos->tgDataUm = $dados['tgDataUm'];
+            $dadosAntigos->tgValorUm = $dados['tgValorUm'];
+            $dadosAntigos->tgDataDois = $dados['tgDataDois'];
+            $dadosAntigos->tgValorDois = $dados['tgValorDois'];
+
+            $dadosAntigos->save();
+            $dadosPerfilBioquimico = PerfilBioquimico::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
+
+            return view('aluno.aluno_perfil_bioquimico', compact('dadosPerfilBioquimico'));
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+
+    }
+
 //-----------------------------
 
     //CRUD Exames Adicionais
