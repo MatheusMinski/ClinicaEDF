@@ -15,7 +15,7 @@ class CreateAvaliacaoFuncionalsTable extends Migration
     {
         Schema::create('AvaliacaoFuncional', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('idTreinamento');
+            $table->integer('idTreinamento')->unique();
             $table->integer('pressaoArterialPAS');
             $table->integer('pressaoArterialPAD');
             $table->decimal('freqCardiacaMedia',3,1);

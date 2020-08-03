@@ -113,10 +113,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/lista/alunos/cadastro/medicamentos/update', ['as' => 'aluno.cadastro.medicamentos.update', 'uses' => 'AlunosController@cadastroMedicamentosUpdate']);
 
     //Perfil Bioquimico
-    Route::get('/lista/alunos/cadastro/perfilBioquimico', ['as' => 'aluno.cadastro.perfilBioquimico', 'uses' => 'AlunosController@cadastroPerfilBioquimico']);
+    Route::get('/lista/alunos/cadastro/perfilBioquimico/{idTreinamento}', ['as' => 'aluno.cadastro.perfilBioquimico', 'uses' => 'AlunosController@cadastroPerfilBioquimico']);
     Route::post('/lista/alunos/cadastro/perfilBioquimico/salvar', ['as' => 'aluno.cadastro.perfilBioquimico.salvar', 'uses' => 'AlunosController@cadastroPerfilBioquimicoSalvar']);
-    Route::get('/lista/alunos/cadastro/perfilBioquimico/editar', ['as' => 'aluno.cadastro.perfilBioquimico.editar', 'uses' => 'AlunosController@cadastroPerfilBioquimicoEditar']);
-    Route::put('/lista/alunos/cadastro/perfilBioquimico/update', ['as' => 'aluno.cadastro.perfilBioquimico.update', 'uses' => 'AlunosController@cadastroPerfilBioquimicoUpdate']);
+    Route::get('/lista/alunos/cadastro/perfilBioquimico/editar/{idTreinamento}', ['as' => 'aluno.cadastro.perfilBioquimico.editar', 'uses' => 'AlunosController@cadastroPerfilBioquimicoEditar']);
+    Route::post('/lista/alunos/cadastro/perfilBioquimico/update', ['as' => 'aluno.cadastro.perfilBioquimico.update', 'uses' => 'AlunosController@cadastroPerfilBioquimicoUpdate']);
 
     //Exames Adicionais
     Route::get('/lista/alunos/cadastro/examesAdicionais', ['as' => 'aluno.cadastro.exames', 'uses' => 'AlunosController@cadastroexamesAdicionais']);

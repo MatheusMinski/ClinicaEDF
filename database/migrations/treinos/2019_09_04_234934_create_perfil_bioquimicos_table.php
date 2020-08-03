@@ -14,8 +14,8 @@ class CreatePerfilBioquimicosTable extends Migration
     public function up()
     {
         Schema::create('PerfilBioquimico', function (Blueprint $table) {
-            $table->integer('id');
-            $table->integer('idTreinamento');
+            $table->bigIncrements('id');
+            $table->integer('idTreinamento')->unique();
             $table->date('glicemiaDataUm');
             $table->string('glicemiaValorUm', 10);
             $table->date('glicemiaDataDois');
