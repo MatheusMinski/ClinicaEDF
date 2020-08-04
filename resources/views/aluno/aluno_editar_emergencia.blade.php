@@ -37,7 +37,7 @@
                 <br/><br/>
 
 
-                <button class="btn blue"">CONTINUAR &raquo</button>
+                <button class="btn blue">CONTINUAR &raquo</button>
                 <br/><br/><br/><br/>
 
             </form>

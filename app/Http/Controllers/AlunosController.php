@@ -595,9 +595,57 @@ class AlunosController extends Controller
 
     //CRUD Exames Adicionais
 
-    public function cadastroexamesAdicionais(){
-        return view('aluno.aluno_cadastro_exames');
+    public function cadastroexamesAdicionais($idTreinamento){
+
+        $dadosExamesAdicionais = ExamesAdicionais::where("idTreinamento", "=", $idTreinamento)->paginate(5);
+
+        return view('aluno.aluno_cadastro_exames', compact('dadosExamesAdicionais', 'idTreinamento'));
+
+
     }
+
+    public function cadastroexamesAdicionaisSalvar(Request $req){
+        $dados = $req->all();
+        try{
+            ExamesAdicionais::create($dados);
+            $dadosExamesAdicionais = ExamesAdicionais::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
+            $idTreinamento = $dados['idTreinamento'];
+
+            return view('aluno.aluno_cadastro_exames', compact('dadosExamesAdicionais','idTreinamento'));
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+    }
+
+    public function cadastroexamesAdicionaisEditar($idExameAdicional, $idTreinamento){
+        $dadosExameAdicional = ExamesAdicionais::find($idExameAdicional);
+
+        return view('aluno.aluno_editar_exames', compact('dadosExameAdicional', 'idTreinamento'));
+
+    }
+
+    public function cadastroexamesAdicionaisUpdate(Request $req){
+        $dados = $req->all();
+
+        $dadosAntigos = ExamesAdicionais::find($dados['id']);
+
+        $dadosAntigos->tipoDoExame = $dados['tipoDoExame'];
+        $dadosAntigos->dataExame = $dados['dataExame'];
+        $dadosAntigos->resultadosPrincipais = $dados['resultadosPrincipais'];
+
+
+        $dadosAntigos->save();
+        $dadosExamesAdicionais = ExamesAdicionais::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
+
+        $idTreinamento = $dados['idTreinamento'];
+        try{
+            return view('aluno.aluno_cadastro_exames', compact('dadosExamesAdicionais','idTreinamento'));
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+    }
+
 //-----------------------------
 
     //CRUD Consultas
