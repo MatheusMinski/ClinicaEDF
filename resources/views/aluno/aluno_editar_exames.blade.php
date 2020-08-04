@@ -43,7 +43,7 @@
                     <div class="col s12">
                         <label for="">Resultados principais</label>
                         <textarea style="padding-bottom: 3%" name="resultadosPrincipais" class="form-control" required="required" maxlength="50"  placeholder="">{{$dadosExameAdicional->resultadosPrincipais}}</textarea>
-                        <button  class="btn blue"> Adicionar </button>
+                        <button  class="btn blue"> Salvar </button>
                     </div>
                 </div>
             </form>

@@ -109,9 +109,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/lista/alunos/cadastro/qualidadeVida', ['as' => 'aluno.cadastro.qualidadeVida', 'uses' => 'AlunosController@cadastroQualidadeVida']);
 
     //Medicamentos
-    Route::get('/lista/alunos/cadastro/medicamentos', ['as' => 'aluno.cadastro.medicamentos', 'uses' => 'AlunosController@cadastroMedicamentos']);
+    Route::get('/lista/alunos/cadastro/medicamentos/{idTreinamento}', ['as' => 'aluno.cadastro.medicamentos', 'uses' => 'AlunosController@cadastroMedicamentos']);
     Route::post('/lista/alunos/cadastro/medicamentos/salvar', ['as' => 'aluno.cadastro.medicamentos.salvar', 'uses' => 'AlunosController@cadastroMedicamentosSalvar']);
-    Route::get('/lista/alunos/cadastro/medicamentos/editar', ['as' => 'aluno.cadastro.medicamentos.editar', 'uses' => 'AlunosController@cadastroMedicamentosEditar']);
+    Route::get('/lista/alunos/cadastro/medicamentos/editar/{idExame}/{idTreinamento}', ['as' => 'aluno.cadastro.medicamentos.editar', 'uses' => 'AlunosController@cadastroMedicamentosEditar']);
     Route::post('/lista/alunos/cadastro/medicamentos/update', ['as' => 'aluno.cadastro.medicamentos.update', 'uses' => 'AlunosController@cadastroMedicamentosUpdate']);
 
     //Perfil Bioquimico

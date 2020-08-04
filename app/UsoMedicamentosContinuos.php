@@ -8,7 +8,7 @@ class UsoMedicamentosContinuos extends Model
 {
     protected $table = 'UsoMedicamentosContinuos';
     protected $fillable = [
-        'idAluno', 'nomeComercial','nomeCientifico','dosagem','posologia', 'inicio'
+        'idTreinamento', 'nomeComercial','nomeCientifico','dosagem','posologia', 'inicio'
     ];
 
 }
