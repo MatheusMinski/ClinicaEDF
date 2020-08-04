@@ -47,6 +47,23 @@
                 </div>
             </div>
 
+            <div class="card horizontal" style="width: 45%; float: left; margin: 2%">
+
+                <div class="card-stacked">
+                    <div class="card-content" style="box-shadow:  15px 15px 27px #e1e1e3, 15px 15px 27px #ffffff;">
+                        <h5 style="padding-bottom: 10px">Contato de Emergência:</h5>
+                        <h6 style="padding-bottom: 10px">Nome: {{$dadosEmergencia['nome']}}</h6>
+                        <h6 style="padding-bottom: 10px">Parentesco: {{$dadosEmergencia['parentesco']}}</h6>
+                        <h6 style="padding-bottom: 10px">Telefone: {{ $dadosEmergencia['telefone'] }}</h6>
+                        @if($dadosEmergencia['id'] == "Não cadastrado")
+                            <a class="btn blue" href="{{route('aluno.cadastro.emergencia', ['idAluno' => $dadosAluno->id])}}">Cadastrar</a>
+                        @else
+                            <a class="btn blue"href="{{route('aluno.cadastro.emergencia.editar', $dadosEmergencia['id'])}}">Editar</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 

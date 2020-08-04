@@ -6,7 +6,7 @@
     <div class="container" >
         <!--FORMULÁRIO DE CADASTRO-->
         <div id="cadastro">
-            <form method="post" action="{{route('salvar.professor')}}">
+            <form method="post" action="{{route('aluno.cadastro.emergencia.salvar')}}">
                 {{csrf_field()}}
 
                 <br/><br/>
@@ -21,22 +21,22 @@
                 @endif
                 <br/><br/>
 
+                <input type="hidden" name="idAluno" value="{{$idAluno}}">
+
                 <label for="">Nome do Contato</label>
                 <input value="" name="nome" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
                 <br/><br/>
 
                 <label for="">Parentesco</label>
-                <input id="" value="" name="parentesco" required="required" type="number" placeholder="" class="validate"/>
+                <input id="" value="" name="parentesco" required="required" type="text" placeholder="" class="validate"/>
                 <br/><br/>
 
                 <label for="">Telefone</label>
-                <input name="telefone" id="" value="" type="text" class="form-control" placeholder="">
+                <input name="telefone" id="telefone" value="" type="text" class="form-control" placeholder="">
                 <br/><br/>
 
 
-                <div class="row">
-                    <a class="btn blue" href="{{route('aluno.cadastro.endereco')}}">CONTINUAR &raquo</a>
-                </div>
+                    <button class="btn blue" >CONTINUAR &raquo</button>
                 <br/><br/><br/><br/>
 
             </form>
@@ -45,7 +45,11 @@
         </div>
     </div>
     </div>
-
+    <script>
+        $(document).ready(function(){
+            $('#telefone').mask('(99) 9 9999-9999');
+        });
+    </script>
 
 
 @endsection

@@ -85,7 +85,8 @@ class AlunosController extends Controller
 
     public function dadosPessoais($id){
         $dadosAluno = Aluno::where('id', '=', $id)->get()->first();
-        $dadosEnderecoBanco = Endereco::where('id', '=', $id)->get()->first();
+        $dadosEnderecoBanco = Endereco::where('idAluno', '=', $id)->get()->first();
+        $dadosEmergencia = ContatosDeEmergencia::where('idAluno', '=', $id)->get()->first();
 
         if($dadosEnderecoBanco == null){
             $dadosEndereco = [
@@ -107,7 +108,24 @@ class AlunosController extends Controller
                 "numero"=>$dadosEnderecoBanco['numero']
             ];
         }
-        return view('aluno.aluno_dados_pessoais', compact('dadosAluno','dadosEndereco'));
+
+        if($dadosEmergencia == null){
+            $dadosEmergencia = [
+                "id" => 'Não cadastrado',
+                "nome" => 'Não cadastrado',
+                "parentesco" => 'Não cadastrado',
+                "telefone"=>"Não cadastrado",
+                ];
+        }else{
+            $dadosEmergencia = [
+                "id" => $dadosEmergencia['id'],
+                "nome" => $dadosEmergencia['nome'],
+                "parentesco" => $dadosEmergencia['parentesco'],
+                "telefone"=>$dadosEmergencia['telefone'],
+            ];
+        }
+
+        return view('aluno.aluno_dados_pessoais', compact('dadosAluno','dadosEndereco', 'dadosEmergencia'));
     }
 
     public function cadastroDados(){
@@ -210,6 +228,51 @@ class AlunosController extends Controller
     }
 
 
+//-----------------------------
+
+    //CRUD Emergencia
+
+    public function cadastroEmergencia($idAluno){
+        return view('aluno.aluno_cadastro_emergencia', compact('idAluno'));
+    }
+
+    public function cadastroEmergenciaSalvar(Request $req){
+        $dados = $req->all();
+
+        try{
+            ContatosDeEmergencia::create($dados);
+            $id = "Lista de Alunos"; //indicador pro js redirecionar para a lista de alunos
+            return redirect()->route('cadastro.sucesso',['id' => $id]);
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+    }
+    public function cadastroEmergenciaEditar($id){
+        $dadosEmergencia = ContatosDeEmergencia::find($id);
+
+        return view('aluno.aluno_editar_emergencia', compact('dadosEmergencia'));
+    }
+
+    public function cadastroEmergenciaUpdate(Request $req){
+        $dados = $req->all();
+        $antigo = ContatosDeEmergencia::find($dados['id']);
+
+        try{
+
+            $antigo->nome = $dados['nome'];
+            $antigo->parentesco = $dados['parentesco'];
+            $antigo->telefone = $dados['telefone'];
+            $antigo->save();
+
+            return $this->dadosPessoais($dados['idAluno']);
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+
+    }
 //-----------------------------
 
     //CRUD Avaliacao Funcional
@@ -430,12 +493,6 @@ class AlunosController extends Controller
 
 //-----------------------------
 
-    //CRUD Emergencia
-
-    public function cadastroEmergencia(){
-        return view('aluno.aluno_cadastro_emergencia');
-    }
-//-----------------------------
 
     //CRUD Qualidade de Vida
 
