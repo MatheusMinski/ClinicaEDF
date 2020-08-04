@@ -112,7 +112,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/lista/alunos/cadastro/medicamentos', ['as' => 'aluno.cadastro.medicamentos', 'uses' => 'AlunosController@cadastroMedicamentos']);
     Route::post('/lista/alunos/cadastro/medicamentos/salvar', ['as' => 'aluno.cadastro.medicamentos.salvar', 'uses' => 'AlunosController@cadastroMedicamentosSalvar']);
     Route::get('/lista/alunos/cadastro/medicamentos/editar', ['as' => 'aluno.cadastro.medicamentos.editar', 'uses' => 'AlunosController@cadastroMedicamentosEditar']);
-    Route::put('/lista/alunos/cadastro/medicamentos/update', ['as' => 'aluno.cadastro.medicamentos.update', 'uses' => 'AlunosController@cadastroMedicamentosUpdate']);
+    Route::post('/lista/alunos/cadastro/medicamentos/update', ['as' => 'aluno.cadastro.medicamentos.update', 'uses' => 'AlunosController@cadastroMedicamentosUpdate']);
 
     //Perfil Bioquimico
     Route::get('/lista/alunos/cadastro/perfilBioquimico/{idTreinamento}', ['as' => 'aluno.cadastro.perfilBioquimico', 'uses' => 'AlunosController@cadastroPerfilBioquimico']);
@@ -121,10 +121,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/lista/alunos/cadastro/perfilBioquimico/update', ['as' => 'aluno.cadastro.perfilBioquimico.update', 'uses' => 'AlunosController@cadastroPerfilBioquimicoUpdate']);
 
     //Exames Adicionais
-    Route::get('/lista/alunos/cadastro/examesAdicionais', ['as' => 'aluno.cadastro.exames', 'uses' => 'AlunosController@cadastroexamesAdicionais']);
+    Route::get('/lista/alunos/cadastro/examesAdicionais/{idTreinamento}', ['as' => 'aluno.cadastro.exames', 'uses' => 'AlunosController@cadastroexamesAdicionais']);
     Route::post('/lista/alunos/cadastro/examesAdicionais/salvar', ['as' => 'aluno.cadastro.exames.salvar', 'uses' => 'AlunosController@cadastroexamesAdicionaisSalvar']);
-    Route::get('/lista/alunos/cadastro/examesAdicionais/editar', ['as' => 'aluno.cadastro.exames.editar', 'uses' => 'AlunosController@cadastroexamesAdicionaisEditar']);
-    Route::put('/lista/alunos/cadastro/examesAdicionais/update', ['as' => 'aluno.cadastro.exames.update', 'uses' => 'AlunosController@cadastroexamesAdicionaisUpdate']);
+    Route::get('/lista/alunos/cadastro/examesAdicionais/editar/{idExame}/{idTreinamento}', ['as' => 'aluno.cadastro.exames.editar', 'uses' => 'AlunosController@cadastroexamesAdicionaisEditar']);
+    Route::post('/lista/alunos/cadastro/examesAdicionais/update', ['as' => 'aluno.cadastro.exames.update', 'uses' => 'AlunosController@cadastroexamesAdicionaisUpdate']);
 
     //Consultas
     Route::get('/lista/alunos/cadastro/consultas', ['as' => 'aluno.cadastro.consultas', 'uses' => 'AlunosController@cadastroConsultas']);
