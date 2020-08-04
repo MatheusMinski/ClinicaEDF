@@ -76,9 +76,8 @@ class AlunosController extends Controller
         }else{
             return redirect()->back()->withErrors(['Permissão negada']);
         }
-
-        return view('aluno.aluno_treinamentos', compact('treinamentos'));
     }
+    //-----------------------------
     //-----------------------------
 
     //CRUD Dados Pessoais
@@ -115,7 +114,7 @@ class AlunosController extends Controller
                 "nome" => 'Não cadastrado',
                 "parentesco" => 'Não cadastrado',
                 "telefone"=>"Não cadastrado",
-                ];
+            ];
         }else{
             $dadosEmergencia = [
                 "id" => $dadosEmergencia['id'],
@@ -273,7 +272,9 @@ class AlunosController extends Controller
         }
 
     }
-//-----------------------------
+
+    //-----------------------------
+    //-----------------------------
 
     //CRUD Avaliacao Funcional
 
@@ -390,7 +391,8 @@ class AlunosController extends Controller
     }
 
 
-//-----------------------------
+    //-----------------------------
+    //-----------------------------
 
     //CRUD Anamnese
 
@@ -491,22 +493,18 @@ class AlunosController extends Controller
     }
 
 
-//-----------------------------
-
+    //-----------------------------
+    //-----------------------------
 
     //CRUD Qualidade de Vida
 
     public function cadastroQualidadeVida(){
         return view('aluno.aluno_cadastro_qualidadeVida');
     }
-//-----------------------------
 
-    //CRUD Medicamentos
 
-    public function cadastroMedicamentos(){
-        return view('aluno.aluno_cadastro_medicamentos');
-    }
-//-----------------------------
+    //-----------------------------
+    //-----------------------------
 
     //CRUD Perfil Bioquimico
 
@@ -591,7 +589,9 @@ class AlunosController extends Controller
 
     }
 
-//-----------------------------
+
+    //-----------------------------
+    //-----------------------------
 
     //CRUD Exames Adicionais
 
@@ -611,7 +611,8 @@ class AlunosController extends Controller
             $dadosExamesAdicionais = ExamesAdicionais::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
             $idTreinamento = $dados['idTreinamento'];
 
-            return view('aluno.aluno_cadastro_exames', compact('dadosExamesAdicionais','idTreinamento'));
+            return redirect()->route('aluno.cadastro.exames', $idTreinamento);
+            //return view('aluno.aluno_cadastro_exames', compact('dadosExamesAdicionais','idTreinamento'));
         }catch(\Exception $ex){
             return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
         }
@@ -627,18 +628,19 @@ class AlunosController extends Controller
     public function cadastroexamesAdicionaisUpdate(Request $req){
         $dados = $req->all();
 
-        $dadosAntigos = ExamesAdicionais::find($dados['id']);
-
-        $dadosAntigos->tipoDoExame = $dados['tipoDoExame'];
-        $dadosAntigos->dataExame = $dados['dataExame'];
-        $dadosAntigos->resultadosPrincipais = $dados['resultadosPrincipais'];
-
-
-        $dadosAntigos->save();
-        $dadosExamesAdicionais = ExamesAdicionais::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
-
-        $idTreinamento = $dados['idTreinamento'];
         try{
+            $dadosAntigos = ExamesAdicionais::find($dados['id']);
+
+            $dadosAntigos->tipoDoExame = $dados['tipoDoExame'];
+            $dadosAntigos->dataExame = $dados['dataExame'];
+            $dadosAntigos->resultadosPrincipais = $dados['resultadosPrincipais'];
+
+
+            $dadosAntigos->save();
+            $dadosExamesAdicionais = ExamesAdicionais::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
+
+            $idTreinamento = $dados['idTreinamento'];
+
             return view('aluno.aluno_cadastro_exames', compact('dadosExamesAdicionais','idTreinamento'));
 
         }catch(\Exception $ex){
@@ -646,6 +648,66 @@ class AlunosController extends Controller
         }
     }
 
+
+    //-----------------------------
+    //-----------------------------
+
+    //CRUD Medicamentos
+
+    public function cadastroMedicamentos($idTreinamento){
+        $dadosMedicamentos = UsoMedicamentosContinuos::where("idTreinamento", "=", $idTreinamento)->paginate(5);
+
+        return view('aluno.aluno_cadastro_medicamentos', compact('dadosMedicamentos', 'idTreinamento'));
+
+    }
+
+    public function cadastroMedicamentosSalvar(Request $req){
+        $dados = $req->all();
+        try{
+            UsoMedicamentosContinuos::create($dados);
+            $dadosMedicamentos = UsoMedicamentosContinuos::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
+            $idTreinamento = $dados['idTreinamento'];
+
+            return redirect()->route('aluno.cadastro.medicamentos', $idTreinamento);
+            //return view('aluno.aluno_cadastro_medicamentos', compact('dadosMedicamentos','idTreinamento'));
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+    }
+
+    public function cadastroMedicamentosEditar($idMedicamento, $idTreinamento){
+        $dadosMedicamentos = UsoMedicamentosContinuos::find($idMedicamento);
+
+        return view('aluno.aluno_editar_medicamentos', compact('dadosMedicamentos', 'idTreinamento'));
+
+    }
+
+    public function cadastroMedicamentosUpdate(Request $req){
+        $dados = $req->all();
+
+        try{
+            $dadosAntigos = UsoMedicamentosContinuos::find($dados['id']);
+
+            $dadosAntigos->nomeComercial = $dados['nomeComercial'];
+            $dadosAntigos->nomeCientifico = $dados['nomeCientifico'];
+            $dadosAntigos->dosagem = $dados['dosagem'];
+            $dadosAntigos->posologia = $dados['posologia'];
+            $dadosAntigos->inicio = $dados['inicio'];
+
+
+            $dadosAntigos->save();
+            $dadosMedicamentos = UsoMedicamentosContinuos::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
+
+            $idTreinamento = $dados['idTreinamento'];
+
+            return view('aluno.aluno_cadastro_medicamentos', compact('dadosMedicamentos','idTreinamento'));
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+    }
+
+//-----------------------------
 //-----------------------------
 
     //CRUD Consultas
