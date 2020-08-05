@@ -14,10 +14,10 @@ class CreateQuantasConsultasTable extends Migration
     public function up()
     {
         Schema::create('QuantasConsultas', function (Blueprint $table) {
-            $table->integer('id');
-            $table->integer('idTreinamento')->unique();
+            $table->bigIncrements('id');
+            $table->integer('idTreinamento');
             $table->date('dataAproximada');
-            $table->string('especialidade', 25);
+            $table->string('especialidade', 30);
             $table->string('motivo', 200);
             $table->foreign('idTreinamento')->references('id')->on('AlunoTreinamentos');
             $table->timestamps();

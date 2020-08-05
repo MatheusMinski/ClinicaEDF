@@ -11,6 +11,7 @@ use App\Endereco;
 use App\ExamesAdicionais;
 use App\PerfilBioquimico;
 use App\QualidadeDeVida;
+use App\QuantasConsultas;
 use App\User;
 use App\UsoMedicamentosContinuos;
 use Illuminate\Http\Request;
@@ -665,11 +666,9 @@ class AlunosController extends Controller
         $dados = $req->all();
         try{
             UsoMedicamentosContinuos::create($dados);
-            $dadosMedicamentos = UsoMedicamentosContinuos::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
             $idTreinamento = $dados['idTreinamento'];
 
             return redirect()->route('aluno.cadastro.medicamentos', $idTreinamento);
-            //return view('aluno.aluno_cadastro_medicamentos', compact('dadosMedicamentos','idTreinamento'));
         }catch(\Exception $ex){
             return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
         }
@@ -712,8 +711,53 @@ class AlunosController extends Controller
 
     //CRUD Consultas
 
-    public function cadastroConsultas(){
-        return view('aluno.aluno_cadastro_consultas');
+    public function cadastroConsultas($idTreinamento){
+        $dadosConsultas = QuantasConsultas::where("idTreinamento", "=", $idTreinamento)->paginate(5);
+
+        return view('aluno.aluno_cadastro_consultas', compact('dadosConsultas', 'idTreinamento'));
+
+    }
+
+    public function cadastroConsultasSalvar(Request $req){
+        try{
+            $dados = $req->all();
+
+            QuantasConsultas::create($dados);
+            $idTreinamento = $dados['idTreinamento'];
+
+            return redirect()->route('aluno.cadastro.consultas', $idTreinamento);
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
+    }
+
+    public function cadastroConsultasEditar($idConsulta, $idTreinamento){
+        $dadosConsulta = QuantasConsultas::find($idConsulta);
+
+        return view('aluno.aluno_editar_consultas', compact('dadosConsulta', 'idTreinamento'));
+
+    }
+
+    public function cadastroConsultasUpdate(Request $req){
+        $dados = $req->all();
+
+        try{
+            $dadosAntigos = QuantasConsultas::find($dados['id']);
+
+            $dadosAntigos->dataAproximada = $dados['dataAproximada'];
+            $dadosAntigos->especialidade = $dados['especialidade'];
+            $dadosAntigos->motivo = $dados['motivo'];
+
+            $dadosAntigos->save();
+            $dadosConsultas = QuantasConsultas::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
+
+            $idTreinamento = $dados['idTreinamento'];
+
+            return view('aluno.aluno_cadastro_consultas', compact('dadosConsultas','idTreinamento'));
+
+        }catch(\Exception $ex){
+            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
+        }
     }
 //-----------------------------
 

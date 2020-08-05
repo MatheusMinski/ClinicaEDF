@@ -127,10 +127,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/lista/alunos/cadastro/examesAdicionais/update', ['as' => 'aluno.cadastro.exames.update', 'uses' => 'AlunosController@cadastroexamesAdicionaisUpdate']);
 
     //Consultas
-    Route::get('/lista/alunos/cadastro/consultas', ['as' => 'aluno.cadastro.consultas', 'uses' => 'AlunosController@cadastroConsultas']);
+    Route::get('/lista/alunos/cadastro/consultas/{IdTreinamento}', ['as' => 'aluno.cadastro.consultas', 'uses' => 'AlunosController@cadastroConsultas']);
     Route::post('/lista/alunos/cadastro/consultas/salvar', ['as' => 'aluno.cadastro.consultas.salvar', 'uses' => 'AlunosController@cadastroConsultasSalvar']);
-    Route::get('/lista/alunos/cadastro/consultas/editar', ['as' => 'aluno.cadastro.consultas.editar', 'uses' => 'AlunosController@cadastroConsultasEditar']);
-    Route::put('/lista/alunos/cadastro/consultas/update', ['as' => 'aluno.cadastro.consultas.update', 'uses' => 'AlunosController@cadastroConsultasUpdate']);
+    Route::get('/lista/alunos/cadastro/consultas/editar/{idConsulta}/{idTreinamento}', ['as' => 'aluno.cadastro.consultas.editar', 'uses' => 'AlunosController@cadastroConsultasEditar']);
+    Route::post('/lista/alunos/cadastro/consultas/update', ['as' => 'aluno.cadastro.consultas.update', 'uses' => 'AlunosController@cadastroConsultasUpdate']);
 
     //Treinamentos
     Route::get('/lista/alunos/treinamento/status/{idTreinamento}', ['as' => 'treinamento.status', 'uses' => 'AlunosController@treinamentoStatus']);

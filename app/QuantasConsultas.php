@@ -8,7 +8,7 @@ class QuantasConsultas extends Model
 {
     protected $table = 'QuantasConsultas';
     protected $fillable = [
-        'idAluno', 'dataAproximada', 'especialidade', 'motivo'
+        'idTreinamento', 'dataAproximada', 'especialidade', 'motivo'
     ];
 
 }
