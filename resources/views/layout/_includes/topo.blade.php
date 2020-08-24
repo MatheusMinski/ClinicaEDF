@@ -50,6 +50,7 @@
             <li><a class="upBtn" name="btnProf" href="{{route('lista.professor')}}" style="color: #1d2124">Professores</a></li>
             <li><a class="upBtn" name="BtnEmp" href="{{route('lista.emprestimos')}}" style="color: #1d2124">Empréstimos</a></li>
             <li><a class="upBtn" name="BtnEq" href="{{route('lista.equipamentos')}}" style="color: #1d2124">Equipamentos</a></li>
+            <li><a class="upBtn" name="BtnAdmin" href="{{route('alunos.admin')}}" style="color: #1d2124">Admin</a></li>
         @endif
         @if(!Auth::guest())
             <li><a class="upBtn" name="btnSair" href="{{route('sair')}}" style="color: #1d2124">Sair</a></li>

@@ -71,6 +71,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Lista Alunos
     Route::get('/lista/alunos', ['as' => 'aluno.lista', 'uses' => 'AlunosController@index']);
+    Route::get('/admin/alunos', ['as' => 'alunos.admin', 'uses' => 'AdminAlunos@alunosAdmin'])->middleware('is_admin');
+    Route::get('/admin/alunos/trocar/professor/{id}', ['as' => 'aluno.trocar.professor', 'uses' => 'AdminAlunos@alunoTrocarProfessor'])->middleware('is_admin');
+    Route::post('/admin/alunos/trocar/professor/procurar/{id}', ['as' => 'professores.procurar.admin', 'uses' => 'AdminAlunos@alunoTrocarProfessorProcurar'])->middleware('is_admin');
+    Route::get('/admin/alunos/trocar/professor/procurar/{idAluno}/{idProfessor}', ['as' => 'professor.trocar', 'uses' => 'AdminAlunos@realizarTroca'])->middleware('is_admin');
 
     //Dados Pessoais
     Route::get('/lista/aluno/dadospessoais/{id}', ['as' => 'aluno.dados.pessoais', 'uses' => 'AlunosController@dadosPessoais']);

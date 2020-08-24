@@ -23,6 +23,27 @@ class AlunosController extends Controller
 
     //Sucesso no cadastro PRG
 
+    public function verificarProfessorTreinamento($idTreinamento){
+        $idLogado = Auth::user()->idProfessor;
+        $idAluno = AlunoTreinamento::find($idTreinamento)->idAluno;
+        $idProfessorAluno = Aluno::find($idAluno)->idProfessor;
+        if($idLogado != $idProfessorAluno){
+            return False;
+        }else{
+            return True;
+        }
+    }
+
+    public function verificarProfessorAluno($idAluno){
+        $idLogado = Auth::user()->idProfessor;
+        $idProfessorAluno = Aluno::find($idAluno)->idProfessor;
+        if($idLogado != $idProfessorAluno){
+            return False;
+        }else{
+            return True;
+        }
+    }
+
     public function sucessoCadastro($idAluno){
         return view('aluno.cadastro_sucesso', compact('idAluno'));
     }
@@ -43,6 +64,9 @@ class AlunosController extends Controller
 
     //Exibir Dados Treinamentos
     public function treinamentoStatus($idTreinamento){
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         $aluno = AlunoTreinamento::find($idTreinamento)->idAluno;
 
@@ -51,6 +75,9 @@ class AlunosController extends Controller
     }
 
     public function treinamentos($id){
+        if(!$this->verificarProfessorAluno($id) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
         $treinamentos = AlunoTreinamento::where('idAluno', '=', $id)->paginate(4);
         $idAluno = $id;
 
@@ -62,21 +89,19 @@ class AlunosController extends Controller
 //Criar Novos Treinamentos
 
     public function treinamentoAdicionar($idAluno){
-        $idProfessor = Auth::user()->idProfessor;
-        $idProfessorAluno = Aluno::find($idAluno)->idProfessor;
 
-        if($idProfessor == $idProfessorAluno){
-            try {
-                AlunoTreinamento::create([
-                    'idAluno' => $idAluno,
-                ]);
-                return redirect()->back();
-            }catch (Exception $e){
-                return redirect()->back()->withErrors(['Ocorreu um erro ao adicionar treinamento']);
-            }
-        }else{
-            return redirect()->back()->withErrors(['Permissão negada']);
+        if(!$this->verificarProfessorAluno($idAluno) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
         }
+        try {
+            AlunoTreinamento::create([
+                'idAluno' => $idAluno,
+            ]);
+            return redirect()->back();
+        }catch (Exception $e){
+            return redirect()->back()->withErrors(['Ocorreu um erro ao adicionar treinamento']);
+        }
+
     }
     //-----------------------------
     //-----------------------------
@@ -84,6 +109,10 @@ class AlunosController extends Controller
     //CRUD Dados Pessoais
 
     public function dadosPessoais($id){
+        if(!$this->verificarProfessorAluno($id) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosAluno = Aluno::where('id', '=', $id)->get()->first();
         $dadosEnderecoBanco = Endereco::where('idAluno', '=', $id)->get()->first();
         $dadosEmergencia = ContatosDeEmergencia::where('idAluno', '=', $id)->get()->first();
@@ -148,6 +177,10 @@ class AlunosController extends Controller
     }
 
     public function cadastroDadosEditar($id){
+        if(!$this->verificarProfessorAluno($id) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosAluno = Aluno::find($id);
 
         return view('aluno.aluno_editar_dados_pessoais', compact('dadosAluno'));
@@ -156,6 +189,10 @@ class AlunosController extends Controller
     public function cadastroDadosUpdate(Request $req){
         $dados = $req->all();
         $antigo = Aluno::find($dados['id']);
+
+        if(!$this->verificarProfessorAluno($dados['id']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         try{
 
@@ -184,11 +221,17 @@ class AlunosController extends Controller
     //CRUD Enderecos
 
     public function cadastroEndereco($idAluno){
+        if(!$this->verificarProfessorAluno($idAluno) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
         return view('aluno.aluno_cadastro_endereco', compact('idAluno'));
     }
 
     public function cadastroEnderecoSalvar(Request $req){
         $dados = $req->all();
+        if(!$this->verificarProfessorAluno($dados['idAluno']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
         try{
             Endereco::create($dados);
             $id = "Lista de Alunos"; //indicador pro js redirecionar para a lista de alunos
@@ -203,12 +246,20 @@ class AlunosController extends Controller
     public function cadastroEnderecoEditar($id){
         $dadosEndereco = Endereco::find($id);
 
+        if(!$this->verificarProfessorAluno($dadosEndereco['idAluno']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         return view('aluno.aluno_editar_endereco', compact('dadosEndereco'));
     }
 
     public function cadastroEnderecoUpdate(Request $req){
         $dados = $req->all();
         $antigo = Endereco::find($dados['id']);
+
+        if(!$this->verificarProfessorAluno($antigo['idAluno']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         try{
 
@@ -233,11 +284,17 @@ class AlunosController extends Controller
     //CRUD Emergencia
 
     public function cadastroEmergencia($idAluno){
+        if(!$this->verificarProfessorAluno($idAluno) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
         return view('aluno.aluno_cadastro_emergencia', compact('idAluno'));
     }
 
     public function cadastroEmergenciaSalvar(Request $req){
         $dados = $req->all();
+        if(!$this->verificarProfessorAluno($dados['idAluno']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         try{
             ContatosDeEmergencia::create($dados);
@@ -251,6 +308,9 @@ class AlunosController extends Controller
     }
     public function cadastroEmergenciaEditar($id){
         $dadosEmergencia = ContatosDeEmergencia::find($id);
+        if(!$this->verificarProfessorAluno($dadosEmergencia['idAluno']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         return view('aluno.aluno_editar_emergencia', compact('dadosEmergencia'));
     }
@@ -258,6 +318,9 @@ class AlunosController extends Controller
     public function cadastroEmergenciaUpdate(Request $req){
         $dados = $req->all();
         $antigo = ContatosDeEmergencia::find($dados['id']);
+        if(!$this->verificarProfessorAluno($antigo['idAluno']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         try{
 
@@ -281,6 +344,10 @@ class AlunosController extends Controller
 
     public function avaliacaoFuncional($idTreinamento){
 
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosAvaliacaoFuncional = AvaliacaoFuncional::where("idTreinamento", "=", $idTreinamento)->get()->first();
 
 
@@ -294,6 +361,10 @@ class AlunosController extends Controller
 
     public function avaliacaoFuncionalSalvar(Request $req){
         $dados = $req->all();
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
 
         try{
@@ -310,6 +381,9 @@ class AlunosController extends Controller
     }
 
     public function avaliacaoFuncionalEditar($idTreinamento){
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
         $dadosAvaliacaoFuncional = AvaliacaoFuncional::where("idTreinamento", "=", $idTreinamento)->get()->first();
 
         return view('aluno.aluno_editar_avaliacao_funcional', compact('dadosAvaliacaoFuncional'));
@@ -319,6 +393,10 @@ class AlunosController extends Controller
 
         $dados = $req->all();
 
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         $dadosAntigos = AvaliacaoFuncional::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
 
@@ -398,6 +476,11 @@ class AlunosController extends Controller
     //CRUD Anamnese
 
     public function cadastroAnamnese($idTreinamento){
+
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosAnamnese = Anamnese::where("idTreinamento", "=", $idTreinamento)->get()->first();
 
 
@@ -411,6 +494,10 @@ class AlunosController extends Controller
 
     public function cadastroAnamneseSalvar(Request $req){
         $dados = $req->all();
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         try{
 
@@ -426,6 +513,10 @@ class AlunosController extends Controller
 
     public function cadastroAnamneseEditar($idTreinamento){
 
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosAnamnese = Anamnese::where("idTreinamento", "=", $idTreinamento)->get()->first();
 
         return view('aluno.aluno_editar_anamnese', compact('dadosAnamnese'));
@@ -434,6 +525,10 @@ class AlunosController extends Controller
 
     public function cadastroAnamneseUpdate(Request $req){
         $dados = $req->all();
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
 
         $dadosAntigos = Anamnese::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
@@ -511,6 +606,10 @@ class AlunosController extends Controller
 
     public function cadastroPerfilBioquimico($idTreinamento){
 
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosPerfilBioquimico = PerfilBioquimico::where("idTreinamento", "=", $idTreinamento)->get()->first();
 
 
@@ -524,6 +623,9 @@ class AlunosController extends Controller
 
     public function cadastroPerfilBioquimicoSalvar(Request $req){
         $dados = $req->all();
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         try{
             PerfilBioquimico::create($dados);
@@ -535,6 +637,9 @@ class AlunosController extends Controller
     }
 
     public function cadastroPerfilBioquimicoEditar($idTreinamento){
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         $dadosPerfilBioquimico = PerfilBioquimico::where("idTreinamento", "=", $idTreinamento)->get()->first();
 
@@ -544,6 +649,10 @@ class AlunosController extends Controller
 
     public function cadastroPerfilBioquimicoUpdate(Request $req){
         $dados = $req->all();
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         try{
 
@@ -598,6 +707,10 @@ class AlunosController extends Controller
 
     public function cadastroexamesAdicionais($idTreinamento){
 
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosExamesAdicionais = ExamesAdicionais::where("idTreinamento", "=", $idTreinamento)->paginate(5);
 
         return view('aluno.aluno_cadastro_exames', compact('dadosExamesAdicionais', 'idTreinamento'));
@@ -607,6 +720,11 @@ class AlunosController extends Controller
 
     public function cadastroexamesAdicionaisSalvar(Request $req){
         $dados = $req->all();
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         try{
             ExamesAdicionais::create($dados);
             $dadosExamesAdicionais = ExamesAdicionais::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
@@ -620,6 +738,11 @@ class AlunosController extends Controller
     }
 
     public function cadastroexamesAdicionaisEditar($idExameAdicional, $idTreinamento){
+
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosExameAdicional = ExamesAdicionais::find($idExameAdicional);
 
         return view('aluno.aluno_editar_exames', compact('dadosExameAdicional', 'idTreinamento'));
@@ -628,6 +751,10 @@ class AlunosController extends Controller
 
     public function cadastroexamesAdicionaisUpdate(Request $req){
         $dados = $req->all();
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         try{
             $dadosAntigos = ExamesAdicionais::find($dados['id']);
@@ -656,6 +783,11 @@ class AlunosController extends Controller
     //CRUD Medicamentos
 
     public function cadastroMedicamentos($idTreinamento){
+
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosMedicamentos = UsoMedicamentosContinuos::where("idTreinamento", "=", $idTreinamento)->paginate(5);
 
         return view('aluno.aluno_cadastro_medicamentos', compact('dadosMedicamentos', 'idTreinamento'));
@@ -664,6 +796,11 @@ class AlunosController extends Controller
 
     public function cadastroMedicamentosSalvar(Request $req){
         $dados = $req->all();
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         try{
             UsoMedicamentosContinuos::create($dados);
             $idTreinamento = $dados['idTreinamento'];
@@ -675,6 +812,11 @@ class AlunosController extends Controller
     }
 
     public function cadastroMedicamentosEditar($idMedicamento, $idTreinamento){
+
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosMedicamentos = UsoMedicamentosContinuos::find($idMedicamento);
 
         return view('aluno.aluno_editar_medicamentos', compact('dadosMedicamentos', 'idTreinamento'));
@@ -683,6 +825,10 @@ class AlunosController extends Controller
 
     public function cadastroMedicamentosUpdate(Request $req){
         $dados = $req->all();
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         try{
             $dadosAntigos = UsoMedicamentosContinuos::find($dados['id']);
@@ -712,6 +858,11 @@ class AlunosController extends Controller
     //CRUD Consultas
 
     public function cadastroConsultas($idTreinamento){
+
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosConsultas = QuantasConsultas::where("idTreinamento", "=", $idTreinamento)->paginate(5);
 
         return view('aluno.aluno_cadastro_consultas', compact('dadosConsultas', 'idTreinamento'));
@@ -719,8 +870,13 @@ class AlunosController extends Controller
     }
 
     public function cadastroConsultasSalvar(Request $req){
+        $dados = $req->all();
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         try{
-            $dados = $req->all();
 
             QuantasConsultas::create($dados);
             $idTreinamento = $dados['idTreinamento'];
@@ -732,6 +888,11 @@ class AlunosController extends Controller
     }
 
     public function cadastroConsultasEditar($idConsulta, $idTreinamento){
+
+        if(!$this->verificarProfessorTreinamento($idTreinamento) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
+
         $dadosConsulta = QuantasConsultas::find($idConsulta);
 
         return view('aluno.aluno_editar_consultas', compact('dadosConsulta', 'idTreinamento'));
@@ -740,6 +901,10 @@ class AlunosController extends Controller
 
     public function cadastroConsultasUpdate(Request $req){
         $dados = $req->all();
+
+        if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
+            return redirect()->back()->withInput()->withErrors(['Acesso negado']);
+        }
 
         try{
             $dadosAntigos = QuantasConsultas::find($dados['id']);

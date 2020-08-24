@@ -59,8 +59,8 @@
         <h5 class="center">Exames Cadastrados</h5>
         <table>
             <thead>
-            <th style="width: 10%">Data aproximada</th>
-            <th style="width: 60%">Especialidade</th>
+            <th style="width: 20%">Data aproximada</th>
+            <th style="width: 50%">Especialidade</th>
             <th style="width: 30%">Resultados Principais</th>
 
             </thead>
