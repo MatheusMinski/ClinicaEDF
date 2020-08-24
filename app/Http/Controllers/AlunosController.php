@@ -164,8 +164,8 @@ class AlunosController extends Controller
     public function cadastroDadosSalvar(Request $req){
         $dados = $req->all();
 
+        $alunoNovo = Aluno::create($dados);
         try{
-            $alunoNovo = Aluno::create($dados);
             $id = $alunoNovo['id'];
             return redirect()->route('cadastro.sucesso',['id' => $id]);
 
