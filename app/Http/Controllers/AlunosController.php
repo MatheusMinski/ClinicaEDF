@@ -17,6 +17,7 @@ use App\UsoMedicamentosContinuos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use mysql_xdevapi\Exception;
+use DateTime;
 
 class AlunosController extends Controller
 {
