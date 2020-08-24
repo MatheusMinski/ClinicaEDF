@@ -4,13 +4,10 @@
 
 @section('conteudo')
     <div class="container">
-        <div class="col s12 m7">
-
+        <div class="row">
             <div class="card horizontal" style="width: 45%; float: left; margin: 2%">
-
                 <div class="card-stacked">
                     <div class="card-content" style="box-shadow:  15px 15px 27px #e1e1e3, 15px 15px 27px #ffffff;">
-
                         <h6 style="padding-bottom: 10px">Encaminhameneto: {{$dadosAnamnese->encaminhamento}}</h6>
                         <h6 style="padding-bottom: 10px">Nome do profissional: {{$dadosAnamnese->nomeDoProfissional}}</h6>
                         <h6 style="padding-bottom: 10px">Especialidade: {{ $dadosAnamnese->especialidadeDoProfissional }}</h6>
@@ -33,6 +30,14 @@
                         <h6 style="padding-bottom: 10px">Quantas vezes: {{$dadosAnamnese->quantasVezes}}</h6>
                         <h6 style="padding-bottom: 10px">Já desistiu: {{$dadosAnamnese->jaDesistiu}}</h6>
                         <h6 style="padding-bottom: 10px">Motivo da desistência: {{$dadosAnamnese->motivoDesistencia}}</h6>
+                        <a class="btn blue" style="margin-top: 5%"  href="{{route('aluno.cadastro.anamnese.editar', $dadosAnamnese->idTreinamento)}}">Editar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card horizontal" style="width: 45%; float: left; margin: 2%">
+                <div class="card-stacked">
+                    <div class="card-content" style="box-shadow:  15px 15px 27px #e1e1e3, 15px 15px 27px #ffffff;">
                         <h6 style="padding-bottom: 10px">Dor em alguma região do corpo: {{$dadosAnamnese->dorRegiaoDoCorpo}}</h6>
                         <h6 style="padding-bottom: 10px">Sintoma ou dor (1): {{$dadosAnamnese->descricaoSintomaDor1}}</h6>
                         <h6 style="padding-bottom: 10px">Profissional que Tratou: {{$dadosAnamnese->ProfissionalQueTratou1}}</h6>
@@ -58,10 +63,11 @@
                         <h6 style="padding-bottom: 10px">Quantas vezes por semana: {{$dadosAnamnese->quantasVezesSemana}}</h6>
                         <h6 style="padding-bottom: 10px">Esforço para realizar esse exercício 0 a 10: {{$dadosAnamnese->esforcoParaEsseExercicio}}</h6>
 
-                        <a class="btn blue"  href="{{route('aluno.cadastro.anamnese.editar', $dadosAnamnese->idTreinamento)}}">Editar</a>
+                        <a style="margin-top: 5%" class="btn blue"  href="{{route('aluno.cadastro.anamnese.editar', $dadosAnamnese->idTreinamento)}}">Editar</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 @endsection

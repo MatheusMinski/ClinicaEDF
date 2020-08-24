@@ -211,7 +211,7 @@
             <input type='number' id='' name='padTesteDezMin' class="form-control">
             <br/><br/>
 
-            <label for="">Teste extra 1/label>
+            <label for="">Teste extra 1</label>
             <input type='text' id='' name='testeExtra1' class="form-control">
 
             <label for="">Resposta teste extra 1</label>

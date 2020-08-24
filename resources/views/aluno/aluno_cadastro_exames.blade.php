@@ -72,7 +72,7 @@
                         <div id="modal1-{{ $exame->id }}" class="modal">
                             <div class="modal-content center">
                                 <h4>Resultados Principais:</h4>
-                                <h6>{{$exame->resultadosPrincipais}}</h6>
+                                <h6 style="margin-top: 5%">{{$exame->resultadosPrincipais}}</h6>
                             </div>
                             <div class="modal-footer">
                                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
