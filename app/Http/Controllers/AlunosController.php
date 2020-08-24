@@ -165,6 +165,10 @@ class AlunosController extends Controller
         $dados = $req->all();
 
         $alunoNovo = Aluno::create($dados);
+
+        $dataNascFormatada = DateTime::createFromFormat('d/m/Y', $dados['dataNasc']);
+
+        $dados['dataNasc'] = $dataNascFormatada;
         try{
             $id = $alunoNovo['id'];
             return redirect()->route('cadastro.sucesso',['id' => $id]);
