@@ -67,7 +67,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     //Aluno
-    Route::get('/lista/espera', ['as' => 'lista.espera', 'uses' => 'AlunosController@listaEspera']);
+    Route::get('/lista/espera', ['as' => 'lista.espera', 'uses' => 'ListaEsperaController@show']);
+    Route::get('/lista/espera/contatado/{id}', ['as' => 'lista.espera.contatado', 'uses' => 'ListaEsperaController@updateContato']);
+    Route::get('/lista/espera/remover/{id}', ['as' => 'lista.espera.remover', 'uses' => 'ListaEsperaController@removerListaDeEspera']);
 
     //Lista Alunos
     Route::get('/lista/alunos', ['as' => 'aluno.lista', 'uses' => 'AlunosController@index']);
