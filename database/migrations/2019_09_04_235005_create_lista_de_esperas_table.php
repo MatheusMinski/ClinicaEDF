@@ -14,10 +14,12 @@ class CreateListaDeEsperasTable extends Migration
     public function up()
     {
         Schema::create('ListaDeEspera', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nomeAlunoEspera');
             $table->integer('prioridade');
             $table->string('telefone', 20);
             $table->string('outroContato', 50);
+            $table->boolean('contatado');
             $table->timestamps();
         });
     }
