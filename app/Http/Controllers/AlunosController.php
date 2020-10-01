@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\DataAdapter;
 use App\Aluno;
 use App\AlunoTreinamento;
 use App\Anamnese;
@@ -16,11 +17,18 @@ use App\User;
 use App\UsoMedicamentosContinuos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use mysql_xdevapi\Exception;
 use DateTime;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class AlunosController extends Controller
 {
+    public $dataAdapter;
+
+    public function __construct()
+    {
+        $this->dataAdapter = new DataAdapter();
+    }
+
 
     //Sucesso no cadastro PRG
 
@@ -71,8 +79,10 @@ class AlunosController extends Controller
 
         $aluno = AlunoTreinamento::find($idTreinamento)->idAluno;
 
+        $nome = Aluno::find($aluno)->nome;
 
-        return view('aluno.aluno_status', compact('aluno', 'idTreinamento'));
+
+        return view('aluno.aluno_status', compact('aluno', 'idTreinamento', 'nome'));
     }
 
     public function treinamentos($id){
@@ -80,10 +90,11 @@ class AlunosController extends Controller
             return redirect()->back()->withInput()->withErrors(['Acesso negado']);
         }
         $treinamentos = AlunoTreinamento::where('idAluno', '=', $id)->paginate(4);
+        $aluno = Aluno::find($id);
         $idAluno = $id;
 
 
-        return view('aluno.aluno_treinamentos', compact('treinamentos','idAluno'));
+        return view('aluno.aluno_treinamentos', compact('treinamentos','idAluno', 'aluno'));
     }
 //-----------------------------
 
@@ -507,7 +518,7 @@ class AlunosController extends Controller
         }
 
         try{
-
+            $dados = $this->dataAdapter->formatarDataArmazenarAnamnese($dados);
             Anamnese::create($dados);
 
             return $this->treinamentoStatus($dados['idTreinamento']);
@@ -587,6 +598,7 @@ class AlunosController extends Controller
         $dadosAntigos->quantasVezesSemana = $dados['quantasVezesSemana'];
         $dadosAntigos->esforcoParaEsseExercicio = $dados['esforcoParaEsseExercicio'];
 
+        $dadosAntigos = $this->dataAdapter->formatarDataArmazenarAnamnese($dadosAntigos);
 
         $dadosAntigos->save();
         $dadosAnamnese = Anamnese::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
@@ -633,6 +645,9 @@ class AlunosController extends Controller
         if(!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()){
             return redirect()->back()->withInput()->withErrors(['Acesso negado']);
         }
+
+        $dados = $this->dataAdapter->formatarDataArmazenarPerfilBioquimico($dados);
+
 
         try{
             PerfilBioquimico::create($dados);
@@ -694,6 +709,8 @@ class AlunosController extends Controller
             $dadosAntigos->tgDataDois = $dados['tgDataDois'];
             $dadosAntigos->tgValorDois = $dados['tgValorDois'];
 
+            $dadosAntigos = $this->dataAdapter->formatarDataArmazenarPerfilBioquimico($dadosAntigos);
+
             $dadosAntigos->save();
             $dadosPerfilBioquimico = PerfilBioquimico::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
 
@@ -733,6 +750,7 @@ class AlunosController extends Controller
         }
 
         try{
+            $dados = $this->dataAdapter->formatarDataExamesAdicionais($dados);
             ExamesAdicionais::create($dados);
             $dadosExamesAdicionais = ExamesAdicionais::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
             $idTreinamento = $dados['idTreinamento'];
@@ -770,6 +788,7 @@ class AlunosController extends Controller
             $dadosAntigos->dataExame = $dados['dataExame'];
             $dadosAntigos->resultadosPrincipais = $dados['resultadosPrincipais'];
 
+            $dadosAntigos = $this->dataAdapter->formatarDataExamesAdicionais($dadosAntigos);
 
             $dadosAntigos->save();
             $dadosExamesAdicionais = ExamesAdicionais::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);
@@ -809,6 +828,7 @@ class AlunosController extends Controller
         }
 
         try{
+            $dados = $this->dataAdapter->formatarDataUsoMedicamentosContinuos($dados);
             UsoMedicamentosContinuos::create($dados);
             $idTreinamento = $dados['idTreinamento'];
 
@@ -845,6 +865,7 @@ class AlunosController extends Controller
             $dadosAntigos->dosagem = $dados['dosagem'];
             $dadosAntigos->posologia = $dados['posologia'];
             $dadosAntigos->inicio = $dados['inicio'];
+            $dadosAntigos = $this->dataAdapter->formatarDataUsoMedicamentosContinuos($dadosAntigos);
 
 
             $dadosAntigos->save();
@@ -884,7 +905,7 @@ class AlunosController extends Controller
         }
 
         try{
-
+            $dados = $this->dataAdapter->formatarDataConsultasMedicas($dados);
             QuantasConsultas::create($dados);
             $idTreinamento = $dados['idTreinamento'];
 
@@ -919,6 +940,8 @@ class AlunosController extends Controller
             $dadosAntigos->dataAproximada = $dados['dataAproximada'];
             $dadosAntigos->especialidade = $dados['especialidade'];
             $dadosAntigos->motivo = $dados['motivo'];
+
+            $dadosAntigos = $this->dataAdapter->formatarDataConsultasMedicas($dadosAntigos);
 
             $dadosAntigos->save();
             $dadosConsultas = QuantasConsultas::where("idTreinamento", "=", $dados['idTreinamento'])->paginate(5);

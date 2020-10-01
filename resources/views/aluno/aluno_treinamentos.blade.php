@@ -5,7 +5,7 @@
 @section('conteudo')
     <div class="container">
         <br/>
-        <h3 class="center">Alunos</h3>
+        <h3 class="center">{{$aluno->nome}}</h3>
         @if(isset($errors) && count ($errors) > 0)
             <div class="alert alert-danger">
                 @foreach($errors->all() as $error)
@@ -42,7 +42,7 @@
             <h4 class="center">O aluno ainda não possui treinamentos</h4>
         @endif
         <div style="margin-top: 20px;" class="container">
-            <a class="btn blue" href="{{route('aluno.treinamento.adicionar', ['idAluno' => $idAluno])}}">Adicionar novo treinamento</a>
+            <a class="btn blue" href="{{route('aluno.treinamento.adicionar', ['idAluno' => $idAluno])}}">Criar nova avaliação</a>
         </div>
 
 

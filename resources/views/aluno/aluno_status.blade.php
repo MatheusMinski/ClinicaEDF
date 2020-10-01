@@ -9,7 +9,7 @@
             <table class="center" style="text-align: center">
                 <thead>
                 <tr>
-                    <th>Ficha</th>
+                    <th>Ficha: {{$nome}}</th>
                 </tr>
                 </thead>
                 <tbody>

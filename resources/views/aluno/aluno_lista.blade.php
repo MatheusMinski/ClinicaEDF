@@ -31,7 +31,7 @@
                             <a class="btn deep green" href="{{route('aluno.dados.pessoais', $aluno->id)}}">Dados Pessoais</a>
                         </td>
                         <td>
-                            <a class="btn deep orange" href="{{route('aluno.treinamentos',$aluno->id)}}">Treinamentos</a>
+                            <a class="btn deep orange" href="{{route('aluno.treinamentos',$aluno->id)}}">Avaliações</a>
                         </td>
                     </tr>
                 @endforeach
