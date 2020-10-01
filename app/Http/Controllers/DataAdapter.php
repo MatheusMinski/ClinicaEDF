@@ -30,21 +30,25 @@ class DataAdapter extends Controller
     public function formatarDataArmazenarAnamnese($dados)
     {
         $dados['data'] = Carbon::createFromFormat('d/m/Y',$dados['data']);
+        return $dados;
     }
 
     public function formatarDataUsoMedicamentosContinuos($dados)
     {
         $dados['inicio'] = Carbon::createFromFormat('d/m/Y',$dados['inicio']);
+        return $dados;
     }
 
     public function formatarDataExamesAdicionais($dados)
     {
         $dados['dataExame'] = Carbon::createFromFormat('d/m/Y',$dados['dataExame']);
+        return $dados;
     }
 
     public function formatarDataConsultasMedicas($dados)
     {
         $dados['dataAproximada'] = Carbon::createFromFormat('d/m/Y',$dados['dataAproximada']);
+        return $dados;
     }
 
 }
