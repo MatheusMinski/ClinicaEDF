@@ -23,8 +23,6 @@
                     <th>Outro contato</th>
                     <th>Prioridade</th>
                     <th>Status</th>
-                    <th>-</th>
-                    <th>-</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,7 +40,7 @@
 
                     @if(!$objeto->contatado)
                         <td>
-                            <a class="btn deep orange" href="{{route('lista.espera.contatado',$objeto->id)}}">Confirmar
+                            <a class="btn deep green" href="{{route('lista.espera.contatado',$objeto->id)}}">Confirmar
                                 Contato Realizado</a>
                         </td>
                     @endif
