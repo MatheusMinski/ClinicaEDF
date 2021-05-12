@@ -32,7 +32,7 @@
                 <input value="" name="glicemiaValorUm" class="form-control"  required="required" maxlength="50" type="text"  />
                 <br/><br/>
                 <label for="">Data 2</label>
-                <input value="" id = "Data" id = "Data" name="glicemiaDataDois" class="form-control data-mask"  required="required" maxlength="50" placeholder="00/00/0000" />
+                <input value=""  id = "Data" name="glicemiaDataDois" class="form-control data-mask"  required="required" maxlength="50" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 2</label>
                 <input value="" name="glicemiaValorDois" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
@@ -41,7 +41,7 @@
                 <h4>Insulina</h4>
                 <br/><br/>
                 <label for="">Data 1</label>
-                <input value="" id = "Data" name="insulinaDataUm" class="form-control data-mask"  required="required" maxlength="50" id = "Data" placeholder="00/00/0000"/>
+                <input value="" name="insulinaDataUm" class="form-control data-mask"  required="required" maxlength="50" id = "Data" placeholder="00/00/0000"/>
                 <br/><br/>
                 <label for="">Valor 1</label>
                 <input value="" name="insulinaValorUm" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
