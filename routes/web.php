@@ -146,8 +146,9 @@ Route::group(['middleware' => 'auth'], function () {
     //Sucesso nos cadastros PRG
     Route::get('/cadastro/sucesso/{id}', ['as' => 'cadastro.sucesso', 'uses' => 'AlunosController@sucessoCadastro']);
 
+    //Exportar dados
 
-
+    Route::get('/alunos/exportar', ['as' => 'alunos.exportar', 'uses' => 'AlunosController@export']);
 });
 
 //Login e reset de senha

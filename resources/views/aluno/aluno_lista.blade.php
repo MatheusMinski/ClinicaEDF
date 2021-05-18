@@ -21,6 +21,7 @@
                     <th>Nome</th>
                     <th>Dados Pessoais</th>
                     <th>Treinamentos</th>
+                    <th><a href="{{route('alunos.exportar')}}" class="btn red">Exportar</a></th>
                 </tr>
                 </thead>
                 <tbody>
