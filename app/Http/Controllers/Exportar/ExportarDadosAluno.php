@@ -16,6 +16,7 @@ class ExportarDadosAluno implements FromView
             ->leftJoin('AvaliacaoFuncional', 'AvaliacaoFuncional.idTreinamento', '=', 'AlunoTreinamentos.idAluno')
             ->leftJoin('PerfilBioquimico', 'PerfilBioquimico.idTreinamento', '=', 'AlunoTreinamentos.idAluno')
             ->leftJoin('QualidadeDeVidas', 'QualidadeDeVidas.idTreinamento', '=', 'AlunoTreinamentos.idAluno')
+            ->orderBy('Alunos.nome')
         ->get();
 
         return view('aluno.export_aluno', [
