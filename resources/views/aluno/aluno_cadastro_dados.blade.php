@@ -101,6 +101,7 @@
                 <select id="" name="classeSocialFamilia" class="browser-default" required>
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="Menos de um salário mínimo">Menos de um salário mínimo</option>
+                    <option value="1-3 salários mínimos">Entre 1 e 3 salários mínimos</option>
                     <option value="3-5 salários mínimos">Entre 3 e 5 salários mínimos</option>
                     <option value="5-15 salários mínimos">Entre 5 e 15 salários mínimos</option>
                     <option value="Mais de 15 salários mínimos">Mais de 15 salários mínimos</option>

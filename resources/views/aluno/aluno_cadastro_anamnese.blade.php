@@ -23,8 +23,8 @@
 
                 <input type="hidden" name="idTreinamento" value="{{$idTreinamento}}">
 
-                <label for="">Como considera sua saúde?</label>
-                <select id='' name="saudeGeral" class="browser-default">
+                <label for="">Como considera sua saúde? <span style="color: red">*</span></label>
+                <select id='' name="saudeGeral" class="browser-default" required="required">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="Excelente">Excelente</option>
                     <option value="Muito boa">Muito boa</option>
@@ -34,8 +34,8 @@
                 </select>
                 <br /><br />
 
-                <label for="">Encaminhamento</label>
-                <select id='' name="encaminhamento" class="browser-default">
+                <label for="">Encaminhamento <span style="color: red">*</span></label>
+                <select id='' name="encaminhamento" class="browser-default" required="required">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="CEFISIO">CEFISIO</option>
                     <option value="CENUT">CENUT</option>
@@ -45,17 +45,17 @@
                 </select>
                 <br /><br />
 
-                <label for="">Nome do Profissional</label>
+                <label for="">Nome do Profissional <span style="color: red">*</span></label>
                 <input name="nomeDoProfissional" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
                 <br /><br />
 
-                <label for="">Especialidade Profissional</label>
+                <label for="">Especialidade Profissional <span style="color: red">*</span></label>
                 <input name="especialidadeDoProfissional" required="required" type="text" placeholder="" class="validate" />
                 <br /><br />
 
 
-                <label for="">Motivo Encaminhamento</label>
-                <textarea name="motivoEncaminhamento"  type="text" class="form-control" placeholder=""></textarea>
+                <label for="">Motivo Encaminhamento <span style="color: red">*</span></label>
+                <textarea name="motivoEncaminhamento"  type="text" class="form-control" placeholder="" required="required"></textarea>
                 <br /><br />
 
 
@@ -88,28 +88,28 @@
                 <input name="jaFumouParouAQuantoTempoAnos" type="number" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Descrição Problemas de saúde:</label>
-                <textarea name="descricaoProblemaSaude" type="text" class="form-control" placeholder=""></textarea>
+                <label for="">Descrição Problemas de saúde: <span style="color: red">*</span></label>
+                <textarea name="descricaoProblemaSaude" type="text" class="form-control" placeholder="" required="required"></textarea>
                 <br /><br />
 
-                <label for="">Caiu nos ultimos 12 meses?</label>
-                <select id='' name="caiu12Meses" class="browser-default">
+                <label for="">Caiu nos ultimos 12 meses? <span style="color: red">*</span></label>
+                <select id='' name="caiu12Meses" class="browser-default" required="required">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="true">Sim</option>
                     <option value="false">Não</option>
                 </select>
                 <br /><br />
 
-                <label for="">Se sim, quantas vezes:</label>
-                <input name="quantasQuedas" id="" value="" type="number" class="form-control" placeholder="">
+                <label for="">Se sim, quantas vezes: <span style="color: red">*</span></label>
+                <input name="quantasQuedas" id="" value="" type="number" class="form-control" placeholder="" required="required">
                 <br /><br />
 
-                <label for="">Se sim, em que data:</label>
-                <input name="data"  value="" class="form-control" id = "Data" placeholder="00/00/0000">
+                <label for="">Se sim, em que data: <span style="color: red">*</span></label>
+                <input name="data"  value="" class="form-control" id = "Data" placeholder="00/00/0000" required="required">
                 <br /><br />
 
-                <label for="">Se sim, qual a razão da queda?</label>
-                <select id='' name="razaoQueda" class="browser-default">
+                <label for="">Se sim, qual a razão da queda? <span style="color: red">*</span></label>
+                <select id='' name="razaoQueda" class="browser-default" required="required">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="Chão irregular">Calçada ou piso irregular</option>
                     <option value="Local molhado">Local Molhado</option>
@@ -120,8 +120,8 @@
                 </select>
                 <br /><br />
 
-                <label for="">Se sim, qual o local?</label>
-                <select id='' name="localQueda" class="browser-default">
+                <label for="">Se sim, qual o local? <span style="color: red">*</span></label>
+                <select id='' name="localQueda" class="browser-default" required="required">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="casa">Em casa</option>
                     <option value="fora de casa">Fora de casa</option>
@@ -129,37 +129,37 @@
                 </select>
                 <br /><br />
 
-                <label for="">Se sim, foi hospitalizado?</label>
-                <select id='' name="hospitalizacao" class="browser-default" required>
+                <label for="">Se sim, foi hospitalizado? <span style="color: red">*</span></label>
+                <select id='' name="hospitalizacao" class="browser-default" required="required">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                 </select>
                 <br /><br />
 
-                <label for="">Descrever objetivos ao procurar a clínica:</label>
-                <textarea name="objetivosAoProcurarAClinica" id="" value="" type="text" class="form-control" placeholder=""></textarea>
+                <label for="">Descrever objetivos ao procurar a clínica: <span style="color: red">*</span></label>
+                <textarea name="objetivosAoProcurarAClinica" id="" value="" required="required" type="text" class="form-control" placeholder=""></textarea>
                 <br /><br />
 
-                <label for="">Já tentou resolver isto antes?</label>
-                <input name="jaTentouResolverAntes" type="text" value="" class="form-control" id = "" placeholder="Sim, não, quanto tempo?">
+                <label for="">Já tentou resolver isto antes? <span style="color: red">*</span></label>
+                <input name="jaTentouResolverAntes" required="required" type="text" value="" class="form-control" id = "" placeholder="Sim, não, quanto tempo?">
 
                 <br /><br />
 
-                <label for="">Se sim, quantas vezes:</label>
-                <input name="quantasVezes" id="" value="" type="number" class="form-control" placeholder="">
+                <label for="">Se sim, quantas vezes: <span style="color: red">*</span></label>
+                <input name="quantasVezes" id="" required="required" value="" type="number" class="form-control" placeholder="">
                 <br /><br />
 
-                <label for="">Já desistiu?</label>
-                <select id='' name="jaDesistiu" class="browser-default">
+                <label for="">Já desistiu? <span style="color: red">*</span></label>
+                <select id='' name="jaDesistiu" class="browser-default" required="required">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="true">Sim</option>
                     <option value="false">Não</option>
                 </select>
                 <br /><br />
 
-                <label for="">Se sim, qual o motivo da desistência:</label>
-                <textarea name="motivoDesistencia" id="" value="" type="text" class="form-control" placeholder=""></textarea>
+                <label for="">Se sim, qual o motivo da desistência: <span style="color: red">*</span></label>
+                <textarea name="motivoDesistencia" id="" value="" required="required" type="text" class="form-control" placeholder=""></textarea>
                 <br /><br />
 
 
@@ -181,7 +181,7 @@
                 <br /><br />
 
                 <label for="">Selecione 1 para pouca dor e 10 para muita dor (1)</label>
-                <select id='' name="EVA1" class="browser-default">
+                <select id='' name="EVA1" class="browser-default" >
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -210,7 +210,7 @@
                 <br /><br />
 
                 <label for="">Selecione 1 para pouca dor e 10 para muita dor (2)</label>
-                <select id='' name="EVA2" class="browser-default">
+                <select id='' name="EVA2" class="browser-default" >
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -284,8 +284,8 @@
 
                 <br /><br />
 
-                <label for="">Esforço para realizar tarefas de casa</label>
-                <select id='' name="esforcosTarefaCasa" class="browser-default">
+                <label for="">Esforço para realizar tarefas de casa <span style="color: red">*</span></label>
+                <select id='' name="esforcosTarefaCasa" required="required" class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -301,8 +301,8 @@
 
                 <br /><br />
 
-                <label for="">Esforço para realizar tarefas de casa</label>
-                <select id='' name="esforcoAndarForaDeCasa" class="browser-default">
+                <label for="">Esforço para realizar tarefas de casa <span style="color: red">*</span></label>
+                <select id='' name="esforcoAndarForaDeCasa" required="required" class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -318,8 +318,8 @@
 
                 <br /><br />
 
-                <label for="">Esforço para realizar tarefas de casa</label>
-                <select id='' name="esforcoLazer" class="browser-default">
+                <label for="">Esforço para realizar tarefas de casa <span style="color: red">*</span></label>
+                <select id='' name="esforcoLazer" required="required" class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -335,8 +335,8 @@
 
                 <br /><br />
 
-                <label for="">Esforço para realizar tarefas de casa</label>
-                <select id='' name="esforcoTrabalho" class="browser-default">
+                <label for="">Esforço para realizar tarefas de casa <span style="color: red">*</span></label>
+                <select id='' name="esforcoTrabalho" required="required" class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -352,12 +352,12 @@
 
                 <br /><br />
 
-                <label for="">Faz algum tipo de exercício regular? Qual?</label>
-                <input name="exercicioFisicoRegular" id="" value="" type="text" class="form-control" placeholder="Não ou Nome do Exercício">
+                <label for="">Faz algum tipo de exercício regular? Qual? <span style="color: red">*</span></label>
+                <input name="exercicioFisicoRegular" id="" required="required" value="" type="text" class="form-control" placeholder="Não ou Nome do Exercício">
                 <br /><br />
 
-                <label for="">Quantas vezes por semana?</label>
-                <select id='' name="quantasVezesSemana" class="browser-default">
+                <label for="">Quantas vezes por semana? <span style="color: red">*</span></label>
+                <select id='' name="quantasVezesSemana" required="required" class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1x por semana">1x por semana</option>
                     <option value="2x por semana">2x por semana</option>
@@ -366,8 +366,8 @@
 
                 <br /><br />
 
-                <label for="">Esforço para realizar esse exercício</label>
-                <select id='' name="esforcoParaEsseExercicio" class="browser-default">
+                <label for="">Esforço para realizar esse exercício <span style="color: red">*</span></label>
+                <select id='' name="esforcoParaEsseExercicio" required="required" class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
