@@ -26,106 +26,106 @@
                 <h4>Glicemia</h4>
                 <br/><br/>
                 <label for="" >Data 1</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->glicemiaDataUm))}}" name="glicemiaDataUm" class="form-control"  required="required" maxlength="50" id = "Data1" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->glicemiaDataUm ? date('d/m/Y', strtotime($dadosPerfilBioquimico->glicemiaDataUm)) : old('glicemiaDataUm')}}" name="glicemiaDataUm" class="form-control"   maxlength="50" id = "Data1" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 1</label>
-                <input value="{{$dadosPerfilBioquimico->glicemiaValorUm}}" name="glicemiaValorUm" class="form-control"  required="required" maxlength="50" type="text"  />
+                <input value="{{$dadosPerfilBioquimico->glicemiaValorUm ?? old('glicemiaValorUm')}}" name="glicemiaValorUm" class="form-control"   maxlength="50" type="text"  />
                 <br/><br/>
                 <label for="">Data 2</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->glicemiaDataDois))}}" id = "Data2" name="glicemiaDataDois" class="form-control"  required="required" maxlength="50" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->glicemiaDataDois ? date('d/m/Y', strtotime($dadosPerfilBioquimico->glicemiaDataDois)) : old('glicemiaDataDois')}}" id = "Data2" name="glicemiaDataDois" class="form-control"   maxlength="50" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 2</label>
-                <input value="{{$dadosPerfilBioquimico->glicemiaValorDois}}" name="glicemiaValorDois" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->glicemiaValorDois ?? old('glicemiaValorDois')}}" name="glicemiaValorDois" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
 
                 <h4>Insulina</h4>
                 <br/><br/>
                 <label for="">Data 1</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->insulinaDataUm))}}" name="insulinaDataUm" class="form-control"  required="required" maxlength="50" id = "Data3" placeholder="00/00/0000"/>
+                <input value="{{ $dadosPerfilBioquimico->insulinaDataUm ? date('d/m/Y', strtotime($dadosPerfilBioquimico->insulinaDataUm)) : old('insulinaDataUm')}}" name="insulinaDataUm" class="form-control"   maxlength="50" id = "Data3" placeholder="00/00/0000"/>
                 <br/><br/>
                 <label for="">Valor 1</label>
-                <input value="{{$dadosPerfilBioquimico->insulinaValorUm}}" name="insulinaValorUm" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->insulinaValorUm ?? old('insulinaValorUm')}}" name="insulinaValorUm" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
                 <label for="">Data 2</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->insulinaDataDois))}}" id = "Data4" name="insulinaDataDois" class="form-control"  required="required" maxlength="50" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->insulinaDataDois ? date('d/m/Y', strtotime($dadosPerfilBioquimico->insulinaDataDois)) : old('insulinaDataDois')}}" id = "Data4" name="insulinaDataDois" class="form-control"   maxlength="50" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 2</label>
-                <input value="{{$dadosPerfilBioquimico->insulinaValorDois}}" name="insulinaValorDois" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->insulinaValorDois ?? old('insulinaValorDois')}}" name="insulinaValorDois" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
 
                 <h4>Creatinina</h4>
                 <br/><br/>
                 <label for="">Data 1</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->creatinaDataUm))}}" id = "Data5" name="creatinaDataUm" class="form-control"  required="required" maxlength="50" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->creatinaDataUm ? date('d/m/Y', strtotime($dadosPerfilBioquimico->creatinaDataUm)) : old('creatinaDataUm')}}" id = "Data5" name="creatinaDataUm" class="form-control"   maxlength="50" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 1</label>
-                <input value="{{$dadosPerfilBioquimico->creatinaValorUm}}"  name="creatinaValorUm" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->creatinaValorUm ?? old('creatinaValorUm')}}"  name="creatinaValorUm" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
                 <label for="">Data 2</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->creatinaDataDois))}}" id = "Data6" name="creatinaDataDois" class="form-control"  required="required" maxlength="50" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->creatinaDataDois ? date('d/m/Y', strtotime($dadosPerfilBioquimico->creatinaDataDois)) : old('creatinaDataDois')}}" id = "Data6" name="creatinaDataDois" class="form-control"   maxlength="50" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 2</label>
-                <input value="{{$dadosPerfilBioquimico->creatinaValorDois}}" name="creatinaValorDois" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->creatinaValorDois ?? old('creatinaValorDois')}}" name="creatinaValorDois" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
 
                 <h4>CT</h4>
                 <br/><br/>
                 <label for="">Data 1</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->ctDataUm))}}" id = "Data7" name="ctDataUm" class="form-control"  required="required" maxlength="50" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->ctDataUm ? date('d/m/Y', strtotime($dadosPerfilBioquimico->ctDataUm)) : old('ctDataUm')}}" id = "Data7" name="ctDataUm" class="form-control"   maxlength="50" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 1</label>
-                <input value="{{$dadosPerfilBioquimico->ctValorUm}}" name="ctValorUm" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->ctValorUm ?? old('ctValorUm')}}" name="ctValorUm" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
                 <label for="">Data 2</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->ctDataDois))}}" name="ctDataDois" class="form-control"  required="required" maxlength="50" id = "Data8" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->ctDataDois ? date('d/m/Y', strtotime($dadosPerfilBioquimico->ctDataDois)) : old('ctDataDois')}}" name="ctDataDois" class="form-control"   maxlength="50" id = "Data8" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 2</label>
-                <input value="{{$dadosPerfilBioquimico->ctValorDois}}" name="ctValorDois" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->ctValorDois ?? old('ctValorDois')}}" name="ctValorDois" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
 
                 <h4>HDL</h4>
                 <br/><br/>
                 <label for="">Data 1</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->hdlDataUm))}}" id = "Data9" name="hdlDataUm" class="form-control"  required="required" maxlength="50" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->hdlDataUm ? date('d/m/Y', strtotime($dadosPerfilBioquimico->hdlDataUm)) : old('hdlDataUm')}}" id = "Data9" name="hdlDataUm" class="form-control"   maxlength="50" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 1</label>
-                <input value="{{$dadosPerfilBioquimico->hdlValorUm}}" name="hdlValorUm" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->hdlValorUm ?? old('hdlValorUm')}}" name="hdlValorUm" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
                 <label for="">Data 2</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->hdlDataDois))}}" id = "Data10" name="hdlDataDois" class="form-control"  required="required" maxlength="50" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->hdlDataDois ? date('d/m/Y', strtotime($dadosPerfilBioquimico->hdlDataDois)) : old('hdlDataDois')}}" id = "Data10" name="hdlDataDois" class="form-control"   maxlength="50" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 2</label>
-                <input value="{{$dadosPerfilBioquimico->hdlValorDois}}" name="hdlValorDois" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->hdlValorDois ?? old('hdlValorDois')}}" name="hdlValorDois" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
 
                 <h4>LDL</h4>
                 <br/><br/>
                 <label for="">Data 1</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->ldlDataUm))}}" id = "Data11" name="ldlDataUm" class="form-control"  required="required" maxlength="50"  placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->ldlDataUm ? date('d/m/Y', strtotime($dadosPerfilBioquimico->ldlDataUm)) : old('ldlDataUm')}}" id = "Data11" name="ldlDataUm" class="form-control"   maxlength="50"  placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 1</label>
-                <input value="{{$dadosPerfilBioquimico->ldlValorUm}}" name="ldlValorUm" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->ldlValorUm ?? old('ldlValorUm')}}" name="ldlValorUm" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
                 <label for="">Data 2</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->ldlDataDois))}}" id = "Data12" name="ldlDataDois" class="form-control"  required="required" maxlength="50" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->ldlDataDois ? date('d/m/Y', strtotime($dadosPerfilBioquimico->ldlDataDois)) : old('ldlDataDois')}}" id = "Data12" name="ldlDataDois" class="form-control"   maxlength="50" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 2</label>
-                <input value="{{$dadosPerfilBioquimico->ldlValorDois}}" name="ldlValorDois" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->ldlValorDois ?? old('ldlValorDois')}}" name="ldlValorDois" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
 
                 <h4>TG</h4>
                 <br/><br/>
                 <label for="">Data 1</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->tgDataUm))}}" id = "Data13" name="tgDataUm" class="form-control"  required="required" maxlength="50"  placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->tgDataUm ? date('d/m/Y', strtotime($dadosPerfilBioquimico->tgDataUm)) : old('tgDataUm')}}" id = "Data13" name="tgDataUm" class="form-control"   maxlength="50"  placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 1</label>
-                <input value="{{$dadosPerfilBioquimico->tgValorUm}}" name="tgValorUm" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->tgValorUm ?? old('tgValorUm')}}" name="tgValorUm" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
                 <label for="">Data 2</label>
-                <input value="{{date('d/m/Y', strtotime($dadosPerfilBioquimico->tgDataDois))}}" id = "Data14" name="tgDataDois" class="form-control"  required="required" maxlength="50" placeholder="00/00/0000" />
+                <input value="{{ $dadosPerfilBioquimico->tgDataDois ? date('d/m/Y', strtotime($dadosPerfilBioquimico->tgDataDois)) : old('tgDataDois')}}" id = "Data14" name="tgDataDois" class="form-control"   maxlength="50" placeholder="00/00/0000" />
                 <br/><br/>
                 <label for="">Valor 2</label>
-                <input value="{{$dadosPerfilBioquimico->tgValorDois}}" name="tgValorDois" class="form-control"  required="required" maxlength="50" type="text" placeholder="" />
+                <input value="{{$dadosPerfilBioquimico->tgValorDois ?? old('tgValorDois')}}" name="tgValorDois" class="form-control"   maxlength="50" type="text" placeholder="" />
                 <br/><br/>
 
                 <button class="btn blue"> Finalizar &raquo</button>

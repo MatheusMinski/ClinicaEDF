@@ -391,14 +391,9 @@ class AlunosController extends Controller
             return redirect()->back()->withInput()->withErrors(['Acesso negado']);
         }
 
+        AvaliacaoFuncional::create($dados);
 
-        try {
-            AvaliacaoFuncional::create($dados);
-            return $this->treinamentoStatus($dados['idTreinamento']);
-
-        } catch (\Exception $ex) {
-            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
-        }
+        return $this->treinamentoStatus($dados['idTreinamento']);
 
 
     }
@@ -437,71 +432,14 @@ class AlunosController extends Controller
             return redirect()->back()->withInput()->withErrors(['Acesso negado']);
         }
 
-        $dadosAntigos = AvaliacaoFuncional::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
+        $aval = AvaliacaoFuncional::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
 
 
-        try {
-            $dadosAntigos->pressaoArterialPAS = $dados['pressaoArterialPAS'];
-            $dadosAntigos->pressaoArterialPAD = $dados['pressaoArterialPAD'];
-            $dadosAntigos->freqCardiacaMedia = $dados['freqCardiacaMedia'];
-            $dadosAntigos->saturacaoO2 = $dados['saturacaoO2'];
-            $dadosAntigos->capacidadeVital1 = $dados['capacidadeVital1'];
-            $dadosAntigos->capacidadeVital2 = $dados['capacidadeVital2'];
-            $dadosAntigos->capacidadeVital3 = $dados['capacidadeVital3'];
-            $dadosAntigos->massaCorporal = $dados['massaCorporal'];
-            $dadosAntigos->estaturaCm = $dados['estaturaCm'];
-            $dadosAntigos->circunferenciaCintura = $dados['circunferenciaCintura'];
-            $dadosAntigos->circunferenciaPescoco = $dados['circunferenciaPescoco'];
-            $dadosAntigos->massaMagra = $dados['massaMagra'];
-            $dadosAntigos->gordura = $dados['gordura'];
-            $dadosAntigos->h2o = $dados['h2o'];
-            $dadosAntigos->tmb = $dados['tmb'];
-            $dadosAntigos->sentarEAlcancarMaior = $dados['sentarEAlcancarMaior'];
-            $dadosAntigos->ombroDireito = $dados['ombroDireito'];
-            $dadosAntigos->ombroEsquerdo = $dados['ombroEsquerdo'];
-            $dadosAntigos->apoioUnipodalDireita = $dados['apoioUnipodalDireita'];
-            $dadosAntigos->apoioUnipodalEsquerda = $dados['apoioUnipodalEsquerda'];
-            $dadosAntigos->alcanceFuncional = $dados['alcanceFuncional'];
-            $dadosAntigos->pressaoManualDireita = $dados['pressaoManualDireita'];
-            $dadosAntigos->pressaoManualEsquerda = $dados['pressaoManualEsquerda'];
-            $dadosAntigos->sentarLevantarCadeiraRep = $dados['sentarLevantarCadeiraRep'];
-            $dadosAntigos->sentarLevantarCadeiraFCMax = $dados['sentarLevantarCadeiraFCMax'];
-            $dadosAntigos->distanciaTeste6Min = $dados['distanciaTeste6Min'];
-            $dadosAntigos->pedometroTeste6Min = $dados['pedometroTeste6Min'];
-            $dadosAntigos->fcTeste6Min1 = $dados['fcTeste6Min1'];
-            $dadosAntigos->fcTeste6Min2 = $dados['fcTeste6Min2'];
-            $dadosAntigos->fcTeste6Min3 = $dados['fcTeste6Min3'];
-            $dadosAntigos->fcTeste6Min4 = $dados['fcTeste6Min4'];
-            $dadosAntigos->fcTeste6Min5 = $dados['fcTeste6Min5'];
-            $dadosAntigos->fcTeste6Min6 = $dados['fcTeste6Min6'];
-            $dadosAntigos->fcRecuperacaoUmMin = $dados['fcRecuperacaoUmMin'];
-            $dadosAntigos->fcRecuperacaoTresMin = $dados['fcRecuperacaoTresMin'];
-            $dadosAntigos->fcRecuperacaoCincoMin = $dados['fcRecuperacaoCincoMin'];
-            $dadosAntigos->pasTesteUmMin = $dados['pasTesteUmMin'];
-            $dadosAntigos->pasTesteCincoMin = $dados['pasTesteCincoMin'];
-            $dadosAntigos->pasTesteDezMin = $dados['pasTesteDezMin'];
-            $dadosAntigos->padTesteUmMin = $dados['padTesteUmMin'];
-            $dadosAntigos->padTesteCincoMin = $dados['padTesteCincoMin'];
-            $dadosAntigos->padTesteDezMin = $dados['padTesteDezMin'];
-            $dadosAntigos->testeExtra1 = $dados['testeExtra1'];
-            $dadosAntigos->respostaTesteExtraUm = $dados['respostaTesteExtraUm'];
-            $dadosAntigos->testeExtra2 = $dados['testeExtra2'];
-            $dadosAntigos->respostaTesteExtraDois = $dados['respostaTesteExtraDois'];
-            $dadosAntigos->testeExtra3 = $dados['testeExtra3'];
-            $dadosAntigos->respostaTesteExtraTres = $dados['respostaTesteExtraTres'];
-            $dadosAntigos->testeExtra4 = $dados['testeExtra4'];
-            $dadosAntigos->respostaTesteExtraQuatro = $dados['respostaTesteExtraQuatro'];
+        $aval->update($dados);
 
+        $dadosAvaliacaoFuncional = AvaliacaoFuncional::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
 
-            $dadosAntigos->save();
-
-            $dadosAvaliacaoFuncional = AvaliacaoFuncional::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
-
-            return view('aluno.aluno_avaliacao_funcional', compact('dadosAvaliacaoFuncional'));
-
-        } catch (\Exception $ex) {
-            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
-        }
+        return view('aluno.aluno_avaliacao_funcional', compact('dadosAvaliacaoFuncional'));
 
 
     }
@@ -538,15 +476,10 @@ class AlunosController extends Controller
             return redirect()->back()->withInput()->withErrors(['Acesso negado']);
         }
 
-        try {
-            $dados = $this->dataAdapter->formatarDataArmazenarAnamnese($dados);
-            Anamnese::create($dados);
+        $dados = $this->dataAdapter->formatarDataArmazenarAnamnese($dados);
+        Anamnese::create($dados);
 
-            return $this->treinamentoStatus($dados['idTreinamento']);
-
-        } catch (\Exception $ex) {
-            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
-        }
+        return $this->treinamentoStatus($dados['idTreinamento']);
     }
 
 
@@ -571,59 +504,12 @@ class AlunosController extends Controller
             return redirect()->back()->withInput()->withErrors(['Acesso negado']);
         }
 
+        $anamnese = Anamnese::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
 
-        $dadosAntigos = Anamnese::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
+        $dados = $this->dataAdapter->formatarDataArmazenarAnamnese($dados);
 
-        $dadosAntigos->encaminhamento = $dados['encaminhamento'];
-        $dadosAntigos->nomeDoProfissional = $dados['nomeDoProfissional'];
-        $dadosAntigos->especialidadeDoProfissional = $dados['especialidadeDoProfissional'];
-        $dadosAntigos->motivoEncaminhamento = $dados['motivoEncaminhamento'];
-        $dadosAntigos->saudeGeral = $dados['saudeGeral'];
-        $dadosAntigos->fumaCigarro = $dados['fumaCigarro'];
-        $dadosAntigos->fumaCigarroQuantidadeDia = $dados['fumaCigarroQuantidadeDia'];
-        $dadosAntigos->jaFumou = $dados['jaFumou'];
-        $dadosAntigos->jaFumouQuantidadeAnos = $dados['jaFumouQuantidadeAnos'];
-        $dadosAntigos->jaFumouParouAQuantoTempoAnos = $dados['jaFumouParouAQuantoTempoAnos'];
-        $dadosAntigos->descricaoProblemaSaude = $dados['descricaoProblemaSaude'];
-        $dadosAntigos->caiu12Meses = $dados['caiu12Meses'];
-        $dadosAntigos->quantasQuedas = $dados['quantasQuedas'];
-        $dadosAntigos->data = $dados['data'];
-        $dadosAntigos->razaoQueda = $dados['razaoQueda'];
-        $dadosAntigos->localQueda = $dados['localQueda'];
-        $dadosAntigos->hospitalizacao = $dados['hospitalizacao'];
-        $dadosAntigos->objetivosAoProcurarAClinica = $dados['objetivosAoProcurarAClinica'];
-        $dadosAntigos->jaTentouResolverAntes = $dados['jaTentouResolverAntes'];
-        $dadosAntigos->quantasVezes = $dados['quantasVezes'];
-        $dadosAntigos->jaDesistiu = $dados['jaDesistiu'];
-        $dadosAntigos->motivoDesistencia = $dados['motivoDesistencia'];
-        $dadosAntigos->dorRegiaoDoCorpo = $dados['dorRegiaoDoCorpo'];
-        $dadosAntigos->descricaoSintomaDor1 = $dados['descricaoSintomaDor1'];
-        $dadosAntigos->ProfissionalQueTratou1 = $dados['ProfissionalQueTratou1'];
-        $dadosAntigos->inicioFim1 = $dados['inicioFim1'];
-        $dadosAntigos->EVA1 = $dados['EVA1'];
-        $dadosAntigos->descricaoSintomaDor2 = $dados['descricaoSintomaDor2'];
-        $dadosAntigos->ProfissionalQueTratou2 = $dados['ProfissionalQueTratou2'];
-        $dadosAntigos->inicioFim2 = $dados['inicioFim2'];
-        $dadosAntigos->EVA2 = $dados['EVA2'];
-        $dadosAntigos->descricaoSintomaDor3 = $dados['descricaoSintomaDor3'];
-        $dadosAntigos->ProfissionalQueTratou3 = $dados['ProfissionalQueTratou3'];
-        $dadosAntigos->inicioFim3 = $dados['inicioFim3'];
-        $dadosAntigos->EVA3 = $dados['EVA3'];
-        $dadosAntigos->descricaoSintomaDor4 = $dados['descricaoSintomaDor4'];
-        $dadosAntigos->ProfissionalQueTratou4 = $dados['ProfissionalQueTratou4'];
-        $dadosAntigos->inicioFim4 = $dados['inicioFim4'];
-        $dadosAntigos->EVA4 = $dados['EVA4'];
-        $dadosAntigos->esforcosTarefaCasa = $dados['esforcosTarefaCasa'];
-        $dadosAntigos->esforcoAndarForaDeCasa = $dados['esforcoAndarForaDeCasa'];
-        $dadosAntigos->esforcoLazer = $dados['esforcoLazer'];
-        $dadosAntigos->esforcoTrabalho = $dados['esforcoTrabalho'];
-        $dadosAntigos->exercicioFisicoRegular = $dados['exercicioFisicoRegular'];
-        $dadosAntigos->quantasVezesSemana = $dados['quantasVezesSemana'];
-        $dadosAntigos->esforcoParaEsseExercicio = $dados['esforcoParaEsseExercicio'];
+        $anamnese->update($dados);
 
-        $dadosAntigos = $this->dataAdapter->formatarDataArmazenarAnamnese($dadosAntigos);
-
-        $dadosAntigos->save();
         $dadosAnamnese = Anamnese::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
 
         return view('aluno.aluno_anamnese', compact('dadosAnamnese'));
@@ -674,14 +560,9 @@ class AlunosController extends Controller
 
         $dados = $this->dataAdapter->formatarDataArmazenarPerfilBioquimico($dados);
 
+        PerfilBioquimico::create($dados);
 
-        try {
-            PerfilBioquimico::create($dados);
-            return $this->treinamentoStatus($dados['idTreinamento']);
-
-        } catch (\Exception $ex) {
-            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
-        }
+        return $this->treinamentoStatus($dados['idTreinamento']);
     }
 
     public function cadastroPerfilBioquimicoEditar($idTreinamento)
@@ -704,51 +585,16 @@ class AlunosController extends Controller
             return redirect()->back()->withInput()->withErrors(['Acesso negado']);
         }
 
-        try {
 
-            $dadosAntigos = PerfilBioquimico::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
-
-            $dadosAntigos->glicemiaDataUm = $dados['glicemiaDataUm'];
-            $dadosAntigos->glicemiaValorUm = $dados['glicemiaValorUm'];
-            $dadosAntigos->glicemiaDataDois = $dados['glicemiaDataDois'];
-            $dadosAntigos->glicemiaValorDois = $dados['glicemiaValorDois'];
-            $dadosAntigos->insulinaDataUm = $dados['insulinaDataUm'];
-            $dadosAntigos->insulinaValorUm = $dados['insulinaValorUm'];
-            $dadosAntigos->insulinaDataDois = $dados['insulinaDataDois'];
-            $dadosAntigos->insulinaValorDois = $dados['insulinaValorDois'];
-            $dadosAntigos->creatinaDataUm = $dados['creatinaDataUm'];
-            $dadosAntigos->creatinaValorUm = $dados['creatinaValorUm'];
-            $dadosAntigos->creatinaDataDois = $dados['creatinaDataDois'];
-            $dadosAntigos->creatinaValorDois = $dados['creatinaValorDois'];
-            $dadosAntigos->ctDataUm = $dados['ctDataUm'];
-            $dadosAntigos->ctValorUm = $dados['ctValorUm'];
-            $dadosAntigos->ctDataDois = $dados['ctDataDois'];
-            $dadosAntigos->ctValorDois = $dados['ctValorDois'];
-            $dadosAntigos->hdlDataUm = $dados['hdlDataUm'];
-            $dadosAntigos->hdlValorUm = $dados['hdlValorUm'];
-            $dadosAntigos->hdlDataDois = $dados['hdlDataDois'];
-            $dadosAntigos->hdlValorDois = $dados['hdlValorDois'];
-            $dadosAntigos->ldlDataUm = $dados['ldlDataUm'];
-            $dadosAntigos->ldlValorUm = $dados['ldlValorUm'];
-            $dadosAntigos->ldlDataDois = $dados['ldlDataDois'];
-            $dadosAntigos->ldlValorDois = $dados['ldlValorDois'];
-            $dadosAntigos->tgDataUm = $dados['tgDataUm'];
-            $dadosAntigos->tgValorUm = $dados['tgValorUm'];
-            $dadosAntigos->tgDataDois = $dados['tgDataDois'];
-            $dadosAntigos->tgValorDois = $dados['tgValorDois'];
-
-            $dadosAntigos = $this->dataAdapter->formatarDataArmazenarPerfilBioquimico($dadosAntigos);
-
-            $dadosAntigos->save();
-            $dadosPerfilBioquimico = PerfilBioquimico::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
-
-            return view('aluno.aluno_perfil_bioquimico', compact('dadosPerfilBioquimico'));
-
-        } catch (\Exception $ex) {
-            return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
-        }
+        $perfil = PerfilBioquimico::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
 
 
+        $dados = $this->dataAdapter->formatarDataArmazenarPerfilBioquimico($dados);
+
+        $perfil->update($dados);
+        $dadosPerfilBioquimico = PerfilBioquimico::where("idTreinamento", "=", $dados['idTreinamento'])->get()->first();
+
+        return view('aluno.aluno_perfil_bioquimico', compact('dadosPerfilBioquimico'));
     }
 
 

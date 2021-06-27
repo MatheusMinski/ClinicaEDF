@@ -9,27 +9,58 @@ class DataAdapter extends Controller
 {
     public function formatarDataArmazenarPerfilBioquimico($dados){
 
-        $dados['glicemiaDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['glicemiaDataUm']);
-        $dados['glicemiaDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['glicemiaDataDois']);
-        $dados['insulinaDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['insulinaDataUm']);
-        $dados['insulinaDataDois']  = Carbon::createFromFormat('d/m/Y',$dados['insulinaDataDois']);
-        $dados['creatinaDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['creatinaDataUm']);
-        $dados['creatinaDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['creatinaDataDois']);
-        $dados['ctDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['ctDataUm']);
-        $dados['ctDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['ctDataDois']);
-        $dados['hdlDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['hdlDataUm']);
-        $dados['hdlDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['hdlDataDois']);
-        $dados['ldlDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['ldlDataUm']);
-        $dados['ldlDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['ldlDataDois']);
-        $dados['tgDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['tgDataUm']);
-        $dados['tgDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['tgDataDois']);
+        if(isset($dados['glicemiaDataUm'])){
+            $dados['glicemiaDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['glicemiaDataUm']);
+        }
+        if(isset($dados['glicemiaDataDois'])){
+            $dados['glicemiaDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['glicemiaDataDois']);
+        }
+        if(isset($dados['insulinaDataUm'])){
+            $dados['insulinaDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['insulinaDataUm']);
+        }
+        if(isset($dados['insulinaDataDois'])){
+            $dados['insulinaDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['insulinaDataDois']);
+        }
+        if(isset($dados['creatinaDataUm'])){
+            $dados['creatinaDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['creatinaDataUm']);
+        }
+        if(isset($dados['creatinaDataDois'])){
+            $dados['creatinaDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['creatinaDataDois']);
+        }
+        if(isset($dados['ctDataUm'])){
+            $dados['ctDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['ctDataUm']);
+        }
+        if(isset($dados['ctDataDois'])){
+            $dados['ctDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['ctDataDois']);
+        }
+        if(isset($dados['hdlDataUm'])){
+            $dados['hdlDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['hdlDataUm']);
+        }
+        if(isset($dados['hdlDataDois'])){
+            $dados['hdlDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['hdlDataDois']);
+        }
+        if(isset($dados['ldlDataUm'])){
+            $dados['ldlDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['ldlDataUm']);
+        }
+        if(isset($dados['ldlDataDois'])){
+            $dados['ldlDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['ldlDataDois']);
+        }
+        if(isset($dados['tgDataUm'])){
+            $dados['tgDataUm'] = Carbon::createFromFormat('d/m/Y',$dados['tgDataUm']);
+        }
+        if(isset($dados['tgDataDois'])){
+            $dados['tgDataDois'] = Carbon::createFromFormat('d/m/Y',$dados['tgDataDois']);
+        }
 
         return $dados;
     }
 
     public function formatarDataArmazenarAnamnese($dados)
     {
-        $dados['data'] = Carbon::createFromFormat('d/m/Y',$dados['data']);
+        if(isset($dados['data'])){
+            $dados['data'] = Carbon::createFromFormat('d/m/Y',$dados['data']);
+        }
+
         return $dados;
     }
 
