@@ -21,6 +21,8 @@
                     <th>Nome</th>
                     <th>Dados Pessoais</th>
                     <th>Treinamentos</th>
+                    @if(Auth()->user()->type == is)
+
                     <th><a href="{{route('alunos.exportar')}}" class="btn red">Exportar</a></th>
                 </tr>
                 </thead>

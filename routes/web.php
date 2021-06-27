@@ -148,7 +148,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Exportar dados
 
-    Route::get('/alunos/exportar', ['as' => 'alunos.exportar', 'uses' => 'AlunosController@export']);
+    Route::get('/alunos/exportar', ['as' => 'alunos.exportar', 'uses' => 'AlunosController@export'])->middleware('is_admin');;
 });
 
 //Login e reset de senha
