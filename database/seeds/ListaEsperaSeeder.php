@@ -11,58 +11,15 @@ class ListaEsperaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('ListaDeEspera')->insert([
-            'id' => 1,
-            'nomeAlunoEspera' => "Joaquim",
-            'prioridade' => 1,
-            'telefone' => '372918798',
-            'outroContato' => '732197897',
-            'contatado' => true
-        ]);
+        for($i = 0; $i < 5; $i ++){
+            \App\ListaDeEspera::query()->create([
+                'nomeAlunoEspera' => "Joaquim" . $i,
+                'prioridade' => 1,
+                'telefone' => '372918798',
+                'outroContato' => '732197897',
+                'contatado' => $i % 2
+            ]);
+        }
 
-        DB::table('ListaDeEspera')->insert([
-            'id' => 2,
-            'nomeAlunoEspera' => "Jairson",
-            'prioridade' => 2,
-            'telefone' => '6654244',
-            'outroContato' => '65424',
-            'contatado' => false
-        ]);
-
-        DB::table('ListaDeEspera')->insert([
-            'id' => 3,
-            'nomeAlunoEspera' => "Jornei",
-            'prioridade' => 2,
-            'telefone' => '321321',
-            'outroContato' => '4553543',
-            'contatado' => false
-        ]);
-
-        DB::table('ListaDeEspera')->insert([
-            'id' => 4,
-            'nomeAlunoEspera' => "Jornei",
-            'prioridade' => 1,
-            'telefone' => '321321',
-            'outroContato' => '4553543',
-            'contatado' => false
-        ]);
-
-        DB::table('ListaDeEspera')->insert([
-            'id' => 5,
-            'nomeAlunoEspera' => "Jornei",
-            'prioridade' => 3,
-            'telefone' => '321321',
-            'outroContato' => '4553543',
-            'contatado' => false
-        ]);
-
-        DB::table('ListaDeEspera')->insert([
-            'id' => 6,
-            'nomeAlunoEspera' => "Jornei",
-            'prioridade' => 3,
-            'telefone' => '321321',
-            'outroContato' => '4553543',
-            'contatado' => false
-        ]);
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\ListaDeEspera;
-use App\User;
 use Illuminate\Http\Request;
 
 class ListaEsperaController extends Controller
@@ -16,31 +15,47 @@ class ListaEsperaController extends Controller
         $this->aluno = $aluno;
     }
 
-    public function index(){
-        return view('listaespera');
-        //TODO: RETORNAR A VIEW DA MINHA LISTA DE ESPERA;
-    }
-
-    public function store(Request $request){
-        $data = $request->all();
-
-        try {
-            $this->aluno->create($data);
-        } catch (\Exception $e){
-            return redirect()->back()->withErrors(['Ocorreu algum problema. Tente novamente!']);
-        }
-
-    }
-
-    public function show(){
-
+    public function index()
+    {
         $lista = $this->aluno->orderBy('prioridade', 'asc')->paginate(10);
 
-        // TODO : TROCAR PARA "listaespera";
         return view('listaespera', compact('lista'));
     }
 
-    public function updateContato($id){
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+        $this->aluno->create($data);
+
+        return $this->index();
+    }
+
+
+    public function create()
+    {
+        return view('listaespera_criar');
+    }
+
+    public function edit($id)
+    {
+        $aluno = ListaDeEspera::query()->findOrFail($id);
+
+        return view('listaespera_criar', compact('aluno'));
+    }
+
+    public function update(ListaDeEspera $listaEspera, Request $request)
+    {
+
+        $dados = $request->all();
+        $listaEspera->update($dados);
+        $lista = ListaDeEspera::query()->orderBy('prioridade', 'asc')->paginate(10);
+
+        return redirect()->route('lista.espera');
+    }
+
+    public function updateContato($id)
+    {
 
         $aluno = $this->aluno->findOrFail($id);
 
@@ -61,7 +76,8 @@ class ListaEsperaController extends Controller
         }
     }
 
-    public function removerListaDeEspera($id){
+    public function removerListaDeEspera($id)
+    {
         $aluno = $this->aluno->findOrFail($id);
 
         try {
@@ -70,7 +86,7 @@ class ListaEsperaController extends Controller
             $lista = $this->aluno->orderBy('prioridade', 'asc')->paginate(10);
             return redirect()->route('lista.espera');
 
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back()->withErrors(['Ocorreu algum problema. Tente novamente!']);
         }
     }

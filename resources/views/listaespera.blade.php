@@ -23,6 +23,7 @@
                     <th>Outro contato</th>
                     <th>Prioridade</th>
                     <th>Status</th>
+                    <th><a href="{{route('lista.espera.create')}}" class="btn green">Novo</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,10 +39,13 @@
                         <td>Não foi contatado</td>
                     @endif
 
+                    <td>
+                        <a class="btn blue" href="{{route('lista.espera.edit', $objeto->id)}}">Editar</a>
+                    </td>
+
                     @if(!$objeto->contatado)
                         <td>
-                            <a class="btn deep green" href="{{route('lista.espera.contatado',$objeto->id)}}">Confirmar
-                                Contato Realizado</a>
+                            <a class="btn deep green" href="{{route('lista.espera.contatado',$objeto->id)}}">Contatado</a>
                         </td>
                     @endif
                     <td>

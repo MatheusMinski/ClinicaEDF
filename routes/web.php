@@ -67,7 +67,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     //Aluno
-    Route::get('/lista/espera', ['as' => 'lista.espera', 'uses' => 'ListaEsperaController@show']);
+    Route::get('/lista/espera', ['as' => 'lista.espera', 'uses' => 'ListaEsperaController@index']);
+    Route::get('/lista-espera/criar', ['as' => 'lista.espera.create', 'uses' => 'ListaEsperaController@create']);
+    Route::post('/lista-espera/criar', ['as' => 'lista.espera.store', 'uses' => 'ListaEsperaController@store']);
+    Route::get('/lista-espera/edit/{id}', ['as' => 'lista.espera.edit', 'uses' => 'ListaEsperaController@edit']);
+    Route::post('/lista-espera/edit', ['as' => 'lista.espera.update', 'uses' => 'ListaEsperaController@update']);
     Route::get('/lista/espera/contatado/{id}', ['as' => 'lista.espera.contatado', 'uses' => 'ListaEsperaController@updateContato']);
     Route::get('/lista/espera/remover/{id}', ['as' => 'lista.espera.remover', 'uses' => 'ListaEsperaController@removerListaDeEspera']);
 

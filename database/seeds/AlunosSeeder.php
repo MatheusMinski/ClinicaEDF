@@ -11,7 +11,7 @@ class AlunosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Alunos')->insert([
+        \App\Aluno::query()->create([
             'nome' => 'Matheus Minski',
             'idProfessor' => 0,
             'dataNasc' =>'10/10/1997',
@@ -23,7 +23,6 @@ class AlunosSeeder extends Seeder
             'estadoCivil' =>'Solteiro',
             'escolaridade' =>'Médio completo',
             'classeSocialFamilia' =>'B',
-
         ]);
     }
 }

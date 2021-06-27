@@ -19,7 +19,7 @@ class CreateListaDeEsperasTable extends Migration
             $table->integer('prioridade');
             $table->string('telefone', 20);
             $table->string('outroContato', 50);
-            $table->boolean('contatado');
+            $table->boolean('contatado')->default(false);
             $table->timestamps();
         });
     }

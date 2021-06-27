@@ -13,8 +13,7 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Users')->insert([
-            'idProfessor'=> 0,
+        User::query()->create([
             'nome' => 'Marcos Roberto Queiroga',
             'telefone' =>'999999999',
             'dataNasc' =>'07/07/1990',
@@ -23,7 +22,6 @@ class UsersSeeder extends Seeder
             'cpf' => '123.456.789-19',
             'type' => 'admin',
         ]);
-
     }
 
 

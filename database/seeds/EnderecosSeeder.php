@@ -11,14 +11,14 @@ class EnderecosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Enderecos')->insert([
+        \App\Endereco::query()->create([
             'idALuno' => 1,
             'idEndereco' => 1,
             'rua'=> 'asdsad',
             'numero'=> '12',
             'bairro'=>'trianon',
             'cidade'=>'gorpa',
-            'cep'=>'asdlkjasd',
+            'cep'=>'12345678',
         ]);
     }
 }
