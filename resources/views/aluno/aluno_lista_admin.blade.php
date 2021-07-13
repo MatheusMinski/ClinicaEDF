@@ -6,8 +6,8 @@
     <div class="container">
         <br/>
         <h3 class="center">Alunos</h3>
-        @if(isset($errors) && count ($errors) > 0)
-            <div class="alert alert-danger">
+            @if(isset($errors) && count ($errors) > 0)
+                <div class="alert alert-danger">
                 @foreach($errors->all() as $error)
                     <p align="center">{{$error}}</p>
                 @endforeach

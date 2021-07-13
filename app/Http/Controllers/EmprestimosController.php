@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use \Illuminate\Support\Facades\Auth;
-use App\PessoaEmprestimo;
-use Illuminate\Http\Request;
 use App\Equipamento;
+use App\PessoaEmprestimo;
 use DateTime;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request as Request2;
-use Carbon\Carbon;
 
 
 class EmprestimosController extends Controller
@@ -21,8 +20,9 @@ class EmprestimosController extends Controller
         $this->emprestimo = $emprestimo;
     }
 
-
-    public function finalizar(Request $req){
+//comentário
+    public function finalizar(Request $req)
+    {
 
         $user = Auth::user();
 
@@ -31,7 +31,6 @@ class EmprestimosController extends Controller
         $quantidadeAnterior = Equipamento::find($dados['idEquipamento'])->quantidadeDisponivel;
 
         $numeroPat = Equipamento::find($dados['idEquipamento'])->numeroPatrimonio;
-
 
 
         //verificação de cpf tem que ser em outro try catch
@@ -65,14 +64,13 @@ class EmprestimosController extends Controller
         $dados['dataDevolucao'] = $dataDigitadaParaComparar;
 
 
-
         try {
 
-            if(($quantidadeAnterior - $dados['quantidade'])<0){
+            if (($quantidadeAnterior - $dados['quantidade']) < 0) {
 
                 return redirect()->back()->withInput()->withErrors(['Quantidade de Estoque insuficiente']);
 
-            }else{
+            } else {
 
                 PessoaEmprestimo::create([
                     'idProfessor' => $user['idProfessor'],
@@ -93,7 +91,7 @@ class EmprestimosController extends Controller
                 ]);
             }
 
-        }catch(\Exception $ex){
+        } catch (\Exception $ex) {
             return redirect()->back()->withInput()->withErrors(['Verifique se os dados foram inseridos corretamente']);
         }
 
@@ -102,8 +100,8 @@ class EmprestimosController extends Controller
 
     }
 
-    public function devolver($idEquipamento, $quantidade, $idEmprestimo){
-
+    public function devolver($idEquipamento, $quantidade, $idEmprestimo)
+    {
 
 
         $quantidadeAnterior = Equipamento::find($idEquipamento)->quantidadeDisponivel;
@@ -111,7 +109,6 @@ class EmprestimosController extends Controller
         Equipamento::find($idEquipamento)->update([
             'quantidadeDisponivel' => $quantidadeAnterior + $quantidade,
         ]);
-
 
 
         $confirmacao = PessoaEmprestimo::find($idEmprestimo);
@@ -125,20 +122,22 @@ class EmprestimosController extends Controller
     }
 
 
-
-    public function listagem(){
+    public function listagem()
+    {
         $emprestimos = PessoaEmprestimo::orderBy('devolvido')->paginate(4);
         return view('emprestimos.listaemprestimo', compact('emprestimos'));
     }
 
-    public function dados($id){
+    public function dados($id)
+    {
         $dados = PessoaEmprestimo::find($id);
         //$dataDigitada = DateTime::createFromFormat('d/m/Y', $dados['dataDevolucao']);
         //dd($dados['dataDevolucao']);
         return view('emprestimos.dados_emprestimo', compact('dados'));
     }
 
-    public function procurar(Request $req){
+    public function procurar(Request $req)
+    {
         $pesquisa = $req->get('nomeEmprestimo');
 
         $status = $req->get('checkbox');
@@ -146,25 +145,23 @@ class EmprestimosController extends Controller
         $nome = $pesquisa;
 
 
-
-
-        if(isset($status)){
+        if (isset($status)) {
             $status = 'True';
-        }else{
+        } else {
             $status = 'False';
         }
 
-        if($nome == null){
-            $emprestimos = PessoaEmprestimo::where('nomeEquipamentoEmprestimo','ILIKE','%'.$nome.'%')->where('devolvido','ILIKE','%'.$status.'%')->orWhere('numeroPatrimonio','ILIKE','%'.$nome.'%')->where('devolvido','ILIKE','%'.$status.'%')->paginate(4);
+        if ($nome == null) {
+            $emprestimos = PessoaEmprestimo::where('nomeEquipamentoEmprestimo', 'ILIKE', '%' . $nome . '%')->where('devolvido', 'ILIKE', '%' . $status . '%')->orWhere('numeroPatrimonio', 'ILIKE', '%' . $nome . '%')->where('devolvido', 'ILIKE', '%' . $status . '%')->paginate(4);
             return view('emprestimos.listaemprestimo', compact('emprestimos'));
         }
 
-        $emprestimos = PessoaEmprestimo::where('nomeEquipamentoEmprestimo','ILIKE','%'.$nome.'%')->where('devolvido','ILIKE','%'.$status.'%')->orWhere('numeroPatrimonio','ILIKE','%'.$nome.'%')->where('devolvido','ILIKE','%'.$status.'%')->paginate(4);
+        $emprestimos = PessoaEmprestimo::where('nomeEquipamentoEmprestimo', 'ILIKE', '%' . $nome . '%')->where('devolvido', 'ILIKE', '%' . $status . '%')->orWhere('numeroPatrimonio', 'ILIKE', '%' . $nome . '%')->where('devolvido', 'ILIKE', '%' . $status . '%')->paginate(4);
 
         $emprestimos->appends(Request2::all())->links();
-        if(count($emprestimos) > 0)
+        if (count($emprestimos) > 0)
             return view('emprestimos.listaemprestimo', compact('emprestimos'));
         else
-            return view ('emprestimos.listaemprestimo', compact('emprestimos'))->withErrors(['Empréstimo não encontrado']);
+            return view('emprestimos.listaemprestimo', compact('emprestimos'))->withErrors(['Empréstimo não encontrado']);
     }
 }
