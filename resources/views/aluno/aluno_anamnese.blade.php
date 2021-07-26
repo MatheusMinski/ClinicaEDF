@@ -21,7 +21,7 @@
                         <h6 style="padding-bottom: 10px">Descrição do problema de saúde: {{$dadosAnamnese->descricaoProblemaSaude}}</h6>
                         <h6 style="padding-bottom: 10px">Caiu nos últimos 12 meses: {{$dadosAnamnese->caiu12Meses}}</h6>
                         <h6 style="padding-bottom: 10px">Quantas vezes: {{$dadosAnamnese->quantasQuedas}}</h6>
-                        <h6 style="padding-bottom: 10px">Qual a data: {{date('d/m/Y', strtotime($dadosAnamnese->data))}}</h6>
+                        <h6 style="padding-bottom: 10px">Qual a data: {{isset($dadosAnamnese->data) ? date('d/m/Y', strtotime($dadosAnamnese->data)) : "" }}</h6>
                         <h6 style="padding-bottom: 10px">Qual a razão da queda: {{$dadosAnamnese->razaoQueda}}</h6>
                         <h6 style="padding-bottom: 10px">Local da queda: {{$dadosAnamnese->localQueda}}</h6>
                         <h6 style="padding-bottom: 10px">Foi hospitalizado: {{$dadosAnamnese->hospitalizacao}}</h6>

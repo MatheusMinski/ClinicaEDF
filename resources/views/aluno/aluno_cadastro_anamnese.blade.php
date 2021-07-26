@@ -62,9 +62,9 @@
 
                 <label  for="">Fuma?</label>
                 <select id='' name="fumaCigarro" class="browser-default">
-                    <option disabled selected value>Selecione Uma Opção</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Não</option>
+                    <option disabled selected value=0>Selecione Uma Opção</option>
+                    <option value=1>Sim</option>
+                    <option value=0 selected>Não</option>
                 </select>
                 <br/><br/>
 
@@ -75,9 +75,8 @@
 
                 <label for="">Já fumou?</label>
                 <select id='' name="jaFumou" class="browser-default">
-                    <option disabled selected value>Selecione Uma Opção</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Não</option>
+                    <option value=1>Sim</option>
+                    <option value=0 selected>Não</option>
                 </select>
                 <br/><br/>
 
@@ -96,9 +95,8 @@
 
                 <label for="">Caiu nos ultimos 12 meses? <span style="color: red">*</span></label>
                 <select id='' name="caiu12Meses" class="browser-default"  >
-                    <option disabled selected value>Selecione Uma Opção</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Não</option>
+                    <option value=1>Sim</option>
+                    <option value=0 selected >Não</option>
                 </select>
                 <br/><br/>
 
@@ -134,9 +132,8 @@
 
                 <label for="">Se sim, foi hospitalizado?</label>
                 <select id='' name="hospitalizacao" class="browser-default">
-                    <option disabled selected value>Selecione Uma Opção</option>
-                    <option value="Sim">Sim</option>
-                    <option value="Não">Não</option>
+                    <option value="Sim" >Sim</option>
+                    <option value="Não" selected>Não</option>
                 </select>
                 <br/><br/>
 
@@ -158,9 +155,8 @@
 
                 <label for="">Já desistiu? <span style="color: red">*</span></label>
                 <select id='' name="jaDesistiu" class="browser-default"  >
-                    <option disabled selected value>Selecione Uma Opção</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Não</option>
+                    <option value=1 >Sim</option>
+                    <option value=0 selected>Não</option>
                 </select>
                 <br/><br/>
 

@@ -10,6 +10,7 @@ use App\ContatosDeEmergencia;
 use App\Endereco;
 use App\ExamesAdicionais;
 use App\Http\Controllers\Exportar\ExportarDadosAluno;
+use App\Http\Requests\AnamneseRequest;
 use App\PerfilBioquimico;
 use App\QuantasConsultas;
 use App\UsoMedicamentosContinuos;
@@ -468,9 +469,9 @@ class AlunosController extends Controller
 
     }
 
-    public function cadastroAnamneseSalvar(Request $req)
+    public function cadastroAnamneseSalvar(AnamneseRequest $req)
     {
-        $dados = $req->all();
+        $dados = $req->validated();
 
         if (!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()) {
             return redirect()->back()->withInput()->withErrors(['Acesso negado']);
@@ -496,9 +497,9 @@ class AlunosController extends Controller
 
     }
 
-    public function cadastroAnamneseUpdate(Request $req)
+    public function cadastroAnamneseUpdate(AnamneseRequest $req)
     {
-        $dados = $req->all();
+        $dados = $req->validated();
 
         if (!$this->verificarProfessorTreinamento($dados['idTreinamento']) && !auth()->user()->isAdmin()) {
             return redirect()->back()->withInput()->withErrors(['Acesso negado']);
