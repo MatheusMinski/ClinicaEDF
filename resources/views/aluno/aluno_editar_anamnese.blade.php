@@ -46,11 +46,11 @@
                 <br /><br />
 
                 <label for="">Nome do Profissional</label>
-                <input name="nomeDoProfissional" class="form-control" value="{{old('nomeDoProfissional') ?? $dadosAnamnese->nomeDoProfissional ?? ""}}" required="required" maxlength="50" type="text" placeholder="" />
+                <input name="nomeDoProfissional" class="form-control" value="{{old('nomeDoProfissional') ?? $dadosAnamnese->nomeDoProfissional ?? ""}}" maxlength="50" type="text" placeholder="" />
                 <br /><br />
 
                 <label for="">Especialidade Profissional</label>
-                <input name="especialidadeDoProfissional" required="required" type="text" placeholder="" class="validate" value="{{old('especialidadeDoProfissional') ?? $dadosAnamnese->especialidadeDoProfissional ?? ""}}" />
+                <input name="especialidadeDoProfissional" type="text" placeholder="" class="validate" value="{{old('especialidadeDoProfissional') ?? $dadosAnamnese->especialidadeDoProfissional ?? ""}}" />
                 <br /><br />
 
 
@@ -131,7 +131,7 @@
                 <br /><br />
 
                 <label for="">Se sim, foi hospitalizado?</label>
-                <select id='' name="hospitalizacao" class="browser-default" required>
+                <select id='' name="hospitalizacao" class="browser-default">
                     <option enabled selected value="{{old('hospitalizacao') ?? $dadosAnamnese->hospitalizacao ?? ""}}">{{old('hospitalizacao') ?? $dadosAnamnese->hospitalizacao ?? ""}}</option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
