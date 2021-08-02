@@ -27,28 +27,28 @@
             <div class="row">
                 <div class="col s6">
                     <label for="">Nome Comercial do Medicamento</label>
-                    <input value="" name="nomeComercial" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                    <input value="" name="nomeComercial" class="form-control"  maxlength="50" type="text" placeholder="" />
                 </div>
                 <div class="col s6">
                     <label for="">Nome Cientifico do Medicamento</label>
-                    <input value="" name="nomeCientifico" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                    <input value="" name="nomeCientifico" class="form-control"  maxlength="50" type="text" placeholder="" />
 
                 </div>
             </div>
             <div class="row">
                 <div class="col s3">
                     <label for="">Dosagem</label>
-                    <input value="" name="dosagem" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                    <input value="" name="dosagem" class="form-control"  maxlength="50" type="text" placeholder="" />
 
                 </div>
                 <div class="col s6">
                     <label for="">Posologia</label>
-                    <input value="" name="posologia" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                    <input value="" name="posologia" class="form-control"  maxlength="50" type="text" placeholder="" />
 
                 </div>
                 <div class="col s3">
                     <label for="">Data de início</label>
-                    <input value="" name="inicio" class="form-control" required="required" maxlength="50" id="Data" placeholder="00/00/0000" />
+                    <input value="" name="inicio" class="form-control"  maxlength="50" id="Data" placeholder="00/00/0000" />
                 </div>
             </div>
 
@@ -79,7 +79,7 @@
                 <td>{{ $medicamento->nomeCientifico }}</td>
                 <td>{{ $medicamento->dosagem }}</td>
                 <td>{{ $medicamento->posologia }}</td>
-                <td>{{ date('d/m/Y', strtotime($medicamento->inicio))}}</td>
+                <td>{{ $medicamento->inicio ? date('d/m/Y', strtotime($medicamento->inicio)) : ''}}</td>
                 <td>
                     <a class="btn orange" href="{{route('aluno.cadastro.medicamentos.editar', ['idExame' => $medicamento->id,'idTreinamento' => $idTreinamento])}}">Editar</a>
                 </td>

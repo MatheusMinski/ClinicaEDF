@@ -66,7 +66,10 @@ class DataAdapter extends Controller
 
     public function formatarDataUsoMedicamentosContinuos($dados)
     {
-        $dados['inicio'] = Carbon::createFromFormat('d/m/Y',$dados['inicio']);
+        if(isset($dados['inicio'])){
+            $dados['inicio'] = Carbon::createFromFormat('d/m/Y',$dados['inicio']);
+        }
+
         return $dados;
     }
 

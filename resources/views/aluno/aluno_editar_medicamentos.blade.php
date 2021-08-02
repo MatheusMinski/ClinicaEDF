@@ -28,28 +28,28 @@
                 <div class="row">
                     <div class="col s6">
                         <label for="">Nome Comercial do Medicamento</label>
-                        <input value="{{$dadosMedicamentos->nomeComercial}}" name="nomeComercial" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                        <input value="{{$dadosMedicamentos->nomeComercial}}" name="nomeComercial" class="form-control"  maxlength="50" type="text" placeholder="" />
                     </div>
                     <div class="col s6">
                         <label for="">Nome Cientifico do Medicamento</label>
-                        <input value="{{$dadosMedicamentos->nomeCientifico}}" name="nomeCientifico" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                        <input value="{{$dadosMedicamentos->nomeCientifico}}" name="nomeCientifico" class="form-control"  maxlength="50" type="text" placeholder="" />
 
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s3">
                         <label for="">Dosagem</label>
-                        <input value="{{$dadosMedicamentos->dosagem}}" name="dosagem" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                        <input value="{{$dadosMedicamentos->dosagem}}" name="dosagem" class="form-control"  maxlength="50" type="text" placeholder="" />
 
                     </div>
                     <div class="col s6">
                         <label for="">Posologia</label>
-                        <input value="{{$dadosMedicamentos->posologia}}" name="posologia" class="form-control" required="required" maxlength="50" type="text" placeholder="" />
+                        <input value="{{$dadosMedicamentos->posologia}}" name="posologia" class="form-control"  maxlength="50" type="text" placeholder="" />
 
                     </div>
                     <div class="col s3">
                         <label for="">Data de início</label>
-                        <input value="{{date('d/m/Y', strtotime($dadosMedicamentos->inicio))}}" name="inicio" class="form-control" required="required" maxlength="50" id="Data" placeholder="00/00/0000" />
+                        <input value="{{$dadosMedicamentos->inicio ? date('d/m/Y', strtotime($dadosMedicamentos->inicio)) : ''}}" name="inicio" class="form-control"  maxlength="50" id="Data" placeholder="00/00/0000" />
                     </div>
                 </div>
 
