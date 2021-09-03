@@ -303,7 +303,7 @@
 
                 <br/><br/>
 
-                <label for="">Esforço para realizar tarefas de casa <span style="color: red">*</span></label>
+                <label for="">Esforço andar fora de casa<span style="color: red">*</span></label>
                 <select id='' name="esforcoAndarForaDeCasa"   class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
@@ -320,7 +320,7 @@
 
                 <br/><br/>
 
-                <label for="">Esforço para realizar tarefas de casa <span style="color: red">*</span></label>
+                <label for="">Esforço para realizar as atividades de lazer <span style="color: red">*</span></label>
                 <select id='' name="esforcoLazer"   class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
@@ -337,7 +337,7 @@
 
                 <br/><br/>
 
-                <label for="">Esforço para realizar tarefas de casa <span style="color: red">*</span></label>
+                <label for="">Esforço para trabalhar <span style="color: red">*</span></label>
                 <select id='' name="esforcoTrabalho"   class="browser-default">
                     <option disabled selected value>Selecione Uma Opção</option>
                     <option value="1">1</option>
